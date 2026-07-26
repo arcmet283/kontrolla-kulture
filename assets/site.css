@@ -356,11 +356,12 @@ footer:not(.signoff) { text-align: center; color: #ccc; }
 .year-divider .line { height: 1px; background: var(--surface-line); flex: 1; }
 
 /* ---- Leader/coach cards (player and coach spotlight blocks) ---- */
-.leader-card .role, .coach-card .role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--espn-red); font-weight: 700; }
-.leader-card .name, .coach-card h3 { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 17px; margin: 4px 0 2px; color: var(--fg); }
+.leader-card, .coach-card { margin: 18px 0 24px; }
+.leader-card .role, .coach-card .role { display: block; font-size: 11px; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.06em; color: var(--espn-red); font-weight: 700; }
+.leader-card .name, .coach-card h3 { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 17px; line-height: 1.3; margin: 10px 0 8px; color: var(--fg); }
 .leader-card .pos { font-size: 12px; color: var(--fg-dim); text-transform: none; font-weight: 600; margin-left: 6px; }
-.leader-card .line { font-family: ui-monospace, Consolas, monospace; font-size: 14px; color: var(--fg); margin-top: 6px; font-variant-numeric: tabular-nums; }
-.leader-card .note { font-size: 13px; color: var(--fg-dim); margin-top: 8px; line-height: 1.5; }
+.leader-card .line { font-family: ui-monospace, Consolas, monospace; font-size: 14px; color: var(--fg); margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--surface-line); font-variant-numeric: tabular-nums; }
+.leader-card .note { font-size: 13.5px; color: var(--fg-dim); margin-top: 10px; line-height: 1.6; }
 .leader-card.headline { border-top-width: 5px; background: linear-gradient(135deg, var(--surface) 0%, rgba(210,35,42,0.05) 100%); }
 .leader-card.headline .name { font-size: 22px; }
 .leader-card.watch { border-top-color: var(--gold-500); }
