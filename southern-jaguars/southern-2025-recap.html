@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: 2025 Season Recap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The Southern Jaguars' Year One: a 5-7 debut season, the program's first breakout star, and the recruiting class that set up everything after it.">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<style>
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--gold-500); background-image: linear-gradient(120deg, rgba(232,178,58,0.14), transparent 55%); }
+  .scorebug .kicker { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--gold-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--gold-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; }
+
+  .prose { font-family: Georgia,"Iowan Old Style",serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 68ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+  tr.win td:nth-child(1) { color: var(--win); font-weight: 700; } tr.loss td:nth-child(1) { color: var(--loss); font-weight: 700; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--gold-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars &middot; 2025 Season Recap &middot; Year One</p>
+  <h1 class="display">Year One: 5-7, And A Star Is Found</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Final Record</span><span class="val">5-7, 4-5 AAC</span></div>
+    <div class="bug-chip"><span class="label">Rank</span><span class="val">No. 136 &rarr; No. 84</span></div>
+    <div class="bug-chip"><span class="label">Recruiting</span><span class="val">59th Nationally</span></div>
+    <div class="bug-chip"><span class="label">Breakout</span><span class="val">Mark Fiaseu, HB</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>This is where the chronicle begins. Southern opened this save at No. 136 nationally, a program with no established identity and a schedule that didn't do it any favors. Year One ended 5-7 &mdash; not a winning season, but a program that climbed 52 spots in the rankings, found its first real star, and set up a recruiting class that would define the next three years.</p>
+  </section>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Full Schedule</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Score</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr class="loss"><td>1</td><td>at North Texas</td><td>30-40</td><td>Lost</td></tr>
+        <tr class="loss"><td>2</td><td>at Jacksonville St.</td><td>10-40</td><td>Lost</td></tr>
+        <tr class="win"><td>3</td><td>vs Morgan St.</td><td>48-27</td><td>Won</td></tr>
+        <tr class="loss"><td>4</td><td>vs Navy</td><td>24-31</td><td>Lost</td></tr>
+        <tr class="win"><td>5</td><td>vs ECU</td><td>52-21</td><td>Won</td></tr>
+        <tr class="loss"><td>7</td><td>vs Army</td><td>6-59</td><td>Lost</td></tr>
+        <tr class="loss"><td>8</td><td>vs USF</td><td>14-21</td><td>Lost</td></tr>
+        <tr class="loss"><td>9</td><td>vs Temple</td><td>24-28</td><td>Lost</td></tr>
+        <tr class="loss"><td>10</td><td>at South Carolina</td><td>14-49</td><td>Lost</td></tr>
+        <tr class="win"><td>11</td><td>at UAB</td><td>42-7</td><td>Won</td></tr>
+        <tr class="win"><td>12</td><td>at Memphis</td><td>66-10</td><td>Won</td></tr>
+        <tr class="win"><td>13</td><td>at UTSA</td><td>48-21</td><td>Won</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">A season of two extremes: the 6-59 loss to Army is still the worst defeat in this chronicle's record, and it came sandwiched between a 52-point outburst against ECU and a brutal four-game skid. But the closing stretch is the real story &mdash; three straight blowout wins to close the year, including a 56-point margin at Memphis, the single largest win in the program's history at that point.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">By The Numbers: Final Season Stats</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stat</th><th>Total</th><th>National Rank</th></tr></thead>
+      <tbody>
+        <tr><td>Total Offensive Yards</td><td>4,198</td><td>116th</td></tr>
+        <tr><td>Total Passing Yards</td><td>2,604</td><td>126th</td></tr>
+        <tr><td>Total Rushing Yards</td><td>1,594</td><td>30th</td></tr>
+        <tr><td>PPG</td><td>31.4</td><td>42nd</td></tr>
+        <tr class="hl"><td>Total Defensive Yards</td><td>3,913</td><td>8th</td></tr>
+        <tr class="hl"><td>Total Def. Pass Yds</td><td>2,028</td><td>1st</td></tr>
+        <tr><td>Total Def. Rush Yds</td><td>1,885</td><td>135th</td></tr>
+        <tr><td>Def. PPG</td><td>29.9</td><td>81st</td></tr>
+        <tr><td>3rd Down %</td><td>32%</td><td>136th</td></tr>
+        <tr><td>4th Down %</td><td>38%</td><td>128th</td></tr>
+        <tr><td>Off. Redzone %</td><td>87%</td><td>9th</td></tr>
+        <tr><td>Def. Redzone %</td><td>82%</td><td>107th</td></tr>
+        <tr><td>Turnover Differential</td><td>+6</td><td>24th</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">The exact defensive identity that's defined this program ever since shows up here for the first time: a nation's-best pass defense (1st) paired with a bottom-10 run defense (135th). Three seasons later, that split still hasn't gone away.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">The Mark Fiaseu Chronicle</h2></div>
+  <div class="prose">
+    <p>Fiaseu is this program's first real star. 265 carries for 1,647 yards, plus 52 catches for 428 more, for 19 total touchdowns &mdash; the 2nd-most rushing yards in the entire NCAA that season. He won National Offensive Player of the Week three separate times (Weeks 5, 12, and 13), capping his run with a 414-yard, 5-touchdown all-purpose explosion in Week 12. He finished the year 2nd Team All-American and 1st Team All-Conference, then heard his name called in the NFL Draft. Every rushing record he set would eventually fall to Jordan Molinich, but Fiaseu is the one who proved this program could produce a star at all.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Team Leaders</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Player</th><th>Stats</th></tr></thead>
+      <tbody>
+        <tr><td>Passing</td><td>Joshua Clark, QB</td><td>125-268, 1,889 yds, 15 TD, 13 INT (season-ending injury, Week 10)</td></tr>
+        <tr class="hl"><td>Rushing</td><td>Mark Fiaseu, HB</td><td>265 car, 1,647 yds, 19 total TDs</td></tr>
+        <tr><td>Receiving</td><td>Jalen Dale, WR</td><td>54 rec, 995 yds, 5 TD</td></tr>
+        <tr><td>Tackles</td><td>Owen West, MLB</td><td>64 tkls</td></tr>
+        <tr><td>Sacks</td><td>Amir Tracy, DE</td><td>12 sks</td></tr>
+        <tr><td>Interceptions</td><td>Coby Buncom, FS</td><td>5 ints</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Clark's season ended early on a torn-up stat line (13 interceptions in limited action) &mdash; the first chapter in what would become a running quarterback-instability story for this program.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">Transactions: Who Left</h2></div>
+  <div class="prose">
+    <p>The departures were modest for a first season: Corey Grant transferred to Kansas, and Jamari Golden's departure was rescinded (he stayed). Two of the season's headline names went to the NFL Draft &mdash; Fiaseu and cornerback Brennon Fonua, both riding 2025 All-Conference honors into the league.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">Next Class: The 2026 Recruiting Haul</h2></div>
+  <div class="prose">
+    <p>This is the class that would eventually define the program. Headlined by three 4-stars &mdash; Jordan Molinich (HB, national position rank 28th), Christopher Shelton (CB, rank 13th), and Matt Brown (ATH) &mdash; plus a loaded transfer haul that included Christian Thatcher (Utah), Devin Sanchez (Oklahoma St.), and DJ Hill-Smith (New Mexico St.). Ranked 59th nationally at signing, this class would go on to produce a Doak Walker Award winner, two straight national rushing champions, and the defensive cornerstone that anchored the next two seasons. Not bad for a program that had just finished 5-7.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">Around The Nation: Conference Champions</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Conference</th><th>Champion</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr><td>ACC</td><td>Miami over Clemson</td><td>34-32</td></tr>
+        <tr><td>American</td><td>Navy over Tulane</td><td>42-23</td></tr>
+        <tr><td>Big Ten</td><td>Penn State over Ohio St.</td><td>50-26</td></tr>
+        <tr><td>Big 12</td><td>Texas Tech over Kansas St.</td><td>42-31</td></tr>
+        <tr><td>SEC</td><td>Alabama over Texas A&amp;M</td><td>19-7</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">The National Championship</h2></div>
+  <div class="prose">
+    <p>Notre Dame beat Texas Tech 34-31 for the national title, capping a bracket that saw Indiana knock out Alabama in Round 1 and Miami take down Wisconsin in the Orange Bowl. Fernando Mendoza (Indiana) won the Heisman Trophy behind a run that also carried Indiana deep into the playoff field. Mike Uremovich (Ball St., 9-4) won the Best HC Award &mdash; a non-champion winning that award, a pattern that would repeat the following year too.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 09</span><h2 class="display">The Takeaway</h2></div>
+  <div class="prose">
+    <p>5-7 doesn't look like much on paper, but this season did exactly what a Year One needs to do: it found a star (Fiaseu), it revealed a real defensive identity (elite pass coverage, porous run defense) that would persist for years, and it landed a recruiting class that would carry the program's next three seasons. The record was modest. Everything it set up was not.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars &middot; 2025 Season Recap &middot; Sign-Off</p>
+    <p class="headline">5-7, a No. 136-to-84 ranking jump, and the recruiting class that built everything that came after.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Record</span><span class="v">5-7</span></div>
+      <div class="stat-chip"><span class="k">Star</span><span class="v">Mark Fiaseu, 1,647 Rush Yds</span></div>
+      <div class="stat-chip"><span class="k">Recruiting</span><span class="v">59th, Headlined by Molinich</span></div>
+      <div class="stat-chip"><span class="k">National Champ</span><span class="v">Notre Dame, 34-31 over Texas Tech</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

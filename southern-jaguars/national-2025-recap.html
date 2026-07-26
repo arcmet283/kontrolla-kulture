@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>National Desk: 2025 Season Recap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Notre Dame wins the national title, Fernando Mendoza takes the Heisman, and the coaching carousel starts spinning — the first season on record.">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<style>
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --red-500: #c9382f; --red-300: #ef8078;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(201,56,47,0.18), transparent 55%); }
+  .scorebug .kicker { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,56,47,0.45); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display:flex; gap:8px; align-items:baseline; }
+  .bug-chip .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--red-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--red-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; }
+
+  .desk-intro { display: flex; gap: 14px; align-items: center; margin: 28px 0 8px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; }
+  .desk-intro .who { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; }
+  .desk-intro .who.voss { color: var(--gold-500); } .desk-intro .who.cast { color: var(--red-500); }
+
+  .dlg { display: flex; gap: 14px; margin: 14px 0; }
+  .dlg .spk { flex: 0 0 118px; }
+  .dlg .spk .name { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13.5px; }
+  .dlg .spk .role { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-dim); }
+  .dlg .txt { font-family: Georgia,"Iowan Old Style",serif; font-size: 16px; line-height: 1.6; padding-left: 14px; border-left: 3px solid; max-width: 62ch; }
+  .dlg.voss .spk .name { color: var(--gold-500); } .dlg.voss .txt { border-color: var(--gold-500); }
+  .dlg.cast .spk .name { color: var(--red-500); } .dlg.cast .txt { border-color: var(--red-500); }
+
+  .onscreen { margin: 16px 0; padding: 10px 14px; background: rgba(232,178,58,0.06); border: 1px dashed var(--surface-line); border-radius: 6px; font-family: ui-monospace,Consolas,monospace; font-size: 11.5px; letter-spacing: 0.03em; color: var(--fg-dim); text-transform: uppercase; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(201,56,47,0.07); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 55ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,56,47,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--red-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<header class="scorebug">
+  <p class="kicker">Kickoff Central &middot; National Desk &middot; 2025 Season Recap</p>
+  <h1 class="display">Notre Dame Wins It All. The Carousel Begins.</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Champion</span><span class="val">Notre Dame, 34-31 over Texas Tech</span></div>
+    <div class="bug-chip"><span class="label">Heisman</span><span class="val">Fernando Mendoza, Indiana</span></div>
+    <div class="bug-chip"><span class="label">Best HC</span><span class="val">Mike Uremovich, Ball St. (9-4)</span></div>
+    <div class="bug-chip"><span class="label">Coaching Moves</span><span class="val">6 Programs</span></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="desk-intro">
+    <div><span class="who voss">Derek Voss</span><br><span style="font-size:11px; color:var(--fg-dim);">Play-by-Play</span></div>
+    <div style="opacity:0.4;">&middot;</div>
+    <div><span class="who cast">Renee Castellan</span><br><span style="font-size:11px; color:var(--fg-dim);">Analyst</span></div>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Bracket That Crowned Notre Dame</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Welcome to the very first National Desk recap on record, Renee. Notre Dame closes it out 34-31 over Texas Tech for the national championship. Walk me through how they got there.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">A four-team bracket that got there the hard way. Indiana knocked out Alabama 49-38 in the first round, Miami handled Wisconsin in the Orange Bowl, and Notre Dame needed a semifinal win over Penn State, 52-28, before finishing off Texas Tech in the title game. Texas Tech, for what it's worth, beat Oklahoma 39-33 in the Sugar Bowl and then Miami 35-23 in the Fiesta Bowl semifinal just to get to that final.</div></div>
+  <div class="onscreen">ON SCREEN: NATIONAL CHAMPIONSHIP — NOTRE DAME 34, TEXAS TECH 31</div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">National Awards: The Full Board</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Award</th><th>Winner</th><th>Team</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Heisman Trophy</td><td>Fernando Mendoza, QB</td><td>Indiana</td></tr>
+        <tr><td>Maxwell Award</td><td>Behren Morton, QB</td><td>Texas Tech</td></tr>
+        <tr><td>Doak Walker Award</td><td>Jeremiyah Love, HB</td><td>Notre Dame</td></tr>
+        <tr><td>Fred Biletnikoff Award</td><td>Elijah Sarratt, WR</td><td>Indiana</td></tr>
+        <tr><td>Chuck Bednarik Award</td><td>Stanquan Clark, OLB</td><td>Louisville</td></tr>
+        <tr><td>Best HC Award</td><td>Mike Uremovich (9-4)</td><td>Ball St.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Mendoza wins the Heisman without reaching the national title game &mdash; Indiana lost in the Round 2 Rose Bowl to Penn State. And that Best HC Award result is one to note: Mike Uremovich goes 9-4 at Ball State, a program that didn't sniff the championship bracket, and still takes the sport's top coaching honor.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">National Statistical Leaders</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Player</th><th>Team</th><th>Stats</th></tr></thead>
+      <tbody>
+        <tr><td>Passing Yards</td><td>Behren Morton</td><td>Texas Tech</td><td>3,965 yds</td></tr>
+        <tr><td>Passing TDs</td><td>Behren Morton</td><td>Texas Tech</td><td>48 TD</td></tr>
+        <tr><td>Rushing Yards</td><td>Maurice Turner</td><td>Tulane</td><td>1,767 yds</td></tr>
+        <tr><td>Rushing TDs</td><td>Jeremiyah Love</td><td>Notre Dame</td><td>18 TD</td></tr>
+        <tr><td>Receiving Yards</td><td>Raphael Williams Jr.</td><td>Pittsburgh</td><td>1,380 yds</td></tr>
+        <tr><td>Tackles</td><td>Jaylen Wester</td><td>Western Kentucky</td><td>131 tkls</td></tr>
+        <tr><td>Sacks</td><td>Pierce Oppong</td><td>Northern Illinois</td><td>15 sks</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Conference Champions</h2></div>
+  <div class="matchup-card"><div class="conf-tag">SEC</div><div class="teams">Alabama over Texas A&amp;M</div><p>19-7.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Big 12</div><div class="teams">Texas Tech over Kansas St.</div><p>42-31 &mdash; the same Texas Tech team that would go on to reach the national title game.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Big Ten</div><div class="teams">Penn State over Ohio St.</div><p>50-26.</p></div>
+  <div class="matchup-card"><div class="conf-tag">ACC</div><div class="teams">Miami over Clemson</div><p>34-32.</p></div>
+  <div class="matchup-card"><div class="conf-tag">American</div><div class="teams">Navy over Tulane</div><p>42-23.</p></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">The Coaching Carousel Starts Spinning</h2></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">Six programs made coaching changes this offseason, and this is where the carousel we've been tracking ever since actually starts: Arkansas moves on from Sam Pittman for Jake Spavital, Florida swaps Billy Napier for Dana Dimel, Maryland brings in Andy Kotelnicki, Oklahoma State hires Ryan Walters, UAB goes with Tom Stepsis, and Virginia turns to Adam Fuller. All six take over for the 2026 season.</div></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Worth flagging early: Maryland's Kotelnicki beats No. 2 Michigan 30-27 in his Season 2, and Florida's Dimel knocks off No. 5 Texas 45-20 in his debut year. Two hires that look sharp out of the gate.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">What To Watch</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Notre Dame enters 2026 as the reigning champion. Does that carry? And with six new head coaches starting fresh, who's the first one to make real noise?</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">One season in the books. A lot more to come.</div></div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Kickoff Central &middot; 2025 Season Recap &middot; Sign-Off</p>
+    <p class="headline">Notre Dame wins the national title, Fernando Mendoza takes the Heisman without playing for it, and six new head coaches get their first shot.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Champion</span><span class="v">Notre Dame</span></div>
+      <div class="stat-chip"><span class="k">Heisman</span><span class="v">Fernando Mendoza</span></div>
+      <div class="stat-chip"><span class="k">Best HC</span><span class="v">Mike Uremovich, Ball St.</span></div>
+      <div class="stat-chip"><span class="k">New Coaches</span><span class="v">6</span></div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
