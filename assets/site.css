@@ -1,0 +1,249 @@
+/* Kontrolla Kulture — shared site stylesheet, ESPN-style layout reference */
+
+:root {
+  --espn-red: #d2232a;
+  --espn-red-dark: #a3131a;
+  --espn-black: #1a1a1a;
+  --espn-gray-900: #232323;
+  --espn-gray-700: #4a4a4a;
+  --espn-gray-500: #767676;
+  --espn-gray-200: #e2e2e2;
+  --espn-gray-100: #f2f2f2;
+  --espn-white: #ffffff;
+
+  /* voss/cast dialogue speaker colors (national dialogue shows) */
+  --voss-color: #1a1a1a;
+  --cast-color: var(--espn-red);
+
+  --win: #1a7a3c;
+  --loss: var(--espn-red);
+  --gold-500: #b8860b; /* used sparingly for legacy .pill-gold etc */
+}
+
+:root[data-theme="light"] {
+  --bg: var(--espn-white); --fg: var(--espn-black); --fg-dim: var(--espn-gray-700);
+  --surface: var(--espn-white); --surface-line: var(--espn-gray-200);
+  --header-bg: var(--espn-black); --header-fg: var(--espn-white);
+}
+:root[data-theme="dark"], :root:not([data-theme]) {
+  --bg: #121212; --fg: #f2f2f2; --fg-dim: #b8b8b8;
+  --surface: #1c1c1c; --surface-line: #333333;
+  --header-bg: #000000; --header-fg: #ffffff;
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --bg: var(--espn-white); --fg: var(--espn-black); --fg-dim: var(--espn-gray-700);
+    --surface: var(--espn-white); --surface-line: var(--espn-gray-200);
+    --header-bg: var(--espn-black); --header-fg: var(--espn-white);
+  }
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5; -webkit-font-smoothing: antialiased;
+}
+a { color: var(--espn-red); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.display, h1, .scorebug h1, .bumper h2, .card h3, .card-title,
+[class$="-card"] h3, [class$="-card"] .name, .name, .teams, .team {
+  font-family: "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+/* ---- Top site nav (added to every page) ---- */
+.kk-nav {
+  background: var(--espn-black); color: #fff;
+  display: flex; align-items: center; gap: 14px;
+  padding: 10px clamp(16px,4vw,32px);
+  border-bottom: 3px solid var(--espn-red);
+  position: sticky; top: 0; z-index: 50;
+  font-family: "Arial Narrow", Arial, sans-serif;
+}
+.kk-nav img { height: 28px; width: 28px; border-radius: 50%; }
+.kk-nav .kk-brand { font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; color: #fff; }
+.kk-nav .kk-links { display: flex; gap: 16px; margin-left: auto; font-size: 12.5px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em; }
+.kk-nav .kk-links a { color: #ccc; }
+.kk-nav .kk-links a:hover { color: #fff; text-decoration: none; border-bottom: 2px solid var(--espn-red); }
+
+/* ---- Header / scorebug (masthead treatment) ---- */
+.scorebug, header.hero {
+  background: var(--header-bg); color: var(--header-fg);
+  padding: 26px clamp(16px,4vw,48px) 22px;
+  border-bottom: 4px solid var(--espn-red);
+  background-image: none;
+}
+.scorebug .kicker, header.hero .back {
+  font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 0.14em; font-size: 12px; color: var(--espn-red); margin: 0 0 6px; text-decoration: none;
+}
+.scorebug h1, header.hero h1 {
+  font-size: clamp(26px,5vw,44px); line-height: 1.02; margin: 0 0 14px; text-wrap: balance; color: #fff;
+}
+header.hero p { color: #ccc; max-width: 68ch; font-size: 14.5px; }
+
+.bug-row, .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.bug-chip, .stat-chip {
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 2px;
+  padding: 8px 14px; font-family: ui-monospace, Consolas, monospace; font-variant-numeric: tabular-nums;
+  font-size: 13px; display: flex; gap: 8px; align-items: baseline;
+}
+.bug-chip .label, .stat-chip .k {
+  font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 11px; color: var(--espn-red);
+}
+.bug-chip .val, .stat-chip .v { font-weight: 800; color: #fff; }
+
+.banner { width: 100%; max-height: 420px; object-fit: cover; display: block; }
+
+/* ---- Main content shell ---- */
+main { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+/* ---- Section dividers ("bumper") — ESPN uses a plain bold rule, not a dark block ---- */
+.bumper {
+  margin: 44px 0 18px; padding: 10px 0 8px; background: none;
+  border-left: none; border-bottom: 4px solid var(--espn-red); color: var(--fg);
+}
+.bumper .seg-num {
+  font-family: ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.14em;
+  color: var(--espn-red); display: block; margin-bottom: 2px; font-weight: 700;
+}
+.bumper h2 { font-size: clamp(18px,3vw,25px); margin: 0; color: var(--fg); }
+
+.section-title {
+  font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase;
+  font-size: 20px; color: var(--fg); margin: 44px 0 6px; padding-bottom: 8px;
+  border-bottom: 4px solid var(--espn-red);
+}
+.section-title.local, .section-title.national { color: var(--fg); }
+.section-sub { font-size: 13px; color: var(--fg-dim); margin: 0 0 14px; }
+
+/* ---- Prose (narrative text) ---- */
+.prose { font-family: Georgia, "Times New Roman", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+.prose p { max-width: 68ch; color: var(--fg); }
+.prose strong { color: var(--fg); }
+
+/* ---- Cards: ESPN story-card treatment for ANY *-card class ---- */
+.card, [class$="-card"], .matchup-card, .player-card, .stat-block {
+  background: var(--surface); border: 1px solid var(--surface-line); border-radius: 4px;
+  padding: 16px 18px; transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  display: block; border-top: 3px solid var(--surface-line);
+}
+a.card:hover, a[class$="-card"]:hover {
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12); border-top-color: var(--espn-red); text-decoration: none;
+}
+.card .tag, [class$="-card"] .tag, [class$="-card"] .cat, .conf-tag {
+  font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 10.5px;
+  letter-spacing: 0.08em; color: var(--espn-red); font-weight: 800;
+}
+.card h3, [class$="-card"] .name, [class$="-card"] .teams {
+  font-size: 17px; margin: 6px 0 8px; line-height: 1.15; color: var(--fg);
+}
+.card p, [class$="-card"] p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; max-width: none; }
+.card.video, .card.has-video { border-top-color: var(--espn-red); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 14px; }
+
+/* ---- Tables ---- */
+.table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 4px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+th, td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+th {
+  font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.05em;
+  font-size: 11px; color: var(--fg); background: var(--espn-gray-100); position: sticky; top: 0;
+}
+:root:not([data-theme="light"]) th { background: #262626; color: #fff; }
+td { color: var(--fg); font-variant-numeric: tabular-nums; }
+tr:last-child td { border-bottom: none; }
+tr.hl td, tr.hl-southern td, tr.hl-loss td { background: rgba(210,35,42,0.08); font-weight: 700; }
+tr.win td:first-child, .result-w { color: var(--win); font-weight: 800; }
+tr.loss td:first-child, .result-l { color: var(--loss); font-weight: 800; }
+tbody tr:hover td { background: rgba(210,35,42,0.04); }
+
+/* ---- Dialogue (national shows) ---- */
+.desk-intro {
+  display: flex; gap: 14px; align-items: center; margin: 26px 0 8px; padding: 14px 18px;
+  background: var(--surface); border: 1px solid var(--surface-line); border-left: 4px solid var(--espn-red);
+}
+.desk-intro .who { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; }
+.desk-intro .who.voss { color: var(--voss-color); } .desk-intro .who.cast { color: var(--cast-color); }
+
+.dlg { display: flex; gap: 14px; margin: 14px 0; }
+.dlg .spk { flex: 0 0 118px; }
+.dlg .spk .name { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13.5px; }
+.dlg .spk .role { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-dim); }
+.dlg .txt { font-family: Georgia, serif; font-size: 16px; line-height: 1.6; padding-left: 14px; border-left: 3px solid; max-width: 64ch; color: var(--fg); }
+.dlg.voss .spk .name { color: var(--voss-color); } .dlg.voss .txt { border-color: var(--voss-color); }
+.dlg.cast .spk .name { color: var(--cast-color); } .dlg.cast .txt { border-color: var(--cast-color); }
+
+.onscreen {
+  margin: 16px 0; padding: 10px 14px; background: var(--espn-gray-100); border: 1px dashed var(--surface-line);
+  border-radius: 2px; font-family: ui-monospace, Consolas, monospace; font-size: 11px; letter-spacing: 0.03em;
+  color: var(--fg-dim); text-transform: uppercase;
+}
+:root:not([data-theme="light"]) .onscreen { background: #262626; }
+
+/* ---- Pills / badges (any class starting with pill-) ---- */
+.pill, [class^="pill-"], [class*=" pill-"] {
+  display: inline-block; padding: 2px 9px; border-radius: 2px; font-size: 11px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.04em; margin-left: 6px;
+  background: var(--espn-gray-100); color: var(--fg);
+}
+.pill-win, .pill-up, .pill-hit, .pill-in, .pill-hot { background: rgba(26,122,60,0.12); color: var(--win); }
+.pill-loss, .pill-down, .pill-bust, .pill-out, .pill-fired, .pill-fall { background: rgba(210,35,42,0.12); color: var(--espn-red); }
+.pill-gold, .pill-new, .pill-steal { background: rgba(184,134,11,0.15); color: var(--gold-500); }
+.pill-nfl, .pill-transfer, .pill-grad, .pill-dev { background: var(--espn-gray-200); color: var(--fg-dim); }
+
+/* ---- Bar charts (record book / trajectory visuals) ---- */
+.bar-row { display: grid; grid-template-columns: 70px 1fr 60px; align-items: center; gap: 10px; padding: 7px 0; font-size: 13px; }
+.bar-row .yr { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; }
+.bar-track { background: var(--surface-line); border-radius: 2px; height: 14px; overflow: hidden; }
+.bar-fill { background: var(--espn-red); height: 100%; }
+.bar-fill.bad { background: var(--espn-gray-500); }
+.bar-val { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+
+/* ---- Notices / callouts ---- */
+.notice {
+  background: var(--surface); border: 1px solid var(--surface-line); border-left: 4px solid var(--espn-red);
+  border-radius: 2px; padding: 14px 18px; margin-bottom: 28px; font-size: 13.5px; color: var(--fg-dim);
+}
+.notice strong { color: var(--fg); }
+
+/* ---- yt-link / video badges ---- */
+.yt-link {
+  display: inline-flex; align-items: center; gap: 5px; margin-top: 12px;
+  font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase;
+  font-size: 11.5px; letter-spacing: 0.04em; color: var(--espn-red);
+}
+
+/* ---- Footer / signoff ---- */
+footer.signoff, footer {
+  margin-top: 60px; background: var(--espn-black); border-top: 4px solid var(--espn-red);
+  color: #fff; padding: 30px clamp(16px,4vw,48px) 28px; text-align: left; font-size: 13px;
+}
+footer.signoff .signoff-inner { max-width: 1100px; margin: 0 auto; }
+footer.signoff .label {
+  font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.16em;
+  font-size: 11px; color: var(--espn-red); margin: 0 0 10px;
+}
+footer.signoff .headline { font-size: clamp(16px,3vw,22px); line-height: 1.3; margin: 0 0 16px; max-width: 55ch; color: #fff; }
+footer:not(.signoff) { text-align: center; color: #ccc; }
+
+/* ---- Hub/index page cards ---- */
+.notice, .start-here { }
+.start-here { background: var(--surface); border: 2px solid var(--espn-red); border-radius: 4px; padding: 22px 24px; margin-bottom: 20px; }
+.start-here .kicker { font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; color: var(--espn-red); font-weight: 800; }
+.start-here h2 { font-size: 24px; margin: 6px 0 10px; color: var(--fg); }
+.start-here p { color: var(--fg-dim); font-size: 14.5px; margin: 0 0 14px; max-width: 70ch; }
+.start-here .links { display: flex; flex-wrap: wrap; gap: 10px; }
+.start-here .links a { background: var(--espn-red); color: #fff; font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; padding: 10px 16px; border-radius: 2px; }
+.start-here .links a.alt { background: transparent; border: 1.5px solid var(--espn-red); color: var(--espn-red); }
+
+.year-divider { display: flex; align-items: center; gap: 12px; margin: 36px 0 16px; }
+.year-divider .yr { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; font-size: 15px; color: var(--fg-dim); letter-spacing: 0.08em; white-space: nowrap; }
+.year-divider .line { height: 1px; background: var(--surface-line); flex: 1; }

@@ -10,49 +10,19 @@
 <meta property="og:description" content="Every published episode of the Southern Jaguars Dynasty series, kept in sync with the video release schedule.">
 <meta property="og:image" content="assets/thumbnail.png">
 <meta name="twitter:card" content="summary_large_image">
-<style>
-  :root {
-    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63;
-    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
-    --red-500: #c9382f; --red-300: #ef8078;
-    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
-  }
-  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; }
-  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); }
-  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; } }
 
-  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
-  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
-  a { color: inherit; text-decoration: none; }
-
-  header.hero { background: var(--navy-950); color: var(--gold-100); padding: 40px clamp(16px,4vw,48px) 34px; border-bottom: 3px solid var(--gold-500); background-image: linear-gradient(120deg, rgba(232,178,58,0.12), transparent 55%); }
-  header.hero .back { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold-300); }
-  header.hero h1 { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(30px,6vw,52px); margin: 10px 0 8px; }
-  header.hero p { color: var(--ink-dim); max-width: 62ch; font-size: 15px; }
-  .banner { width: 100%; max-height: 420px; object-fit: cover; display: block; }
-
-  main { max-width: 1080px; margin: 0 auto; padding: 40px clamp(16px,4vw,48px) 80px; }
-
-  .notice { background: var(--surface); border: 1px solid var(--surface-line); border-left: 4px solid var(--gold-500); border-radius: 8px; padding: 16px 20px; margin-bottom: 32px; font-size: 14px; color: var(--fg-dim); }
-  .notice strong { color: var(--fg); }
-
-  .section-title { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 22px; margin: 48px 0 18px; padding-bottom: 8px; border-bottom: 2px solid var(--surface-line); }
-  .section-title.local { color: var(--gold-500); } .section-title.national { color: var(--red-500); }
-
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 14px; }
-  .card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 10px; padding: 18px 20px; transition: transform 0.15s ease, border-color 0.15s ease; display: block; }
-  .card:hover { transform: translateY(-2px); border-color: var(--gold-500); }
-  .card .tag { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.08em; color: var(--fg-dim); }
-  .card h3 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 17px; margin: 6px 0 8px; line-height: 1.15; }
-  .card p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; }
-  .card.video { border-color: var(--red-500); }
-  .card .yt-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; font-family: "Arial Narrow",Arial,sans-serif; font-weight: 700; text-transform: uppercase; font-size: 11.5px; letter-spacing: 0.04em; color: var(--red-500); }
-
-  footer { text-align: center; padding: 40px 16px 60px; color: var(--fg-dim); font-size: 13px; }
-</style>
+<link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
+<nav class="kk-nav">
+  <img src="../assets/logo.png" alt="Kontrolla Kulture">
+  <span class="kk-brand">Kontrolla Kulture</span>
+  <div class="kk-links">
+    <a href="../index.html">Home</a>
+    <a href="index.html">Southern Jaguars</a>
+  </div>
+</nav>
+
 
 <img class="banner" src="assets/thumbnail.png" alt="Southern Jaguars Dynasty">
 <header class="hero">

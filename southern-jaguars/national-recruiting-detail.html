@@ -6,47 +6,19 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Complete spreadsheet-level national recruiting data, 2026 and 2027 cycles — every Top HS recruit, every Top 10 transfer, and the full Top 25 class rankings.">
 <link rel="icon" type="image/png" href="../assets/logo.png">
-<style>
-  :root {
-    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63;
-    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
-    --red-500: #c9382f; --red-300: #ef8078;
-    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
-  }
-  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; }
-  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); }
-  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; } }
 
-  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; }
-  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
-  a { color: inherit; }
-
-  header.hero { background: var(--navy-950); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 26px; border-bottom: 3px solid var(--red-500); }
-  header.hero .back { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--red-300); text-decoration: none; }
-  header.hero h1 { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(24px,5vw,40px); margin: 10px 0 8px; }
-  header.hero p { color: var(--ink-dim); max-width: 70ch; font-size: 14.5px; margin: 0; }
-
-  main { max-width: 1280px; margin: 0 auto; padding: 32px clamp(16px,4vw,48px) 80px; }
-
-  .notice { background: var(--surface); border: 1px solid var(--surface-line); border-left: 4px solid var(--red-500); border-radius: 8px; padding: 14px 18px; margin-bottom: 28px; font-size: 13.5px; color: var(--fg-dim); }
-  .notice strong { color: var(--fg); }
-
-  .section-title { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 20px; color: var(--red-500); margin: 40px 0 6px; }
-  .section-sub { font-size: 13px; color: var(--fg-dim); margin: 0 0 14px; }
-
-  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); margin-bottom: 8px; }
-  table { border-collapse: collapse; width: 100%; font-size: 12.5px; min-width: 900px; }
-  th, td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
-  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.04em; font-size: 10.5px; color: var(--fg-dim); background: rgba(201,56,47,0.07); position: sticky; top: 0; }
-  td { color: var(--fg); font-variant-numeric: tabular-nums; }
-  tr:last-child td { border-bottom: none; }
-  tbody tr:hover td { background: rgba(201,56,47,0.05); }
-
-  footer { text-align: center; padding: 40px 16px 60px; color: var(--fg-dim); font-size: 13px; }
-</style>
+<link rel="stylesheet" href="../assets/site.css">
 </head>
 <body>
+<nav class="kk-nav">
+  <img src="../assets/logo.png" alt="Kontrolla Kulture">
+  <span class="kk-brand">Kontrolla Kulture</span>
+  <div class="kk-links">
+    <a href="../index.html">Home</a>
+    <a href="index.html">Southern Jaguars</a>
+  </div>
+</nav>
+
 
 <header class="hero">
   <a class="back" href="index.html">&larr; Southern Jaguars Dynasty</a>
