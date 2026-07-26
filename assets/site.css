@@ -418,3 +418,44 @@ tr.boom td { background: rgba(26,122,60,0.08); }
 tr.boom td:first-child { color: var(--win); font-weight: 800; }
 tr.bust td { background: rgba(210,35,42,0.08); }
 tr.bust td:first-child { color: var(--espn-red); font-weight: 800; }
+
+/* ---- Mobile ---- */
+@media (max-width: 640px) {
+  /* Nav: keep brand on row 1, drop links to their own row instead of
+     wrapping individual link text mid-phrase */
+  .kk-nav { flex-wrap: wrap; row-gap: 8px; padding: 10px 16px; gap: 10px; }
+  .kk-nav .kk-brand { font-size: 13px; white-space: nowrap; }
+  .kk-nav .kk-links {
+    flex-basis: 100%; margin-left: 0; gap: 18px; font-size: 12px;
+    padding-top: 8px; border-top: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .scorebug, header.hero { padding: 20px 16px 18px; }
+  .scorebug h1, header.hero h1 { font-size: clamp(22px,7.5vw,30px); }
+  header.hero p { font-size: 13.5px; }
+
+  /* Stat/score chips: 2-up grid instead of near-full-width stacked blocks */
+  .bug-row, .stat-row { gap: 8px; }
+  .bug-chip, .stat-chip { flex: 1 1 calc(50% - 8px); padding: 7px 10px; font-size: 12px; }
+
+  main { padding-left: 16px; padding-right: 16px; }
+  .prose { font-size: 15.5px; }
+
+  .section-title { font-size: 17px; margin-top: 34px; }
+  .grid { grid-template-columns: 1fr; }
+
+  .featured-list .card { padding: 16px 18px; }
+  .featured-list .card h3 { font-size: 18px; }
+
+  /* Dialogue: speaker label above the line instead of a fixed sidebar column */
+  .dlg { flex-direction: column; gap: 2px; }
+  .dlg .spk { flex: none; display: flex; align-items: baseline; gap: 8px; }
+  .dlg .txt { max-width: none; }
+
+  .accolade .who, .accolade .what { min-width: 0; }
+
+  th, td { padding: 8px 10px; font-size: 12.5px; }
+
+  .next-read { padding: 14px 16px; }
+  .next-read .nr-title { font-size: 16px; }
+}
