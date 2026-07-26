@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The National Desk: Three Years In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face {
+    font-family: "Narrow Broadcast";
+    src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold");
+    font-weight: 700 900;
+  }
+
+  :root {
+    --navy-950: #0a0e1c;
+    --navy-900: #0e1530;
+    --navy-800: #16204a;
+    --navy-700: #1f2c63;
+    --navy-600: #2c3c82;
+    --red-500: #d94b3f;
+    --red-300: #ef8378;
+    --gold-500: #e8b23a;
+    --gold-300: #f3d287;
+    --blue-accent: #4f7cff;
+    --win: #38c98f;
+    --loss: #e8594c;
+    --ink: #eef1fb;
+    --ink-dim: #aab4d6;
+    --paper: #f3f1ea;
+    --card: #101a38;
+    --card-line: rgba(232, 178, 58, 0.2);
+  }
+
+  :root[data-theme="light"] {
+    --bg: var(--paper);
+    --fg: #131c38;
+    --fg-dim: #495178;
+    --surface: #ffffff;
+    --surface-line: #ddd6c4;
+    --header-bg: var(--navy-950);
+    --header-fg: #fdf0d5;
+  }
+  :root[data-theme="dark"], :root:not([data-theme]) {
+    --bg: var(--navy-950);
+    --fg: var(--ink);
+    --fg-dim: var(--ink-dim);
+    --surface: var(--card);
+    --surface-line: var(--card-line);
+    --header-bg: var(--navy-950);
+    --header-fg: #fdf0d5;
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --bg: var(--paper);
+      --fg: #131c38;
+      --fg-dim: #495178;
+      --surface: #ffffff;
+      --surface-line: #ddd6c4;
+      --header-bg: var(--navy-950);
+      --header-fg: #fdf0d5;
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .display {
+    font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  a { color: var(--blue-accent); }
+
+  .scorebug {
+    background: var(--header-bg);
+    color: var(--header-fg);
+    padding: 22px clamp(16px, 4vw, 48px) 20px;
+    border-bottom: 3px solid var(--red-500);
+    background-image: linear-gradient(120deg, rgba(217,75,63,0.12), transparent 55%);
+  }
+  .scorebug .kicker {
+    font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    color: var(--red-300);
+    margin: 0 0 6px;
+  }
+  .scorebug h1 {
+    font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(26px, 5vw, 48px);
+    line-height: 0.98;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(232,178,58,0.4);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .bug-chip .label { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 960px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px) 80px; }
+
+  .bumper {
+    margin: 56px 0 22px;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, var(--navy-800), var(--navy-700));
+    border-left: 5px solid var(--red-500);
+    color: #fff;
+  }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 3.2vw, 27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 68ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); }
+  .prose strong { color: var(--fg); }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  .leader-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed var(--surface-line); gap: 12px; flex-wrap: wrap; }
+  .leader-row:last-child { border-bottom: none; }
+  .leader-row .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold-500); font-weight: 700; min-width: 150px; }
+  .leader-row .who { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; }
+  .leader-row .team { color: var(--fg-dim); font-size: 13px; }
+  .leader-row .stat { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
+
+  .poll-list { columns: 2; column-gap: 24px; font-size: 13.5px; }
+  @media (max-width: 560px) { .poll-list { columns: 1; } }
+  .poll-list .row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed var(--surface-line); break-inside: avoid; }
+  .poll-list .rk { font-family: ui-monospace, monospace; color: var(--gold-500); font-weight: 700; width: 24px; flex-shrink:0; }
+  .poll-list .tm { flex: 1; padding: 0 8px; }
+  .poll-list .rec { color: var(--fg-dim); font-variant-numeric: tabular-nums; }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; }
+  @media (max-width: 560px) { .toc ol { columns: 1; } }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-up { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-down { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-new { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+
+  footer.signoff {
+    margin-top: 64px;
+    background: var(--navy-950);
+    border-top: 3px solid var(--red-500);
+    color: #fdf0d5;
+    padding: 32px clamp(16px, 4vw, 48px) 30px;
+  }
+  footer.signoff .signoff-inner { max-width: 960px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 3vw, 24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(232,178,58,0.35);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 12.5px;
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+  }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">The National Desk &middot; College Football</p>
+  <h1 class="display">Three Years In: Reading Week 4/5 Against The Record</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Season</span><span class="val">2027, Wk 4/5</span></div>
+    <div class="bug-chip"><span class="label">Defending Champion</span><span class="val">Texas (3&ndash;1)</span></div>
+    <div class="bug-chip"><span class="label">Unbeaten Teams</span><span class="val">6</span></div>
+    <div class="bug-chip"><span class="label">Titles Tracked</span><span class="val">2025 ND &middot; 2026 UT</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>This is the first national report with two full completed seasons of history behind it, and that changes what's worth writing about. A hot start or a bad loss doesn't mean much in isolation five weeks into a season &mdash; it means something when it's measured against what a program actually was a year ago, or two years ago, or against the exact team that beat them for a championship. Notre Dame won it all in 2025 on the strength of Jeremiyah Love. Texas won it all in 2026 on the strength of Arch Manning. Both players are in the NFL now, and both programs are already being tested by life without them. This report reads Week 4/5 of 2027 through that lens: every ranking, every coaching story, every Heisman name, measured against the two years of data already on the books.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Report</h3>
+    <ol>
+      <li>Texas After Manning: The Champion's Hangover</li>
+      <li>The Auburn Upset, In Context</li>
+      <li>The Top 25 At Week 4</li>
+      <li>National Statistical Leaders: A Three-Year Comparison</li>
+      <li>The Heisman Board: Two Winners Gone, A New Race Forming</li>
+      <li>Coaching Carousel: Three Years Of Churn</li>
+      <li>The Virginia Cliff</li>
+      <li>Two Champions, Two Years, One Pattern</li>
+      <li>What To Watch</li>
+    </ol>
+  </div>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 01</span>
+    <h2 class="display">Texas After Manning: The Champion's Hangover</h2>
+  </div>
+  <p class="prose">A year ago, Texas closed the most dominant championship run this report series has tracked: a 54&ndash;14 demolition of Georgia in the national title game, a direct 43-point swing on the same fixture that had beaten them in the SEC Championship six weeks earlier. Arch Manning left that season with the Heisman, the Maxwell, the Davey O'Brien, and single-season and career passing records for the program &mdash; 4,831 yards, 50 touchdowns, 85 career touchdowns. He's in the NFL now, and Texas has opened this season 3&ndash;1, No. 8 in the country. That's not a collapse &mdash; it's a normal, human-scale comedown from a historically great quarterback leaving on schedule, and it's worth stating plainly rather than treating as a crisis: winning a national title with a generational player and then taking a step back the year after he leaves is close to the default outcome in this sport, not an exception.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 02</span>
+    <h2 class="display">The Auburn Upset, In Context</h2>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 5</div>
+    <div class="teams">Auburn 53, Texas 47</div>
+    <p>Hugh Freeze's Auburn team, unbeaten at 4&ndash;0, knocked off the reigning national champion in a 100-point shootout. This isn't a new story for Freeze &mdash; he's been flagged on this report series' hot-seat tracking for two straight offseasons now (2026 and 2027) and has answered both times with results that make the "hot seat" label look premature. Auburn is now the clearest early-season answer to the question this series has been asking since last year's coaching carousel report: does "on notice" actually predict poor performance? For Freeze specifically, across two full seasons of tracking, the answer keeps coming back no.</p>
+  </div>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 03</span>
+    <h2 class="display">The Top 25 At Week 4</h2>
+  </div>
+  <div class="poll-list">
+    <div class="row"><span class="rk">1</span><span class="tm">Notre Dame</span><span class="rec">4-0</span></div>
+    <div class="row"><span class="rk">2</span><span class="tm">Michigan</span><span class="rec">3-0</span></div>
+    <div class="row"><span class="rk">3</span><span class="tm">Texas Tech</span><span class="rec">4-0</span></div>
+    <div class="row"><span class="rk">4</span><span class="tm">Nebraska</span><span class="rec">4-0</span></div>
+    <div class="row"><span class="rk">5</span><span class="tm">Auburn</span><span class="rec">4-0</span></div>
+    <div class="row"><span class="rk">6</span><span class="tm">Iowa State</span><span class="rec">4-0</span></div>
+    <div class="row"><span class="rk">7</span><span class="tm">Texas A&amp;M</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">8</span><span class="tm">Texas</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">9</span><span class="tm">UNC</span><span class="rec">4-0</span></div>
+    <div class="row"><span class="rk">10</span><span class="tm">Georgia</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">11</span><span class="tm">Oregon</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">12</span><span class="tm">Ohio St.</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">13</span><span class="tm">Miami</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">14</span><span class="tm">Alabama</span><span class="rec">2-2</span></div>
+    <div class="row"><span class="rk">15</span><span class="tm">Ole Miss</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">16</span><span class="tm">LSU</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">17</span><span class="tm">USC</span><span class="rec">3-0</span></div>
+    <div class="row"><span class="rk">18</span><span class="tm">Florida St.</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">19</span><span class="tm">Wisconsin</span><span class="rec">2-1</span></div>
+    <div class="row"><span class="rk">20</span><span class="tm">Clemson</span><span class="rec">2-2</span></div>
+    <div class="row"><span class="rk">21</span><span class="tm">Duke</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">22</span><span class="tm">Tennessee</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">23</span><span class="tm">Mississippi St.</span><span class="rec">4-0</span></div>
+    <div class="row"><span class="rk">24</span><span class="tm">California</span><span class="rec">3-1</span></div>
+    <div class="row"><span class="rk">25</span><span class="tm">NC State</span><span class="rec">2-2</span></div>
+  </div>
+  <p class="prose" style="margin-top:16px;">Six teams remain unbeaten through four games: Notre Dame, Michigan, Texas Tech, Nebraska, Auburn, and Iowa State. Notre Dame's presence at No. 1 is a real changing of the guard &mdash; the 2025 national champions won their 2026 playoff opener before falling to eventual-champion Texas in the quarterfinals, and now sit atop the sport again a year later. Georgia, the 2026 SEC champion and national runner-up, has already dropped a game and sits at No. 10 &mdash; a much shakier start than the 13&ndash;0 season that carried them to the title game a year ago. And two names worth flagging for later in this report: Mississippi St. (4&ndash;0, No. 23) and Tennessee (3&ndash;1, No. 22) both have coaches currently on this cycle's hot-seat list.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 04</span>
+    <h2 class="display">National Statistical Leaders: A Three-Year Comparison</h2>
+  </div>
+  <div class="leader-row"><span class="cat">Passing Yards</span><span class="who">Kyle Limmer <span class="team">QB &middot; UAB</span></span><span class="stat">1,736 yds</span></div>
+  <div class="leader-row"><span class="cat">Passing TDs</span><span class="who">Kyle Limmer <span class="team">QB &middot; UAB</span></span><span class="stat">20 TD</span></div>
+  <div class="leader-row"><span class="cat">Rushing Yards</span><span class="who">Arnold Barnes III <span class="team">HB &middot; Tulane</span></span><span class="stat">632 yds</span></div>
+  <div class="leader-row"><span class="cat">Rushing TDs</span><span class="who">Kirby Vorhees <span class="team">HB &middot; James Madison</span></span><span class="stat">8 TD</span></div>
+  <div class="leader-row"><span class="cat">Receiving Yards</span><span class="who">Micah Mays Jr. <span class="team">WR &middot; Wake Forest</span></span><span class="stat">717 yds</span></div>
+  <div class="leader-row"><span class="cat">Receiving TDs</span><span class="who">Micah Mays Jr. <span class="team">WR &middot; Wake Forest</span></span><span class="stat">8 TD</span></div>
+  <div class="leader-row"><span class="cat">Tackles</span><span class="who">Cannon Valenzuela <span class="team">OLB &middot; Colorado St.</span></span><span class="stat">49 tkls</span></div>
+  <div class="leader-row"><span class="cat">Sacks</span><span class="who">Darren Ikinnagbon <span class="team">OLB &middot; UCF</span></span><span class="stat">7 sks</span></div>
+  <div class="leader-row"><span class="cat">Interceptions</span><span class="who">Kevin Pierson <span class="team">SS &middot; Washington St.</span></span><span class="stat">4 int</span></div>
+  <p class="prose" style="margin-top:18px;">Total roster turnover at the top of these boards is the headline. Not one of these nine names led any category in 2025 or 2026 &mdash; in each of the last two years the individual statistical leaderboard reshuffled completely, and 2027 is already following the same pattern through four games. Arnold Barnes III's early rushing pace (632 yards through roughly four games, on pace for well over 2,000) is the only number here in the same neighborhood as last year's record: Jordan Molinich finished 2026 with 2,349 yards, and Barnes is tracking close to that rate early, though a full season is a very different test than a hot month. Micah Mays Jr.'s double lead (yards and touchdowns) at Wake Forest is a rare bright spot for a program whose head coach, Jake Dickert, is currently 1&ndash;4 and on this cycle's hot-seat list &mdash; covered below.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 05</span>
+    <h2 class="display">The Heisman Board: Two Winners Gone, A New Race Forming</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Pos &middot; Class</th><th>Team</th><th>Weeks on List</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Bryce Underwood</td><td>QB &middot; JR</td><td>Michigan</td><td>5</td></tr>
+        <tr><td>Jordan Molinich</td><td>HB &middot; SO</td><td>Southern</td><td>4</td></tr>
+        <tr><td>Eli Holstein</td><td>QB &middot; SR (RS)</td><td>Pittsburgh</td><td>3</td></tr>
+        <tr><td>Richard Young</td><td>HB &middot; SR (RS)</td><td>Alabama</td><td>3</td></tr>
+        <tr><td>Julian Lewis</td><td>QB &middot; JR</td><td>Colorado</td><td>2</td></tr>
+        <tr><td>CJ Carr</td><td>QB &middot; JR</td><td>Notre Dame</td><td>2</td></tr>
+        <tr><td>Dakorien Moore</td><td>WR &middot; JR</td><td>Vanderbilt</td><td>2</td></tr>
+        <tr><td>Walker White</td><td>QB &middot; JR (RS)</td><td>Baylor</td><td>1</td></tr>
+        <tr><td>Conor Booth</td><td>HB &middot; SO (RS)</td><td>Nebraska</td><td>1</td></tr>
+        <tr><td>Dylan Raiola</td><td>QB &middot; JR (RS)</td><td>Nebraska</td><td>1</td></tr>
+        <tr><td>Thomas Teague</td><td>QB &middot; SO</td><td>LSU</td><td>1</td></tr>
+        <tr><td>Trey Owens</td><td>QB &middot; JR (RS)</td><td>Texas</td><td>1</td></tr>
+        <tr><td>Stephon Benjamin</td><td>QB &middot; FR (RS)</td><td>Auburn</td><td>1</td></tr>
+        <tr><td>Fluff Bothwell</td><td>HB &middot; SR</td><td>Mississippi St.</td><td>1</td></tr>
+        <tr><td>Jordan Shipp</td><td>WR &middot; SR</td><td>UNC</td><td>1</td></tr>
+        <tr><td>Durell Robinson</td><td>HB &middot; SR (RS)</td><td>Auburn</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Neither of the last two Heisman winners &mdash; Fernando Mendoza (2025, Indiana) or Arch Manning (2026, Texas) &mdash; is on this board, both having exhausted their eligibility. Bryce Underwood's early lead at 5 weeks continues a trend from last year, when he first appeared on the watchlist as a preseason name and has now carried real momentum into a second season. Nebraska has two entries (Conor Booth, Dylan Raiola) on a team that's also unbeaten at 4&ndash;0 and No. 4 &mdash; the clearest sign of a program-wide breakout building steam. And Jordan Molinich's continued presence, discussed at length in this week's Southern-focused report, is the most unusual entry on this list: a player in an obvious statistical slump who's still logging weeks purely on reputation built up over a single historic season.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 06</span>
+    <h2 class="display">Coaching Carousel: Three Years Of Churn</h2>
+  </div>
+  <p class="prose">The 2025 coaching class was hired after the 2025 season, meaning their actual debut season was 2026 &mdash; they're now midway through their second year:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>Coach</th><th>Debut Season (2026)</th><th>Season 2, So Far (2027)</th></tr></thead>
+      <tbody>
+        <tr><td>Virginia</td><td>Adam Fuller</td><td>7&ndash;5, Sun Bowl champ</td><td class="pill-down" style="padding:2px 8px; border-radius:4px;">0&ndash;4</td></tr>
+        <tr><td>UAB</td><td>Tom Stepsis</td><td>4&ndash;8</td><td>3&ndash;2</td></tr>
+        <tr><td>Oklahoma St.</td><td>Ryan Walters</td><td>4&ndash;8</td><td>3&ndash;1</td></tr>
+        <tr><td>Arkansas</td><td>Jake Spavital</td><td>2&ndash;10</td><td>2&ndash;2</td></tr>
+        <tr><td>Florida</td><td>Dana Dimel</td><td>6&ndash;6</td><td>2&ndash;2</td></tr>
+        <tr><td>Maryland</td><td>Andy Kotelnicki</td><td>4&ndash;8</td><td>2&ndash;2</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">The 2026 class &mdash; Oklahoma, USC, and Kentucky, all hired after the 2026 season &mdash; is still in its debut season right now, in progress:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>Coach</th><th>Predecessor's Final Record</th><th>Debut Season, So Far (2027)</th></tr></thead>
+      <tbody>
+        <tr><td>USC</td><td>Jesse Minter</td><td>Lincoln Riley, 5&ndash;7</td><td>3&ndash;0</td></tr>
+        <tr><td>Oklahoma</td><td>Will Stein</td><td>Brent Venables, 4&ndash;8</td><td>2&ndash;2</td></tr>
+        <tr><td>Kentucky</td><td>Bob Surace</td><td>Mark Stoops, 4&ndash;8</td><td>1&ndash;2</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Jesse Minter's 3&ndash;0 start at USC is the best debut trajectory of any coach hired since this tracking began. And the current hot-seat list has grown to its largest size yet:</p>
+  <div class="grade-grid">
+    <div class="grade-card"><div class="team">Auburn <span class="pill pill-up">Thriving</span></div><p>Hugh Freeze, 4&ndash;0, just beat the reigning national champion. A repeat name from 2026's list.</p></div>
+    <div class="grade-card"><div class="team">Mississippi St. <span class="pill pill-up">Thriving</span></div><p>Jeff Lebby, 4&ndash;0 and ranked No. 23. Also a repeat name, also outperforming the label.</p></div>
+    <div class="grade-card"><div class="team">Coastal Carolina <span class="pill pill-up">Thriving</span></div><p>Tim Beck, 4&ndash;1 &mdash; a stunning reversal from a 1&ndash;8 finish two years ago.</p></div>
+    <div class="grade-card"><div class="team">Tennessee <span class="pill pill-new">Solid</span></div><p>Josh Heupel, 3&ndash;1 and ranked No. 22, on notice regardless.</p></div>
+    <div class="grade-card"><div class="team">Minnesota <span class="pill pill-new">Mixed</span></div><p>P.J. Fleck, 2&ndash;2, the most notable program on the entire board.</p></div>
+    <div class="grade-card"><div class="team">TCU <span class="pill pill-new">New Addition</span></div><p>Sonny Dykes, 1&ndash;2, wasn't on last year's list at all.</p></div>
+    <div class="grade-card"><div class="team">Virginia Tech <span class="pill pill-down">Struggling</span></div><p>Brent Pry, 1&ndash;3.</p></div>
+    <div class="grade-card"><div class="team">Wake Forest <span class="pill pill-down">Struggling</span></div><p>Jake Dickert, 1&ndash;4, despite national receiving leader Micah Mays Jr. on the roster.</p></div>
+  </div>
+  <p class="prose" style="margin-top:14px;">The pattern from last year holds almost exactly: three of the eight hot-seat coaches (Freeze, Lebby, Beck) are a combined 12&ndash;1 and clearly in no danger, while the label seems to be tracking real danger for exactly two (Pry, Dickert). Being flagged for the hot seat and actually being in jeopardy remain two very different things in this sport.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 07</span>
+    <h2 class="display">The Virginia Cliff</h2>
+  </div>
+  <p class="prose">One result buried in the coaching tables above deserves its own callout. Adam Fuller's Virginia was the single best story of the 2025 coaching class &mdash; a first-time college head coach straight out of an NFL position room, 7&ndash;5 in year one, capped with a Sun Bowl win. Two years later, Virginia is 0&ndash;4. That's not a modest step back; it's a complete collapse from the best debut season this report series tracked to the worst record of any program covered in this report, in the span of a single offseason. Whatever went wrong &mdash; roster turnover, schedule, injuries &mdash; it's the single biggest coaching-carousel story developing right now, bigger than any of the hot-seat names still hanging on.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 08</span>
+    <h2 class="display">Two Champions, Two Years, One Pattern</h2>
+  </div>
+  <p class="prose">Notre Dame beat Texas Tech 34&ndash;31 for the 2025 title on the strength of Jeremiyah Love. Texas beat Georgia 54&ndash;14 for the 2026 title on the strength of Arch Manning. Both stars are gone to the NFL. Both champions opened this season ranked in the top 10 regardless &mdash; Notre Dame at No. 1, Texas at No. 8 &mdash; which says something real about program infrastructure mattering more than any single player, even a Heisman winner. But it's also true that neither program has looked like a runaway favorite through four games: Notre Dame is unbeaten but untested, and Texas has already lost to Auburn. Two years of data now says the same thing twice: winning it all with a transcendent quarterback buys a program exactly one more good season on reputation, not permanent contention.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 09</span>
+    <h2 class="display">What To Watch</h2>
+  </div>
+  <div class="prose">
+    <p>Six unbeaten teams, a defending champion that's already lost, a Heisman board with no returning winner on it, and a coaching carousel where being on the hot seat increasingly predicts nothing at all &mdash; that's the state of the sport four weeks into 2027. The single most interesting thread heading into the next stretch of the season is Nebraska: unbeaten, No. 4, with two players on the Heisman board, and a program that missed the 2026 playoff field by three spots. If they keep this pace, they'll be the clearest example yet of a team that used a near-miss season as fuel rather than a setback.</p>
+    <p>And for programs still finding their footing &mdash; Virginia cratering from a Sun Bowl high, Wake Forest producing a national statistical leader on a 1&ndash;4 team, Southern navigating a season-altering quarterback injury four games in &mdash; the same lesson from the last two years keeps repeating: nothing in this sport is stable for more than about twelve months at a time. That instability is exactly what makes it worth tracking in this much detail, year over year, rather than one season at a time.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">The National Desk &middot; College Football &middot; Sign-Off</p>
+    <p class="headline">Six teams unbeaten, the defending champion already beaten, and a Heisman board with no returning winner &mdash; three years of data say none of it is likely to hold.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">No. 1</span><span class="v">Notre Dame, 4&ndash;0</span></div>
+      <div class="stat-chip"><span class="k">Upset of the Year</span><span class="v">Auburn 53, Texas 47</span></div>
+      <div class="stat-chip"><span class="k">Cliff of the Year</span><span class="v">Virginia, 7-5 &rarr; 0-4</span></div>
+      <div class="stat-chip"><span class="k">Heisman Leader</span><span class="v">Bryce Underwood, 5 wks</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

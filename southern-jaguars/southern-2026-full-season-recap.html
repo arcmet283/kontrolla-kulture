@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: 2026 Season, The Full Recap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face {
+    font-family: "Narrow Broadcast";
+    src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold");
+    font-weight: 700 900;
+  }
+
+  :root {
+    --navy-950: #090f24;
+    --navy-900: #0d1836;
+    --navy-800: #142450;
+    --navy-700: #1d3269;
+    --navy-600: #274082;
+    --gold-500: #eeb02c;
+    --gold-300: #f6d489;
+    --gold-100: #fbeac9;
+    --blue-accent: #3d6cf6;
+    --win: #34c98d;
+    --loss: #e8594c;
+    --ink: #eef1fb;
+    --ink-dim: #aeb8d8;
+    --paper: #f7f3e8;
+    --card: #101c40;
+    --card-line: rgba(238, 176, 44, 0.22);
+    --rule: rgba(238, 176, 44, 0.35);
+  }
+
+  :root[data-theme="light"] {
+    --bg: var(--paper);
+    --fg: #16213f;
+    --fg-dim: #4a5478;
+    --surface: #ffffff;
+    --surface-line: #e3d9bd;
+    --header-bg: var(--navy-950);
+    --header-fg: var(--gold-100);
+  }
+  :root[data-theme="dark"], :root:not([data-theme]) {
+    --bg: var(--navy-950);
+    --fg: var(--ink);
+    --fg-dim: var(--ink-dim);
+    --surface: var(--card);
+    --surface-line: var(--card-line);
+    --header-bg: var(--navy-950);
+    --header-fg: var(--gold-100);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --bg: var(--paper);
+      --fg: #16213f;
+      --fg-dim: #4a5478;
+      --surface: #ffffff;
+      --surface-line: #e3d9bd;
+      --header-bg: var(--navy-950);
+      --header-fg: var(--gold-100);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .display {
+    font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  a { color: var(--blue-accent); }
+
+  .scorebug {
+    background: var(--header-bg);
+    color: var(--header-fg);
+    padding: 22px clamp(16px, 4vw, 48px) 20px;
+    border-bottom: 3px solid var(--gold-500);
+  }
+  .scorebug .kicker {
+    font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    color: var(--gold-500);
+    margin: 0 0 6px;
+  }
+  .scorebug h1 {
+    font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(26px, 4.8vw, 48px);
+    line-height: 0.98;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(238,176,44,0.4);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .bug-chip .label { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+  .rank-move { color: var(--win); font-weight: 700; }
+  .rank-move.down { color: var(--loss); }
+
+  main { max-width: 940px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px) 80px; }
+
+  .bumper {
+    margin: 56px 0 22px;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, var(--navy-800), var(--navy-700));
+    border-left: 5px solid var(--gold-500);
+    color: #fff;
+  }
+  :root[data-theme="light"] .bumper { color: var(--gold-100); }
+  .bumper .seg-num { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 3.2vw, 27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 66ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 64ch; color: var(--fg); }
+  .prose strong { color: var(--fg); }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(238,176,44,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  .result-w { color: var(--win); font-weight: 700; }
+  .result-l { color: var(--loss); font-weight: 700; }
+  .tag-bye { color: var(--fg-dim); font-style: italic; }
+  .tag-marquee { color: var(--gold-500); font-weight: 700; }
+  tr.hl td { background: rgba(238,176,44,0.1); font-weight: 700; }
+  tr.hl-loss td { background: rgba(232,89,76,0.08); }
+
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .stat-card .num { font-family: ui-monospace, monospace; font-weight: 700; font-size: 22px; font-variant-numeric: tabular-nums; }
+  .stat-card .lbl { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--fg-dim); margin-top: 2px; }
+  .stat-card .rk { font-size: 11.5px; color: var(--gold-500); margin-top: 4px; font-weight: 700; }
+  .rk.elite { color: var(--win); }
+  .rk.poor { color: var(--loss); }
+
+  .leader-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 14px 16px; margin-bottom: 10px; }
+  .leader-card .role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-500); font-weight: 700; }
+  .leader-card .name { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 2px 0; }
+  .leader-card .pos { color: var(--fg-dim); font-size: 13px; font-weight: 400; }
+  .leader-card .note { color: var(--fg-dim); font-size: 12.5px; margin-top: 4px; }
+  .leader-card.headline { border: 2px solid var(--gold-500); background: linear-gradient(135deg, rgba(238,176,44,0.12), transparent); }
+
+  .accolade { display: flex; gap: 10px; padding: 8px 0; border-bottom: 1px dashed var(--surface-line); align-items: baseline; flex-wrap: wrap; }
+  .accolade:last-child { border-bottom: none; }
+  .accolade .who { font-weight: 700; min-width: 190px; }
+  .accolade .what { color: var(--gold-500); font-size: 13px; }
+  .accolade .when { color: var(--fg-dim); font-size: 12px; font-family: ui-monospace, monospace; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-out { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-nfl { background: rgba(61,108,246,0.18); color: var(--blue-accent); }
+  .pill-grad { background: rgba(238,176,44,0.15); color: var(--gold-500); }
+  .pill-transfer { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-in { background: rgba(52,201,141,0.15); color: var(--win); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .champ-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 8px; }
+  .champ-item { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 10px 12px; font-size: 13px; }
+  .champ-item .conf { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 11px; color: var(--gold-500); font-weight: 700; }
+  .champ-item .res { font-variant-numeric: tabular-nums; }
+
+  .bracket { display: flex; flex-direction: column; gap: 6px; }
+  .bracket .rnd-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--fg-dim); margin: 14px 0 4px; }
+  .bracket .game { display: flex; justify-content: space-between; background: var(--surface); border: 1px solid var(--surface-line); border-radius: 4px; padding: 8px 12px; font-size: 13.5px; }
+  .bracket .game .win-team { font-weight: 700; }
+  .bracket .score { font-variant-numeric: tabular-nums; color: var(--fg-dim); }
+  .bracket .natchamp { border-color: var(--gold-500); background: linear-gradient(90deg, rgba(238,176,44,0.1), transparent); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; }
+  @media (max-width: 560px) { .toc ol { columns: 1; } }
+
+  .quote-block { border-left: 3px solid var(--gold-500); padding: 4px 0 4px 18px; font-family: Georgia, serif; font-style: italic; font-size: 15px; color: var(--fg); }
+
+  footer.signoff {
+    margin-top: 64px;
+    background: var(--navy-950);
+    border-top: 3px solid var(--gold-500);
+    color: var(--gold-100);
+    padding: 32px clamp(16px, 4vw, 48px) 30px;
+  }
+  footer.signoff .signoff-inner { max-width: 940px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-500); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 3vw, 24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(238,176,44,0.35);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 12.5px;
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+  }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars Football &middot; The Complete 2026 Season</p>
+  <h1 class="display">From No. 90 To A National Record</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Final Record</span><span class="val">8&ndash;6</span></div>
+    <div class="bug-chip"><span class="label">Conference</span><span class="val">7&ndash;3</span></div>
+    <div class="bug-chip"><span class="label">Rank</span><span class="val">90 <span class="rank-move">&rarr; 44</span></span></div>
+    <div class="bug-chip"><span class="label">Prestige</span><span class="val">2</span></div>
+    <div class="bug-chip"><span class="label">National Award</span><span class="val">Doak Walker (Molinich)</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>A year ago, this program finished 5&ndash;7 with no bowl bid and a No. 84 ranking that felt, at the time, like real progress from a No. 136 start. This year's ledger reads almost nothing alike: 8&ndash;6, a conference championship appearance, a first-ever bowl bid, a final ranking of No. 44, and a true freshman running back who didn't just lead the country in rushing &mdash; he broke the national record outright and won the Doak Walker Award for it. And yet the season's shape was anything but a straight line up. Southern peaked at CFP No. 16 in November, lost three of its final five games, fell out of both national polls entirely, and closed with back-to-back losses in the AAC Championship and the Gasparilla Bowl. This is the full, unabridged account of how both of those stories are true at once &mdash; the deepest look this report series has ever produced, covering every game, every departure, every incoming signee, and the complete national picture the season closed against.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Recap</h3>
+    <ol>
+      <li>The Full Schedule, Game By Game</li>
+      <li>By The Numbers: Final Season Stats</li>
+      <li>The Molinich Chronicle</li>
+      <li>Team Leaders: Final Tally</li>
+      <li>The Complete Accolades List</li>
+      <li>The National Awards Board</li>
+      <li>Transactions: The Exodus</li>
+      <li>The Ones Who Almost Left</li>
+      <li>Next Class: The 2027 Recruiting Haul</li>
+      <li>The Ones That Got Away</li>
+      <li>Around The Nation: Conference Champions</li>
+      <li>Around The Nation: The Complete Bowl Season</li>
+      <li>Around The Nation: The Full Playoff, And A New Champion</li>
+      <li>Coaching Carousel: Full Year, New Names</li>
+      <li>Two Seasons, Final Ledger</li>
+      <li>The Takeaway</li>
+    </ol>
+  </div>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 01</span>
+    <h2 class="display">The Full Schedule, Game By Game</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Score</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td class="tag-bye" colspan="3">Bye</td></tr>
+        <tr><td>1</td><td>vs Louisiana Tech</td><td>28&ndash;31</td><td class="result-l">Loss</td></tr>
+        <tr><td>2</td><td>at ECU</td><td>27&ndash;10</td><td class="result-w">Win</td></tr>
+        <tr><td>3</td><td>at Temple</td><td>21&ndash;20</td><td class="result-w">Win</td></tr>
+        <tr><td>4</td><td>at Charlotte</td><td>52&ndash;35</td><td class="result-w">Win</td></tr>
+        <tr><td>5</td><td>vs North Texas</td><td>54&ndash;13</td><td class="result-w">Win</td></tr>
+        <tr><td>6</td><td class="tag-bye" colspan="3">Bye</td></tr>
+        <tr><td>7</td><td>at Florida Atlantic</td><td>49&ndash;21</td><td class="result-w">Win</td></tr>
+        <tr><td>8</td><td>at Army</td><td>42&ndash;14</td><td class="result-w">Win</td></tr>
+        <tr><td>9</td><td>vs Florida A&amp;M</td><td>49&ndash;42</td><td class="result-w">Win</td></tr>
+        <tr class="hl-loss"><td>10</td><td class="tag-marquee">at #8 Ole Miss</td><td>0&ndash;52</td><td class="result-l">Loss</td></tr>
+        <tr class="hl-loss"><td>11</td><td>vs Memphis</td><td>24&ndash;59</td><td class="result-l">Loss</td></tr>
+        <tr><td>12</td><td>vs UAB</td><td>38&ndash;34</td><td class="result-w">Win</td></tr>
+        <tr class="hl-loss"><td>13</td><td>vs UTSA</td><td>53&ndash;55 3OT</td><td class="result-l">Loss</td></tr>
+        <tr><td>14</td><td class="tag-bye" colspan="3">Bye</td></tr>
+        <tr><td>15</td><td class="tag-bye" colspan="3">Bye</td></tr>
+        <tr class="hl-loss"><td>AAC</td><td>at #22 Tulane</td><td>31&ndash;38</td><td class="result-l">Loss</td></tr>
+        <tr class="hl-loss"><td>Bowl</td><td>vs Tennessee (Gasparilla)</td><td>31&ndash;44</td><td class="result-l">Loss</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Three acts, cleanly divided. The first six games (1&ndash;7, skipping the bye) established the identity: one bad loss to open the year, then five straight wins, including a 41-point revenge blowout of North Texas after they'd opened 2025 with a win over Southern. The middle stretch (8&ndash;9) was the high point &mdash; an 81-point turnaround win over Army that flipped last year's worst loss into a statement, then a wild 49&ndash;42 shootout over Florida A&amp;M. The final six games (10&ndash;bowl) were where the season actually got decided, and not in Southern's favor: one shutout loss to a genuinely elite Ole Miss team, a stunning 35-point reversal against Memphis (the same team Southern demolished by 56 a year earlier), a triple-overtime heartbreak to UTSA, a seven-point AAC title game loss to Tulane, and a 13-point bowl loss to Tennessee where starting quarterback Joshua Clark went down injured in the first quarter. Southern was 8&ndash;0 against teams outside that final stretch and 0&ndash;6 against everyone in it &mdash; the single clearest data point in the whole season about where this roster's ceiling actually sits.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 02</span>
+    <h2 class="display">By The Numbers: Final Season Stats</h2>
+  </div>
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num">5,168</div><div class="lbl">Total Off. Yards</div><div class="rk elite">23rd nat'l</div></div>
+    <div class="stat-card"><div class="num">3,179</div><div class="lbl">Passing Yards</div><div class="rk poor">82nd nat'l</div></div>
+    <div class="stat-card"><div class="num">1,989</div><div class="lbl">Rushing Yards</div><div class="rk elite">9th nat'l</div></div>
+    <div class="stat-card"><div class="num">36.4</div><div class="lbl">Points Per Game</div><div class="rk elite">13th nat'l</div></div>
+    <div class="stat-card"><div class="num">4,457</div><div class="lbl">Total Def. Yards</div><div class="rk">44th nat'l</div></div>
+    <div class="stat-card"><div class="num">2,632</div><div class="lbl">Def. Pass Yards</div><div class="rk elite">2nd nat'l</div></div>
+    <div class="stat-card"><div class="num">1,825</div><div class="lbl">Def. Rush Yards</div><div class="rk poor">132nd nat'l</div></div>
+    <div class="stat-card"><div class="num">32.1</div><div class="lbl">Def. PPG</div><div class="rk poor">105th nat'l</div></div>
+    <div class="stat-card"><div class="num">38%</div><div class="lbl">3rd Down %</div><div class="rk poor">126th nat'l</div></div>
+    <div class="stat-card"><div class="num">78%</div><div class="lbl">Off. Redzone %</div><div class="rk">55th nat'l</div></div>
+    <div class="stat-card"><div class="num">87%</div><div class="lbl">Def. Redzone %</div><div class="rk poor">130th nat'l</div></div>
+    <div class="stat-card"><div class="num">-8</div><div class="lbl">Turnover Diff.</div><div class="rk poor">122nd nat'l</div></div>
+  </div>
+  <p class="prose" style="margin-top:14px;">Set this against 2025 and the identity inverted completely. Last year's team was a No. 1 pass defense (2,028 yards allowed) carrying a middling offense (116th in total yards). This year's team is a top-25 offense (23rd, up from 116th) carrying a defense that regressed almost everywhere except pass coverage, which merely slipped from No. 1 to No. 2. The run defense &mdash; the exact unit an entire offseason of defensive transfer additions was built to fix &mdash; finished 132nd, barely better than 2025's 135th. And the turnover margin collapsed from +6 (24th nationally) to -8 (122nd), the single steepest decline of any number on this roster.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 03</span>
+    <h2 class="display">The Molinich Chronicle</h2>
+  </div>
+  <div class="leader-card headline">
+    <div class="role">National Rushing Record Holder &middot; Doak Walker Award &middot; 1st Team All-American</div>
+    <div class="name">Jordan Molinich <span class="pos">HB &middot; FR</span></div>
+    <div class="line">309 car, 2,349 yds, 24 TD (full season, including bowl)</div>
+  </div>
+  <p class="prose">No player in this dynasty's history has had a season like this one, and the progression is worth tracing in full, because it shows a player who never had a quiet week: 951 yards through 6 games at the first Week 8 check-in, already the national rushing leader. 1,400 yards through 9 games at Week 11, still No. 1, tied for the national TD lead. 2,127 yards and the outright national lead in both categories by conference championship week, having broken Maurice Turner's 2025 record (1,767 yards) by 360 yards with a month still to play. 2,200 yards and the Doak Walker Award by the start of bowl season. And finally, after a big bowl performance against Tennessee, <strong>2,349 yards and 24 touchdowns</strong> to close the year &mdash; a true freshman, a four-star signee ranked No. 28 among HBs nationally in a class that finished 59th overall, finishing as the best running back in college football by a margin no one else on this roster came within a mile of matching. He also collected 1st Team All-American, Freshman All-American, and 1st Team All-Conference honors, plus three separate Offensive Player of the Week awards (Weeks 4, 5, and 12) &mdash; the same accolade pattern Mark Fiaseu set in 2025, except Fiaseu never led the nation outright in anything.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 04</span>
+    <h2 class="display">Team Leaders: Final Tally</h2>
+  </div>
+  <div class="leader-card">
+    <div class="role">Passing Leader &middot; 2nd in Conference in Passing Yards</div>
+    <div class="name">Joshua Clark <span class="pos">QB &middot; SR</span></div>
+    <div class="line">218/435, 3,660 yds &middot; 30 TD &middot; 23 INT</div>
+    <div class="note">Injured in the 1st quarter of the Gasparilla Bowl; backup Ty Wilson (SO) went 11-of-22 for 188 yards, 1 TD, and 2 INT in relief before Clark returned in the 4th quarter and finished 9-of-17 for 175 yards. Graduates as the final line on one of this report series' most consistently tracked storylines &mdash; every interception projection made across four separate checkpoints this season undershot the real number.</div>
+  </div>
+  <div class="two-col">
+    <div class="leader-card">
+      <div class="role">Receiving Leader &middot; 4th in Conference in Yards</div>
+      <div class="name">Jonathan Truss <span class="pos">WR &middot; FR</span></div>
+      <div class="line">55 rec, 1,023 yds &middot; 7 TD</div>
+    </div>
+    <div class="leader-card">
+      <div class="role">Tackle Leader</div>
+      <div class="name">Owen West <span class="pos">MLB &middot; SR</span></div>
+      <div class="line">73 tackles</div>
+      <div class="note">A clean improvement on his 2025 total of 64, closing his career on an NFL Draft trajectory</div>
+    </div>
+  </div>
+  <div class="two-col">
+    <div class="leader-card">
+      <div class="role">Sack Leader &middot; 2nd in Conference</div>
+      <div class="name">Caleb Nichola <span class="pos">LE &middot; SO</span></div>
+      <div class="line">11 sacks</div>
+      <div class="note">One shy of Amir Tracy's 2025 total, filling in for Tracy's preseason injury all year</div>
+    </div>
+    <div class="leader-card">
+      <div class="role">Interception Leader &middot; 3rd in Conference</div>
+      <div class="name">Devin Sanchez <span class="pos">CB &middot; SO</span></div>
+      <div class="line">5 interceptions</div>
+      <div class="note">Matched Coby Buncom's 2025 team lead exactly despite missing a month with a Week 1 injury</div>
+    </div>
+  </div>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 05</span>
+    <h2 class="display">The Complete Accolades List</h2>
+  </div>
+  <div class="table-wrap" style="padding:6px 4px;">
+    <div class="accolade"><span class="who">Amir Tracy (DE)</span><span class="what">1st Team All-Conference (Preseason)</span><span class="when">Injured in preseason, out 8 wks</span></div>
+    <div class="accolade"><span class="who">Coby Buncom (FS)</span><span class="what">1st Team All-Conference (Preseason)</span><span class="when">Redshirted &mdash; beaten out by transfers</span></div>
+    <div class="accolade"><span class="who">Trevell Vivians (DT)</span><span class="what">2nd Team All-Conference (Preseason)</span><span class="when">&nbsp;</span></div>
+    <div class="accolade"><span class="who">Owen West</span><span class="what">2nd Team All-Conference (Preseason)</span><span class="when">&nbsp;</span></div>
+    <div class="accolade"><span class="who">Devin Sanchez (CB)</span><span class="what">Conference Def. POTW</span><span class="when">Wk 1 &middot; injured same game, out 4 wks</span></div>
+    <div class="accolade"><span class="who">Jordan Molinich (HB)</span><span class="what">NCAA National Off. POTW</span><span class="when">Wk 4 &middot; 320 all-purpose yds, 5 TD</span></div>
+    <div class="accolade"><span class="who">Jordan Molinich (HB)</span><span class="what">Conference Off. POTW</span><span class="when">Wk 5 &middot; 245 yds, 2 TD</span></div>
+    <div class="accolade"><span class="who">Quincy Davis (MLB)</span><span class="what">Conference Def. POTW</span><span class="when">Wk 8 &middot; 5 tkls, 1 TFL, forced fumble, defensive TD</span></div>
+    <div class="accolade"><span class="who">Jordan Molinich (HB)</span><span class="what">Conference Off. POTW</span><span class="when">Wk 12 &middot; 395 all-purpose yds, 2 TD</span></div>
+    <div class="accolade"><span class="who">Jordan Molinich (HB)</span><span class="what">1st Team All-American</span><span class="when">Final</span></div>
+    <div class="accolade"><span class="who">Jordan Molinich (HB)</span><span class="what">Freshman All-American</span><span class="when">Final</span></div>
+    <div class="accolade"><span class="who">Jordan Molinich (HB)</span><span class="what">1st Team All-Conference</span><span class="when">Final</span></div>
+    <div class="accolade"><span class="who">Devin Sanchez (CB)</span><span class="what">2nd Team All-Conference</span><span class="when">Final</span></div>
+    <div class="accolade"><span class="who">Owen West</span><span class="what">2nd Team All-Conference</span><span class="when">Final</span></div>
+  </div>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 06</span>
+    <h2 class="display">The National Awards Board</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Award</th><th>Winner</th><th>Pos &middot; Class</th><th>Team</th><th>2027 Status</th></tr></thead>
+      <tbody>
+        <tr><td>Heisman</td><td>Arch Manning</td><td>QB &middot; JR (RS)</td><td>Texas</td><td>NFL</td></tr>
+        <tr><td>Maxwell Award</td><td>Arch Manning</td><td>QB &middot; JR (RS)</td><td>Texas</td><td>NFL</td></tr>
+        <tr><td>Davey O'Brien Award</td><td>Arch Manning</td><td>QB &middot; JR (RS)</td><td>Texas</td><td>NFL</td></tr>
+        <tr class="hl"><td>Doak Walker Award</td><td>Jordan Molinich</td><td>HB &middot; FR</td><td>Southern</td><td>Returned</td></tr>
+        <tr><td>Biletnikoff Award</td><td>Joshisa Trader</td><td>WR &middot; JR</td><td>Miami</td><td>NFL</td></tr>
+        <tr><td>Chuck Bednarik Award</td><td>Maddox Marcellus</td><td>OLB &middot; JR (RS)</td><td>Virginia</td><td>Returned</td></tr>
+        <tr><td>Dick Butkus Award</td><td>Maddox Marcellus</td><td>OLB &middot; JR (RS)</td><td>Virginia</td><td>Returned</td></tr>
+        <tr><td>John Mackey Award</td><td>Jack Endries</td><td>TE &middot; SR (RS)</td><td>Texas</td><td>NFL</td></tr>
+        <tr><td>Outland Trophy</td><td>Trey Akana</td><td>LT &middot; FR</td><td>Air Force</td><td>Returned</td></tr>
+        <tr><td>Rimington Trophy</td><td>Zo'Maryon Bryan</td><td>C &middot; SR</td><td>Texas A&amp;M</td><td>NFL</td></tr>
+        <tr><td>Lombardi Award</td><td>Tunmise Adeleye</td><td>DE &middot; JR (RS)</td><td>Kansas St.</td><td>NFL</td></tr>
+        <tr><td>Jim Thorpe Award</td><td>Marcus Ramon-Edwards</td><td>SS &middot; JR (RS)</td><td>Texas Tech</td><td>Enters Transfer Portal</td></tr>
+        <tr><td>Lou Groza Award</td><td>Peyton Woodring</td><td>K &middot; SR</td><td>Georgia</td><td>NFL</td></tr>
+        <tr><td>Ray Guy Award</td><td>Dylan Lenners</td><td>P &middot; FR</td><td>Texas</td><td>Returned</td></tr>
+        <tr><td>Hornung Trophy</td><td>Omari Hayes</td><td>WR &middot; JR (RS)</td><td>Tulane</td><td>NFL</td></tr>
+        <tr><td>Best HC Award</td><td>Joey McGuire</td><td>&mdash;</td><td>Texas Tech</td><td>Returned</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Not one of this year's sixteen national award winners repeated from 2025 &mdash; that board turns over completely, every single year. Of this year's class, exactly seven are turning pro and nine are staying in school, and Jordan Molinich is the only one of the sixteen who plays for a program that didn't make the 12-team playoff field. He's also, notably, the reigning Doak Walker winner heading into 2027 as a sophomore &mdash; and for the first time in this report series' history, he's already on next year's Heisman watchlist before a single 2027 snap has been played. More on that in the preview.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 07</span>
+    <h2 class="display">Transactions: The Exodus</h2>
+  </div>
+  <p class="prose">Fourteen players are leaving this roster, the largest single-offseason turnover this program has had. It's the cost of a senior-heavy build finally cashing out all at once.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Pos &middot; Class</th><th>Reason</th><th>Destination</th><th>2026 Production</th></tr></thead>
+      <tbody>
+        <tr><td>Joshua Clark</td><td>QB &middot; SR</td><td><span class="pill pill-grad">Graduation</span></td><td>&mdash;</td><td>3,660 yds, 30 TD, 23 INT</td></tr>
+        <tr><td>Owen West</td><td>MLB &middot; SR</td><td><span class="pill pill-nfl">NFL Draft</span></td><td>&mdash;</td><td>73 tackles</td></tr>
+        <tr><td>Amir Tracy</td><td>DE &middot; SR</td><td><span class="pill pill-nfl">NFL Draft</span></td><td>&mdash;</td><td>13 tkls, 2 TFL</td></tr>
+        <tr><td>Devin Sanchez</td><td>CB &middot; SO</td><td><span class="pill pill-transfer">Transfer</span></td><td>Texas Tech</td><td>39 tkls, 3 TFL, 5 int, 1 def. TD</td></tr>
+        <tr><td>Benedict Umeh</td><td>DT &middot; JR</td><td><span class="pill pill-transfer">Transfer</span></td><td>Stanford</td><td>13 tkls, 3 TFL, 1 sk, 1 FF</td></tr>
+        <tr><td>Siale Siverand</td><td>FS &middot; FR</td><td><span class="pill pill-transfer">Transfer</span></td><td>Oklahoma St.</td><td>11 tkls, 1 FF</td></tr>
+        <tr><td>Quincy Davis</td><td>MLB &middot; SR (RS)</td><td><span class="pill pill-grad">Graduation</span></td><td>&mdash;</td><td>29 tkls, 2 TFL, 1 def. TD</td></tr>
+        <tr><td>Trevell Vivians</td><td>DT &middot; SR (RS)</td><td><span class="pill pill-grad">Graduation</span></td><td>&mdash;</td><td>7 tkls, 5 TFL, 2 sk</td></tr>
+        <tr><td>Jordan Matthews</td><td>CB &middot; SR (RS)</td><td><span class="pill pill-grad">Graduation</span></td><td>&mdash;</td><td>19 tkls, 1 TFL, 2 int, 1 FF</td></tr>
+        <tr><td>Jamari Golden</td><td>WR &middot; SR</td><td><span class="pill pill-grad">Graduation</span></td><td>&mdash;</td><td>25 rec, 500 yds, 3 TD</td></tr>
+        <tr><td>Amin Hunter</td><td>WR &middot; SR</td><td><span class="pill pill-grad">Graduation</span></td><td>&mdash;</td><td>31 rec, 578 yds, 2 TD</td></tr>
+        <tr><td>Harry Kardell</td><td>TE &middot; SR</td><td><span class="pill pill-grad">Graduation</span></td><td>&mdash;</td><td>1 receiving TD</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Read this list carefully and it's the entire spine of the 2025&ndash;2026 rebuild leaving at once: the starting quarterback, the tackling leader for two straight years, the sack leader from 2025, and the interception leader from 2026 are all gone, along with three of the eight defensive transfers this program brought in specifically to fix its run defense. Devin Sanchez's departure stings the most among the position players &mdash; a Week 1 Defensive Player of the Week winner who matched the team's interception lead despite missing a month, now walking into a Texas Tech secondary instead. The receiving corps loses both of its senior possession targets (Golden, Hunter) in the same cycle Jonathan Truss becomes the unquestioned WR1.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 08</span>
+    <h2 class="display">The Ones Who Almost Left</h2>
+  </div>
+  <p class="prose">Two names on the departure sheet have an asterisk. <strong>Matt Brown</strong> (HB/WR) and <strong>Joe Eisworth</strong> (TE) both entered the transfer portal and both ended up back at Southern for 2027 &mdash; Brown after a 2026 season with 19 carries for 98 yards and 2 touchdowns plus 4 catches, Eisworth after a breakout 7-catch, 4-touchdown campaign that came from nowhere on this roster's radar. Whatever the portal process looked like from the inside, the program held onto both of its most interesting depth-chart wildcards. That's a quieter win than anything in the recruiting class below, but a real one.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 09</span>
+    <h2 class="display">Next Class: The 2027 Recruiting Haul</h2>
+  </div>
+  <p class="prose">Twenty-two high school signees and eight transfer portal additions &mdash; a bigger class than 2026's, and headlined by a number this program has never posted before: a <strong>five-star signee</strong>.</p>
+  <div class="leader-card headline">
+    <div class="role">Southern's First-Ever Five-Star Signee</div>
+    <div class="name">Carlos Allen <span class="pos">HB &middot; VA</span></div>
+    <div class="note">Ranked No. 16 among HBs nationally &mdash; the highest-rated recruit this program has landed in either of its two tracked recruiting cycles, joining a backfield that already has the reigning national rushing record holder in it.</div>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Pos</th><th>Stars</th><th>Pos. Rank</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><td>Carlos Allen</td><td>HB</td><td>&#9733;&#9733;&#9733;&#9733;&#9733;</td><td>16</td><td>VA</td></tr>
+        <tr><td>Todd Pritchett</td><td>MLB</td><td>&#9733;&#9733;&#9733;&#9733;</td><td>40</td><td>MT</td></tr>
+        <tr><td>Torren Lockhart</td><td>MLB</td><td>&#9733;&#9733;&#9733;</td><td>67</td><td>ME</td></tr>
+        <tr><td>Dre Still</td><td>SS</td><td>&#9733;&#9733;&#9733;</td><td>83</td><td>MT</td></tr>
+        <tr><td>Keyon Saffold</td><td>G</td><td>&#9733;&#9733;&#9733;</td><td>99</td><td>HI</td></tr>
+        <tr><td>Jason Davis</td><td>WR</td><td>&#9733;&#9733;&#9733;</td><td>119</td><td>IN</td></tr>
+        <tr><td>+ 16 more signees</td><td>&mdash;</td><td>&#9733;&#9733;</td><td>&mdash;</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Behind Allen and Pritchett, the class leans defensive at linebacker (Lockhart) and secondary (Still), with the usual heavy Louisiana in-state footprint filling out the two-star tier. It's a materially deeper class than 2026's &mdash; that group had three four-stars and zero five-stars; this one has a five-star headliner plus a legitimate four-star linebacker.</p>
+  <p class="prose">The transfer portal class of eight leans hard toward the offensive line and tight end room, a direct response to the pass protection issues that contributed to Joshua Clark's bowl-game injury:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Prev. Team</th><th>Pos &middot; Class</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><td>Ronnie Turner</td><td>Missouri St.</td><td>T &middot; FR (RS)</td><td>KS</td></tr>
+        <tr><td>Christian Martin</td><td>Colorado St.</td><td>T &middot; SR (RS)</td><td>LA</td></tr>
+        <tr><td>Kaedin Massey</td><td>Kansas</td><td>T &middot; JR (RS)</td><td>KS</td></tr>
+        <tr><td>Javeon Fricks</td><td>LSU</td><td>TE &middot; SR (RS)</td><td>AR</td></tr>
+        <tr><td>Gavin Hoffman</td><td>Missouri</td><td>TE/WR &middot; JR (RS)</td><td>KS</td></tr>
+        <tr><td>Xavier Ford</td><td>Minnesota</td><td>HB &middot; SO (RS)</td><td>LA</td></tr>
+        <tr><td>Matt Brown</td><td>Southern (returnee)</td><td>HB/WR &middot; SO</td><td>MN</td></tr>
+        <tr><td>Joe Eisworth</td><td>Southern (returnee)</td><td>TE &middot; JR</td><td>OR</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Three offensive tackles and two tight ends is not a subtle offseason priority &mdash; after watching its starting quarterback go down behind a line that couldn't hold up in the Gasparilla Bowl, this staff went shopping for protection and blocking help almost exclusively. It's the same diagnostic pattern the 2026 defensive class showed a year ago, applied to the opposite side of the ball.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 10</span>
+    <h2 class="display">The Ones That Got Away</h2>
+  </div>
+  <p class="prose">The stolen-recruits board grew considerably this cycle &mdash; a longer list of near-misses than either prior year, though notably fewer of them went to blue-blood programs this time. Southern's own three confirmed 2026 departures (Devin Sanchez to Texas Tech, Benedict Umeh to Stanford, Siale Siverand to Oklahoma St.) all appear here too, tagged plainly as "Left Southern." Among the recruits Southern pursued but didn't land, the notable misses landed at Louisiana Tech, UL Monroe, Florida Atlantic, New Mexico St., Kansas St., Washington St., and Nebraska &mdash; a spread of mid-major and Group of Five programs rather than the Power Four names that dominated the 2026 miss list. That's a subtle but real shift: Southern is increasingly losing recruiting battles to programs at or near its own level, not just getting outbid by blue bloods.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 11</span>
+    <h2 class="display">Around The Nation: Conference Champions</h2>
+  </div>
+  <div class="champ-grid">
+    <div class="champ-item"><div class="conf">SEC</div><div class="res">Georgia def. Texas, 41&ndash;34</div></div>
+    <div class="champ-item"><div class="conf">ACC</div><div class="res">Miami def. Pittsburgh, 44&ndash;42 OT</div></div>
+    <div class="champ-item"><div class="conf">Big Ten</div><div class="res">Michigan def. Michigan St., 26&ndash;24 OT</div></div>
+    <div class="champ-item"><div class="conf">Big 12</div><div class="res">Texas Tech def. Cincinnati, 35&ndash;23</div></div>
+    <div class="champ-item"><div class="conf">Mountain West</div><div class="res">UNLV def. Nevada, 23&ndash;7</div></div>
+    <div class="champ-item"><div class="conf">American</div><div class="res">Tulane def. Southern, 38&ndash;31</div></div>
+    <div class="champ-item"><div class="conf">Sun Belt</div><div class="res">Appalachian St. def. Georgia Southern, 48&ndash;31</div></div>
+    <div class="champ-item"><div class="conf">CUSA</div><div class="res">Jacksonville def. Delaware, 31&ndash;24</div></div>
+    <div class="champ-item"><div class="conf">PAC-12</div><div class="res">Colorado St. def. Oregon St., 21&ndash;17</div></div>
+    <div class="champ-item"><div class="conf">MAC</div><div class="res">UMass def. Buffalo, 35&ndash;27</div></div>
+  </div>
+  <p class="prose" style="margin-top:16px;">Two of the ten championship games needed overtime &mdash; the ACC and Big Ten both went the distance, a coincidence this dynasty hasn't produced before. UNLV's Mountain West title, the clean win over Nevada, turned out to be the entire Group of Five playoff race in miniature: no other non-Power program came remotely close to matching their positioning.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 12</span>
+    <h2 class="display">Around The Nation: The Complete Bowl Season</h2>
+  </div>
+  <p class="prose">All twenty-six non-playoff bowls are complete. A few results ripple directly back into Southern's own story:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Bowl</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr class="hl-loss"><td>Gasparilla Bowl</td><td>Tennessee def. Southern, 44&ndash;31</td></tr>
+        <tr><td>Pop-Tarts Bowl</td><td>Ole Miss def. Cincinnati, 52&ndash;10</td></tr>
+        <tr><td>Birmingham Bowl</td><td>UCF def. Tulane, 31&ndash;28</td></tr>
+        <tr><td>Dukes Mayo Bowl</td><td>Boston College def. ECU, 31&ndash;21</td></tr>
+        <tr><td>Sun Bowl</td><td>Virginia def. Houston, 27&ndash;21 OT</td></tr>
+        <tr><td>Alamo Bowl</td><td>Iowa St. def. Boise St., 28&ndash;21</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Ole Miss &mdash; the team that shut Southern out 52&ndash;0 in October &mdash; closed with a 42-point bowl blowout of Cincinnati, a fitting final data point on just how good that defense was all year. Tulane, fresh off beating Southern for the AAC title, then turned around and lost the Birmingham Bowl to UCF, a small measure of consolation buried in an otherwise difficult stretch for this program. And Virginia's Sun Bowl overtime win gives Adam Fuller's breakout debut season (7&ndash;5, the best record of any 2025 coaching hire) the signature capstone it was missing.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 13</span>
+    <h2 class="display">Around The Nation: The Full Playoff, And A New Champion</h2>
+  </div>
+  <div class="bracket">
+    <div class="rnd-label">Round 1</div>
+    <div class="game"><span class="win-team">LSU (9) def. UNLV (8)</span><span class="score">52&ndash;14</span></div>
+    <div class="game"><span class="win-team">Notre Dame (10) def. Pittsburgh (7)</span><span class="score">44&ndash;37</span></div>
+    <div class="game"><span class="win-team">Clemson (11) def. Miami (6)</span><span class="score">51&ndash;31</span></div>
+    <div class="game"><span class="win-team">Alabama (12) def. Michigan St. (5)</span><span class="score">35&ndash;21</span></div>
+    <div class="rnd-label">Quarterfinals</div>
+    <div class="game"><span class="win-team">Alabama def. Michigan</span><span class="score">31&ndash;28</span></div>
+    <div class="game"><span class="win-team">Clemson def. Texas Tech</span><span class="score">48&ndash;34</span></div>
+    <div class="game"><span class="win-team">Texas def. Notre Dame</span><span class="score">39&ndash;34</span></div>
+    <div class="game"><span class="win-team">Georgia def. LSU</span><span class="score">38&ndash;35</span></div>
+    <div class="rnd-label">Semifinals</div>
+    <div class="game"><span class="win-team">Texas def. Clemson</span><span class="score">27&ndash;24</span></div>
+    <div class="game"><span class="win-team">Georgia def. Alabama</span><span class="score">37&ndash;35</span></div>
+    <div class="rnd-label">National Championship</div>
+    <div class="game natchamp"><span class="win-team">Texas def. Georgia</span><span class="score">54&ndash;14</span></div>
+  </div>
+  <p class="prose" style="margin-top:14px;">UNLV's historic season &mdash; the first Group of Five team this dynasty has seen reach the field &mdash; ended immediately, a 38-point Round 1 loss to LSU. But the bracket's real story is Texas's revenge tour: beaten by Georgia 41&ndash;34 in the SEC Championship, Texas ran the table through the entire playoff and demolished the same Georgia team 54&ndash;14 in the National Championship, a 43-point swing on the exact same fixture six weeks apart. Arch Manning closes his Texas career with the Heisman, the Maxwell, the Davey O'Brien, a national title, and single-season and career passing/touchdown records for the program (4,831 passing yards, 50 touchdowns, 85 career touchdowns) &mdash; as complete a final season as this sport produces.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 14</span>
+    <h2 class="display">Coaching Carousel: Full Year, New Names</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>Coach</th><th>Prev. Job</th><th>Debut Season</th></tr></thead>
+      <tbody>
+        <tr><td>Virginia</td><td>Adam Fuller</td><td>LA Chargers Safeties Coach</td><td>7&ndash;5, Sun Bowl champion</td></tr>
+        <tr><td>Florida</td><td>Dana Dimel</td><td>Illinois OC</td><td>6&ndash;6, bowl eligible</td></tr>
+        <tr><td>UAB</td><td>Tom Stepsis</td><td>Northern Iowa HC</td><td>4&ndash;8</td></tr>
+        <tr><td>Oklahoma St.</td><td>Ryan Walters</td><td>Washington DC</td><td>4&ndash;8</td></tr>
+        <tr><td>Maryland</td><td>Andy Kotelnicki</td><td>Penn St. OC</td><td>4&ndash;8</td></tr>
+        <tr><td>Arkansas</td><td>Jake Spavital</td><td>Baylor OC</td><td>2&ndash;10</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Three programs already fired their coaches mid-cycle: Oklahoma (Brent Venables out, Will Stein in from Oregon), USC (Lincoln Riley out, Jesse Minter in from the Chargers), and Kentucky (Mark Stoops out, Bob Surace in from Princeton). And the 2027 hot-seat board is already forming, with two carryovers from last year's list &mdash; Auburn's Hugh Freeze and Coastal Carolina's Tim Beck, both of whom survived 2026 &mdash; joined by five new names: Minnesota's P.J. Fleck, Mississippi St.'s Jeff Lebby (also a repeat), Tennessee's Josh Heupel, Virginia Tech's Brent Pry, and Wake Forest's Jake Dickert. Heupel's presence on that list is a small footnote worth flagging: his Tennessee team just beat Southern in the Gasparilla Bowl, and he's on notice regardless.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 15</span>
+    <h2 class="display">Two Seasons, Final Ledger</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Metric</th><th>2025</th><th>2026</th></tr></thead>
+      <tbody>
+        <tr><td>Record</td><td>5&ndash;7, no bowl</td><td>8&ndash;6, Gasparilla Bowl</td></tr>
+        <tr><td>Conference Record</td><td>4&ndash;5</td><td>7&ndash;3</td></tr>
+        <tr><td>Conference Title Game</td><td>Did not qualify</td><td>Runner-up (lost to Tulane)</td></tr>
+        <tr><td>National Rank</td><td>136 &rarr; 84</td><td>90 &rarr; peaked at CFP No. 16 &rarr; final No. 44</td></tr>
+        <tr><td>Prestige</td><td>1</td><td>2</td></tr>
+        <tr><td>Recruiting Class Rank</td><td>59th</td><td>63rd</td></tr>
+        <tr><td>National Individual Award</td><td>None</td><td>Doak Walker Award (Molinich)</td></tr>
+        <tr><td>All-American Honors</td><td>Mark Fiaseu, 2nd Team</td><td>Jordan Molinich, 1st Team + Freshman All-American</td></tr>
+        <tr><td>Turnover Differential</td><td>+6 (24th)</td><td>-8 (122nd)</td></tr>
+        <tr><td>Total Offensive Rank</td><td>116th</td><td>23rd</td></tr>
+        <tr><td>Total Defensive Rank</td><td>8th</td><td>44th</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Every macro number still points toward real progress in year two &mdash; three more wins, a conference title appearance, a first bowl bid, a national individual award, a final ranking 40 spots better than 2025's. But it's also the first year this dynasty's recruiting class rank has gone backward (59th to 63rd), a reminder that the on-field jump hasn't yet translated into a recruiting-trail jump of the same size.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 16</span>
+    <h2 class="display">The Takeaway</h2>
+  </div>
+  <div class="prose">
+    <p>Strip away the ranking swings and the record and 2026 tells one consistent story: this program's ceiling rose dramatically, carried almost entirely by a single player nobody outside the building projected. Jordan Molinich didn't just have the best season in this dynasty's history &mdash; he had one of the best seasons any player produced anywhere in the country this year, a national record, a Doak Walker Award, and a spot on next year's Heisman watchlist before he's played a single 2027 down. That's the story that will define this era of Southern football regardless of what else happened.</p>
+    <p>But the season's floor didn't rise nearly as much as its ceiling did. The turnover margin cratered. The run defense stayed broken despite a full offseason built to fix it. And when the games mattered most &mdash; Ole Miss, Memphis, UTSA, Tulane, Tennessee &mdash; Southern went 0&ndash;5, exactly the pattern this report series flagged as far back as the Week 5 check-in. Fourteen players are leaving, including the starting quarterback and both leaders on defense. What replaces them &mdash; a five-star running back, a retooled offensive line, a defense still searching for its 2025 form &mdash; is the entire question of 2027, and it starts with a roster that's simultaneously more talented at the top and thinner everywhere else than the one that just finished 8&ndash;6.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars Football &middot; 2026 Season &middot; Sign-Off</p>
+    <p class="headline">A national rushing record, a Doak Walker Award, and a 40-spot ranking jump &mdash; built on a roster that's about to lose almost everyone else who made it possible.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Final Record</span><span class="v">8&ndash;6</span></div>
+      <div class="stat-chip"><span class="k">Molinich</span><span class="v">2,349 yds, 24 TD</span></div>
+      <div class="stat-chip"><span class="k">Departures</span><span class="v">14 players</span></div>
+      <div class="stat-chip"><span class="k">2027 Class</span><span class="v">1st 5-Star Ever</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

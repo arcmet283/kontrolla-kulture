@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: 2027 Season Preview</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face {
+    font-family: "Narrow Broadcast";
+    src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold");
+    font-weight: 700 900;
+  }
+
+  :root {
+    --navy-950: #090f24;
+    --navy-900: #0d1836;
+    --navy-800: #142450;
+    --navy-700: #1d3269;
+    --navy-600: #274082;
+    --gold-500: #eeb02c;
+    --gold-300: #f6d489;
+    --gold-100: #fbeac9;
+    --blue-accent: #3d6cf6;
+    --win: #34c98d;
+    --loss: #e8594c;
+    --ink: #eef1fb;
+    --ink-dim: #aeb8d8;
+    --paper: #f7f3e8;
+    --card: #101c40;
+    --card-line: rgba(238, 176, 44, 0.22);
+    --rule: rgba(238, 176, 44, 0.35);
+  }
+
+  :root[data-theme="light"] {
+    --bg: var(--paper);
+    --fg: #16213f;
+    --fg-dim: #4a5478;
+    --surface: #ffffff;
+    --surface-line: #e3d9bd;
+    --header-bg: var(--navy-950);
+    --header-fg: var(--gold-100);
+  }
+  :root[data-theme="dark"], :root:not([data-theme]) {
+    --bg: var(--navy-950);
+    --fg: var(--ink);
+    --fg-dim: var(--ink-dim);
+    --surface: var(--card);
+    --surface-line: var(--card-line);
+    --header-bg: var(--navy-950);
+    --header-fg: var(--gold-100);
+  }
+  @media (prefers-color-scheme: light) {
+    :root:not([data-theme]) {
+      --bg: var(--paper);
+      --fg: #16213f;
+      --fg-dim: #4a5478;
+      --surface: #ffffff;
+      --surface-line: #e3d9bd;
+      --header-bg: var(--navy-950);
+      --header-fg: var(--gold-100);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, "Segoe UI", system-ui, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .display {
+    font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+
+  a { color: var(--blue-accent); }
+
+  .scorebug {
+    background: var(--header-bg);
+    color: var(--header-fg);
+    padding: 22px clamp(16px, 4vw, 48px) 20px;
+    border-bottom: 3px solid var(--gold-500);
+  }
+  .scorebug .kicker {
+    font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 12px;
+    color: var(--gold-500);
+    margin: 0 0 6px;
+  }
+  .scorebug h1 {
+    font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    font-size: clamp(26px, 4.8vw, 48px);
+    line-height: 0.98;
+    margin: 0 0 14px;
+    text-wrap: balance;
+  }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(238,176,44,0.4);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    align-items: baseline;
+  }
+  .bug-chip .label { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+  .rank-move { color: var(--win); font-weight: 700; }
+  .rank-move.down { color: var(--loss); }
+
+  main { max-width: 940px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 48px) 80px; }
+
+  .bumper {
+    margin: 56px 0 22px;
+    padding: 14px 18px;
+    background: linear-gradient(90deg, var(--navy-800), var(--navy-700));
+    border-left: 5px solid var(--gold-500);
+    color: #fff;
+  }
+  :root[data-theme="light"] .bumper { color: var(--gold-100); }
+  .bumper .seg-num { font-family: ui-monospace, monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px, 3.2vw, 27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 66ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 64ch; color: var(--fg); }
+  .prose strong { color: var(--fg); }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(238,176,44,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  .tag-bye { color: var(--fg-dim); font-style: italic; }
+  .tag-marquee { color: var(--gold-500); font-weight: 700; }
+
+  .leader-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 14px 16px; margin-bottom: 10px; }
+  .leader-card .role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-500); font-weight: 700; }
+  .leader-card .name { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 2px 0; }
+  .leader-card .pos { color: var(--fg-dim); font-size: 13px; font-weight: 400; }
+  .leader-card .note { color: var(--fg-dim); font-size: 12.5px; margin-top: 4px; }
+  .leader-card.headline { border: 2px solid var(--gold-500); background: linear-gradient(135deg, rgba(238,176,44,0.12), transparent); }
+  .leader-card.watch { border-color: var(--loss); }
+  .leader-card.watch .role { color: var(--loss); }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-hit { background: rgba(52,201,141,0.15); color: var(--win); }
+  .pill-hot { background: rgba(232,89,76,0.15); color: var(--loss); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
+
+  .poll-list { columns: 2; column-gap: 24px; font-size: 13.5px; }
+  @media (max-width: 560px) { .poll-list { columns: 1; } }
+  .poll-list .row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed var(--surface-line); break-inside: avoid; }
+  .poll-list .rk { font-family: ui-monospace, monospace; color: var(--gold-500); font-weight: 700; width: 22px; flex-shrink:0; }
+  .poll-list .tm { flex: 1; padding: 0 8px; }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; }
+  @media (max-width: 560px) { .toc ol { columns: 1; } }
+
+  .quote-block { border-left: 3px solid var(--gold-500); padding: 4px 0 4px 18px; font-family: Georgia, serif; font-style: italic; font-size: 15px; color: var(--fg); }
+
+  .bold-pick { border: 2px solid var(--gold-500); border-radius: 8px; padding: 18px 20px; background: linear-gradient(135deg, rgba(238,176,44,0.12), transparent); }
+  .bold-pick .tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-500); font-weight: 700; }
+  .bold-pick .pick { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: 24px; margin: 4px 0 8px; }
+
+  footer.signoff {
+    margin-top: 64px;
+    background: var(--navy-950);
+    border-top: 3px solid var(--gold-500);
+    color: var(--gold-100);
+    padding: 32px clamp(16px, 4vw, 48px) 30px;
+  }
+  footer.signoff .signoff-inner { max-width: 940px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-500); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px, 3vw, 24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(238,176,44,0.35);
+    border-radius: 3px;
+    padding: 8px 14px;
+    font-family: ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 12.5px;
+    display: flex;
+    gap: 7px;
+    align-items: baseline;
+  }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast", "Arial Narrow", Arial, sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars Football &middot; 2027 Season Preview</p>
+  <h1 class="display">Year Three: Rebuild Around The Record</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Preseason Rank</span><span class="val">89</span></div>
+    <div class="bug-chip"><span class="label">Prestige</span><span class="val">2</span></div>
+    <div class="bug-chip"><span class="label">Team Rating</span><span class="val">69 <span class="rank-move down">&rarr; 67</span></span></div>
+    <div class="bug-chip"><span class="label">Defense</span><span class="val">71 <span class="rank-move down">&rarr; 69</span></span></div>
+    <div class="bug-chip"><span class="label">Molinich</span><span class="val">On The Heisman Watchlist</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Fourteen players are gone. The starting quarterback graduated. Both defensive team-tackle and sack leaders from the last two seasons are off the roster. And yet the single most important fact about Southern's 2027 season is one sentence long: Jordan Molinich is back, and for the first time in this program's history, he's already on the Heisman watchlist before a single snap has been played. That's the whole tension of year three in one paragraph &mdash; a program that just posted the best individual season in its history and now has to figure out who blocks for him, who throws it when he doesn't have the ball, and who tackles anybody on defense. This preview covers all of it: the schedule, the exodus, the returning core, the incoming class headlined by the program's first five-star signee, and the national picture Southern reenters at a projected No. 89.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Preview</h3>
+    <ol>
+      <li>The 2027 Schedule</li>
+      <li>What's Gone: A Quick Recap</li>
+      <li>The Returning Core</li>
+      <li>The QB Question</li>
+      <li>The Incoming Class Arrives</li>
+      <li>The National Picture: Preseason Poll</li>
+      <li>The Heisman Watchlist, With A New Name</li>
+      <li>Hot Seat Watch 2027</li>
+      <li>Way-Too-Early CFP Picks</li>
+      <li>Southern's Projection</li>
+    </ol>
+  </div>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 01</span>
+    <h2 class="display">The 2027 Schedule</h2>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>0</td><td class="tag-bye" colspan="2">Bye</td></tr>
+        <tr><td>1</td><td>at Stanford</td><td>New opponent, a real non-conference name on the schedule</td></tr>
+        <tr><td>2</td><td>at North Texas</td><td>Split the last two meetings; won 54&ndash;13 at home in 2026</td></tr>
+        <tr class="tag-marquee"><td>3</td><td>at #6 Texas Tech</td><td>The marquee game of the season &mdash; a preseason Top-10 road trip</td></tr>
+        <tr><td>4</td><td>vs Tulane</td><td>Rematch of the 2026 AAC Championship, lost 31&ndash;38</td></tr>
+        <tr><td>5</td><td class="tag-bye" colspan="2">Bye</td></tr>
+        <tr><td>6</td><td>vs ECU</td><td>Won 27&ndash;10 in 2026</td></tr>
+        <tr><td>7</td><td>vs Army</td><td>Won 42&ndash;14 in 2026, an 81-point swing from 2025's 6&ndash;59 loss</td></tr>
+        <tr><td>8</td><td>vs Tulsa</td><td>New opponent</td></tr>
+        <tr><td>9</td><td>vs Tennessee St.</td><td>New opponent, non-conference</td></tr>
+        <tr><td>10</td><td>vs Temple</td><td>Won 21&ndash;20 in 2026</td></tr>
+        <tr><td>11</td><td>at UAB</td><td>Won 38&ndash;34 at home in 2026</td></tr>
+        <tr><td>12</td><td>at Memphis</td><td>Lost 24&ndash;59 in 2026 after winning 66&ndash;10 in 2025 &mdash; the most volatile fixture on the schedule</td></tr>
+        <tr><td>13</td><td>at UTSA</td><td>Lost 53&ndash;55 in 3OT in 2026</td></tr>
+        <tr><td>14</td><td class="tag-bye" colspan="2">Bye</td></tr>
+        <tr><td>15</td><td class="tag-bye" colspan="2">Bye</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">One game defines the entire non-conference slate: a Week 3 trip to Texas Tech, a preseason No. 6 team and back-to-back playoff participant. Everything else is a mix of manageable (Stanford, North Texas, Tulsa, Tennessee St.) and revenge-minded (Tulane, Memphis, UTSA) &mdash; three rematches against the exact three teams that ended Southern's season a year ago in the final stretch. If this program is going to prove the 2026 collapse was a fluke and not a pattern, those three games are where it happens.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 02</span>
+    <h2 class="display">What's Gone: A Quick Recap</h2>
+  </div>
+  <p class="prose">Fourteen players are off the roster: QB Joshua Clark (graduation), MLB Owen West and DE Amir Tracy (both NFL Draft), CB Devin Sanchez (transfer to Texas Tech), DT Benedict Umeh (transfer to Stanford), FS Siale Siverand (transfer to Oklahoma St.), and eight more seniors across the defensive front, secondary, and receiving corps &mdash; MLB Quincy Davis, DT Trevell Vivians, CB Jordan Matthews, WRs Jamari Golden and Amin Hunter, and TE Harry Kardell all graduated. That's the starting quarterback and the top tacklers on both sides of the ball, gone in a single cycle. Two names who nearly left, HB/WR Matt Brown and TE Joe Eisworth, both flirted with the transfer portal and ended up back on the roster &mdash; the only real retention win in an otherwise brutal offseason attrition cycle.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 03</span>
+    <h2 class="display">The Returning Core</h2>
+  </div>
+  <div class="leader-card headline">
+    <div class="role">Preseason All-American &middot; Preseason All-Conference &middot; Reigning Doak Walker Winner</div>
+    <div class="name">Jordan Molinich <span class="pos">HB &middot; SO</span></div>
+    <div class="note">2,349 yards and 24 touchdowns as a true freshman, a national record. Entering 2027 as the best player in college football regardless of position, and the only reason this preview isn't a rebuilding-year story by default.</div>
+  </div>
+  <div class="two-col">
+    <div class="leader-card">
+      <div class="role">Preseason All-Conference</div>
+      <div class="name">Jonathan Truss <span class="pos">WR &middot; SO</span></div>
+      <div class="note">1,023 yards and 7 TD in 2026, now the unquestioned WR1 with both senior possession receivers gone</div>
+    </div>
+    <div class="leader-card">
+      <div class="role">Preseason All-Conference</div>
+      <div class="name">Kaegun Ferns <span class="pos">TE</span></div>
+      <div class="note">A 2026-cycle signee emerging as a preseason honoree &mdash; the clearest sign of a developing pass-catching option behind Truss</div>
+    </div>
+  </div>
+  <div class="leader-card">
+    <div class="role">Preseason All-Conference</div>
+    <div class="name">Dominic Bowens <span class="pos">G</span></div>
+    <div class="note">The only offensive lineman on this preseason list &mdash; a name that never surfaced in any prior report, now the presumptive anchor of a line that's about to get three new transfer tackles</div>
+  </div>
+  <p class="prose" style="margin-top:14px;">Caleb Nichola, the sophomore who filled Amir Tracy's sack production all of 2026 (11 sacks, one shy of Tracy's 2025 total), isn't on the preseason accolades list but returns as the most proven returning piece on defense &mdash; the closest thing this roster has to a defensive anchor with Vivians, Davis, and Matthews all gone.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 04</span>
+    <h2 class="display">The QB Question</h2>
+  </div>
+  <p class="prose">This is the single biggest open competition on the roster. Joshua Clark's graduation leaves no clear returning starter &mdash; the only quarterback on this roster with real game experience is <strong>Ty Wilson</strong> (SO), who came off the bench in the first quarter of the Gasparilla Bowl after Clark's injury and went 11-of-22 for 188 yards and a touchdown against Tennessee, albeit with 2 interceptions. No transfer portal quarterback was added this cycle &mdash; the incoming help at the position is three true freshmen (James Moody, Jordan Wilder, Joseph Foxworth, all two-star signees), none likely to start immediately. Barring a late portal addition, Wilson enters fall camp as the presumptive favorite by default, inheriting a backfield with the best running back in the country and a suddenly retooled offensive line to throw behind.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 05</span>
+    <h2 class="display">The Incoming Class Arrives</h2>
+  </div>
+  <p class="prose">Southern's 2027 class is the deepest this dynasty has signed &mdash; twenty-two high school prospects headlined by <strong>Carlos Allen</strong>, a five-star running back and the program's first-ever five-star signee, plus four-star linebacker Todd Pritchett. The transfer portal class of eight leans almost entirely offensive line and tight end &mdash; three tackles (Ronnie Turner, Christian Martin, Kaedin Massey) and two tight ends (Javeon Fricks, Gavin Hoffman) joining returnees Matt Brown and Joe Eisworth &mdash; a direct response to the protection issues that contributed to Joshua Clark's bowl-game injury. Between Allen in the backfield and the O-line reinforcements up front, this is a program explicitly building infrastructure for whoever wins the quarterback job to succeed behind.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 06</span>
+    <h2 class="display">The National Picture: Preseason Poll</h2>
+  </div>
+  <p class="prose">Texas enters as the defending national champion and preseason No. 1 &mdash; a fitting spot after a 54&ndash;14 title-game demolition of Georgia. Southern doesn't appear anywhere on this board, unsurprising for a preseason No. 89 program, but several of last year's storylines carry directly into it.</p>
+  <div class="poll-list">
+    <div class="row"><span class="rk">1</span><span class="tm">Texas</span></div>
+    <div class="row"><span class="rk">2</span><span class="tm">Notre Dame</span></div>
+    <div class="row"><span class="rk">3</span><span class="tm">Alabama</span></div>
+    <div class="row"><span class="rk">4</span><span class="tm">Miami</span></div>
+    <div class="row"><span class="rk">5</span><span class="tm">Georgia</span></div>
+    <div class="row"><span class="rk">6</span><span class="tm">Texas Tech</span></div>
+    <div class="row"><span class="rk">7</span><span class="tm">Michigan</span></div>
+    <div class="row"><span class="rk">8</span><span class="tm">LSU</span></div>
+    <div class="row"><span class="rk">9</span><span class="tm">Nebraska</span></div>
+    <div class="row"><span class="rk">10</span><span class="tm">Clemson</span></div>
+    <div class="row"><span class="rk">11</span><span class="tm">Florida St.</span></div>
+    <div class="row"><span class="rk">12</span><span class="tm">UCLA</span></div>
+    <div class="row"><span class="rk">13</span><span class="tm">Washington</span></div>
+    <div class="row"><span class="rk">14</span><span class="tm">Texas A&amp;M</span></div>
+    <div class="row"><span class="rk">15</span><span class="tm">Ole Miss</span></div>
+    <div class="row"><span class="rk">16</span><span class="tm">Iowa St.</span></div>
+    <div class="row"><span class="rk">17</span><span class="tm">Ohio St.</span></div>
+    <div class="row"><span class="rk">18</span><span class="tm">Oregon</span></div>
+    <div class="row"><span class="rk">19</span><span class="tm">Baylor</span></div>
+    <div class="row"><span class="rk">20</span><span class="tm">UNC</span></div>
+    <div class="row"><span class="rk">21</span><span class="tm">Pittsburgh</span></div>
+    <div class="row"><span class="rk">22</span><span class="tm">South Carolina</span></div>
+    <div class="row"><span class="rk">23</span><span class="tm">Michigan St.</span></div>
+    <div class="row"><span class="rk">24</span><span class="tm">Arizona St.</span></div>
+    <div class="row"><span class="rk">25</span><span class="tm">Auburn</span></div>
+  </div>
+  <p class="prose" style="margin-top:16px;">Texas Tech at preseason No. 6 confirms the Week 3 trip is exactly the measuring-stick game this preview flagged in Segment 1. And a name worth watching separately: Ole Miss opens at preseason No. 15, actually up from where they closed 2026 (No. 22 in the final poll) despite the 52&ndash;0 demolition of Southern &mdash; the program that ended Southern's CFP push in October is trending upward again, not fading.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 07</span>
+    <h2 class="display">The Heisman Watchlist, With A New Name</h2>
+  </div>
+  <div class="leader-card headline">
+    <div class="role">Officially On The Board</div>
+    <div class="name">Jordan Molinich <span class="pos">HB &middot; SO &middot; Southern</span></div>
+    <div class="note">After an entire 2026 season &mdash; a national rushing record, a Doak Walker Award, a 1st Team All-American nod &mdash; that produced zero weeks on the Heisman watchlist, Molinich opens 2027 already on it. This report series tracked that snub across five separate checkpoints last year and called it, at the time, "the single injustice this report series has tracked all year." It's resolved now, before he's even played a snap.</div>
+  </div>
+  <p class="prose">He's one of five names on the board so far: Bryce Underwood (Michigan, QB-JR), Eli Holstein (Pittsburgh, QB-SR RS), Julian Lewis (Colorado, QB-JR), and Walker White (Baylor, QB-JR RS) round out an otherwise all-quarterback list. Molinich is the only running back and the only Group of Five-tier player among them &mdash; both firsts for this dynasty.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 08</span>
+    <h2 class="display">Hot Seat Watch 2027</h2>
+  </div>
+  <div class="grade-grid">
+    <div class="grade-card"><div class="team">Auburn <span class="pill pill-hot">Hot Seat</span></div><p>Hugh Freeze survived 2026 at 6&ndash;4, but he's back on notice for 2027 &mdash; a repeat name from last year's board.</p></div>
+    <div class="grade-card"><div class="team">Coastal Carolina <span class="pill pill-hot">Hot Seat</span></div><p>Tim Beck's 1&ndash;8 finish never resulted in a change last year. He's back on the list, unsurprisingly.</p></div>
+    <div class="grade-card"><div class="team">Mississippi St. <span class="pill pill-hot">Hot Seat</span></div><p>Jeff Lebby also returns to this board &mdash; the second straight year he's been flagged without a change actually happening.</p></div>
+    <div class="grade-card"><div class="team">Minnesota <span class="pill pill-hot">Hot Seat</span></div><p>P.J. Fleck, a long-tenured name, is a new addition to this list &mdash; the most notable program on the entire 2027 board.</p></div>
+    <div class="grade-card"><div class="team">Tennessee <span class="pill pill-hot">Hot Seat</span></div><p>Josh Heupel, fresh off beating Southern in the Gasparilla Bowl, is on notice regardless.</p></div>
+    <div class="grade-card"><div class="team">Virginia Tech / Wake Forest <span class="pill pill-hot">Hot Seat</span></div><p>Brent Pry and Jake Dickert round out the new names on a seven-coach board, the largest hot-seat list this report series has tracked.</p></div>
+  </div>
+  <p class="prose" style="margin-top:14px;">Seven coaches on notice entering one offseason is the largest hot-seat class this report series has tracked &mdash; and unlike last year's list, which mostly resolved with survivals, this one includes at least one genuinely notable program (Minnesota) and a name with fresh, direct relevance to Southern (Tennessee's Heupel).</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 09</span>
+    <h2 class="display">Way-Too-Early CFP Picks</h2>
+  </div>
+  <div class="bold-pick">
+    <div class="tag">Bold Winner Pick</div>
+    <div class="pick">Texas repeats over Alabama</div>
+    <p style="max-width:60ch; margin:0; font-size:14px; color:var(--fg-dim);">Arch Manning is gone to the NFL, but a 15&ndash;1 champion with Joey McGuire-caliber program continuity (his Texas Tech counterpart just won Best HC) doesn't fall off a cliff in one offseason. Alabama, preseason No. 3 after a semifinal run, is the most credible challenger on paper.</p>
+  </div>
+  <p class="prose" style="margin-top:14px;">Notre Dame (preseason No. 2) and Miami (No. 4) are the other two programs positioned to make a real push, both riding continuity from 12-2-or-better 2026 seasons. Nebraska's preseason No. 9 is the number most worth watching &mdash; a program that finished the 2026 CFP poll at No. 15, three spots outside the 12-team field, now positioned inside the preseason top 10.</p>
+
+  <div class="bumper">
+    <span class="seg-num">SEGMENT 10</span>
+    <h2 class="display">Southern's Projection</h2>
+  </div>
+  <div class="prose">
+    <p>Call it 6&ndash;6, maybe 7&ndash;5 with a favorable quarterback answer and health at running back. The formula hasn't changed: Jordan Molinich is going to get his yards regardless of who's blocking or throwing around him, and the question is whether a rebuilt offensive line and an unproven quarterback room can keep opposing defenses from selling out entirely against the run the way better teams started to late in 2026. The three rematch games &mdash; Tulane, Memphis, UTSA &mdash; are the actual referendum on this program's ceiling; all three ended Southern's 2026 season in exactly the way this report series predicted would define the year, and beating even one of them flips the emotional arc of 2027 entirely.</p>
+    <p>The bigger picture is the one that matters more than any single record projection: a program that opened this dynasty at prestige 1 and rank 136 now has a reigning national award winner, a five-star signee, and a Heisman watchlist name heading into year three. Whatever the win total ends up being, Southern is no longer a surprise story. It's a program other teams are building game plans specifically to stop &mdash; which is its own kind of arrival.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars Football &middot; 2027 Season Preview &middot; Sign-Off</p>
+    <p class="headline">The record-holder is back, the quarterback job is wide open, and a five-star freshman just arrived &mdash; year three starts with more questions and more talent than any season yet.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Preseason Rank</span><span class="v">89</span></div>
+      <div class="stat-chip"><span class="k">Returning Star</span><span class="v">Molinich, Heisman Watch</span></div>
+      <div class="stat-chip"><span class="k">Top Signee</span><span class="v">Carlos Allen, 5&#9733;</span></div>
+      <div class="stat-chip"><span class="k">Marquee Game</span><span class="v">at #6 Texas Tech, Wk 3</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

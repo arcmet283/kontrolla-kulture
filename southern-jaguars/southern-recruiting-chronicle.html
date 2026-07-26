@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: The Recruiting Chronicle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face {
+    font-family: "Narrow Broadcast";
+    src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold");
+    font-weight: 700 900;
+  }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c; --star: #f0c33c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--gold-500); background-image: linear-gradient(120deg, rgba(232,178,58,0.14), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--gold-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--gold-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 68ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 480px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .stars { color: var(--star); letter-spacing: 1px; font-size: 12px; }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-hit { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-bust { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-steal { background: rgba(232,178,58,0.2); color: var(--gold-500); }
+  .pill-dev { background: rgba(79,124,255,0.18); color: var(--blue-accent); }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--gold-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--gold-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars &middot; The Recruiting Chronicle &middot; Annual Edition</p>
+  <h1 class="display">Building The Roster: Three Recruiting Cycles In Full</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Classes Signed</span><span class="val">3 (2026&ndash;2028)</span></div>
+    <div class="bug-chip"><span class="label">Best Class Rank</span><span class="val">No. 59, 2026</span></div>
+    <div class="bug-chip"><span class="label">5-Stars Landed</span><span class="val">1</span></div>
+    <div class="bug-chip"><span class="label">Re-Recruits Lost</span><span class="val">3-for-3</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Every dynasty gets built on the trail before it ever shows up on the field. This is Southern's full recruiting record, cycle by cycle: three signing classes, three transfer portal hauls, a growing list of misses, and a portal revolving door that has cost Southern the same three players twice each. Graded, cross-referenced, and told the way it actually happened.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Chronicle</h3>
+    <ol>
+      <li>Three Cycles Of Class Rankings</li>
+      <li>The 2026 Signing Class</li>
+      <li>The 2027 Signing Class: A 5-Star Arrives</li>
+      <li>The 2028 Class, Early</li>
+      <li>The Transfer Portal Hauls</li>
+      <li>The Revolving Door</li>
+      <li>The Ones That Got Away</li>
+      <li>Report Card: Hits, Steals, And Busts</li>
+      <li>The Takeaway</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">Three Cycles Of Class Rankings</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Signed During</th><th>Class Year</th><th>National Rank</th><th>Total Signings</th><th>Headliner</th></tr></thead>
+      <tbody>
+        <tr><td>2025 season</td><td>2026</td><td>59th</td><td>21</td><td>Jordan Molinich, 4&#9733; HB</td></tr>
+        <tr><td>2026 season</td><td>2027</td><td>63rd</td><td>22</td><td>Carlos Allen, 5&#9733; HB</td></tr>
+        <tr><td>2027 season (in progress)</td><td>2028</td><td>Not yet ranked (1 signee so far)</td><td>1</td><td>Dee Stephens, 2&#9733; WR</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">The class rank actually got worse the year Southern landed its best individual prospect ever — the 2027 class (No. 63) signed a bona fide 5-star and still ranked four spots lower than the 2026 class (No. 59), which had zero 5-stars at all. That's a program still recruiting in bulk at the 2-star level around one or two headline names, not yet building a nationally elite class top to bottom.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The 2026 Signing Class</h2></div>
+  <p class="prose">Twenty-one signees, three 4-stars, two 3-stars, and sixteen 2-stars — the class that became the foundation of Southern's actual breakout season on the field.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Stars</th><th>Pos. Rank</th><th>Pos</th><th>State</th><th>Latest OVR</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Jordan Molinich</td><td class="stars">&#9733;&#9733;&#9733;&#9733;</td><td>28</td><td>HB</td><td>CT</td><td>84</td><td>Doak Walker winner, national rushing champ</td></tr>
+        <tr><td>Christopher Shelton</td><td class="stars">&#9733;&#9733;&#9733;&#9733;</td><td>13</td><td>CB</td><td>SD</td><td>83</td><td>Steady four-year riser</td></tr>
+        <tr><td>Matt Brown</td><td class="stars">&#9733;&#9733;&#9733;&#9733;</td><td>38</td><td>ATH (HB&rarr;WR)</td><td>MN</td><td>68</td><td>Position-switched, stalled</td></tr>
+        <tr><td>Kaegun Ferns</td><td class="stars">&#9733;&#9733;&#9733;</td><td>57</td><td>TE</td><td>WA</td><td>73</td><td>Preseason All-Conference, 2027</td></tr>
+        <tr><td>Jonathan Truss</td><td class="stars">&#9733;&#9733;&#9733;</td><td>118</td><td>WR</td><td>ID</td><td>73</td><td>Led team in receiving, 2026</td></tr>
+        <tr><td>Siale Siverand</td><td class="stars">&#9733;&#9733;</td><td>139</td><td>FS</td><td>OK</td><td>70</td><td>Transferred out after 2026</td></tr>
+        <tr><td>15 more 2-star signees</td><td class="stars">&#9733;&#9733;</td><td>&mdash;</td><td>Mixed</td><td>Mixed</td><td>4 cut by Yr2&ndash;3</td><td>Bulk of the class</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Of the sixteen 2-star signees in this class, the raw development curve is brutal: <strong>Johari Fludd was cut after one year, Patrick Miller and Dwayne Davis and Kainoa Acker were all cut by year three</strong>. The 2-star tier in this class landed almost no one who developed into a real contributor except Damien Rand, who's since become a rotational pass rusher. This is the class that proves the program's actual hit rate lives almost entirely in the 3-star-and-up tier — the 2-star volume signings are close to a coin flip against getting cut outright.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">The 2027 Signing Class: A 5-Star Arrives</h2></div>
+  <p class="prose">Twenty-two signees. One 5-star, one 4-star, four 3-stars, sixteen 2-stars — same volume shape as before, but this class delivered Southern's first-ever 5-star signee.</p>
+  <div class="matchup-card">
+    <div class="conf-tag">Headliner</div>
+    <div class="teams">Carlos Allen, HB &middot; 5&#9733; &middot; No. 16 Nationally</div>
+    <p>A Virginia product and the highest-rated recruit in program history. Now a true freshman contributor in 2027, already showing up in the box score — 108 rushing yards on 12 carries in the 97&ndash;10 blowout of Tennessee State in Week 9.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">The Quarterback Bet</div>
+    <div class="teams">James Moody &amp; Joseph Foxworth, both 2&#9733; QBs</div>
+    <p>Neither was viewed as a difference-maker on signing day — both 2-star, both outside their position's top 100 nationally (Moody at 106, Foxworth at 215). Both ended up starting as true/redshirt freshmen in 2027 anyway, after injuries and benchings up the depth chart. Foxworth in particular has taken over the job by midseason and was the quarterback of record in the Tennessee State blowout.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Stars</th><th>Pos. Rank</th><th>Pos</th><th>State</th><th>Latest OVR</th></tr></thead>
+      <tbody>
+        <tr><td>Todd Pritchett</td><td class="stars">&#9733;&#9733;&#9733;&#9733;</td><td>40</td><td>MLB</td><td>MT</td><td>75</td></tr>
+        <tr><td>Jason Davis</td><td class="stars">&#9733;&#9733;&#9733;</td><td>119</td><td>WR</td><td>IN</td><td>70</td></tr>
+        <tr><td>Torren Lockhart</td><td class="stars">&#9733;&#9733;&#9733;</td><td>67</td><td>MLB</td><td>ME</td><td>73</td></tr>
+        <tr><td>Keyon Saffold</td><td class="stars">&#9733;&#9733;&#9733;</td><td>99</td><td>G</td><td>HI</td><td>69</td></tr>
+        <tr><td>Dre Still</td><td class="stars">&#9733;&#9733;&#9733;</td><td>83</td><td>SS</td><td>MT</td><td>72</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">The 2028 Class, Early</h2></div>
+  <p class="prose">Just one commitment on the board so far, with the cycle still open: <strong>Dee Stephens</strong>, a 2-star wide receiver out of Louisiana. Too early to grade, but the state pipeline matters — see Segment 7 for how much Louisiana talent Southern has already lost from this same cycle before it even landed a single signee.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">The Transfer Portal Hauls</h2></div>
+  <p class="prose">Sixteen portal additions across two full cycles, almost entirely at the bottom of the ratings scale — and the best player of the entire haul was a 2-star.</p>
+  <div class="matchup-card">
+    <div class="conf-tag">Portal Steal Of The Chronicle</div>
+    <div class="teams">Gavin Hoffman, WR &middot; 2&#9733; &middot; from Missouri</div>
+    <p>Signed as a low-rated TE/WR convert for the 2027 class. Caught the Week 1 game-winning touchdown from Ty Wilson with nine seconds left against Stanford, and by Week 10 led the team in receiving at 748 yards and 8 touchdowns — 2nd in the conference in both categories. The single best value pickup in this entire chronicle.</p>
+  </div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Cycle</th><th>Name</th><th>Prev Team</th><th>Pos</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>2026</td><td>Devin Sanchez</td><td>Oklahoma St.</td><td>CB</td><td>All-Conference, then left (see Segment 6)</td></tr>
+        <tr><td>2026</td><td>Christian Thatcher</td><td>Utah</td><td>OLB</td><td>Stayed &mdash; leads team in tackles, 2027</td></tr>
+        <tr><td>2026</td><td>DJ Hill-Smith</td><td>New Mexico St.</td><td>FS</td><td>Stayed &mdash; interceptions leader, 2027</td></tr>
+        <tr><td>2026</td><td>Ethan Stendel</td><td>Minnesota</td><td>OLB</td><td>Stayed</td></tr>
+        <tr><td>2026</td><td>Benedict Umeh</td><td>Stanford</td><td>DT</td><td>Contributed 2026, then left (see Segment 6)</td></tr>
+        <tr><td>2027</td><td>Gavin Hoffman</td><td>Missouri</td><td>WR</td><td>Team's leading receiver</td></tr>
+        <tr><td>2027</td><td>Javeon Fricks</td><td>LSU</td><td>TE</td><td>Injured Week 1, out 6 weeks</td></tr>
+        <tr><td>2027</td><td>Xavier Ford</td><td>Minnesota</td><td>HB</td><td>Depth piece</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Christian Thatcher and DJ Hill-Smith are the quiet wins of the 2026 haul — both stayed through the portal noise and are now statistical team leaders in 2027 (tackles and interceptions, respectively). That's a real success rate for the "stay" cases; it's the players who left that have hurt.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">The Revolving Door</h2></div>
+  <p class="prose">Three players left Southern via the portal after the 2026 season. In that same offseason cycle, Southern went right back into the portal to try to win all three back. Southern lost all three — to the exact schools they'd already left for or come from.</p>
+  <div class="grade-grid">
+    <div class="grade-card"><div class="team">Devin Sanchez <span class="pill pill-bust">Lost Twice</span></div><p>CB, came from Oklahoma St. in 2026, went All-Conference (39 tkls, 5 INT, a pick-six), entered the portal and left for Texas Tech. Southern's same-cycle attempt to bring him back lost to Texas Tech again.</p></div>
+    <div class="grade-card"><div class="team">Benedict Umeh <span class="pill pill-bust">Lost Twice</span></div><p>DT, came from Stanford in 2026, contributed (13 tkls, 3 TFL, 1 sack), entered the portal and left for Stanford. Southern's same-cycle re-recruitment lost him back to Stanford.</p></div>
+    <div class="grade-card"><div class="team">Siale Siverand <span class="pill pill-bust">Lost Twice</span></div><p>FS, a 2026 HS signee, played as a true freshman (11 tkls, 1 FF), entered the portal and left for Oklahoma St. Southern's same-cycle pursuit lost him to Oklahoma St. again.</p></div>
+  </div>
+  <p class="prose" style="margin-top:14px;">A 0-for-3 record trying to win back players who already chose to leave once is a real, repeatable pattern worth watching in future cycles — Southern has not yet successfully reversed a single outgoing transfer decision.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">The Ones That Got Away</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">Biggest Miss Of The Chronicle</div>
+    <div class="teams">Zayden Walker, OLB &middot; 5&#9733; Transfer Target Lost To Notre Dame</div>
+    <p>Southern had him on the board as a transfer target out of Georgia, already rated a 5-star and the No. 7 overall transfer add in the country. Lost him to Notre Dame, where he became that class's No. 1 overall signee — on the roster that finished ranked No. 1 nationally. The single most significant recruiting battle Southern is confirmed to have lost outright.</p>
+  </div>
+  <p class="prose">Also lost: J'vari Flowers (4-star CB, went to Florida, then transferred again to Georgia) and Ryan Allen (4-star CB, went to UCF, then transferred to Tulane) — two more 4-star misses from the 2026 board who kept moving and never landed at Southern at any stage.</p>
+  <p class="prose" style="margin-top:10px;"><strong>The Louisiana Pipeline, 2028:</strong> all three known misses from the still-open 2028 cycle are Louisiana kids who signed with Alabama — Amari Erickson (DE), Darian Weathersby (DE), and Jonathan Bowen (3&#9733; T). Alabama is currently out-recruiting Southern in its own backyard before this cycle has even closed.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">Report Card: Hits, Steals, And Busts</h2></div>
+  <div class="grade-grid">
+    <div class="grade-card"><div class="team">Jordan Molinich <span class="pill pill-hit">Hit</span></div><p>4&#9733; hype, delivered a Doak Walker and a national rushing title. Ratings matched outcome exactly.</p></div>
+    <div class="grade-card"><div class="team">Carlos Allen <span class="pill pill-dev">Developing</span></div><p>5&#9733; investment already producing as a true freshman. Too early to grade final, trending correctly.</p></div>
+    <div class="grade-card"><div class="team">Gavin Hoffman <span class="pill pill-steal">Steal</span></div><p>2&#9733; portal add, team's leading receiver. Biggest value gap in the program's favor.</p></div>
+    <div class="grade-card"><div class="team">Christopher Shelton <span class="pill pill-hit">Hit</span></div><p>4&#9733; CB developing on a normal curve, 83 OVR and climbing.</p></div>
+    <div class="grade-card"><div class="team">Matt Brown <span class="pill pill-bust">Underperforming</span></div><p>4&#9733; signee, position-switched HB to WR, OVR has stalled at 68.</p></div>
+    <div class="grade-card"><div class="team">The 2026 2-Star Tier <span class="pill pill-bust">Bust</span></div><p>4 of the 16 signees at that rating were cut outright within three years.</p></div>
+    <div class="grade-card"><div class="team">Zayden Walker <span class="pill pill-steal">Lost Battle</span></div><p>Southern had him on the board as a 5-star transfer target and lost him to Notre Dame's eventual No. 1 class.</p></div>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 09</span><h2 class="display">The Takeaway</h2></div>
+  <div class="prose">
+    <p>Three cycles in, the pattern is consistent: Southern's class rankings sit in the 60s nationally, driven by volume 2-star signing rather than top-to-bottom talent, and that tier's hit rate is close to a coin flip. But the program has landed two legitimate program-altering prospects late in that same window — a Doak Walker winner at 4-stars and a true 5-star in Carlos Allen — proving the staff can win at the top of the board when it matters, even while the middle and bottom of the class remain inconsistent.</p>
+    <p>The portal tells almost the same story from a different angle: the headline hit (Gavin Hoffman) came in as a 2-star afterthought, while three actual contributors were lost for good to a revolving door Southern has yet to win a single rematch in. And with the 2028 cycle already down three Louisiana prospects to Alabama before a single signee beyond Dee Stephens is locked in, the in-state pipeline is the storyline to watch heading into next year's edition of this chronicle.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars &middot; The Recruiting Chronicle &middot; Sign-Off</p>
+    <p class="headline">Three classes, one 5-star, one Doak Walker winner found at 4-stars, and a portal revolving door Southern has lost 0-for-3 &mdash; the full recruiting record, cycle by cycle.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Best Signee</span><span class="v">Molinich, 4&#9733;</span></div>
+      <div class="stat-chip"><span class="k">Biggest Miss</span><span class="v">Zayden Walker</span></div>
+      <div class="stat-chip"><span class="k">Portal Steal</span><span class="v">Gavin Hoffman, 2&#9733;</span></div>
+      <div class="stat-chip"><span class="k">2028 Pipeline</span><span class="v">0-for-3 vs. Alabama</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

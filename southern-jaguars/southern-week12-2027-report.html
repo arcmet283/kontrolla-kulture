@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: Week 12 Check-In</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face {
+    font-family: "Narrow Broadcast";
+    src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold");
+    font-weight: 700 900;
+  }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--gold-500); background-image: linear-gradient(120deg, rgba(232,178,58,0.14), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--gold-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--gold-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 68ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--gold-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+  .matchup-card .result { font-weight: 700; }
+  .matchup-card .win { color: var(--win); } .matchup-card .loss { color: var(--loss); }
+
+  .leader-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed var(--surface-line); gap: 12px; flex-wrap: wrap; }
+  .leader-row:last-child { border-bottom: none; }
+  .leader-row .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold-500); font-weight: 700; min-width: 150px; }
+  .leader-row .who { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; }
+  .leader-row .stat { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-up { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-down { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-new { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--gold-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars &middot; Week 12 Check-In &middot; 2027 Season</p>
+  <h1 class="display">Five Weeks Ago This Was A Different Team</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Record</span><span class="val">5&ndash;5 (3&ndash;4 AAC)</span></div>
+    <div class="bug-chip"><span class="label">Streak</span><span class="val">W3</span></div>
+    <div class="bug-chip"><span class="label">National Rush Leader</span><span class="val">Molinich, 1,416 Yds</span></div>
+    <div class="bug-chip"><span class="label">Next</span><span class="val">at Memphis, Wk 12</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Through six games, Southern was 1&ndash;4 and searching for a quarterback. Five games later, they're 5&ndash;5, winners of three straight, and one win away from a second consecutive bowl trip. This is the check-in: how the turnaround happened, where Southern sits heading into the two games left on the schedule, and what's still exactly the same as it's always been.</p>
+  </section>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Turnaround</h2></div>
+  <p class="prose">Southern opened 1&ndash;4 with three different quarterbacks cycling through the lineup. Since true freshman Joseph Foxworth took over full-time in Week 7, the record is 4&ndash;1 &mdash; the only blemish a Week 8 loss to Tulsa. The last three games have all been wins.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stretch</th><th>Record</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Weeks 1&ndash;6 (Wilson/Moody era)</td><td>1&ndash;4</td><td>Three QB changes, one signature win at Stanford</td></tr>
+        <tr class="hl"><td>Weeks 7&ndash;11 (Foxworth era)</td><td>4&ndash;1</td><td>Only loss: Tulsa at home, Week 8</td></tr>
+        <tr><td>Season to date</td><td>5&ndash;5 (3&ndash;4 AAC)</td><td>Needs 1 win in final 2 games for bowl eligibility</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The Last Five Games, In Full</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 7 &middot; Home</div>
+    <div class="teams">Southern 27, Army 10 <span class="result win">Won</span></div>
+    <p>Foxworth's first full start: 19-of-33, 213 yards, 3 TDs, 1 INT. Molinich added 194 yards on 20 carries. Javeon Fricks caught two touchdowns before leaving with a dislocated elbow.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 8 &middot; Home</div>
+    <div class="teams">Southern 26, Tulsa 40 <span class="result loss">Lost</span></div>
+    <p>The lone loss of the Foxworth era. The defense allowed 352 rushing yards. Stacy Vaughn returned from injury with 101 receiving yards and a touchdown.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 9 &middot; Home</div>
+    <div class="teams">Southern 97, Tennessee St. 10 <span class="result win">Won</span></div>
+    <p>Molinich's signature game: 218 rushing yards and 6 touchdowns on just 7 carries, winning NCAA National Offensive Player of the Week.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 10 &middot; Home</div>
+    <div class="teams">Southern 44, Temple 7 <span class="result win">Won</span></div>
+    <p>Foxworth: 18-of-29, 245 yards, 3 TDs. True freshman WR Jason Davis broke out with 6 catches, 115 yards, 3 touchdowns. Molinich added 194 more yards on the ground.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 11 &middot; At UAB</div>
+    <div class="teams">Southern 31, UAB 29 <span class="result win">Won</span></div>
+    <p>A road nail-biter. Foxworth's best statistical day yet: 16-of-29, 327 yards, 4 touchdowns, 0 interceptions. Jonathan Truss caught 3 touchdowns on just 4 catches.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">Foxworth's Emergence</h2></div>
+  <p class="prose">A 2-star true freshman who signed outside the position's top 200 nationally is now Southern's starting quarterback and its Team Passing Leader: <strong>102-of-185, 1,627 yards, 16 touchdowns, 6 interceptions.</strong> Since claiming the job in Week 6, he's thrown for at least 3 touchdowns in three of his five starts and hasn't taken the offense out of the top half of the conference in scoring since.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Molinich, Still The Nation's Best</h2></div>
+  <p class="prose">Jordan Molinich leads the country in rushing yards for the second straight season &mdash; his entire college career, both years: <strong>190 carries, 1,416 yards, 10 touchdowns</strong> &mdash; 1st in the NCAA for rushing yards, 3rd in the AAC for rushing touchdowns. He hasn't missed a beat since last year's Doak Walker season.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">Team Stats: The Same Story</h2></div>
+  <div class="leader-row"><span class="cat">Total Defense</span><span class="who">3,362 yds</span><span class="stat">8th nationally</span></div>
+  <div class="leader-row"><span class="cat">Pass Defense</span><span class="who">1,810 yds</span><span class="stat">1st nationally</span></div>
+  <div class="leader-row"><span class="cat">Run Defense</span><span class="who">1,552 yds</span><span class="stat">135th nationally</span></div>
+  <div class="leader-row"><span class="cat">Total Offense</span><span class="who">4,147 yds</span><span class="stat">33rd nationally</span></div>
+  <div class="leader-row"><span class="cat">Red Zone Offense</span><span class="who">85%</span><span class="stat">21st nationally</span></div>
+  <p class="prose" style="margin-top:16px;">The same split that's defined this program for three straight seasons is still exactly true at Week 12: an elite pass defense (1st in the country) carrying a run defense still stuck in the bottom 10 (135th) &mdash; unchanged despite an entire offseason of transfer-portal investment on that side of the ball.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">The AAC Traffic Jam</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Team</th><th>Overall</th><th>Conference</th></tr></thead>
+      <tbody>
+        <tr><td>North Texas</td><td>7-3</td><td>6-1</td></tr>
+        <tr><td>USF</td><td>7-4</td><td>6-2</td></tr>
+        <tr><td>Tulsa</td><td>6-4</td><td>4-3</td></tr>
+        <tr><td>Tulane</td><td>5-5</td><td>4-3</td></tr>
+        <tr><td>Navy</td><td>5-4</td><td>4-3</td></tr>
+        <tr><td>Memphis</td><td>5-5</td><td>4-3</td></tr>
+        <tr><td>Temple</td><td>4-6</td><td>4-4</td></tr>
+        <tr><td>Florida Atlantic</td><td>5-5</td><td>3-4</td></tr>
+        <tr><td>ECU</td><td>5-5</td><td>3-4</td></tr>
+        <tr class="hl"><td>Southern</td><td>5-5</td><td>3-4</td></tr>
+        <tr><td>UAB</td><td>4-6</td><td>3-4</td></tr>
+        <tr><td>UTSA</td><td>3-7</td><td>3-4</td></tr>
+        <tr><td>Army</td><td>4-6</td><td>2-5</td></tr>
+        <tr><td>Charlotte</td><td>4-6</td><td>1-6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Five teams are knotted at 3&ndash;4 in conference play &mdash; Florida Atlantic, ECU, Southern, UAB, and UTSA. Southern's two remaining games are against two of the teams directly above that logjam: Memphis (also 5&ndash;5) this week, then UTSA (part of the same 3&ndash;4 tie) to close the season.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">Heisman Watch: A Stall, Not A Fade</h2></div>
+  <p class="prose">Molinich remains on the Heisman Watchlist at <strong>4 weeks</strong> &mdash; the same total he carried into the Week 10 check-in. That means he hasn't been re-added to a single poll in the two weeks since, even during a stretch where he's kept leading the country in rushing. The players around him haven't stalled: Bryce Underwood is up to 7 weeks, Richard Young and Fluff Bothwell are both at 8, and Iowa State's Jaray Rask has climbed to 6. Production alone isn't moving Molinich's national profile right now.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">What's Left</h2></div>
+  <div class="prose">
+    <p>Two games remain: at Memphis this week, then at UTSA to close the regular season. Southern needs one more win to reach six and qualify for a bowl game for the second year in a row &mdash; and Memphis, sitting at the exact same 5&ndash;5 record, is as even a swing game as the schedule could have handed them. A win Saturday clinches bowl eligibility with a game to spare.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars &middot; Week 12 Check-In &middot; Sign-Off</p>
+    <p class="headline">1&ndash;4 through six games, 5&ndash;5 and rolling since Foxworth took over &mdash; one win from bowl eligibility, with Memphis up first.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Foxworth Era</span><span class="v">4-1</span></div>
+      <div class="stat-chip"><span class="k">Molinich</span><span class="v">1,416 Yds, 1st NCAA</span></div>
+      <div class="stat-chip"><span class="k">Run D Rank</span><span class="v">135th, Unchanged</span></div>
+      <div class="stat-chip"><span class="k">Bowl Number</span><span class="v">1 More Win</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

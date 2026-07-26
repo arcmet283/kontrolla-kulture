@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The National Desk: Conference Championship Week</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face {
+    font-family: "Narrow Broadcast";
+    src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold");
+    font-weight: 700 900;
+  }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --red-500: #d94b3f; --red-300: #ef8378; --gold-500: #e8b23a; --gold-300: #f3d287;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(217,75,63,0.12), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 68ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .poll-list { columns: 2; column-gap: 24px; font-size: 13.5px; }
+  @media (max-width: 560px) { .poll-list { columns: 1; } }
+  .poll-list .row { display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px dashed var(--surface-line); break-inside: avoid; }
+  .poll-list .rk { font-family: ui-monospace, monospace; color: var(--gold-500); font-weight: 700; width: 24px; flex-shrink:0; }
+  .poll-list .tm { flex: 1; padding: 0 8px; }
+  .poll-list .rec { color: var(--fg-dim); font-variant-numeric: tabular-nums; }
+
+  .leader-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed var(--surface-line); gap: 12px; flex-wrap: wrap; }
+  .leader-row:last-child { border-bottom: none; }
+  .leader-row .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold-500); font-weight: 700; min-width: 150px; }
+  .leader-row .who { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; }
+  .leader-row .team { color: var(--fg-dim); font-size: 13px; }
+  .leader-row .stat { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-up { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-down { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-new { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+  .pill-fired { background: rgba(232,89,76,0.22); color: #ff9a8c; }
+
+  .coach-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; }
+  .coach-card h3 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 19px; margin: 0 0 4px; letter-spacing: 0.01em; }
+  .coach-card .role { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red-500); font-weight: 700; margin-bottom: 10px; }
+  .coach-card .timeline { display: flex; flex-direction: column; gap: 6px; margin: 10px 0; }
+  .coach-card .timeline .yr { display: flex; gap: 10px; font-size: 13.5px; }
+  .coach-card .timeline .yr .y { font-family: ui-monospace, monospace; color: var(--gold-500); font-weight: 700; min-width: 42px; }
+  .coach-card .timeline .yr .e { color: var(--fg); }
+  .coach-card p.note { margin-top: 10px; font-size: 14px; color: var(--fg); max-width: none; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: #fdf0d5; padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">The National Desk &middot; College Football &middot; Conference Championship Week</p>
+  <h1 class="display">Ten Titles, One Unbeaten Team, And A Carousel In Chaos</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">No. 1</span><span class="val">Iowa State, 12&ndash;0</span></div>
+    <div class="bug-chip"><span class="label">Big 12 Title</span><span class="val">Texas Tech vs. Iowa St.</span></div>
+    <div class="bug-chip"><span class="label">Coaches Fired Mid-Season</span><span class="val">2</span></div>
+    <div class="bug-chip"><span class="label">Hot Seat Board</span><span class="val">13 Coaches</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Every conference in the country crowns a champion this weekend, the CFP field is about to lock into place, and the coaching carousel has already started spinning for real &mdash; two coaches fired mid-season, more on the way once bowl season ends. This is the deepest look yet: all ten championship games, the field entering them, the Heisman race at the wire, and a full accounting of where every notable coach in this chronicle actually stands &mdash; not just their record, but what they've built across every award winner and bowl game this window has tracked.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Chronicle</h3>
+    <ol>
+      <li>The Ten Championship Games</li>
+      <li>The CFP Picture Entering Championship Week</li>
+      <li>National Statistical Leaders, Final</li>
+      <li>Heisman Watch At The Wire</li>
+      <li>The Coaching Carousel: Full Journeys</li>
+      <li>The Two Coaches Fired This Season</li>
+      <li>The Award-Winner Ledger, Three Years Running</li>
+      <li>What To Watch</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Ten Championship Games</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">Big 12 &middot; Arlington, TX</div>
+    <div class="teams">Texas Tech (10&ndash;2) vs. Iowa State (12&ndash;0)</div>
+    <p>The headline game of the weekend. Iowa State is the nation's last unbeaten team; Texas Tech is the program that played for the national title two years ago in this same tracked window. Whoever wins walks straight into the top of the CFP field.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">SEC &middot; Atlanta, GA</div>
+    <div class="teams">Ole Miss (9&ndash;3) vs. Texas A&amp;M (11&ndash;1)</div>
+    <p>Texas A&amp;M enters as the clear favorite and the SEC's last realistic 1-loss playoff hope.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Big Ten &middot; Indianapolis, IN</div>
+    <div class="teams">Nebraska (10&ndash;2) vs. Michigan (11&ndash;1)</div>
+    <p>Michigan enters with the better record and a chance to lock up a top-4 seed.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">ACC &middot; Jacksonville, FL</div>
+    <div class="teams">Miami (10&ndash;2) vs. UNC (10&ndash;2)</div>
+    <p>A genuine coin-flip on paper &mdash; identical records entering the title game.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">American &middot; Chicago, IL</div>
+    <div class="teams">North Texas (8&ndash;4) vs. USF (8&ndash;4)</div>
+    <p>North Texas is one of the two teams that beat Southern this season, a 30&ndash;10 win back in Week 2 &mdash; both finalists finished three full conference games ahead of the three-way tie Southern ended up in.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Mountain West &middot; San Francisco, CA</div>
+    <div class="teams">San Jose State (7&ndash;5) vs. Wyoming (6&ndash;6)</div>
+    <p>The lowest combined win total of any title game this weekend.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">CUSA &middot; El Paso, TX</div>
+    <div class="teams">Missouri State (8&ndash;4) vs. Kennesaw State (9&ndash;3)</div>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">MAC &middot; Detroit, MI</div>
+    <div class="teams">Ball State (8&ndash;4) vs. Central Michigan (9&ndash;3)</div>
+    <p>Ball State is back in a MAC title game for the first time since 2025 &mdash; see Segment 5 for why that's a meaningful return.</p>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">PAC-12 &middot; Seattle, WA</div>
+    <div class="teams">San Diego State (6&ndash;6) vs. Texas State (7&ndash;5)</div>
+  </div>
+  <div class="matchup-card">
+    <div class="conf-tag">Sun Belt &middot; Mobile, AL</div>
+    <div class="teams">Louisiana (7&ndash;5) vs. Arkansas State (8&ndash;4)</div>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The CFP Picture Entering Championship Week</h2></div>
+  <div class="poll-list">
+    <div class="row"><span class="rk">1</span><span class="tm">Iowa State</span><span class="rec">12-0</span></div>
+    <div class="row"><span class="rk">2</span><span class="tm">Texas A&amp;M</span><span class="rec">11-1</span></div>
+    <div class="row"><span class="rk">3</span><span class="tm">Notre Dame</span><span class="rec">11-1</span></div>
+    <div class="row"><span class="rk">4</span><span class="tm">Michigan</span><span class="rec">11-1</span></div>
+    <div class="row"><span class="rk">5</span><span class="tm">Nebraska</span><span class="rec">10-2</span></div>
+    <div class="row"><span class="rk">6</span><span class="tm">UNC</span><span class="rec">10-2</span></div>
+    <div class="row"><span class="rk">7</span><span class="tm">Miami</span><span class="rec">10-2</span></div>
+    <div class="row"><span class="rk">8</span><span class="tm">Texas Tech</span><span class="rec">10-2</span></div>
+    <div class="row"><span class="rk">9</span><span class="tm">Ole Miss</span><span class="rec">9-3</span></div>
+    <div class="row"><span class="rk">10</span><span class="tm">Auburn</span><span class="rec">9-3</span></div>
+    <div class="row"><span class="rk">11</span><span class="tm">USC</span><span class="rec">9-3</span></div>
+    <div class="row"><span class="rk">12</span><span class="tm">Oregon</span><span class="rec">9-3</span></div>
+  </div>
+  <p class="prose" style="margin-top:16px;">Notre Dame sits at No. 3 despite not playing in a championship game this weekend &mdash; a quiet 11&ndash;1 season that never got the same attention as Iowa State's unbeaten run. Auburn (No. 10) and USC (No. 11) are both sitting outside their own conference's title game and hoping the committee rewards the résumé anyway; Hugh Freeze's Auburn already has the best single win of anyone in that group, and Jesse Minter's USC has the best debut season of any first-year coach in this chronicle. Both are outlined in full in Segment 5.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">National Statistical Leaders, Final</h2></div>
+  <div class="leader-row"><span class="cat">Passing Yards</span><span class="who">Austin Novosad <span class="team">QB &middot; North Texas</span></span><span class="stat">4,088 yds</span></div>
+  <div class="leader-row"><span class="cat">Passing TDs</span><span class="who">Demond Williams <span class="team">QB &middot; Washington</span></span><span class="stat">44 TD</span></div>
+  <div class="leader-row"><span class="cat">Rushing Yards</span><span class="who">Jordan Molinich <span class="team">HB &middot; Southern</span></span><span class="stat">1,669 yds</span></div>
+  <div class="leader-row"><span class="cat">Rushing TDs</span><span class="who">Fluff Bothwell <span class="team">HB &middot; Mississippi St.</span></span><span class="stat">18 TD</span></div>
+  <div class="leader-row"><span class="cat">Receiving Yards</span><span class="who">Dazmin James <span class="team">WR &middot; California</span></span><span class="stat">1,404 yds</span></div>
+  <div class="leader-row"><span class="cat">Receiving TDs</span><span class="who">Mason Bojorquez <span class="team">WR &middot; Miami (Ohio)</span></span><span class="stat">18 TD</span></div>
+  <div class="leader-row"><span class="cat">Tackles</span><span class="who">Maddox Marcellus <span class="team">OLB &middot; Virginia</span></span><span class="stat">147 tkls</span></div>
+  <div class="leader-row"><span class="cat">Sacks</span><span class="who">Michael Hallock <span class="team">DE &middot; Jacksonville St.</span></span><span class="stat">16 sks</span></div>
+  <div class="leader-row"><span class="cat">Interceptions</span><span class="who">Andrew Vera <span class="team">SS &middot; Ohio</span></span><span class="stat">6 int</span></div>
+  <p class="prose" style="margin-top:18px;">A new name overtakes the season-long passing yardage lead right at the finish: North Texas's Austin Novosad, who wasn't even the country's leader as recently as Week 12. Dazmin James reclaims the receiving-yards title after losing it briefly earlier in the season. Everywhere else, the leaders who took over by midseason held on all the way to the finish line &mdash; Jordan Molinich in rushing and Maddox Marcellus in tackles both close the entire regular season exactly where they've been for months.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Heisman Watch At The Wire</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Pos &middot; Class</th><th>Team</th><th>Weeks on List</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Richard Young</td><td>HB &middot; SR (RS)</td><td>Alabama</td><td>12</td></tr>
+        <tr class="hl"><td>Fluff Bothwell</td><td>HB &middot; SR</td><td>Mississippi St.</td><td>12</td></tr>
+        <tr><td>Bryce Underwood</td><td>QB &middot; JR</td><td>Michigan</td><td>11</td></tr>
+        <tr><td>Jaray Rask</td><td>QB &middot; SO</td><td>Iowa St.</td><td>10</td></tr>
+        <tr><td>Thomas Teague</td><td>QB &middot; SO</td><td>LSU</td><td>8</td></tr>
+        <tr><td>Jordan Molinich</td><td>HB &middot; SO</td><td>Southern</td><td>4</td></tr>
+        <tr><td>Deshawn Bernard</td><td>WR &middot; SO</td><td>Iowa St.</td><td>4</td></tr>
+        <tr><td>Dylan Raiola</td><td>QB &middot; JR (RS)</td><td>Nebraska</td><td>3</td></tr>
+        <tr><td>CJ Carr</td><td>QB &middot; JR</td><td>Notre Dame</td><td>3</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Richard Young and Fluff Bothwell finish the regular season deadlocked at 12 weeks each, having led or shared the lead for most of the year. Bryce Underwood closes at 11, and Iowa State's Jaray Rask &mdash; the 5-star athlete who signed as a position-flex recruit and is now the quarterback of the nation's only unbeaten team &mdash; rounds out the top four at 10. It's a running back's race at the very top, with a genuine two-man final act between Young and Bothwell now that the regular season is over.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">The Coaching Carousel: Full Journeys</h2></div>
+  <p class="prose">Records alone don't tell the whole story of a coaching tenure. Here's every notable coach this chronicle has tracked, followed through every award winner they've produced and every bowl or championship game they've coached in across three seasons.</p>
+
+  <div class="coach-card">
+    <h3>Joey McGuire &middot; Texas Tech</h3>
+    <div class="role">Untouched by this window's coaching carousel &mdash; in Lubbock the entire tracked history</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2025</span><span class="e">National Championship runner-up, lost to Notre Dame 34&ndash;31. Coached John Mackey Award winner Terrance Carter Jr.</span></div>
+      <div class="yr"><span class="y">2026</span><span class="e">12&ndash;1, Big 12 champion (beat Cincinnati 35&ndash;23), Best HC Award winner, CFP Round 2 loss to Clemson in the Rose Bowl (48&ndash;34). Coached Jim Thorpe Award winner Marcus Ramon-Edwards.</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">10&ndash;2, ranked No. 8 in the CFP field entering Championship Week &mdash; back in the Big 12 title game against Iowa State.</span></div>
+    </div>
+    <p class="note">Three years, three deep national runs, and two different award-winning players developed under him at two different positions. No coach in this chronicle has a longer or more decorated résumé, and he's never once appeared on a hot-seat list.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Hugh Freeze &middot; Auburn</h3>
+    <div class="role">2027 hot-seat entry, entering the season already employed before this window's tracking began</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2026</span><span class="e">7&ndash;6, Las Vegas Bowl loss to UCLA, 21&ndash;17.</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">9&ndash;3, ranked No. 10 in the CFP field, built on a Week 4 upset of then-No. 1 Texas, 53&ndash;47. Sitting outside his own conference title game hoping for an at-large bid.</span></div>
+    </div>
+    <p class="note">A full-turnaround story in one offseason: a losing bowl trip becomes a signature win over the defending national champion and a CFP-caliber season, all under the same coach who opened this year on a hot-seat list.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Brian Kelly &middot; LSU</h3>
+    <div class="role">2027 hot-seat entry, entering the season already employed before this window's tracking began</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2025</span><span class="e">Alamo Bowl champion, beat Kansas 42&ndash;7.</span></div>
+      <div class="yr"><span class="y">2026</span><span class="e">11&ndash;3, CFP Round 1 win over UNLV (52&ndash;14), Round 2 Sugar Bowl loss to Georgia (38&ndash;35) &mdash; Georgia went on to reach, and lose, that year's national title game to Texas.</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">8&ndash;4, held over from the hot-seat board despite a genuinely reasonable record.</span></div>
+    </div>
+    <p class="note">The single strangest case on this board: a coach who beat a Round 1 CFP opponent and pushed that year's national runner-up in the Sugar Bowl just one year ago, now on notice for essentially treading water at 8&ndash;4. Name recognition and expectations, not results, are what's driving this one.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Jesse Minter &middot; USC</h3>
+    <div class="role">2026 hire, from LA Chargers defensive coordinator</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2027</span><span class="e">Debut season: 9&ndash;3, ranked No. 11 in the CFP field &mdash; the best first-year record of any coach hired in this chronicle's tracked window.</span></div>
+    </div>
+    <p class="note">USC has never once cracked a Top 25 recruiting class across either cycle this chronicle has tracked. Minter's entire debut season was built on development and the transfer portal, not blue-chip recruiting &mdash; the single clearest proof in this whole database that a coaching hire can outrun a roster's raw talent level.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Adam Fuller &middot; Virginia</h3>
+    <div class="role">2025 hire, from the LA Chargers' safeties coach</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2026</span><span class="e">Debut season: 7&ndash;5 in the regular season, capped by a Sun Bowl championship over Houston, 27&ndash;21 in overtime &mdash; finishing 8&ndash;5. The best debut season of any coach in the 2025 hiring class.</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">Season 2: 4&ndash;8. A complete collapse from a bowl-winning debut to one of the worst records in the sport.</span></div>
+    </div>
+    <p class="note">Still the single steepest one-year fall this chronicle has tracked for any coach, debut included &mdash; from a bowl trophy to a 4&ndash;8 season in the space of one offseason, with no roster overhaul severe enough on paper to explain it.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Mike Uremovich &middot; Ball State</h3>
+    <div class="role">The first-ever Best HC Award winner tracked in this chronicle</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2025</span><span class="e">9&ndash;4, Best HC Award winner, lost the MAC Championship to Western Michigan by a single point, 28&ndash;27.</span></div>
+      <div class="yr"><span class="y">2026</span><span class="e">Missed the MAC title game entirely.</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">8&ndash;4, back in the MAC Championship this week against Central Michigan &mdash; his first title-game appearance since that 2025 award-winning season.</span></div>
+    </div>
+    <p class="note">A genuine full-circle story most of this carousel doesn't get: the very first coach this chronicle ever recognized with its top individual honor, back in the title game two years later after a quiet year in between.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">The Two Coaches Fired This Season</h2></div>
+  <div class="grade-grid">
+    <div class="grade-card"><div class="team">Wake Forest <span class="pill pill-fired">Fired In-Season</span></div><p>Jake Dickert finishes 2&ndash;10, his second straight near-winless season. Replaced by Brian Hartline, Ohio State's offensive coordinator.</p></div>
+    <div class="grade-card"><div class="team">Cincinnati <span class="pill pill-fired">Fired In-Season</span></div><p>Scott Satterfield finishes 3&ndash;9. Replaced by Tremaine Jackson, head coach at Prairie View A&amp;M.</p></div>
+  </div>
+  <p class="prose" style="margin-top:14px;">Both hires pull from opposite ends of the coaching pipeline &mdash; one a coordinator stepping up from a College Football Playoff-contending program, the other a proven head coach jumping up from the FCS level. Meanwhile, two coaches with even worse records survived the season entirely: Missouri's Eliah Drinkwitz (1&ndash;11) and Eastern Michigan's Chris Creighton (1&ndash;11) both kept their jobs through a season that ended two other coaches' tenures at less extreme records.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">The Award-Winner Ledger, Three Years Running</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Award</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+      <tbody>
+        <tr><td>Heisman</td><td>Fernando Mendoza, Indiana</td><td>Arch Manning, Texas</td><td>TBD</td></tr>
+        <tr><td>Doak Walker (RB)</td><td>Jeremiyah Love, Notre Dame</td><td>Jordan Molinich, Southern</td><td>TBD</td></tr>
+        <tr><td>Bednarik (Def. Player)</td><td>Stanquan Clark, Louisville</td><td>Maddox Marcellus, Virginia</td><td>TBD</td></tr>
+        <tr><td>Butkus (LB)</td><td>Dion Crawford, Buffalo</td><td>Maddox Marcellus, Virginia</td><td>TBD</td></tr>
+        <tr><td>Best HC</td><td>Mike Uremovich, Ball St. (9-4)</td><td>Joey McGuire, Texas Tech (12-1)</td><td>TBD</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Every award on this board is still blank for 2027 &mdash; the National Awards Watch section fills in only after bowl season resolves. Two things are already true, though: Molinich has been the national rushing leader in both of his two college seasons, and Maddox Marcellus is the only player in this chronicle to sweep two major individual awards in the same season (Bednarik and Butkus, both 2026). Whether either extends their run into 2027 is one of the open questions bowl season will answer.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">What To Watch</h2></div>
+  <div class="prose">
+    <p>Texas Tech and Iowa State in Arlington is the whole weekend in one game &mdash; a proven national title contender against the only unbeaten team left in the country, with a near-lock CFP seed on the line either way. Watch Auburn and USC too: both are outside their own conference championship games and both have the résumé to make the field anyway, which means Selection Sunday is going to matter more for those two programs than for almost anyone actually playing this weekend.</p>
+    <p>And keep an eye on the coaching carousel's bottom tier. Two firings already happened mid-season &mdash; a first for this chronicle's tracked history &mdash; and Missouri and Eastern Michigan both enter the offseason at 1&ndash;11, among the worst records anywhere in the sport, still employed for now. Bowl season and its immediate aftermath is exactly when the rest of this year's carousel gets decided.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">The National Desk &middot; College Football &middot; Conference Championship Week Sign-Off</p>
+    <p class="headline">Iowa State is the last unbeaten team standing, two coaches already lost their jobs mid-season, and Joey McGuire's Texas Tech is chasing its third straight deep national run against the only team left with a perfect record.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">No. 1</span><span class="v">Iowa State, 12-0</span></div>
+      <div class="stat-chip"><span class="k">Heisman Leaders</span><span class="v">Young &amp; Bothwell, 12 wks</span></div>
+      <div class="stat-chip"><span class="k">Best Coaching Résumé</span><span class="v">Joey McGuire</span></div>
+      <div class="stat-chip"><span class="k">Coaches Fired</span><span class="v">2, Wake Forest &amp; Cincinnati</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The National Desk: The Recruiting Chronicle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face { font-family: "Narrow Broadcast"; src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold"); font-weight: 700 900; }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --red-500: #d94b3f; --red-300: #ef8378; --gold-500: #e8b23a; --gold-300: #f3d287;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c; --star: #f0c33c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(217,75,63,0.12), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 68ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 480px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .stars { color: var(--star); letter-spacing: 1px; font-size: 12px; }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-hit { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-bust { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-steal { background: rgba(232,178,58,0.2); color: var(--gold-500); }
+  .pill-up { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-down { background: rgba(232,89,76,0.15); color: var(--loss); }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: #fdf0d5; padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">The National Desk &middot; The Recruiting Chronicle &middot; Annual Edition</p>
+  <h1 class="display">The Trail, Nationally: Two Cycles Of Blue-Chip Talent</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">No. 1 Class, 2026</span><span class="val">Notre Dame</span></div>
+    <div class="bug-chip"><span class="label">No. 1 Class, 2027</span><span class="val">Iowa</span></div>
+    <div class="bug-chip"><span class="label">Top Transfer Riser</span><span class="val">Zayden Walker</span></div>
+    <div class="bug-chip"><span class="label">Fastest To NFL</span><span class="val">3 Transfers, 2 Yrs</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Two full recruiting cycles of national data — every Top 25 class, every marquee high school signee, every headline transfer portal add — cross-referenced against what actually happened on the field: the CFP brackets, the coaching carousel, and the Heisman board. Ranking the recruiting is one thing; this edition follows it all the way to the scoreboard.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Chronicle</h3>
+    <ol>
+      <li>The Full 2026 Class Board</li>
+      <li>The Full 2027 Class Board</li>
+      <li>The Movement Report</li>
+      <li>Recruiting Meets The Scoreboard</li>
+      <li>The Position Premium</li>
+      <li>How Schools Land Their Headliner</li>
+      <li>Top 5 HS Recruits, Two Cycles</li>
+      <li>Top 10 Transfers, Two Cycles — In Full</li>
+      <li>The Zayden Walker Story</li>
+      <li>The Jaray Rask Conversion</li>
+      <li>The NFL-In-A-Hurry Club</li>
+      <li>What To Watch</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Full 2026 Class Board</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rank</th><th>School</th><th>Signings</th><th>Avg</th><th>Points</th><th>5&#9733;</th><th>4&#9733;</th><th>3&#9733;</th><th>Top Recruit</th><th>HS/Transfer</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Notre Dame</td><td>29</td><td>92.77</td><td>297.5</td><td>4</td><td>10</td><td>13</td><td>Zayden Walker</td><td>Transfer</td></tr>
+        <tr><td>2</td><td>Oklahoma</td><td>29</td><td>90.03</td><td>277.4</td><td>3</td><td>7</td><td>12</td><td>Aidan Gousby</td><td>Transfer</td></tr>
+        <tr><td>3</td><td>Texas Tech</td><td>29</td><td>89.35</td><td>270.8</td><td>3</td><td>6</td><td>10</td><td>Terrance Green</td><td>Transfer</td></tr>
+        <tr><td>4</td><td>South Carolina</td><td>27</td><td>90.57</td><td>269.9</td><td>2</td><td>8</td><td>10</td><td>Ben Daniels</td><td>HS</td></tr>
+        <tr><td>5</td><td>Michigan</td><td>28</td><td>90.62</td><td>264.9</td><td>1</td><td>8</td><td>15</td><td>Elijah Daniels</td><td>HS</td></tr>
+        <tr><td>6</td><td>Alabama</td><td>27</td><td>89.18</td><td>262.1</td><td>2</td><td>7</td><td>8</td><td>D.J. Taylor</td><td>HS</td></tr>
+        <tr><td>7</td><td>LSU</td><td>26</td><td>91.08</td><td>260.5</td><td>1</td><td>8</td><td>11</td><td>Marvin Holliday</td><td>HS</td></tr>
+        <tr><td>8</td><td>UNC</td><td>29</td><td>87.45</td><td>257.7</td><td>3</td><td>4</td><td>9</td><td>Jamal Anderson</td><td>Transfer</td></tr>
+        <tr><td>9</td><td>Mississippi St.</td><td>30</td><td>89.72</td><td>257.7</td><td>1</td><td>6</td><td>18</td><td>Marvin Peters</td><td>HS</td></tr>
+        <tr><td>10</td><td>Clemson</td><td>29</td><td>89.54</td><td>256.0</td><td>0</td><td>9</td><td>10</td><td>Stephiylan Green</td><td>Transfer</td></tr>
+        <tr><td>11</td><td>Iowa St.</td><td>28</td><td>89.93</td><td>254.5</td><td>1</td><td>6</td><td>14</td><td>Jaray Rask</td><td>HS</td></tr>
+        <tr><td>12</td><td>Ohio St.</td><td>30</td><td>89.25</td><td>254.1</td><td>0</td><td>8</td><td>13</td><td>Javan Robinson</td><td>Transfer</td></tr>
+        <tr><td>13</td><td>Vanderbilt</td><td>29</td><td>90.75</td><td>254.0</td><td>0</td><td>8</td><td>13</td><td>Jamarion Wilcox</td><td>Transfer</td></tr>
+        <tr><td>14</td><td>Florida St.</td><td>29</td><td>87.36</td><td>252.9</td><td>2</td><td>5</td><td>9</td><td>Derek Johnson</td><td>HS</td></tr>
+        <tr><td>15</td><td>California</td><td>28</td><td>86.96</td><td>252.5</td><td>2</td><td>5</td><td>9</td><td>Myles Finley</td><td>Transfer</td></tr>
+        <tr><td>16</td><td>NC State</td><td>29</td><td>87.77</td><td>250.4</td><td>2</td><td>4</td><td>11</td><td>Tyreke Hiestand</td><td>HS</td></tr>
+        <tr><td>17</td><td>Ole Miss</td><td>29</td><td>88.59</td><td>247.8</td><td>0</td><td>7</td><td>12</td><td>Tony Mitchell</td><td>Transfer</td></tr>
+        <tr><td>18</td><td>Wisconsin</td><td>29</td><td>87.32</td><td>247.4</td><td>1</td><td>7</td><td>6</td><td>Rasheed Penniston</td><td>HS</td></tr>
+        <tr><td>19</td><td>Georgia</td><td>29</td><td>88.01</td><td>247.4</td><td>1</td><td>7</td><td>6</td><td>Sam Williams</td><td>HS</td></tr>
+        <tr><td>20</td><td>UCF</td><td>27</td><td>88.46</td><td>243.8</td><td>1</td><td>7</td><td>5</td><td>A.J. Turner</td><td>Transfer</td></tr>
+        <tr><td>21</td><td>Penn St.</td><td>28</td><td>90.20</td><td>243.5</td><td>1</td><td>4</td><td>14</td><td>Mike Guidry</td><td>HS</td></tr>
+        <tr><td>22</td><td>Oregon</td><td>30</td><td>88.39</td><td>239.3</td><td>2</td><td>2</td><td>12</td><td>Ali Tofilau</td><td>HS</td></tr>
+        <tr><td>23</td><td>Miami</td><td>28</td><td>90.15</td><td>238.8</td><td>1</td><td>3</td><td>15</td><td>Willie Taylor</td><td>HS</td></tr>
+        <tr><td>24</td><td>Indiana</td><td>30</td><td>87.68</td><td>236.9</td><td>1</td><td>4</td><td>10</td><td>Allen Hekking</td><td>HS</td></tr>
+        <tr><td>25</td><td>Michigan St.</td><td>30</td><td>86.45</td><td>234.3</td><td>1</td><td>3</td><td>12</td><td>Chase Odaniel</td><td>HS</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The Full 2027 Class Board</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rank</th><th>School</th><th>Signings</th><th>Avg</th><th>Points</th><th>5&#9733;</th><th>4&#9733;</th><th>3&#9733;</th><th>Top Recruit</th><th>HS/Transfer</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Iowa</td><td>28</td><td>90.20</td><td>283.6</td><td>4</td><td>7</td><td>9</td><td>JC Ajian</td><td>Transfer</td></tr>
+        <tr><td>2</td><td>Oklahoma</td><td>27</td><td>89.95</td><td>279.2</td><td>3</td><td>8</td><td>10</td><td>Chandavian Bradley</td><td>Transfer</td></tr>
+        <tr><td>3</td><td>Pittsburgh</td><td>27</td><td>89.18</td><td>278.6</td><td>4</td><td>6</td><td>9</td><td>TJ Branch</td><td>Transfer</td></tr>
+        <tr><td>4</td><td>Michigan</td><td>26</td><td>92.25</td><td>272.8</td><td>3</td><td>6</td><td>14</td><td>Mike Russell</td><td>HS</td></tr>
+        <tr><td>5</td><td>Georgia</td><td>30</td><td>91.25</td><td>270.2</td><td>2</td><td>7</td><td>15</td><td>Braylon Staley</td><td>Transfer</td></tr>
+        <tr><td>6</td><td>Miami</td><td>29</td><td>89.69</td><td>269.5</td><td>2</td><td>7</td><td>14</td><td>Dashawn Spears</td><td>Transfer</td></tr>
+        <tr><td>7</td><td>Notre Dame</td><td>25</td><td>91.37</td><td>268.3</td><td>2</td><td>8</td><td>10</td><td>Jamarion Wilcox</td><td>Transfer</td></tr>
+        <tr><td>8</td><td>Ohio St.</td><td>30</td><td>89.50</td><td>264.6</td><td>1</td><td>8</td><td>14</td><td>Sean Rickel</td><td>HS</td></tr>
+        <tr><td>9</td><td>Texas A&amp;M</td><td>27</td><td>91.20</td><td>264.6</td><td>3</td><td>4</td><td>15</td><td>Jabari Moncrief</td><td>Transfer</td></tr>
+        <tr><td>10</td><td>Oregon</td><td>28</td><td>91.09</td><td>263.5</td><td>1</td><td>8</td><td>13</td><td>Max Wright</td><td>HS</td></tr>
+        <tr><td>11</td><td>LSU</td><td>27</td><td>89.65</td><td>256.2</td><td>2</td><td>6</td><td>8</td><td>Ahmad Breaux</td><td>Transfer</td></tr>
+        <tr><td>12</td><td>Florida St.</td><td>28</td><td>90.82</td><td>255.9</td><td>0</td><td>8</td><td>16</td><td>Ashton Woods</td><td>Transfer</td></tr>
+        <tr><td>13</td><td>Clemson</td><td>28</td><td>91.42</td><td>255.3</td><td>1</td><td>6</td><td>15</td><td>Amare Adams</td><td>Transfer</td></tr>
+        <tr><td>14</td><td>Penn St.</td><td>24</td><td>89.18</td><td>254.1</td><td>1</td><td>9</td><td>5</td><td>Mike Mitchell</td><td>Transfer</td></tr>
+        <tr><td>15</td><td>Ole Miss</td><td>28</td><td>89.66</td><td>251.1</td><td>1</td><td>6</td><td>11</td><td>Will Echoles</td><td>Transfer</td></tr>
+        <tr><td>16</td><td>Texas</td><td>28</td><td>90.33</td><td>250.1</td><td>1</td><td>5</td><td>15</td><td>Dan Trueman</td><td>HS</td></tr>
+        <tr><td>17</td><td>Arizona St.</td><td>27</td><td>89.05</td><td>249.0</td><td>1</td><td>6</td><td>10</td><td>Mike Bernal</td><td>HS</td></tr>
+        <tr><td>18</td><td>Michigan St.</td><td>28</td><td>88.96</td><td>248.1</td><td>1</td><td>5</td><td>13</td><td>Jace Cunningham</td><td>HS</td></tr>
+        <tr><td>19</td><td>Washington</td><td>28</td><td>88.61</td><td>246.0</td><td>2</td><td>4</td><td>9</td><td>Bryan Palepoi</td><td>HS</td></tr>
+        <tr><td>20</td><td>Duke</td><td>29</td><td>89.21</td><td>244.5</td><td>0</td><td>6</td><td>14</td><td>Leonard Harrison</td><td>HS</td></tr>
+        <tr><td>21</td><td>Bowling Green</td><td>30</td><td>88.08</td><td>241.1</td><td>2</td><td>4</td><td>7</td><td>Keegan White</td><td>HS</td></tr>
+        <tr><td>22</td><td>South Carolina</td><td>26</td><td>88.72</td><td>241.0</td><td>1</td><td>4</td><td>13</td><td>Myles Finley</td><td>Transfer</td></tr>
+        <tr><td>23</td><td>Alabama</td><td>26</td><td>90.18</td><td>240.6</td><td>0</td><td>6</td><td>12</td><td>Tony Williams</td><td>Transfer</td></tr>
+        <tr><td>24</td><td>Georgia Tech</td><td>24</td><td>88.61</td><td>239.4</td><td>0</td><td>7</td><td>9</td><td>Benaiah Damuni</td><td>Transfer</td></tr>
+        <tr><td>25</td><td>Utah</td><td>27</td><td>86.48</td><td>237.5</td><td>1</td><td>7</td><td>3</td><td>Randy White</td><td>HS</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">The Movement Report</h2></div>
+  <p class="prose">Fifteen schools appear in both Top 25 boards. Here's every one of them, ranked by how far they moved:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>2026 Rank</th><th>2027 Rank</th><th>Movement</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Miami</td><td>23</td><td>6</td><td>+17</td></tr>
+        <tr class="hl"><td>Georgia</td><td>19</td><td>5</td><td>+14</td></tr>
+        <tr><td>Oregon</td><td>22</td><td>10</td><td>+12</td></tr>
+        <tr><td>Penn St.</td><td>21</td><td>14</td><td>+7</td></tr>
+        <tr><td>Michigan St.</td><td>25</td><td>18</td><td>+7</td></tr>
+        <tr><td>Ohio St.</td><td>12</td><td>8</td><td>+4</td></tr>
+        <tr><td>Florida St.</td><td>14</td><td>12</td><td>+2</td></tr>
+        <tr><td>Ole Miss</td><td>17</td><td>15</td><td>+2</td></tr>
+        <tr><td>Michigan</td><td>5</td><td>4</td><td>+1</td></tr>
+        <tr><td>Oklahoma</td><td>2</td><td>2</td><td>0</td></tr>
+        <tr><td>Clemson</td><td>10</td><td>13</td><td>&minus;3</td></tr>
+        <tr><td>LSU</td><td>7</td><td>11</td><td>&minus;4</td></tr>
+        <tr><td>Notre Dame</td><td>1</td><td>7</td><td>&minus;6</td></tr>
+        <tr class="hl"><td>Alabama</td><td>6</td><td>23</td><td>&minus;17</td></tr>
+        <tr class="hl"><td>South Carolina</td><td>4</td><td>22</td><td>&minus;18</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Ten more schools from the 2026 board fell out of the Top 25 entirely by 2027: Texas Tech, UNC, Mississippi St., Iowa St., Vanderbilt, California, NC State, Wisconsin, UCF, and Indiana. That's ten of twenty-five spots that turned over completely in a single cycle — this board reshuffles itself almost as much as it repeats.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Recruiting Meets The Scoreboard</h2></div>
+  <div class="grade-grid">
+    <div class="grade-card"><div class="team">Georgia &amp; Miami <span class="pill pill-up">CFP-Fueled Surge</span></div><p>Georgia was the 2026 CFP runner-up (13&ndash;0 into the bracket, lost the title game 54&ndash;14) and jumped 14 spots in the very next class. Miami was a CFP field team at 11&ndash;2 and jumped 17. Both of this cycle's two biggest risers were coming off deep national title runs.</p></div>
+    <div class="grade-card"><div class="team">Texas <span class="pill pill-down">Champion, Modest Follow-Up</span></div><p>Won the 2026 national title and still only signed the No. 16 class in 2027 &mdash; the actual champion didn't reload at anywhere near the rate its CFP runner-up did.</p></div>
+    <div class="grade-card"><div class="team">Texas Tech &amp; Joey McGuire <span class="pill pill-down">Coach Outlasting The Class</span></div><p>Won the 2026 Best HC Award at 12&ndash;1 with the No. 3 recruiting class the same cycle. By 2027, that class fell off the Top 25 board entirely &mdash; yet Texas Tech is still a ranked team in the Week 10 2027 polls. Recruiting rank isn't holding this program up; the coaching is.</p></div>
+    <div class="grade-card"><div class="team">USC &amp; Jesse Minter <span class="pill pill-up">Success Without The Class</span></div><p>Minter's 2026 hire debuted at 7&ndash;1 in 2027 &mdash; and USC has never appeared on either Top 25 recruiting board in this chronicle. A genuinely elite season built on development and the portal below the Top 25 line, not blue-chip recruiting.</p></div>
+    <div class="grade-card"><div class="team">Notre Dame <span class="pill pill-down">Bleeding Both Ways</span></div><p>Still 7&ndash;0 and No. 1 in the Week 10 2027 polls, but the two highest-ranked transfers in the entire 2027 portal class &mdash; Jaiden Ausberry (No. 1, to Auburn) and Mike Mitchell (No. 2, to Penn St.) &mdash; both left Notre Dame. A CFP-contending roster and a program-level talent drain, happening at the same time.</p></div>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">The Position Premium</h2></div>
+  <p class="prose">Across both cycles' 25 team-headliner ("Top Recruit") slots each, 43 of the 50 were rated 5-stars. Tallied by position, one position dominates:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Position</th><th>5&#9733; Headliners, 2026+2027 Combined</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>DT</td><td>11</td></tr>
+        <tr><td>ATH</td><td>8</td></tr>
+        <tr><td>OLB</td><td>5</td></tr>
+        <tr><td>FS</td><td>5</td></tr>
+        <tr><td>HB</td><td>4</td></tr>
+        <tr><td>MLB</td><td>3</td></tr>
+        <tr><td>DE</td><td>3</td></tr>
+        <tr><td>SS</td><td>2</td></tr>
+        <tr><td>WR</td><td>1</td></tr>
+        <tr><td>C</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Defensive tackle is the single most common position for a program's headline signee — more than double the next closest position. In a sport that talks constantly about quarterbacks and skill players, the position actually most likely to be a class's marquee name is on the interior defensive line.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">How Schools Land Their Headliner</h2></div>
+  <p class="prose">In 2026, 15 of the 25 Top Recruits were homegrown high school signees and 10 came through the portal. In 2027, that flipped completely: 15 of 25 headliners were transfers, only 10 were high school signees. In one cycle, the portal went from the minority way to land a program's best player to the majority way.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">Top 5 HS Recruits, Two Cycles</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Class</th><th>Rank</th><th>Name</th><th>School</th><th>Pos</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>2026</td><td>1</td><td>Deavin Cheney</td><td>LSU</td><td>ATH (OLB)</td><td>Transferred to Florida St. by Yr2</td></tr>
+        <tr><td>2026</td><td>2</td><td>Derek Moore</td><td>Notre Dame</td><td>TE</td><td>Transferred to Florida by Yr2</td></tr>
+        <tr><td>2026</td><td>3</td><td>Tanner Ridgeway</td><td>Penn St.</td><td>OLB</td><td>Steady development, 68&rarr;70 OVR</td></tr>
+        <tr><td>2026</td><td>4</td><td>Khalil Davis</td><td>LSU</td><td>LE</td><td>Hit, 80&rarr;83 OVR</td></tr>
+        <tr><td>2026</td><td>5</td><td>Charles Davidovicz</td><td>Air Force</td><td>CB</td><td>Hit, 78&rarr;80 OVR</td></tr>
+        <tr><td>2027</td><td>1</td><td>Don Ratliff</td><td>Ohio St.</td><td>DE</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>2</td><td>Wesley Mcleod</td><td>San Jose St.</td><td>OLB</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>3</td><td>Dylan Boatman</td><td>Colorado</td><td>DT</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>4</td><td>James Glass</td><td>Ohio St.</td><td>MLB</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>5</td><td>Connor Veach</td><td>Georgia</td><td>DT</td><td>Too early</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Two of the five national top-5 signees in 2026 had already transferred away from the school that signed them within two years — a genuinely high portal-churn rate at the very top of a recruiting class, where retention is supposed to be easiest.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">Top 10 Transfers, Two Cycles — In Full</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Class</th><th>Rank</th><th>Name</th><th>Landing Spot</th><th>From</th><th>Pos</th><th>Outcome</th></tr></thead>
+      <tbody>
+        <tr><td>2026</td><td>1</td><td>Jordan Hall</td><td>Oklahoma</td><td>Georgia</td><td>DT</td><td>NFL by Yr2</td></tr>
+        <tr><td>2026</td><td>2</td><td>Jamal Anderson</td><td>UNC</td><td>Clemson</td><td>OLB</td><td>Hit, 88&rarr;91 OVR</td></tr>
+        <tr><td>2026</td><td>3</td><td>Stephiylan Green</td><td>Clemson</td><td>Clemson</td><td>DT</td><td>Hit, 89&rarr;94 OVR</td></tr>
+        <tr><td>2026</td><td>4</td><td>A.J. Turner</td><td>UCF</td><td>Minnesota</td><td>HB</td><td>NFL by Yr2</td></tr>
+        <tr><td>2026</td><td>5</td><td>Boo Carter</td><td>Tennessee</td><td>Tennessee</td><td>CB</td><td>Hit, 86&rarr;89 OVR</td></tr>
+        <tr><td>2026</td><td>6</td><td>Joenel Aguero</td><td>Purdue</td><td>Purdue</td><td>FS</td><td>Steady, 88&rarr;88 OVR</td></tr>
+        <tr class="hl"><td>2026</td><td>7</td><td>Zayden Walker</td><td>Notre Dame</td><td>Georgia</td><td>OLB</td><td>5&#9733; breakout &mdash; see Segment 9</td></tr>
+        <tr><td>2026</td><td>8</td><td>Justin Williams</td><td>Oklahoma St.</td><td>Georgia</td><td>MLB</td><td>Hit, 87&rarr;90 OVR</td></tr>
+        <tr><td>2026</td><td>9</td><td>Terrance Green</td><td>Texas Tech</td><td>Oregon</td><td>DT</td><td>Hit, 89&rarr;94 OVR</td></tr>
+        <tr><td>2026</td><td>10</td><td>Barion Brown</td><td>ECU</td><td>LSU</td><td>WR</td><td>NFL by Yr2</td></tr>
+        <tr><td>2027</td><td>1</td><td>Jaiden Ausberry</td><td>Auburn</td><td>Notre Dame</td><td>OLB</td><td>Too early &mdash; see Segment 4</td></tr>
+        <tr><td>2027</td><td>2</td><td>Mike Mitchell</td><td>Penn St.</td><td>Notre Dame</td><td>DT</td><td>Too early &mdash; see Segment 4</td></tr>
+        <tr><td>2027</td><td>3</td><td>Amare Adams</td><td>Clemson</td><td>Clemson</td><td>DT</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>4</td><td>Dashawn Spears</td><td>Miami</td><td>LSU</td><td>FS</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>5</td><td>Malik Autry</td><td>Auburn</td><td>Auburn</td><td>DT</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>6</td><td>JC Ajian</td><td>Iowa</td><td>Oklahoma</td><td>DT</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>7</td><td>K.D. Arnold</td><td>Tennessee</td><td>Tennessee</td><td>T</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>8</td><td>Dillan Johnson</td><td>Iowa</td><td>Wisconsin</td><td>DT</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>9</td><td>Roderick Robinson II</td><td>Texas A&amp;M</td><td>Texas A&amp;M</td><td>HB</td><td>Too early</td></tr>
+        <tr><td>2027</td><td>10</td><td>Ahmad Breaux</td><td>LSU</td><td>LSU</td><td>DT</td><td>Too early</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Iowa landed two of the ten 2027 Top 10 Transfers (JC Ajian and Dillan Johnson, both defensive tackles) — no other program managed more than one, and it's the same Iowa class that jumped to No. 1 overall this cycle. The transfer class and the team-rank surge are the same story.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 09</span><h2 class="display">The Zayden Walker Story</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">Georgia &rarr; Notre Dame (Transfer)</div>
+    <div class="teams">A 5&#9733; Transfer Add Becomes A No. 1 Signee</div>
+    <p>Came out of Georgia and entered the portal rated a 5-star and the No. 7 overall transfer add in the country, landing at Notre Dame — where he became that class's No. 1 overall signee, on the roster that finished as the nation's top-ranked class. His pre-transfer high school profile isn't in the national recruiting data at all, which is its own point: however he got to Georgia, he left it as one of the single most sought-after players in the portal.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 10</span><h2 class="display">The Jaray Rask Conversion</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">Iowa St. &middot; 2026 HS Signee &rarr; 2027 Heisman Watchlist</div>
+    <div class="teams">Signed As An ATH, Now A Watchlist QB</div>
+    <p>Jaray Rask signed with Iowa State as a 5-star athlete in the 2026 class — Iowa State's own Top Recruit that cycle, at No. 11 nationally. By the 2027 Heisman Watchlist, he's listed at quarterback, four weeks on the board, for an Iowa State team that sits at 9&ndash;0 — tied with Notre Dame for the best record in the country at the Week 10 check-in. A position-flip recruit turning into a Heisman contender for the nation's most surprising unbeaten team is exactly the kind of outcome a class ranking alone can't predict.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 11</span><h2 class="display">The NFL-In-A-Hurry Club</h2></div>
+  <p class="prose">Three of the ten 2026 Top 10 Transfers were already draft-eligible and gone by their second tracked season — Jordan Hall (Oklahoma), A.J. Turner (UCF), and Barion Brown (ECU) all hit the NFL within two years of their portal move. All three were already older, experienced transfers rather than young additions, which is exactly the profile most likely to make an immediate impact and leave just as fast — a portal-era tradeoff every program chasing a top-10 transfer class is making, whether they say so or not.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 12</span><h2 class="display">What To Watch</h2></div>
+  <div class="prose">
+    <p>The 2027 recruiting class is still too young to grade in full, but the early shape of it already tells a story: Iowa and Pittsburgh's jumps from off-the-board to top-3 both leaned heavily on the transfer portal rather than high school recruiting, following the same playbook Notre Dame used to reach No. 1 the cycle before. Oklahoma remains the one program building at a consistently elite level through both approaches at once — and on the field, that consistency hasn't translated into a title yet, which is its own reminder that recruiting rank and winning are related, not identical.</p>
+    <p>Watch the retention numbers as closely as the rankings — two of the five best high school prospects in the country in 2026 were already gone from the schools that signed them within two years, and Notre Dame is bleeding its two best 2027 transfer prospects out the door while still sitting unbeaten. And watch the programs proving the class rank isn't destiny at all: USC winning without ever cracking the board, Texas Tech's coaching outlasting a class that fell off it entirely. Signing a great class and keeping a great class have become two different jobs — and neither one is the same job as winning with what you signed.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">The National Desk &middot; The Recruiting Chronicle &middot; Sign-Off</p>
+    <p class="headline">Two cycles of national recruiting data, cross-checked against the CFP bracket, the coaching carousel, and the Heisman board: recruiting rank predicts a lot, but USC won without ever cracking it and Texas won a title without reloading behind it.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Most Consistent</span><span class="v">Oklahoma, No. 2 Twice</span></div>
+      <div class="stat-chip"><span class="k">Biggest Board Riser</span><span class="v">Miami, +17</span></div>
+      <div class="stat-chip"><span class="k">Biggest Board Faller</span><span class="v">South Carolina, &minus;18</span></div>
+      <div class="stat-chip"><span class="k">Position Premium</span><span class="v">DT, 11 Headliners</span></div>
+      <div class="stat-chip"><span class="k">Fastest Evaluation Flip</span><span class="v">Zayden Walker</span></div>
+      <div class="stat-chip"><span class="k">Best Value Story</span><span class="v">Jaray Rask, ATH&rarr;QB</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>
