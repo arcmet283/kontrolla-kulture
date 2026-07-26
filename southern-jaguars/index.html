@@ -55,6 +55,10 @@
   .card .tag { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 10.5px; letter-spacing: 0.08em; color: var(--fg-dim); }
   .card h3 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 17px; margin: 6px 0 8px; line-height: 1.15; }
   .card p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; }
+  .card .yt-link { display: inline-flex; align-items: center; gap: 5px; margin-top: 12px; font-family: "Arial Narrow",Arial,sans-serif; font-weight: 700; text-transform: uppercase; font-size: 11.5px; letter-spacing: 0.04em; color: var(--red-500); }
+  .card .yt-link:hover { text-decoration: underline; }
+  .card.has-video { display: block; }
+  .card.has-video .to-writeup { display: block; }
 
   footer { text-align: center; padding: 40px 16px 60px; color: var(--fg-dim); font-size: 13px; }
 </style>
@@ -113,11 +117,12 @@
       <h3>2027 Week 5 Check-In</h3>
       <p>The Record-Holder, Grounded — the preseason's biggest question answers itself early, and not well.</p>
     </a>
-    <a class="card" href="southern-week12-2027-report.html">
+    <div class="card has-video">
       <div class="tag">Weekly Check-In</div>
-      <h3>2027 Week 12 Check-In</h3>
+      <h3><a class="to-writeup" href="southern-week12-2027-report.html">2027 Week 12 Check-In</a></h3>
       <p>From 1-4 to 5-5 and winners of three straight — one win from a second straight bowl trip.</p>
-    </a>
+      <a class="yt-link" href="https://youtu.be/ka4vDMmTeEQ" target="_blank" rel="noopener">&#9654; Watch the Army Game on YouTube</a>
+    </div>
     <a class="card" href="southern-confchamp-2027-report.html">
       <div class="tag">Season Wrap</div>
       <h3>Conference Championship Week</h3>
