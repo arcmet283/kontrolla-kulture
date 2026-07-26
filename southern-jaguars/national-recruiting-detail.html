@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>National Recruiting: Full Data</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Complete spreadsheet-level national recruiting data, 2026 and 2027 cycles — every Top HS recruit, every Top 10 transfer, and the full Top 25 class rankings.">
+<link rel="icon" type="image/png" href="../assets/logo.png">
+<style>
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --red-500: #c9382f; --red-300: #ef8078;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; }
+  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: inherit; }
+
+  header.hero { background: var(--navy-950); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 26px; border-bottom: 3px solid var(--red-500); }
+  header.hero .back { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--red-300); text-decoration: none; }
+  header.hero h1 { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(24px,5vw,40px); margin: 10px 0 8px; }
+  header.hero p { color: var(--ink-dim); max-width: 70ch; font-size: 14.5px; margin: 0; }
+
+  main { max-width: 1280px; margin: 0 auto; padding: 32px clamp(16px,4vw,48px) 80px; }
+
+  .notice { background: var(--surface); border: 1px solid var(--surface-line); border-left: 4px solid var(--red-500); border-radius: 8px; padding: 14px 18px; margin-bottom: 28px; font-size: 13.5px; color: var(--fg-dim); }
+  .notice strong { color: var(--fg); }
+
+  .section-title { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 20px; color: var(--red-500); margin: 40px 0 6px; }
+  .section-sub { font-size: 13px; color: var(--fg-dim); margin: 0 0 14px; }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); margin-bottom: 8px; }
+  table { border-collapse: collapse; width: 100%; font-size: 12.5px; min-width: 900px; }
+  th, td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.04em; font-size: 10.5px; color: var(--fg-dim); background: rgba(201,56,47,0.07); position: sticky; top: 0; }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  tbody tr:hover td { background: rgba(201,56,47,0.05); }
+
+  footer { text-align: center; padding: 40px 16px 60px; color: var(--fg-dim); font-size: 13px; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <a class="back" href="index.html">&larr; Southern Jaguars Dynasty</a>
+  <h1 class="display">National Recruiting: Full Data</h1>
+  <p>Every column from the save's national recruiting sheets — Top HS Recruits, Top 10 Transfers, and the Top 25 Recruiting Class rankings. No summarizing, no narrative framing.</p>
+</header>
+
+<main>
+
+  <div class="notice">
+    <strong>Scoped through Week 7, 2027</strong> — the 2026 and 2027 cycles only. The 2028 cycle isn't shown here yet since it wasn't finalized until after this point in the season.
+  </div>
+
+  <div class="section-title">Top HS Recruits (National)</div>
+  <p class="section-sub">10 rows &middot; 2026 and 2027 classes</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Class Year</th><th>Name</th><th>School</th><th>Rank</th><th>Position</th><th>Height</th><th>Weight</th><th>State</th><th>40-Time</th><th>Bench</th><th>Squat</th><th>Awareness</th><th>Yr1 OVR</th><th>Yr2 OVR</th><th>Yr3 OVR</th><th>Yr4 OVR</th><th>Yr5 OVR</th><th>Status / Comments</th></tr></thead>
+      <tbody>
+<tr><td>2026</td><td>Deavin Cheney</td><td>LSU</td><td>1</td><td>ATH (OLB)</td><td>6'2</td><td>216</td><td>FL</td><td>4.45</td><td>395</td><td>555</td><td>A</td><td>76</td><td>79</td><td>82</td><td>&mdash;</td><td>&mdash;</td><td>Transferred to Florida St after Yr1, then Alabama after Yr2.</td></tr>
+<tr><td>2026</td><td>Derek Moore</td><td>Notre Dame</td><td>2</td><td>TE</td><td>6'3</td><td>235</td><td>AL</td><td>4.67</td><td>380</td><td>415</td><td>A+</td><td>79</td><td>81</td><td>86</td><td>&mdash;</td><td>&mdash;</td><td>Transferred to Florida after Yr1</td></tr>
+<tr><td>2026</td><td>Tanner Ridgeway</td><td>Penn St.</td><td>3</td><td>OLB</td><td>6'3</td><td>217</td><td>NJ</td><td>4.84</td><td>380</td><td>605</td><td>A-</td><td>68</td><td>70</td><td>73</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2026</td><td>Khalil Davis</td><td>LSU</td><td>4</td><td>LE</td><td>6'6</td><td>259</td><td>TX</td><td>4.69</td><td>505</td><td>670</td><td>A+</td><td>80</td><td>83</td><td>87</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2026</td><td>Charles Davidovicz</td><td>Air Force</td><td>5</td><td>CB</td><td>5'11</td><td>168</td><td>CA</td><td>4.26</td><td>215</td><td>415</td><td>A+</td><td>78</td><td>80</td><td>82</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2027</td><td>Don Ratliff</td><td>Ohio St.</td><td>1</td><td>DE</td><td>6'4</td><td>252</td><td>KY</td><td>4.86</td><td>495</td><td>620</td><td>A+</td><td>75</td><td>78</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>Transferred to Kentucky after Yr1.</td></tr>
+<tr><td>2027</td><td>Wesley Mcleod</td><td>San Jose St.</td><td>2</td><td>OLB</td><td>6'5</td><td>228</td><td>CA</td><td>4.58</td><td>380</td><td>605</td><td>A+</td><td>77</td><td>79</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2027</td><td>Dylan Boatman</td><td>Colorado</td><td>3</td><td>DT</td><td>6'4</td><td>302</td><td>HI</td><td>4.88</td><td>465</td><td>605</td><td>B</td><td>70</td><td>81</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2027</td><td>James Glass</td><td>Ohio St.</td><td>4</td><td>MLB</td><td>6'1</td><td>242</td><td>AL</td><td>4.54</td><td>405</td><td>680</td><td>A-</td><td>73</td><td>76</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>Transferred to Fresno St. after Yr1</td></tr>
+<tr><td>2027</td><td>Connor Veach</td><td>Georgia</td><td>5</td><td>DT</td><td>6'0</td><td>289</td><td>SC</td><td>4.94</td><td>455</td><td>620</td><td>A</td><td>73</td><td>77</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Top 10 Transfers (National)</div>
+  <p class="section-sub">20 rows &middot; 2026 and 2027 classes</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Class Year</th><th>Name</th><th>School</th><th>Rank</th><th>Prev Team</th><th>Position - Class</th><th>Height</th><th>Weight</th><th>State</th><th>Speed</th><th>Acceleration</th><th>Awareness</th><th>Yr1 OVR</th><th>Yr2 OVR</th><th>Yr3 OVR</th><th>Yr4 OVR</th><th>Yr5 OVR</th><th>Status</th></tr></thead>
+      <tbody>
+<tr><td>2026</td><td>Jordan Hall</td><td>Oklahoma</td><td>1</td><td>Georgia</td><td>DT - SR</td><td>6'4</td><td>320</td><td>FL</td><td>69</td><td>72</td><td>69</td><td>N/A</td><td>N/A</td><td>N/A</td><td>88</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Jamal Anderson</td><td>UNC</td><td>2</td><td>Clemson</td><td>OLB - JR (RS)</td><td>6'2</td><td>220</td><td>GA</td><td>86</td><td>85</td><td>62</td><td>N/A</td><td>N/A</td><td>N/A</td><td>88</td><td>91</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Stephiylan Green</td><td>Clemson</td><td>3</td><td>Clemson</td><td>DT - JR (RS)</td><td>6'4</td><td>290</td><td>GA</td><td>63</td><td>78</td><td>80</td><td>N/A</td><td>N/A</td><td>N/A</td><td>89</td><td>94</td><td>NFL</td></tr>
+<tr><td>2026</td><td>A.J. Turner</td><td>UCF</td><td>4</td><td>Minnesota</td><td>HB - SR (RS)</td><td>6'0</td><td>190</td><td>VA</td><td>89</td><td>92</td><td>77</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>88</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Boo Carter</td><td>Tennessee</td><td>5</td><td>Tennessee</td><td>CB - JR</td><td>5'11</td><td>200</td><td>TN</td><td>93</td><td>96</td><td>82</td><td>N/A</td><td>N/A</td><td>86</td><td>89</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Joenel Aguero</td><td>Purdue</td><td>6</td><td>Purdue</td><td>FS - JR (RS)</td><td>5'11</td><td>205</td><td>MA</td><td>87</td><td>90</td><td>72</td><td>N/A</td><td>N/A</td><td>N/A</td><td>88</td><td>88</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Zayden Walker</td><td>Notre Dame</td><td>7</td><td>Georgia</td><td>OLB - SO</td><td>6'1</td><td>212</td><td>GA</td><td>88</td><td>89</td><td>70</td><td>N/A</td><td>N/A</td><td>89</td><td>94</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Justin Williams</td><td>Oklahoma St.</td><td>8</td><td>Georgia</td><td>MLB - JR</td><td>6'2</td><td>220</td><td>TX</td><td>88</td><td>90</td><td>85</td><td>N/A</td><td>N/A</td><td>87</td><td>90</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Terrance Green</td><td>Texas Tech</td><td>9</td><td>Oregon</td><td>DT - JR (RS)</td><td>6'5</td><td>330</td><td>TX</td><td>61</td><td>69</td><td>78</td><td>N/A</td><td>N/A</td><td>N/A</td><td>89</td><td>94</td><td>NFL</td></tr>
+<tr><td>2026</td><td>Barion Brown</td><td>ECU</td><td>10</td><td>LSU</td><td>WR - SR (RS)</td><td>5'11</td><td>180</td><td>TN</td><td>99</td><td>92</td><td>81</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>86</td><td>NFL</td></tr>
+<tr><td>2027</td><td>Jaiden Ausberry</td><td>Auburn</td><td>1</td><td>Notre Dame</td><td>OLB - SR (RS)</td><td>6'2</td><td>230</td><td>LA</td><td>78</td><td>83</td><td>78</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>89</td><td>NFL</td></tr>
+<tr><td>2027</td><td>Mike Mitchell</td><td>Penn St.</td><td>2</td><td>Notre Dame</td><td>DT - SO</td><td>6'4</td><td>230</td><td>WV</td><td>80</td><td>88</td><td>73</td><td>N/A</td><td>92</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2027</td><td>Amare Adams</td><td>Clemson</td><td>3</td><td>Clemson</td><td>DT - JR</td><td>6'4</td><td>314</td><td>SC</td><td>72</td><td>80</td><td>74</td><td>N/A</td><td>N/A</td><td>91</td><td>N/A</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2027</td><td>Dashawn Spears</td><td>Miami</td><td>4</td><td>LSU</td><td>FS - SR</td><td>6'3</td><td>206</td><td>LA</td><td>87</td><td>89</td><td>78</td><td>N/A</td><td>N/A</td><td>N/A</td><td>89</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2027</td><td>Malik Autry</td><td>Auburn</td><td>5</td><td>Auburn</td><td>DT - JR</td><td>6'5</td><td>341</td><td>AL</td><td>55</td><td>68</td><td>81</td><td>N/A</td><td>N/A</td><td>89</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2027</td><td>JC Ajian</td><td>Iowa</td><td>6</td><td>Oklahoma</td><td>DT - SO</td><td>6'6</td><td>286</td><td>IA</td><td>74</td><td>76</td><td>75</td><td>N/A</td><td>88</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><td>2027</td><td>K.D. Arnold</td><td>Tennessee</td><td>7</td><td>Tennessee</td><td>T - SR</td><td>6'7</td><td>316</td><td>AL</td><td>46</td><td>53</td><td>91</td><td>N/A</td><td>N/A</td><td>N/A</td><td>89</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2027</td><td>Dillan Johnson</td><td>Iowa</td><td>8</td><td>Wisconsin</td><td>DT - SR</td><td>6'2</td><td>295</td><td>IL</td><td>66</td><td>74</td><td>87</td><td>N/A</td><td>N/A</td><td>N/A</td><td>87</td><td>N/A</td><td>NFL</td></tr>
+<tr><td>2027</td><td>Roderick Robinson II</td><td>Texas A&amp;M</td><td>9</td><td>Texas A&amp;M</td><td>HB - SR (RS)</td><td>6'1</td><td>237</td><td>CA</td><td>91</td><td>92</td><td>86</td><td>N/A</td><td>N/A</td><td>N/A</td><td>N/A</td><td>89</td><td>NFL</td></tr>
+<tr><td>2027</td><td>Ahmad Breaux</td><td>LSU</td><td>10</td><td>LSU</td><td>DT - SR</td><td>6'3</td><td>283</td><td>LA</td><td>70</td><td>78</td><td>80</td><td>N/A</td><td>N/A</td><td>N/A</td><td>88</td><td>N/A</td><td>NFL</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Top 25 Recruiting Class Rankings</div>
+  <p class="section-sub">50 rows &middot; 2026 and 2027 cycles</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Class Year</th><th>Rank</th><th>School</th><th>Total Signings</th><th>Avg</th><th>Points</th><th>5&#9733;</th><th>4&#9733;</th><th>3&#9733;</th><th>Top Recruit</th><th>Stars</th><th>Position</th><th>HS/Transfer</th></tr></thead>
+      <tbody>
+<tr><td>2026</td><td>1</td><td>Notre Dame</td><td>29</td><td>92.77</td><td>297.54</td><td>4</td><td>10</td><td>13</td><td>Zayden Walker</td><td>5</td><td>OLB</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>2</td><td>Oklahoma</td><td>29</td><td>90.03</td><td>277.38</td><td>3</td><td>7</td><td>12</td><td>Aidan Gousby</td><td>5</td><td>FS</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>3</td><td>Texas Tech</td><td>29</td><td>89.35</td><td>270.78</td><td>3</td><td>6</td><td>10</td><td>Terrance Green</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>4</td><td>South Carolina</td><td>27</td><td>90.57</td><td>269.9</td><td>2</td><td>8</td><td>10</td><td>Ben Daniels</td><td>5</td><td>SS</td><td>HS</td></tr>
+<tr><td>2026</td><td>5</td><td>Michigan</td><td>28</td><td>90.62</td><td>264.86</td><td>1</td><td>8</td><td>15</td><td>Elijah Daniels</td><td>5</td><td>DT</td><td>HS</td></tr>
+<tr><td>2026</td><td>6</td><td>Alabama</td><td>27</td><td>89.18</td><td>262.1</td><td>2</td><td>7</td><td>8</td><td>D.J. Taylor</td><td>5</td><td>SS</td><td>HS</td></tr>
+<tr><td>2026</td><td>7</td><td>LSU</td><td>26</td><td>91.08</td><td>260.46</td><td>1</td><td>8</td><td>11</td><td>Marvin Holliday</td><td>5</td><td>FS</td><td>HS</td></tr>
+<tr><td>2026</td><td>8</td><td>UNC</td><td>29</td><td>87.45</td><td>257.74</td><td>3</td><td>4</td><td>9</td><td>Jamal Anderson</td><td>5</td><td>OLB</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>9</td><td>Mississippi St.</td><td>30</td><td>89.72</td><td>257.68</td><td>1</td><td>6</td><td>18</td><td>Marvin Peters</td><td>5</td><td>ATH</td><td>HS</td></tr>
+<tr><td>2026</td><td>10</td><td>Clemson</td><td>29</td><td>89.54</td><td>255.96</td><td>0</td><td>9</td><td>10</td><td>Stephiylan Green</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>11</td><td>Iowa St.</td><td>28</td><td>89.93</td><td>254.46</td><td>1</td><td>6</td><td>14</td><td>Jaray Rask</td><td>5</td><td>ATH</td><td>HS</td></tr>
+<tr><td>2026</td><td>12</td><td>Ohio St.</td><td>30</td><td>89.25</td><td>254.06</td><td>0</td><td>8</td><td>13</td><td>Javan Robinson</td><td>4</td><td>CB</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>13</td><td>Vanderbilt</td><td>29</td><td>90.75</td><td>253.96</td><td>0</td><td>8</td><td>13</td><td>Jamarion Wilcox</td><td>4</td><td>HB</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>14</td><td>Florida St.</td><td>29</td><td>87.36</td><td>252.86</td><td>2</td><td>5</td><td>9</td><td>Derek Johnson</td><td>5</td><td>HB</td><td>HS</td></tr>
+<tr><td>2026</td><td>15</td><td>California</td><td>28</td><td>86.96</td><td>252.54</td><td>2</td><td>5</td><td>9</td><td>Myles Finley</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>16</td><td>NC State</td><td>29</td><td>87.77</td><td>250.4</td><td>2</td><td>4</td><td>11</td><td>Tyreke Hiestand</td><td>5</td><td>MLB</td><td>HS</td></tr>
+<tr><td>2026</td><td>17</td><td>Ole Miss</td><td>29</td><td>88.59</td><td>247.8</td><td>0</td><td>7</td><td>12</td><td>Tony Mitchell</td><td>4</td><td>SS</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>18</td><td>Wisconsin</td><td>29</td><td>87.32</td><td>247.36</td><td>1</td><td>7</td><td>6</td><td>Rasheed Penniston</td><td>5</td><td>DT</td><td>HS</td></tr>
+<tr><td>2026</td><td>19</td><td>Georgia</td><td>29</td><td>88.01</td><td>247.36</td><td>1</td><td>7</td><td>6</td><td>Sam Williams</td><td>5</td><td>MLB</td><td>HS</td></tr>
+<tr><td>2026</td><td>20</td><td>UCF</td><td>27</td><td>88.46</td><td>243.78</td><td>1</td><td>7</td><td>5</td><td>A.J. Turner</td><td>5</td><td>MLB</td><td>Transfer</td></tr>
+<tr><td>2026</td><td>21</td><td>Penn St.</td><td>28</td><td>90.2</td><td>243.54</td><td>1</td><td>4</td><td>14</td><td>Mike Guidry</td><td>5</td><td>HB</td><td>HS</td></tr>
+<tr><td>2026</td><td>22</td><td>Oregon</td><td>30</td><td>88.39</td><td>239.26</td><td>2</td><td>2</td><td>12</td><td>Ali Tofilau</td><td>5</td><td>DE</td><td>HS</td></tr>
+<tr><td>2026</td><td>23</td><td>Miami</td><td>28</td><td>90.15</td><td>238.78</td><td>1</td><td>3</td><td>15</td><td>Willie Taylor</td><td>5</td><td>OLB</td><td>HS</td></tr>
+<tr><td>2026</td><td>24</td><td>Indiana</td><td>30</td><td>87.68</td><td>236.88</td><td>1</td><td>4</td><td>10</td><td>Allen Hekking</td><td>5</td><td>ATH</td><td>HS</td></tr>
+<tr><td>2026</td><td>25</td><td>Michigan St.</td><td>30</td><td>86.45</td><td>234.32</td><td>1</td><td>3</td><td>12</td><td>Chase Odaniel</td><td>5</td><td>FS</td><td>HS</td></tr>
+<tr><td>2027</td><td>1</td><td>Iowa</td><td>28</td><td>90.2</td><td>283.64</td><td>4</td><td>7</td><td>9</td><td>JC Ajian</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>2</td><td>Oklahoma</td><td>27</td><td>89.95</td><td>279.24</td><td>3</td><td>8</td><td>10</td><td>Chandavian Bradley</td><td>5</td><td>OLB</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>3</td><td>Pittsburgh</td><td>27</td><td>89.18</td><td>278.56</td><td>4</td><td>6</td><td>9</td><td>TJ Branch</td><td>5</td><td>FS</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>4</td><td>Michigan</td><td>26</td><td>92.25</td><td>272.82</td><td>3</td><td>6</td><td>14</td><td>Mike Russell</td><td>5</td><td>DE</td><td>HS</td></tr>
+<tr><td>2027</td><td>5</td><td>Georgia</td><td>30</td><td>91.25</td><td>270.22</td><td>2</td><td>7</td><td>15</td><td>Braylon Staley</td><td>5</td><td>WR</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>6</td><td>Miami</td><td>29</td><td>89.69</td><td>269.46</td><td>2</td><td>7</td><td>14</td><td>Dashawn Spears</td><td>5</td><td>FS</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>7</td><td>Notre Dame</td><td>25</td><td>91.37</td><td>268.28</td><td>2</td><td>8</td><td>10</td><td>Jamarion Wilcox</td><td>5</td><td>HB</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>8</td><td>Ohio St.</td><td>30</td><td>89.5</td><td>264.64</td><td>1</td><td>8</td><td>14</td><td>Sean Rickel</td><td>5</td><td>ATH</td><td>HS</td></tr>
+<tr><td>2027</td><td>9</td><td>Texas A&amp;M</td><td>27</td><td>91.2</td><td>264.62</td><td>3</td><td>4</td><td>15</td><td>Jabari Moncrief</td><td>5</td><td>OLB</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>10</td><td>Oregon</td><td>28</td><td>91.09</td><td>263.46</td><td>1</td><td>8</td><td>13</td><td>Max Wright</td><td>5</td><td>ATH</td><td>HS</td></tr>
+<tr><td>2027</td><td>11</td><td>LSU</td><td>27</td><td>89.65</td><td>256.2</td><td>2</td><td>6</td><td>8</td><td>Ahmad Breaux</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>12</td><td>Florida St.</td><td>28</td><td>90.82</td><td>255.88</td><td>0</td><td>8</td><td>16</td><td>Ashton Woods</td><td>4</td><td>OLB</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>13</td><td>Clemson</td><td>28</td><td>91.42</td><td>255.3</td><td>1</td><td>6</td><td>15</td><td>Amare Adams</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>14</td><td>Penn St.</td><td>24</td><td>89.18</td><td>254.1</td><td>1</td><td>9</td><td>5</td><td>Mike Mitchell</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>15</td><td>Ole Miss</td><td>28</td><td>89.66</td><td>251.14</td><td>1</td><td>6</td><td>11</td><td>Will Echoles</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>16</td><td>Texas</td><td>28</td><td>90.33</td><td>250.08</td><td>1</td><td>5</td><td>15</td><td>Dan Trueman</td><td>5</td><td>C</td><td>HS</td></tr>
+<tr><td>2027</td><td>17</td><td>Arizona St.</td><td>27</td><td>89.05</td><td>249</td><td>1</td><td>6</td><td>10</td><td>Mike Bernal</td><td>5</td><td>DE</td><td>HS</td></tr>
+<tr><td>2027</td><td>18</td><td>Michigan St.</td><td>28</td><td>88.96</td><td>248.1</td><td>1</td><td>5</td><td>13</td><td>Jace Cunningham</td><td>5</td><td>ATH</td><td>HS</td></tr>
+<tr><td>2027</td><td>19</td><td>Washington</td><td>28</td><td>88.61</td><td>245.96</td><td>2</td><td>4</td><td>9</td><td>Bryan Palepoi</td><td>5</td><td>ATH</td><td>HS</td></tr>
+<tr><td>2027</td><td>20</td><td>Duke</td><td>29</td><td>89.21</td><td>244.46</td><td>0</td><td>6</td><td>14</td><td>Leonard Harrison</td><td>4</td><td>T</td><td>HS</td></tr>
+<tr><td>2027</td><td>21</td><td>Bowling Green</td><td>30</td><td>88.08</td><td>241.1</td><td>2</td><td>4</td><td>7</td><td>Keegan White</td><td>5</td><td>HB</td><td>HS</td></tr>
+<tr><td>2027</td><td>22</td><td>South Carolina</td><td>26</td><td>88.72</td><td>241</td><td>1</td><td>4</td><td>13</td><td>Myles Finley</td><td>5</td><td>DT</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>23</td><td>Alabama</td><td>26</td><td>90.18</td><td>240.56</td><td>0</td><td>6</td><td>12</td><td>Tony Williams</td><td>4</td><td>FS</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>24</td><td>Georgia Tech</td><td>24</td><td>88.61</td><td>239.38</td><td>0</td><td>7</td><td>9</td><td>Benaiah Damuni</td><td>4</td><td>SS</td><td>Transfer</td></tr>
+<tr><td>2027</td><td>25</td><td>Utah</td><td>27</td><td>86.48</td><td>237.48</td><td>1</td><td>7</td><td>3</td><td>Randy White</td><td>5</td><td>ATH</td><td>HS</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<footer>National Recruiting Data &middot; Part of Kontrolla Kulture</footer>
+
+</body>
+</html>
