@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The National Desk: 2028 Season Predictions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face { font-family: "Narrow Broadcast"; src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold"); font-weight: 700 900; }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --red-500: #d94b3f; --red-300: #ef8378; --gold-500: #e8b23a; --gold-300: #f3d287;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(217,75,63,0.12), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 900px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .desk-intro { display: flex; flex-wrap: wrap; gap: 18px; margin: 30px 0 10px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; }
+  .desk-intro .who { flex: 1; min-width: 220px; }
+  .desk-intro .who .n { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 15px; margin-bottom: 2px; }
+  .desk-intro .who.voss .n { color: var(--gold-500); }
+  .desk-intro .who.cast .n { color: var(--red-500); }
+  .desk-intro .who .r { font-size: 12px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .bumper { margin: 44px 0 18px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  .dlg { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+  .dlg .spk { flex-shrink: 0; width: 88px; text-align: right; }
+  .dlg .spk .name { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 12px; letter-spacing: 0.03em; display: block; }
+  .dlg.voss .spk .name { color: var(--gold-500); }
+  .dlg.cast .spk .name { color: var(--red-500); }
+  .dlg .txt { flex: 1; font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.6; color: var(--fg); padding-left: 14px; border-left: 2px solid var(--surface-line); }
+  .dlg.voss .txt { border-left-color: rgba(232,178,58,0.4); }
+  .dlg.cast .txt { border-left-color: rgba(217,75,63,0.4); }
+  .dlg .txt strong { color: var(--fg); }
+  @media (max-width: 560px) { .dlg { flex-direction: column; gap: 4px; } .dlg .spk { width: auto; text-align: left; } .dlg .txt { padding-left: 12px; } }
+
+  .onscreen { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-500); margin: -6px 0 14px 100px; }
+  @media (max-width: 560px) { .onscreen { margin-left: 0; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); margin-bottom: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 480px; }
+  th, td { padding: 7px 11px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .predict-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .predict-card .cat { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .predict-card .pick { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 19px; margin: 4px 0 2px; }
+  .predict-card .conf { display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 9px; border-radius: 99px; }
+  .conf-high { background: rgba(56,201,143,0.15); color: var(--win); }
+  .conf-med { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+  .conf-low { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .conf-none { background: rgba(154,154,176,0.18); color: #9a9ab0; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: #fdf0d5; padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 900px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">The National Desk &middot; College Football &middot; 2028 Season Predictions</p>
+  <h1 class="display">Picks, Backed By Every Year On Record</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Champion Pick</span><span class="val">Texas Tech</span></div>
+    <div class="bug-chip"><span class="label">Streak On The Line</span><span class="val">Miami &amp; Texas Tech, 3-Peat</span></div>
+    <div class="bug-chip"><span class="label">Heisman Pick</span><span class="val">New Winner, Not Rask</span></div>
+    <div class="bug-chip"><span class="label">Coaching Casualties</span><span class="val">2&ndash;3 Predicted</span></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="desk-intro">
+    <div class="who voss"><div class="n">Derek Voss</div><div class="r">Play-by-play</div></div>
+    <div class="who cast"><div class="n">Renee Castellan</div><div class="r">Analyst</div></div>
+  </div>
+
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Second run at this prediction show, Renee, and this time we're going back through every season on record &mdash; every conference championship, every recruiting board, every coach's full track record &mdash; not just the newest data point.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">And it already changed our champion pick. Going year by year through the conference championship games turned up something we'd never actually said out loud on this desk before.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">National Champion: The Streaks Nobody Talked About</h2></div>
+  <div class="onscreen">ON SCREEN: CONFERENCE CHAMPIONS, THREE YEARS RUNNING</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Conference</th><th>2025</th><th>2026</th><th>2027</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>ACC</td><td>Miami</td><td>Miami</td><td>Miami</td></tr>
+        <tr class="hl"><td>Big 12</td><td>Texas Tech</td><td>Texas Tech</td><td>Texas Tech</td></tr>
+        <tr><td>SEC</td><td>Alabama</td><td>Georgia</td><td>Ole Miss</td></tr>
+        <tr><td>Big Ten</td><td>Penn St.</td><td>Michigan</td><td>Michigan</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Miami and Texas Tech have both won their conference three straight years. We've covered Texas Tech's McGuire building a national-title-game résumé, but we never put it together that he's also been perfect in conference play the entire time we've tracked him.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">That's the strongest, most boring, most correct pick on this entire show. A coach with a national title game appearance, a Best HC Award, and three straight conference titles, on a team that's a returning CFP participant every year we've tracked it. I'm taking Texas Tech to win it all. Not a hot take, but it's the pick the data actually supports better than anyone else on the board.</div></div>
+  <div class="predict-card">
+    <div class="cat">The Pick</div>
+    <div class="pick">Texas Tech</div>
+    <span class="conf conf-high">High Confidence</span>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">What about Miami, given the same three-peat?</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Miami's a great case for making the CFP field again, and I'd have them there. But their own recruiting class fell four spots into this cycle (No. 6 to No. 10), while Texas Tech's rating and coaching résumé both point the same direction. Miami's my pick to three-peat the ACC. Texas Tech's my pick to win the whole thing.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">Conference-By-Conference Champions</h2></div>
+  <div class="onscreen">ON SCREEN: 2028 CONFERENCE CHAMPIONSHIP PICKS</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Conference</th><th>Pick</th><th>Confidence</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Big 12</td><td>Texas Tech</td><td>High</td><td>3 straight titles, preseason No. 10 rating (86)</td></tr>
+        <tr class="hl"><td>ACC</td><td>Miami</td><td>High</td><td>3 straight titles, preseason No. 6 rating (86)</td></tr>
+        <tr><td>SEC</td><td>Alabama</td><td>Medium</td><td>No repeat champ in 3 years, but Alabama has the No. 1 recruiting class and a 91 overall rating, best of the three ranked SEC teams (Ole Miss, Texas A&amp;M)</td></tr>
+        <tr><td>Big Ten</td><td>Michigan</td><td>Medium</td><td>Back-to-back champion, preseason No. 5 rating (89)</td></tr>
+        <tr><td>American</td><td>USF</td><td>Low</td><td>Defending champion, but neither USF nor North Texas cracked the preseason Top 25 this cycle &mdash; no ranking signal to lean on</td></tr>
+        <tr><td>Mountain West</td><td>Wyoming</td><td>None</td><td>Defending champion is the only signal available &mdash; no ranked team, no recruiting data tracked for this conference</td></tr>
+        <tr><td>CUSA</td><td>Missouri St.</td><td>None</td><td>Defending champion is the only signal available</td></tr>
+        <tr><td>MAC</td><td>Ball St.</td><td>None</td><td>Defending champion is the only signal available</td></tr>
+        <tr><td>PAC-12</td><td>Texas St.</td><td>None</td><td>Defending champion is the only signal available</td></tr>
+        <tr><td>Sun Belt</td><td>Louisiana</td><td>None</td><td>Defending champion is the only signal available</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">I want to be honest about the bottom half of this list, Derek. Five of these ten conferences, we've got nothing but "the same team won last time" to go on. No ranked team, no recruiting class in our tracked data, nothing. Picking the defending champ there isn't analysis, it's just the absence of a reason to pick anyone else.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Worth noting on the American, too &mdash; USF just won it, North Texas played for it, and neither one is even in the preseason Top 25 this year. That's a real value gap if either of them is actually still that good.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">Recruiting-Board Darkhorses</h2></div>
+  <div class="onscreen">ON SCREEN: BIGGEST 2028 RECRUITING RISERS</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>2027 Rank</th><th>2028 Rank</th><th>Move</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Alabama</td><td>23</td><td>1</td><td>+22</td></tr>
+        <tr><td>LSU</td><td>11</td><td>2</td><td>+9</td></tr>
+        <tr><td>Texas</td><td>16</td><td>4</td><td>+12</td></tr>
+        <tr><td>Ole Miss</td><td>15</td><td>6</td><td>+9</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Last time we did this show, Alabama was the only riser we mentioned. LSU jumping nine spots to No. 2 got skipped over completely.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">And LSU's case is stronger than a recruiting number alone, too &mdash; Brian Kelly's already got an Alamo Bowl title and a CFP Round 1 win on his résumé from the last two years, even while sitting on a hot-seat list the whole time. Add the No. 2 class on top of that track record, and LSU's my second darkhorse behind Alabama.</div></div>
+  <div class="predict-card">
+    <div class="cat">The Pick</div>
+    <div class="pick">Alabama, With LSU Right Behind</div>
+    <span class="conf conf-med">Medium Confidence</span>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Heisman Winner</h2></div>
+  <div class="predict-card">
+    <div class="cat">The Pick</div>
+    <div class="pick">A New Winner &mdash; Not Jaray Rask</div>
+    <span class="conf conf-high">High Confidence</span>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Rask is the reigning winner and he's already on the preseason board. Why bet against him?</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Because it's never happened, and it's not just the Heisman &mdash; we checked every major individual award this time, going year by year. Fernando Mendoza won the Heisman in 2025, gone the next year. Arch Manning in 2026, gone. Maddox Marcellus won Bednarik and Butkus in 2026 and didn't repeat either one in 2027 &mdash; Suntarine Perkins swept both instead. Every voted national award we've tracked has turned over completely, every single year. It's really only the pure statistical leaderboards &mdash; not the voted awards &mdash; where we've seen anyone repeat: Molinich in rushing yards, Marcellus in tackles.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">That's a much stronger case than we made last time.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">It is. I'll still take the field over Rask, and I'll lean toward Alabama or Texas Tech producing the winner &mdash; the last two winners both came from a team ranked in the preseason top 3, and both of those programs are again this year.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">National Stat Leaders: Expect New Names, With Two Exceptions</h2></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">This is a pattern we've never actually said out loud before, Derek, and it's remarkably consistent. Passing, receiving, sacks, interceptions &mdash; every one of those national leaderboards has been a completely different name every year we've tracked. Only two categories have actually repeated.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Molinich in rushing, and&hellip;</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Maddox Marcellus in tackles &mdash; 134 in 2026, 147 in 2027, the national leader both years, same as Molinich. But Marcellus is NFL-bound, not back for 2028 &mdash; so tackles goes back into the "new name every year" pile regardless. Molinich's the only one of the two actually positioned to make it three straight.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">National Breakout Freshman</h2></div>
+  <div class="onscreen">ON SCREEN: TOP HS RECRUITS, 2028 CLASS</div>
+  <div class="predict-card">
+    <div class="cat">The Pick</div>
+    <div class="pick">JD Miller, Eastern Michigan</div>
+    <span class="conf conf-low">Low Confidence, High Ceiling</span>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">We flagged this name in the Recruiting Chronicle already &mdash; the No. 5 high school recruit in the country signing with a 1-and-11 program.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Right, and I want to put a real prediction on it now instead of just noting it. Blue-chip talent on a bad roster usually means one of two things: he transfers out within two years, or he puts up huge individual numbers on a team that can't stop anyone, because he's got no competition for touches or reps. I'll bet on the second outcome for year one, at least &mdash; watch his raw production numbers even if Eastern Michigan's record doesn't move.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">Coaching Casualties</h2></div>
+  <div class="predict-card">
+    <div class="cat">The Pick</div>
+    <div class="pick">2&ndash;3 Firings From The Current Hot-Seat Board</div>
+    <span class="conf conf-high">High Confidence</span>
+  </div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">This is the safest pick on the show. Every single tracked season has produced at least one in-season or end-of-season firing from that hot-seat list, and last year alone gave us two mid-season changes. Seven names are on the 2028 board. I'd bet on Missouri's Eliah Drinkwitz finally running out of runway after surviving a 1-and-11 season, and I wouldn't be shocked if Virginia Tech or TCU is the second.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">What about Hugh Freeze? He's been on this board multiple cycles now despite genuinely good seasons.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">That's exactly why I'm not picking him. Whatever's keeping Auburn nervous about him clearly isn't about the scoreboard, and if it hasn't cost him the job through a win over a defending champion, I don't think a good-not-great season changes that calculus either. He's the name most likely to survive this list a fourth time.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">The Bold Call</h2></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Last one, Renee. Give me the pick you're least confident in but can't stop thinking about.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Another outsider run to the title game. We watched a 7-seed beat a 9-seed for the whole thing last year &mdash; the first time either finalist wasn't one of the bracket's top seeds since we started tracking this format. If we get a repeat of that this year, it stops being a fluke and starts being the actual identity of this playoff format &mdash; and it would mean picking Texas Tech to win it all is actually the contrarian choice on this board, not the safe one.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">That's the board. Texas Tech to finally cash in a three-peat conference streak and win it all, no Heisman repeat, Alabama and LSU as the recruiting-backed darkhorses, and at least two coaches out of a job by year's end. We'll see how much of this we get right when we're back here with the recap.</div></div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">The National Desk &middot; College Football &middot; 2028 Season Predictions Sign-Off</p>
+    <p class="headline">Texas Tech and Miami have each won their conference three straight years, and going back through every season on record turned Joey McGuire's Texas Tech into the strongest championship pick this desk has made yet.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Champion</span><span class="v">Texas Tech</span></div>
+      <div class="stat-chip"><span class="k">Heisman</span><span class="v">Field, Not Rask</span></div>
+      <div class="stat-chip"><span class="k">Darkhorses</span><span class="v">Alabama &amp; LSU</span></div>
+      <div class="stat-chip"><span class="k">First Coach Out</span><span class="v">Eliah Drinkwitz, Missouri</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

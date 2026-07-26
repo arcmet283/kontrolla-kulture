@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The National Desk: The Bowl Season Ledger</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face {
+    font-family: "Narrow Broadcast";
+    src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold");
+    font-weight: 700 900;
+  }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --red-500: #d94b3f; --red-300: #ef8378; --gold-500: #e8b23a; --gold-300: #f3d287;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(217,75,63,0.12), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 68ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 480px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-up { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-down { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-new { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+
+  .coach-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 18px 20px; margin-bottom: 14px; }
+  .coach-card h3 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 19px; margin: 0 0 4px; letter-spacing: 0.01em; }
+  .coach-card .role { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--red-500); font-weight: 700; margin-bottom: 10px; }
+  .coach-card .timeline { display: flex; flex-direction: column; gap: 6px; margin: 10px 0; }
+  .coach-card .timeline .yr { display: flex; gap: 10px; font-size: 13.5px; }
+  .coach-card .timeline .yr .y { font-family: ui-monospace, monospace; color: var(--gold-500); font-weight: 700; min-width: 42px; }
+  .coach-card .timeline .yr .e { color: var(--fg); }
+  .coach-card p.note { margin-top: 10px; font-size: 14px; color: var(--fg); max-width: none; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: #fdf0d5; padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">The National Desk &middot; College Football &middot; Cross-Dynasty Special</p>
+  <h1 class="display">The Bowl Season Ledger: Two Years, Every Game, Every Program</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Bowl Seasons Covered</span><span class="val">2025 &amp; 2026</span></div>
+    <div class="bug-chip"><span class="label">National Champions</span><span class="val">Notre Dame, Texas</span></div>
+    <div class="bug-chip"><span class="label">Total Games Analyzed</span><span class="val">50+</span></div>
+    <div class="bug-chip"><span class="label">Southern's Bowl History</span><span class="val">1-for-1 Appearances</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Two full bowl seasons are in the books, and 2027's is still a blank slate waiting for conference championship weekend to finish playing out. This is the full ledger: every non-playoff bowl and every CFP game from both completed years, with every team cross-referenced against whatever this chronicle actually knows about them &mdash; their coach's track record, their recruiting class rank, and where they sat in the polls. Some programs show up in three different datasets at once. Most show up in none, and that gap is its own finding.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Ledger</h3>
+    <ol>
+      <li>The Ten Championship Games, 2027</li>
+      <li>Predictions, Backed By The Ledger</li>
+      <li>The 2025 Bowl Season, In Full</li>
+      <li>The 2025 CFP Field, Cross-Referenced</li>
+      <li>The 2026 Bowl Season, In Full</li>
+      <li>The 2026 CFP Field, Cross-Referenced</li>
+      <li>Southern's First Bowl Trip</li>
+      <li>Coaching Journeys Through Bowl Season</li>
+      <li>Does Recruiting Rank Predict Bowl Season?</li>
+      <li>What's Left: 2027</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Ten Championship Games, 2027</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Conference</th><th>Matchup</th><th>Site</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Big 12</td><td>Texas Tech (10-2) vs. Iowa State (12-0)</td><td>Arlington, TX</td></tr>
+        <tr><td>SEC</td><td>Ole Miss (9-3) vs. Texas A&amp;M (11-1)</td><td>Atlanta, GA</td></tr>
+        <tr><td>Big Ten</td><td>Nebraska (10-2) vs. Michigan (11-1)</td><td>Indianapolis, IN</td></tr>
+        <tr><td>ACC</td><td>Miami (10-2) vs. UNC (10-2)</td><td>Jacksonville, FL</td></tr>
+        <tr><td>American</td><td>North Texas (8-4) vs. USF (8-4)</td><td>Chicago, IL</td></tr>
+        <tr><td>Mountain West</td><td>San Jose State (7-5) vs. Wyoming (6-6)</td><td>San Francisco, CA</td></tr>
+        <tr><td>CUSA</td><td>Missouri State (8-4) vs. Kennesaw State (9-3)</td><td>El Paso, TX</td></tr>
+        <tr><td>MAC</td><td>Ball State (8-4) vs. Central Michigan (9-3)</td><td>Detroit, MI</td></tr>
+        <tr><td>PAC-12</td><td>San Diego State (6-6) vs. Texas State (7-5)</td><td>Seattle, WA</td></tr>
+        <tr><td>Sun Belt</td><td>Louisiana (7-5) vs. Arkansas State (8-4)</td><td>Mobile, AL</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Texas Tech vs. Iowa State is the whole weekend condensed into one game &mdash; the program with the deepest bowl/CFP résumé this ledger has tracked (Segment 8) against the sport's only unbeaten team. Everything else on this list ranges from a clean favorite to a genuine coin flip, broken down game by game next.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">Predictions, Backed By The Ledger</h2></div>
+  <p class="prose">Picks below are built entirely from what's already in this document &mdash; record, CFP/poll ranking, and (where available) a coach's track record in exactly these situations. Confidence reflects how much real signal exists, not how the game will actually go; championship weekend upsets are common, and one of the ten games here has no usable signal at all.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Game</th><th>Pick</th><th>Confidence</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Big 12</td><td>Iowa State</td><td>Medium</td><td>12-0 and No. 1 CFP is the strongest record in this entire ledger, but Texas Tech's Joey McGuire has coached in a national title game and won a Big 12 title in this exact spot before &mdash; the one pick here where a proven big-game coach is a real counterweight to a better record.</td></tr>
+        <tr><td>SEC</td><td>Texas A&amp;M</td><td>High</td><td>11-1 and No. 2 CFP against a 9-3 team &mdash; the largest record gap of any game this weekend.</td></tr>
+        <tr><td>Big Ten</td><td>Michigan</td><td>High</td><td>11-1 and ranked ahead of Nebraska in every poll in this dataset.</td></tr>
+        <tr><td>ACC</td><td>UNC</td><td>Low</td><td>Identical 10-2 records; the two polls in this dataset disagree on order (UNC ahead in the CFP poll, Miami ahead in the wire Top 25), so this is close to a true toss-up with a slight lean toward the CFP ranking.</td></tr>
+        <tr><td>American</td><td>No pick</td><td>None</td><td>North Texas and USF are 8-4 mirror images with no coaching or recruiting data on either program in this chronicle &mdash; a genuine coin flip with zero usable signal.</td></tr>
+        <tr><td>Mountain West</td><td>San Jose State</td><td>Medium</td><td>7-5 against a 6-6 team &mdash; only one game of separation, but it's the whole signal available.</td></tr>
+        <tr><td>CUSA</td><td>Kennesaw State</td><td>Medium</td><td>9-3 against 8-4 &mdash; fewer losses over the same number of games.</td></tr>
+        <tr><td>MAC</td><td>Central Michigan</td><td>Medium</td><td>9-3 against 8-4. Ball State's Mike Uremovich has the better individual pedigree (this chronicle's first Best HC winner) but is 0-2 in the bowl/title games he's actually coached &mdash; a résumé note, not a record edge.</td></tr>
+        <tr><td>PAC-12</td><td>Texas State</td><td>Medium</td><td>7-5 against a 6-6 team.</td></tr>
+        <tr><td>Sun Belt</td><td>Arkansas State</td><td>Medium</td><td>8-4 against 7-5 &mdash; one game of separation.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Seven of the ten picks here lean on nothing more than raw record, which is a real limitation of this dataset &mdash; recruiting-class and coaching-history data only exists for a handful of programs nationally, so most of these championship games simply can't be cross-referenced the way the marquee matchups can. The Big 12 title game is the one pick in this list where a deeper data point (McGuire's track record) genuinely complicates what the raw records alone would suggest.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">The 2025 Bowl Season, In Full</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Bowl</th><th>Winner</th><th>Opponent</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr><td>Los Angeles Bowl</td><td>New Mexico St.</td><td>San Jose St.</td><td>28-21</td></tr>
+        <tr><td>StaffDNA Cure Bowl</td><td>Virginia Tech</td><td>Cincinnati</td><td>36-22</td></tr>
+        <tr><td>68 Ventures Bowl</td><td>Georgia St.</td><td>Ball St.</td><td>27-17</td></tr>
+        <tr><td>Myrtle Beach Bowl</td><td>Toledo</td><td>Sam Houston St.</td><td>31-24</td></tr>
+        <tr class="hl"><td>Gasparilla Bowl</td><td>USC</td><td>Colorado</td><td>44-41</td></tr>
+        <tr><td>Famous Idaho Potato Bowl</td><td>Memphis</td><td>Purdue</td><td>40-27</td></tr>
+        <tr><td>New Orleans Bowl</td><td>James Madison</td><td>Liberty</td><td>35-33</td></tr>
+        <tr><td>Guaranteed Rate Bowl</td><td>Florida St.</td><td>Arizona St.</td><td>34-28</td></tr>
+        <tr><td>GameAbove Sports Bowl</td><td>Utah St.</td><td>Old Dominion</td><td>34-7</td></tr>
+        <tr><td>Hawai'i Bowl</td><td>Jacksonville St.</td><td>Syracuse</td><td>21-14</td></tr>
+        <tr><td>Pop-Tarts Bowl</td><td>Kansas St.</td><td>Ole Miss</td><td>28-26</td></tr>
+        <tr><td>Snoop Dogg Arizona Bowl</td><td>Western Michigan</td><td>New Mexico</td><td>42-35 OT</td></tr>
+        <tr><td>Gator Bowl</td><td>Arizona</td><td>North Carolina</td><td>29-26</td></tr>
+        <tr><td>New Mexico Bowl</td><td>Southern Miss</td><td>Hawai'i</td><td>24-14</td></tr>
+        <tr><td>Birmingham Bowl</td><td>Tulane</td><td>Michigan St.</td><td>49-23</td></tr>
+        <tr><td>Independence Bowl</td><td>Iowa St.</td><td>Western Kentucky</td><td>49-16</td></tr>
+        <tr><td>Music City Bowl</td><td>Georgia Tech</td><td>Illinois</td><td>24-6</td></tr>
+        <tr class="hl"><td>Alamo Bowl</td><td>LSU</td><td>Kansas</td><td>42-7</td></tr>
+        <tr><td>ReliaQuest Bowl</td><td>Iowa</td><td>SMU</td><td>31-28</td></tr>
+        <tr><td>Sun Bowl</td><td>California</td><td>Central Michigan</td><td>29-17</td></tr>
+        <tr><td>Cheez-It Citrus Bowl</td><td>Vanderbilt</td><td>Ohio St.</td><td>30-22</td></tr>
+        <tr><td>Las Vegas Bowl</td><td>Oregon</td><td>West Virginia</td><td>36-15</td></tr>
+        <tr><td>Armed Forces Bowl</td><td>Baylor</td><td>Louisiana Tech</td><td>35-17</td></tr>
+        <tr><td>Holiday Bowl</td><td>San Diego St.</td><td>USF</td><td>17-12</td></tr>
+        <tr><td>Liberty Bowl</td><td>Utah</td><td>Michigan</td><td>34-21</td></tr>
+        <tr><td>Dukes Mayo Bowl</td><td>NC State</td><td>North Texas</td><td>27-21</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Two results stand out against the rest of this list. <strong>USC's Gasparilla Bowl win</strong> (44&ndash;41 over Colorado) is the same bowl Southern would go on to appear in &mdash; and lose &mdash; one year later, a coincidence that makes it the single most useful comparison point in this entire ledger. And <strong>LSU's Alamo Bowl blowout</strong> (42&ndash;7 over Kansas) opens a run that, as Segment 8 lays out, continues directly into LSU's 2026 CFP appearance.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">The 2025 CFP Field, Cross-Referenced</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Round</th><th>Result</th><th>2026 Recruiting Class Rank (Winner)</th></tr></thead>
+      <tbody>
+        <tr><td>Round 1 (#9 v #8)</td><td>Oklahoma def. Texas A&amp;M, 46-39</td><td>No. 2 (A&amp;M: unranked)</td></tr>
+        <tr><td>Round 1 (#10 v #7)</td><td>Texas def. Clemson, 41-21</td><td>Unranked (Clemson: No. 10)</td></tr>
+        <tr><td>Round 1 (#11 v #6)</td><td>Indiana def. Alabama, 49-38</td><td>No. 24 (Alabama: No. 6)</td></tr>
+        <tr><td>Round 1 (#12 v #5)</td><td>Wisconsin def. Navy, 28-21</td><td>No. 18 (Navy: unranked)</td></tr>
+        <tr><td>Round 2 (Orange Bowl)</td><td>Miami def. Wisconsin, 35-28</td><td>No. 23</td></tr>
+        <tr><td>Round 2 (Rose Bowl)</td><td>Penn St. def. Indiana, 31-28</td><td>No. 21</td></tr>
+        <tr><td>Round 2 (Cotton Bowl)</td><td>Notre Dame def. Texas, 27-23</td><td>No. 1</td></tr>
+        <tr><td>Round 2 (Sugar Bowl)</td><td>Texas Tech def. Oklahoma, 39-33</td><td>No. 3</td></tr>
+        <tr><td>Semifinal (Peach Bowl)</td><td>Notre Dame def. Penn St., 52-28</td><td>&mdash;</td></tr>
+        <tr><td>Semifinal (Fiesta Bowl)</td><td>Texas Tech def. Miami, 35-23</td><td>&mdash;</td></tr>
+        <tr class="hl"><td>National Championship</td><td>Notre Dame def. Texas Tech, 34-31</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Notre Dame won the national title and turned around to sign the No. 1 recruiting class in the country that same cycle &mdash; the cleanest possible confirmation that winning it all is worth exactly what recruiting departments always claim it's worth. Texas Tech, the runner-up, landed at No. 3. But look at the four Round 1 upsets more closely: in two of them, the team that actually <strong>lost</strong> the football game (Clemson, No. 10; Alabama, No. 6) carried a better recruiting class into the next cycle than the team that beat them (Texas, unranked; Indiana, No. 24). Winning the game and winning the recruiting battle that follows it are not the same contest, and for half of this bracket's first round, they went to different teams entirely.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">The 2026 Bowl Season, In Full</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Bowl</th><th>Winner</th><th>Opponent</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr><td>Los Angeles Bowl</td><td>Arizona (8-5)</td><td>Nevada (8-6)</td><td>24-20</td></tr>
+        <tr><td>StaffDNA Cure Bowl</td><td>Duke (7-6)</td><td>Arkansas St. (7-6)</td><td>45-28</td></tr>
+        <tr><td>68 Ventures Bowl</td><td>Georgia St. (9-4)</td><td>San Diego St. (7-6)</td><td>42-35</td></tr>
+        <tr><td>Myrtle Beach Bowl</td><td>Kennesaw St. (8-5)</td><td>Western Michigan (7-6)</td><td>24-16</td></tr>
+        <tr class="hl"><td>Gasparilla Bowl</td><td>Tennessee (7-6)</td><td>Southern (8-6)</td><td>44-31</td></tr>
+        <tr><td>Famous Idaho Potato Bowl</td><td>Florida (7-6)</td><td>New Mexico St. (7-6)</td><td>31-28</td></tr>
+        <tr><td>New Orleans Bowl</td><td>Appalachian St. (10-4)</td><td>Delaware (8-6)</td><td>46-43</td></tr>
+        <tr><td>Guaranteed Rate Bowl</td><td>Iowa (7-5)</td><td>Colorado (7-5)</td><td>48-7</td></tr>
+        <tr><td>GameAbove Sports Bowl</td><td>Charlotte (7-6)</td><td>Marshall (7-6)</td><td>59-42</td></tr>
+        <tr><td>Hawai'i Bowl</td><td>California (7-6)</td><td>Kansas St. (6-7)</td><td>45-21</td></tr>
+        <tr><td>Pop-Tarts Bowl</td><td>Ole Miss (10-3)</td><td>Cincinnati (9-5)</td><td>52-10</td></tr>
+        <tr><td>Snoop Dogg Arizona Bowl</td><td>UMass (9-5)</td><td>Northern Illinois (7-6)</td><td>38-21</td></tr>
+        <tr><td>Gator Bowl</td><td>South Carolina (8-5)</td><td>Baylor (8-5)</td><td>31-13</td></tr>
+        <tr><td>New Mexico Bowl</td><td>Georgia Southern (9-5)</td><td>Fresno St. (7-6)</td><td>28-21</td></tr>
+        <tr><td>Birmingham Bowl</td><td>UCF (8-5)</td><td>Tulane (10-4)</td><td>31-28</td></tr>
+        <tr><td>Independence Bowl</td><td>Jacksonville St. (10-4)</td><td>UNC (7-6)</td><td>34-14</td></tr>
+        <tr><td>Music City Bowl</td><td>Ohio St. (8-5)</td><td>Stanford (7-6)</td><td>49-21</td></tr>
+        <tr class="hl"><td>Alamo Bowl</td><td>Iowa St. (10-3)</td><td>Boise St. (9-4)</td><td>28-21</td></tr>
+        <tr><td>ReliaQuest Bowl</td><td>Texas A&amp;M (9-4)</td><td>Wisconsin (8-5)</td><td>34-10</td></tr>
+        <tr class="hl"><td>Sun Bowl</td><td>Virginia (8-5)</td><td>Houston (7-6)</td><td>27-21 OT</td></tr>
+        <tr><td>Cheez-It Citrus Bowl</td><td>Florida St. (10-3)</td><td>Washington (9-4)</td><td>38-35</td></tr>
+        <tr><td>Las Vegas Bowl</td><td>UCLA (8-5)</td><td>Auburn (7-6)</td><td>21-17</td></tr>
+        <tr><td>Armed Forces Bowl</td><td>Florida Atlantic (8-5)</td><td>Utah (6-7)</td><td>35-28</td></tr>
+        <tr><td>Holiday Bowl</td><td>Nebraska (10-3)</td><td>Colorado St. (9-5)</td><td>42-39</td></tr>
+        <tr><td>Liberty Bowl</td><td>Arizona St. (9-4)</td><td>Oregon (9-4)</td><td>41-37</td></tr>
+        <tr><td>Dukes Mayo Bowl</td><td>Boston College (8-5)</td><td>ECU (8-5)</td><td>31-21</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Iowa State's Alamo Bowl win capped a nine-game stretch that would carry straight into a 2027 season that's still unbeaten as of Conference Championship Week &mdash; this is the same program, the same coaching staff, and by the numbers, the most sustained winning streak this ledger has tracked start to finish. Virginia's Sun Bowl title, on the other hand, is the high point of a story that immediately inverted: Segment 8 covers the full collapse that followed.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">The 2026 CFP Field, Cross-Referenced</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Round</th><th>Result</th><th>2027 Recruiting Class Rank (Winner)</th></tr></thead>
+      <tbody>
+        <tr><td>Round 1 (#9 v #8)</td><td>LSU def. UNLV, 52-14</td><td>No. 11</td></tr>
+        <tr><td>Round 1 (#10 v #7)</td><td>Notre Dame def. Pittsburgh, 44-37</td><td>No. 7</td></tr>
+        <tr><td>Round 1 (#11 v #6)</td><td>Clemson def. Miami, 51-31</td><td>No. 13</td></tr>
+        <tr><td>Round 1 (#12 v #5)</td><td>Alabama def. Michigan St., 35-21</td><td>No. 23</td></tr>
+        <tr><td>Round 2 (Orange Bowl)</td><td>Alabama def. Michigan, 31-28</td><td>No. 23</td></tr>
+        <tr><td>Round 2 (Rose Bowl)</td><td>Clemson def. Texas Tech, 48-34</td><td>No. 13</td></tr>
+        <tr><td>Round 2 (Cotton Bowl)</td><td>Texas def. Notre Dame, 39-34</td><td>No. 16</td></tr>
+        <tr><td>Round 2 (Sugar Bowl)</td><td>Georgia def. LSU, 38-35</td><td>No. 5</td></tr>
+        <tr><td>Semifinal (Peach Bowl)</td><td>Texas def. Clemson, 27-24</td><td>No. 16</td></tr>
+        <tr><td>Semifinal (Fiesta Bowl)</td><td>Georgia def. Alabama, 37-35</td><td>No. 5</td></tr>
+        <tr class="hl"><td>National Championship</td><td>Texas def. Georgia, 54-14</td><td>No. 16</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">A completely different pattern from the year before: Texas won the national title and only signed the No. 16 class the following cycle &mdash; a real, measurable step down for a defending champion, not a reload. Georgia, the runner-up, jumped from No. 19 the previous cycle to No. 5 &mdash; a 14-spot climb for a team that didn't actually win it all. And Pittsburgh, bounced in Round 1, still landed a No. 3 class nationally the following cycle (see Segment 3 of the National Recruiting Chronicle for that full breakout) &mdash; proof a first-round playoff exit doesn't automatically sink a program's recruiting trajectory either.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">Southern's First Bowl Trip</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">2026 Gasparilla Bowl</div>
+    <div class="teams">Tennessee 44, Southern 31 <span style="color:var(--loss);">Lost</span></div>
+    <p>The first bowl appearance in the tracked history of this program, one year after USC won this exact same bowl over Colorado 44&ndash;41. Starting QB Joshua Clark was injured in the first quarter, missed the next two quarters, then returned in the fourth; backup Ty Wilson filled in and threw for 188 yards and a touchdown. The recruiting class already on Southern's roster that season (signed for 2026, ranked No. 59 nationally) sat well outside the Top 25, and the class signed immediately after this bowl trip (for 2027) landed at No. 63 &mdash; consistent with the wider pattern in this ledger that a first bowl trip rarely coincides with a Top 25 class, either the one already on the roster or the one that follows.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">Coaching Journeys Through Bowl Season</h2></div>
+
+  <div class="coach-card">
+    <h3>Joey McGuire &middot; Texas Tech</h3>
+    <div class="role">Untouched by this chronicle's coaching carousel the entire tracked window</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2025</span><span class="e">Won the Sugar Bowl semifinal over Miami (35-23), lost the National Championship to Notre Dame (34-31).</span></div>
+      <div class="yr"><span class="y">2026</span><span class="e">Big 12 champion, lost the Rose Bowl to Clemson in the CFP quarterfinal (48-34).</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">Back in the Big 12 title game against Iowa State this week &mdash; a third straight season ending in a title-or-playoff-stakes game.</span></div>
+    </div>
+    <p class="note">No coach in this ledger has coached in more consequential bowl/CFP games across more consecutive seasons.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Brian Kelly &middot; LSU</h3>
+    <div class="role">Already established as LSU's coach before this chronicle's tracking window began</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2025</span><span class="e">Alamo Bowl champion, blew out Kansas 42-7.</span></div>
+      <div class="yr"><span class="y">2026</span><span class="e">CFP Round 1 winner over UNLV (52-14), lost the Sugar Bowl to eventual national runner-up Georgia (38-35).</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">8-4, sitting on a hot-seat list despite a two-year bowl/playoff résumé most of this carousel would envy.</span></div>
+    </div>
+    <p class="note">The clearest example in this entire ledger of a coach whose job security has stopped tracking his actual bowl-season results.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Adam Fuller &middot; Virginia</h3>
+    <div class="role">2025 hire, from the LA Chargers' safeties coach</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2026</span><span class="e">Debut season: Sun Bowl champion, beat Houston 27-21 in overtime to finish 8-5.</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">4-8, no bowl appearance &mdash; a complete collapse the very next year.</span></div>
+    </div>
+    <p class="note">The fastest fall from bowl-winning coach to non-bowl coach this ledger has on record &mdash; one offseason, start to finish.</p>
+  </div>
+
+  <div class="coach-card">
+    <h3>Mike Uremovich &middot; Ball State</h3>
+    <div class="role">The first-ever Best HC Award winner in this chronicle</div>
+    <div class="timeline">
+      <div class="yr"><span class="y">2025</span><span class="e">9-4, Best HC Award, lost the MAC Championship to Western Michigan by a single point (28-27), then lost the 68 Ventures Bowl to Georgia St., 27-17.</span></div>
+      <div class="yr"><span class="y">2026</span><span class="e">Missed the MAC title game and any bowl appearance entirely.</span></div>
+      <div class="yr"><span class="y">2027</span><span class="e">8-4, back in the MAC Championship against Central Michigan this week, chasing a title-game win and a bowl win he still doesn't have on his record.</span></div>
+    </div>
+    <p class="note">Despite winning this chronicle's very first individual coaching honor, Uremovich is still winless in both of the bowl/title games he's actually coached &mdash; a genuine gap between recognition and results that this weekend could finally close.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 09</span><h2 class="display">Does Recruiting Rank Predict Bowl Season?</h2></div>
+  <p class="prose">Pulling every data point from Segments 2 and 4 together, more strongly than expected: of the eight teams that won at least one 2025 CFP game (Oklahoma, Texas, Indiana, Wisconsin, Miami, Penn St., Notre Dame, Texas Tech), seven carried a Top 25 class into the very next cycle &mdash; Texas, an actual Round 1 winner over Clemson, is the lone team that didn't. Of the six teams that won at least one 2026 CFP game (LSU, Notre Dame, Clemson, Alabama, Texas, Georgia), all six did. Across two tracked seasons, that's 13 of 14 CFP-game-winning programs landing a Top 25 class the following cycle. Recruiting rank doesn't just correlate with CFP success in this data &mdash; on this evidence, it's close to a precondition for it. The real surprise isn't which teams recruit well and win; it's that Texas managed to win playoff games in 2025 without one.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 10</span><h2 class="display">What's Left: 2027</h2></div>
+  <div class="prose">
+    <p>Every bowl slot for 2027 is still blank, waiting on conference championship weekend to finish before selection can even begin. Southern is bowl-eligible for the second straight year at 6&ndash;6 and waiting on its bid. Texas Tech and Iowa State play for a Big 12 title and a near-certain top playoff seed. And Mike Uremovich's Ball State, three years after this chronicle's very first individual coaching award, is one win away from a title-game win that's eluded him ever since &mdash; and still chasing his first bowl win to go with it.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">The National Desk &middot; College Football &middot; The Bowl Season Ledger Sign-Off</p>
+    <p class="headline">Two bowl seasons, two different national champions, and 13 of 14 CFP-winning programs landing a Top 25 class the very next cycle &mdash; Southern's own first bowl trip sits inside a national pattern where recruiting rank and winning are almost never far apart.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">2025 Champion</span><span class="v">Notre Dame</span></div>
+      <div class="stat-chip"><span class="k">2026 Champion</span><span class="v">Texas</span></div>
+      <div class="stat-chip"><span class="k">Steepest Coaching Fall</span><span class="v">Adam Fuller, Virginia</span></div>
+      <div class="stat-chip"><span class="k">Still Winless In Bowls/Titles</span><span class="v">Mike Uremovich, 0-2</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The National Desk: 2027 Season Recap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face { font-family: "Narrow Broadcast"; src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold"); font-weight: 700 900; }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --red-500: #d94b3f; --red-300: #ef8378; --gold-500: #e8b23a; --gold-300: #f3d287;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(217,75,63,0.12), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 900px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .desk-intro { display: flex; flex-wrap: wrap; gap: 18px; margin: 30px 0 10px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; }
+  .desk-intro .who { flex: 1; min-width: 220px; }
+  .desk-intro .who .n { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 15px; margin-bottom: 2px; }
+  .desk-intro .who.voss .n { color: var(--gold-500); }
+  .desk-intro .who.cast .n { color: var(--red-500); }
+  .desk-intro .who .r { font-size: 12px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .bumper { margin: 44px 0 18px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  .dlg { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+  .dlg .spk { flex-shrink: 0; width: 88px; text-align: right; }
+  .dlg .spk .name { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 12px; letter-spacing: 0.03em; display: block; }
+  .dlg.voss .spk .name { color: var(--gold-500); }
+  .dlg.cast .spk .name { color: var(--red-500); }
+  .dlg .txt { flex: 1; font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.6; color: var(--fg); padding-left: 14px; border-left: 2px solid var(--surface-line); }
+  .dlg.voss .txt { border-left-color: rgba(232,178,58,0.4); }
+  .dlg.cast .txt { border-left-color: rgba(217,75,63,0.4); }
+  .dlg .txt strong { color: var(--fg); }
+  @media (max-width: 560px) { .dlg { flex-direction: column; gap: 4px; } .dlg .spk { width: auto; text-align: left; } .dlg .txt { padding-left: 12px; } }
+
+  .onscreen { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-500); margin: -6px 0 14px 100px; }
+  @media (max-width: 560px) { .onscreen { margin-left: 0; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); margin-bottom: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; min-width: 480px; }
+  th, td { padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: #fdf0d5; padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 900px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">The National Desk &middot; College Football &middot; 2027 Season Recap</p>
+  <h1 class="display">Two Seven-And-Nine Seeds Just Played For The National Title</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Champion</span><span class="val">Ole Miss, 21-17</span></div>
+    <div class="bug-chip"><span class="label">Heisman</span><span class="val">Jaray Rask, Iowa St.</span></div>
+    <div class="bug-chip"><span class="label">Coaches Fired</span><span class="val">2</span></div>
+    <div class="bug-chip"><span class="label">2028 Hot Seat</span><span class="val">7 Coaches</span></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="desk-intro">
+    <div class="who voss"><div class="n">Derek Voss</div><div class="r">Play-by-play</div></div>
+    <div class="who cast"><div class="n">Renee Castellan</div><div class="r">Analyst</div></div>
+  </div>
+
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Welcome back to the National Desk. The confetti's down, the trophies are handed out, and somehow the two teams standing at the end of this thing were seeded seven and nine. Renee, in three years of doing this, have you ever seen a title game like that?</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Never. Not once. Every single tracked championship before this one had at least one blue-blood, top-4-seed team standing at the end. This year the committee's top two seeds &mdash; Michigan and Iowa State &mdash; were both gone before the semifinals. We are recapping the most chaotic season this desk has covered, start to finish.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Bracket That Broke The Model</h2></div>
+  <div class="onscreen">ON SCREEN: FULL CFP BRACKET</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Round</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td>Round 1 (#9 v #8)</td><td>#9 UNC def. #8 Nebraska, 38-32</td></tr>
+        <tr><td>Round 1 (#10 v #7)</td><td>#7 Ole Miss def. #10 Auburn, 41-7</td></tr>
+        <tr><td>Round 1 (#11 v #6)</td><td>#11 USC def. #6 Texas Tech, 40-32</td></tr>
+        <tr><td>Round 1 (#12 v #5)</td><td>#5 Miami def. #12 USF, 37-27</td></tr>
+        <tr><td>Round 2 (Orange Bowl)</td><td>#4 Notre Dame def. #5 Miami, 45-24</td></tr>
+        <tr><td>Round 2 (Rose Bowl)</td><td>#3 Texas A&amp;M def. #11 USC, 52-3</td></tr>
+        <tr><td>Round 2 (Cotton Bowl)</td><td>#7 Ole Miss def. #2 Iowa St., 38-24</td></tr>
+        <tr><td>Round 2 (Sugar Bowl)</td><td>#9 UNC def. #1 Michigan, 48-24</td></tr>
+        <tr><td>Semifinal (Peach Bowl)</td><td>#7 Ole Miss def. #3 Texas A&amp;M, 35-16</td></tr>
+        <tr><td>Semifinal (Fiesta Bowl)</td><td>#9 UNC def. #4 Notre Dame, 31-21</td></tr>
+        <tr class="hl"><td>National Championship</td><td>#7 Ole Miss def. #9 UNC, 21-17</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Walk me through it. Iowa State goes into the Cotton Bowl 12-and-1, the No. 2 overall seed, and Ole Miss just &mdash; ends it. 38-24.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">And it's not a fluke, Derek, that's the part people are going to miss. Ole Miss beat a 12-1 Iowa State team, then beat a 12-2 Texas A&amp;M team in the semifinal, then beat a UNC team that had just knocked off the No. 1 overall seed, Michigan, in the Sugar Bowl. That's three consecutive elite wins to close a season. You don't back into that as a 7-seed. You earn it.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">And on the other side, UNC's road to the title game might be the single most impressive run of upsets we've ever charted on this desk &mdash; a 9-seed knocking off the No. 8 team, then Michigan, the No. 1 overall seed, in the Sugar Bowl, then Notre Dame in the Fiesta Bowl semifinal.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Three straight ranked kills to get to the title game, and they still came up two points short. That's how good this final actually was &mdash; 21-17, and it did not feel like a mismatch for one second.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">National Awards: The Full Board</h2></div>
+  <div class="onscreen">ON SCREEN: NATIONAL AWARDS WINNERS, 2027</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Award</th><th>Winner</th><th>Team</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Heisman</td><td>Jaray Rask, QB</td><td>Iowa St.</td></tr>
+        <tr><td>Davey O'Brien</td><td>Jaray Rask, QB</td><td>Iowa St.</td></tr>
+        <tr><td>Maxwell</td><td>Demond Williams, QB</td><td>Washington</td></tr>
+        <tr><td>Doak Walker (RB)</td><td>Richard Young, HB</td><td>Alabama</td></tr>
+        <tr><td>Biletnikoff (WR)</td><td>Mason Bojorquez, WR</td><td>Miami (Ohio)</td></tr>
+        <tr class="hl"><td>Bednarik (Def. Player)</td><td>Suntarine Perkins, OLB</td><td>Ole Miss</td></tr>
+        <tr class="hl"><td>Butkus (LB)</td><td>Suntarine Perkins, OLB</td><td>Ole Miss</td></tr>
+        <tr class="hl"><td>Mackey (TE)</td><td>Julius Tisdol, TE</td><td>Ole Miss</td></tr>
+        <tr><td>Thorpe (DB)</td><td>Marvin Holliday, FS</td><td>LSU</td></tr>
+        <tr><td>Outland (OL)</td><td>Juelz Baptiste, LT</td><td>Tulane</td></tr>
+        <tr><td>Rimington (C)</td><td>Ron Pulu, C</td><td>Arizona St.</td></tr>
+        <tr><td>Lombardi</td><td>Michael Hallock, DE</td><td>Jacksonville St.</td></tr>
+        <tr><td>Groza (K)</td><td>Tyson Smith, K</td><td>Texas Tech</td></tr>
+        <tr><td>Ray Guy (P)</td><td>Paul Emezie, P</td><td>Iowa St.</td></tr>
+        <tr><td>Hornung</td><td>Aaron Anderson, WR</td><td>LSU</td></tr>
+        <tr class="hl"><td>Best HC</td><td>Matt Campbell</td><td>Iowa St. (12-1)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Jaray Rask sweeping the Heisman and the Davey O'Brien is the headline, but Renee, look at Ole Miss on this board &mdash; they didn't win the whole thing on scheme alone.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Suntarine Perkins wins Bednarik AND Butkus &mdash; a defensive player of the year sweep &mdash; and Julius Tisdol takes home the Mackey. That's a national champion that's also producing individual hardware on both sides of the ball. It's not a fluke title. The roster was built for exactly this.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">And one quiet footnote for our regulars &mdash; Iowa State's Matt Campbell wins Best HC at 12-1, even after that Cotton Bowl loss. Same pattern as our very first Best HC winner, actually &mdash; Ball State's Mike Uremovich won it back in 2025 without winning a title either.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Makes sense to me. Twelve wins, a Heisman winner on his roster, and the only loss all year outside of the eventual national champion came in the Big 12 title game itself. Losing to Ole Miss in Round 2 doesn't erase a season like that.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">National Statistical Leaders, Final</h2></div>
+  <div class="onscreen">ON SCREEN: FINAL SEASON STAT LEADERS</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Player</th><th>Team</th><th>Total</th></tr></thead>
+      <tbody>
+        <tr><td>Passing Yards</td><td>Austin Novosad</td><td>North Texas</td><td>4,088</td></tr>
+        <tr><td>Passing TDs</td><td>Demond Williams</td><td>Washington</td><td>44</td></tr>
+        <tr class="hl"><td>Rushing Yards</td><td>Jordan Molinich</td><td>Southern</td><td>1,669</td></tr>
+        <tr><td>Rushing TDs</td><td>Fluff Bothwell</td><td>Mississippi St.</td><td>18</td></tr>
+        <tr><td>Receiving Yards</td><td>Dazmin James</td><td>California</td><td>1,404</td></tr>
+        <tr><td>Receiving TDs</td><td>Mason Bojorquez</td><td>Miami (Ohio)</td><td>18</td></tr>
+        <tr><td>Tackles</td><td>Maddox Marcellus</td><td>Virginia</td><td>147</td></tr>
+        <tr><td>Sacks</td><td>Michael Hallock</td><td>Jacksonville St.</td><td>16</td></tr>
+        <tr><td>Interceptions</td><td>Andrew Vera</td><td>Ohio</td><td>6</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Jordan Molinich closes it out as the national rushing leader for the second year of his career, Derek. Second straight season, both years he's been on a college field.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">And yet he's nowhere on the awards board we just showed. Not Heisman, not Doak Walker &mdash; that went to Richard Young at Alabama.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">It's the story of his career so far. He's produced at a national-leader level in back-to-back years and hasn't converted it into a single major award. Compare that to Michael Hallock, who wins the Lombardi as the same guy topping our sacks leaderboard &mdash; production and hardware lining up perfectly. Molinich's production just isn't translating the same way, and it's worth watching whether that ever changes.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">The Coaching Carousel: Who's Already Gone, Who's On Notice</h2></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Let's get into the carousel, because it's already turned over twice this cycle. Wake Forest and Cincinnati both made in-season changes.</div></div>
+  <div class="onscreen">ON SCREEN: COACHING CHANGES, 2027</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>Out</th><th>Final Record</th><th>In</th><th>Prev. Job</th></tr></thead>
+      <tbody>
+        <tr><td>Wake Forest</td><td>Jake Dickert</td><td>2-10</td><td>Graham Harrell</td><td>Abilene Christian OC</td></tr>
+        <tr><td>Cincinnati</td><td>Scott Satterfield</td><td>3-9</td><td>Jeff Grimes</td><td>Wisconsin OC</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Two coordinators pulled off Power Conference staffs to try to fix two of the worst jobs in the sport. Dickert was in his second straight near-winless season at Wake Forest &mdash; that one felt inevitable for a while.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Now here's the one that's going to define the next calendar year of this carousel &mdash; the 2028 hot-seat board, revealed as soon as this season closed.</div></div>
+  <div class="onscreen">ON SCREEN: 2028 HOT SEAT WATCH</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>Coach</th></tr></thead>
+      <tbody>
+        <tr><td>Auburn</td><td>Hugh Freeze</td></tr>
+        <tr><td>Iowa</td><td>Kirk Ferentz</td></tr>
+        <tr><td>Missouri</td><td>Eliah Drinkwitz</td></tr>
+        <tr><td>Penn St.</td><td>James Franklin</td></tr>
+        <tr><td>TCU</td><td>Sonny Dykes</td></tr>
+        <tr><td>Tennessee</td><td>Josh Heupel</td></tr>
+        <tr><td>Virginia Tech</td><td>Brent Pry</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Kirk Ferentz on a hot seat is the one that stops me. One of the longest-tenured coaches we track, and he's on this list for the first time.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">And Eliah Drinkwitz survives another cycle at Missouri after finishing 1-and-11 this year. That's a program that, by the raw record, should be the easiest firing decision in the sport, and he's still standing.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Which tells you administrations are weighing more than the scoreboard &mdash; buyouts, recruiting pipelines, whatever it is. Hugh Freeze staying on this list despite a 9-3 season and a win over a defending national champion earlier this year is the real head-scratcher for me, though. That's twice now we've flagged him as the strangest name on a hot-seat board.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">What To Watch</h2></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">So Renee, as we turn the page to 2028 &mdash; what's the one thing you're carrying out of this season?</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">That seeding means less than it's ever meant. A 7 and a 9 played for the title this year. If that happens again next season, it's not a fluke anymore, it's just how this format works now, and everybody building a roster needs to plan around that instead of chasing a 1-seed.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">And on the carousel side &mdash; Kirk Ferentz and Eliah Drinkwitz are both going to be the two most-discussed names of the entire offseason, for completely opposite reasons.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Agreed. That's the desk for this recap. We'll see everybody back here for the road to 2028.</div></div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">The National Desk &middot; College Football &middot; 2027 Season Recap Sign-Off</p>
+    <p class="headline">A 7-seed beat a 9-seed for the title in the most chaotic bracket this desk has ever covered, Ole Miss swept individual hardware to back it up, and the coaching carousel is already two firings deep with a legend now on notice for 2028.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Champion</span><span class="v">Ole Miss, 21-17 over UNC</span></div>
+      <div class="stat-chip"><span class="k">Heisman</span><span class="v">Jaray Rask, Iowa St.</span></div>
+      <div class="stat-chip"><span class="k">Best HC</span><span class="v">Matt Campbell, Iowa St.</span></div>
+      <div class="stat-chip"><span class="k">2028 Watch</span><span class="v">Kirk Ferentz, Iowa</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

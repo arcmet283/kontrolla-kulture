@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: Week 5 Check-In, 2028</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--gold-500); background-image: linear-gradient(120deg, rgba(232,178,58,0.14), transparent 55%); }
+  .scorebug .kicker { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--gold-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--gold-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; }
+
+  .prose { font-family: Georgia,"Iowan Old Style",serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+  tr.win td:first-child { color: var(--win); font-weight: 700; } tr.loss td:first-child { color: var(--loss); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--gold-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--gold-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars &middot; Week 5 Check-In &middot; 2028 Season</p>
+  <h1 class="display">3-1, A Statement Win, And A Gut-Punch Injury</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Record</span><span class="val">3&ndash;1</span></div>
+    <div class="bug-chip"><span class="label">AAC</span><span class="val">2-1, 5th</span></div>
+    <div class="bug-chip"><span class="label">Last</span><span class="val">Lost at USF, 23-45</span></div>
+    <div class="bug-chip"><span class="label">Next</span><span class="val">at ECU, Wk 5</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Three weeks of results to catch up on since the last check-in, and the story swung hard in both directions &mdash; a dominant road blowout at Army, a season-ending injury to a key defender, and the first real gut-check of the season in a lopsided loss at USF. Southern sits 3-1 heading into Week 5, tied for the best start in program history through four games, but the margin for error just got a lot thinner.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Report</h3>
+    <ol>
+      <li>Three Weeks In Review</li>
+      <li>The Statement: 44-12 at Army</li>
+      <li>The Gut-Check: 23-45 at USF</li>
+      <li>Foxworth's First Real Bench</li>
+      <li>Molinich: Still Leading The Country, Still Off The Watchlist</li>
+      <li>The Pritchett Injury</li>
+      <li>AAC Standings Check</li>
+      <li>What's Ahead</li>
+      <li>The Takeaway</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">Three Weeks In Review</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Wk</th><th>Result</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr class="win"><td>2</td><td>Southern def. North Texas</td><td>31-7</td></tr>
+        <tr class="win"><td>3</td><td>Southern def. Army (Away)</td><td>44-12</td></tr>
+        <tr class="loss"><td>4</td><td>USF def. Southern (Away)</td><td>45-23</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The Statement: 44-12 At Army</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 3 &middot; Away</div>
+    <div class="teams">Southern 44, Army 12 <span style="color:var(--win); font-weight:700;">Won</span></div>
+    <p>Foxworth went 10-of-21 for 201 yards and 2 touchdowns without an interception. Molinich exploded for 222 rushing yards and 3 touchdowns. Jonathan Truss added 92 yards and a score, Hoffman chipped in a touchdown of his own, and Christian Thatcher and Ricardo Jones each made a defensive play (7 tackles/2 sacks and an interception, respectively). A 32-point road win over a program Southern has had a rocky history with.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">The Gut-Check: 23-45 At USF</h2></div>
+  <div class="matchup-card">
+    <div class="conf-tag">Week 4 &middot; Away &middot; AAC</div>
+    <div class="teams">USF 45, Southern 23 <span style="color:var(--loss); font-weight:700;">Lost</span></div>
+    <p>The first real bad week of the season. Foxworth struggled and was pulled in the 3rd quarter, finishing 5-of-19 for 107 yards with 2 interceptions. Moody came in and actually outplayed him statistically (7-of-18, 165 yards, 2 TDs). Molinich still ran for 125 yards but didn't find the end zone. Hoffman had a strong day (109 receiving yards, 1 TD) that got buried by the final score. The bigger issue was the defense, which surrendered 276 rushing yards.</p>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Foxworth's First Real Bench</h2></div>
+  <p class="prose">This is worth sitting with. Foxworth has been the season's headline story &mdash; the 2-star, rank-215 afterthought who beat out two other quarterbacks last year and opened 2028 completing 63.6% of his passes. The USF benching is his first real red flag as a starter, and notably, Moody &mdash; the same quarterback he originally leapfrogged in 2027 &mdash; is the one who relieved him and played better in the moment. Whether this becomes a real competition again or was a one-game hiccup is the biggest storyline to watch over the next few weeks.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">Molinich: Still Leading The Country, Still Off The Watchlist</h2></div>
+  <p class="prose">Molinich is the NCAA's leading rusher through four weeks &mdash; 685 yards on just 96 carries, 7 touchdowns, an offensive Player of the Week nod for his 222-yard, 3-touchdown day at Army. He is still not on the Heisman Watchlist, now 12 names deep. This is the fourth straight checkpoint across three seasons where this exact pattern has repeated. At some point the absence itself becomes the story.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">The Pritchett Injury</h2></div>
+  <p class="prose">The one real bad-news item off the field: Todd Pritchett, the 4-star linebacker from the 2027 signing class, tore a shoulder muscle in the USF game and is out for the season. He was a legitimate developmental piece (75 to 77 overall through his first two tracked seasons) and this is the first significant season-ending injury this program has dealt with since this chronicle began tracking.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">AAC Standings Check</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Team</th><th>Overall</th><th>Conf.</th></tr></thead>
+      <tbody>
+        <tr><td>Florida Atlantic</td><td>4-1</td><td>3-0</td></tr>
+        <tr><td>UTSA</td><td>3-1</td><td>3-0</td></tr>
+        <tr><td>Charlotte</td><td>3-1</td><td>3-0</td></tr>
+        <tr><td>ECU</td><td>3-1</td><td>2-1</td></tr>
+        <tr class="hl"><td>Southern</td><td>3-1</td><td>2-1</td></tr>
+        <tr><td>Navy</td><td>2-2</td><td>1-1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Sitting 5th in an unsettled conference race, one game back of the three unbeaten-in-conference teams at the top. Next up is a road trip to ECU, currently tied with Southern at 3-1 &mdash; a genuine measuring-stick game for conference positioning.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">What's Ahead</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Site</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>5</td><td>ECU</td><td>Away</td></tr>
+        <tr><td>6</td><td>Louisiana</td><td>Home</td></tr>
+        <tr><td>7</td><td>No. 16 Texas</td><td>Away</td></tr>
+        <tr><td>8</td><td>Navy</td><td>Away</td></tr>
+        <tr><td>10</td><td>Temple</td><td>Away</td></tr>
+        <tr><td>11</td><td>UAB</td><td>Home</td></tr>
+        <tr><td>12</td><td>Memphis</td><td>Home</td></tr>
+        <tr><td>13</td><td>UTSA</td><td>Home</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 09</span><h2 class="display">The Takeaway</h2></div>
+  <div class="prose">
+    <p>3-1 with a signature road win, a signature bad week, and now a real injury to account for is about as normal a start as a rising program can have &mdash; the difference from prior seasons is that this team has the ceiling (Molinich's national-best rushing, Foxworth's efficiency, a defense that's shown flashes) to make 3-1 feel like a floor instead of a peak. ECU on the road is the next real test of whether that's true.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars &middot; Week 5 Check-In &middot; Sign-Off</p>
+    <p class="headline">3-1 through four games, the nation's leading rusher still without Heisman buzz, and a road trip to ECU next with real conference stakes.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Record</span><span class="v">3-1</span></div>
+      <div class="stat-chip"><span class="k">Molinich</span><span class="v">685 Rush Yds, 1st NCAA</span></div>
+      <div class="stat-chip"><span class="k">Lost This Week</span><span class="v">Todd Pritchett, Season</span></div>
+      <div class="stat-chip"><span class="k">Next</span><span class="v">at ECU</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

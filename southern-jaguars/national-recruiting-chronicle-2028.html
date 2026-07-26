@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The National Desk: The Recruiting Chronicle — 2028 Cycle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face { font-family: "Narrow Broadcast"; src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold"); font-weight: 700 900; }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --red-500: #d94b3f; --red-300: #ef8378; --gold-500: #e8b23a; --gold-300: #f3d287;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: #fdf0d5; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: #fdf0d5; } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(217,75,63,0.12), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 900px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .desk-intro { display: flex; flex-wrap: wrap; gap: 18px; margin: 30px 0 10px; padding: 16px 18px; background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; }
+  .desk-intro .who { flex: 1; min-width: 220px; }
+  .desk-intro .who .n { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 15px; margin-bottom: 2px; }
+  .desk-intro .who.voss .n { color: var(--gold-500); }
+  .desk-intro .who.cast .n { color: var(--red-500); }
+  .desk-intro .who .r { font-size: 12px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .bumper { margin: 44px 0 18px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  .dlg { display: flex; gap: 12px; margin-bottom: 16px; align-items: flex-start; }
+  .dlg .spk { flex-shrink: 0; width: 88px; text-align: right; }
+  .dlg .spk .name { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: 12px; letter-spacing: 0.03em; display: block; }
+  .dlg.voss .spk .name { color: var(--gold-500); }
+  .dlg.cast .spk .name { color: var(--red-500); }
+  .dlg .txt { flex: 1; font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.6; color: var(--fg); padding-left: 14px; border-left: 2px solid var(--surface-line); }
+  .dlg.voss .txt { border-left-color: rgba(232,178,58,0.4); }
+  .dlg.cast .txt { border-left-color: rgba(217,75,63,0.4); }
+  .dlg .txt strong { color: var(--fg); }
+  @media (max-width: 560px) { .dlg { flex-direction: column; gap: 4px; } .dlg .spk { width: auto; text-align: left; } .dlg .txt { padding-left: 12px; } }
+
+  .onscreen { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-500); margin: -6px 0 14px 100px; }
+  @media (max-width: 560px) { .onscreen { margin-left: 0; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); margin-bottom: 16px; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; min-width: 480px; }
+  th, td { padding: 7px 11px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: #fdf0d5; padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 900px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">The National Desk &middot; The Recruiting Chronicle &middot; 2028 Cycle</p>
+  <h1 class="display">Alabama's 22-Spot Jump To No. 1</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">No. 1 Class</span><span class="val">Alabama</span></div>
+    <div class="bug-chip"><span class="label">Biggest Riser</span><span class="val">Alabama, +22</span></div>
+    <div class="bug-chip"><span class="label">National Transfer Story</span><span class="val">J'Vari Flowers, No. 5</span></div>
+    <div class="bug-chip"><span class="label">HS Board</span><span class="val">Now Top 10, Not Top 5</span></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="desk-intro">
+    <div class="who voss"><div class="n">Derek Voss</div><div class="r">Play-by-play</div></div>
+    <div class="who cast"><div class="n">Renee Castellan</div><div class="r">Analyst</div></div>
+  </div>
+
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Recruiting Chronicle time, and Renee, I don't think either of us expected to open with this storyline: Alabama's class going from No. 23 last cycle to No. 1 this cycle.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Twenty-two spots, Derek. That's the single biggest jump we've tracked for any program, in either direction, across every cycle this desk has covered. And it's not a fluke class either &mdash; four 5-stars, seven 4-stars. That's a total program reset in recruiting terms.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Full 2028 Class Board</h2></div>
+  <div class="onscreen">ON SCREEN: TOP 25 RECRUITING CLASSES, 2028</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rk</th><th>School</th><th>5&#9733;</th><th>4&#9733;</th><th>Top Recruit</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>1</td><td>Alabama</td><td>4</td><td>7</td><td>Drew Sebastian (Transfer)</td></tr>
+        <tr><td>2</td><td>LSU</td><td>3</td><td>6</td><td>Sacovie White-Helton (Transfer)</td></tr>
+        <tr><td>3</td><td>Notre Dame</td><td>2</td><td>8</td><td>Djay Braswell (Transfer)</td></tr>
+        <tr><td>4</td><td>Texas</td><td>3</td><td>6</td><td>Nasir Johnson (Transfer)</td></tr>
+        <tr><td>5</td><td>Texas A&amp;M</td><td>1</td><td>9</td><td>Parker Livingston (Transfer)</td></tr>
+        <tr><td>6</td><td>Ole Miss</td><td>1</td><td>9</td><td>AK Dear (Transfer)</td></tr>
+        <tr><td>7</td><td>UNC</td><td>0</td><td>10</td><td>Christopher Burgess Jr. (Transfer)</td></tr>
+        <tr><td>8</td><td>Georgia Tech</td><td>0</td><td>9</td><td>Christian Ingram (Transfer)</td></tr>
+        <tr><td>9</td><td>California</td><td>1</td><td>6</td><td>Steve Brewer (HS)</td></tr>
+        <tr><td>10</td><td>Miami</td><td>2</td><td>4</td><td>Cameron Spears (HS)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Eight of the top ten headliners on this board are transfers, not high school signees. Is that just where the sport is now?</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">It's trending hard that direction, yeah. We flagged it last cycle when the split flipped to majority-transfer for the first time. Now it's eight of ten at the very top of the board. If you want your best player next season, the portal is where programs are finding him.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The Movement Report</h2></div>
+  <div class="onscreen">ON SCREEN: BIGGEST MOVERS, 2027 TO 2028</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>School</th><th>2027 Rank</th><th>2028 Rank</th><th>Move</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Alabama</td><td>23</td><td>1</td><td>+22</td></tr>
+        <tr><td>LSU</td><td>11</td><td>2</td><td>+9</td></tr>
+        <tr><td>Notre Dame</td><td>7</td><td>3</td><td>+4</td></tr>
+        <tr><td>Texas</td><td>16</td><td>4</td><td>+12</td></tr>
+        <tr><td>Texas A&amp;M</td><td>9</td><td>5</td><td>+4</td></tr>
+        <tr><td>Ole Miss</td><td>15</td><td>6</td><td>+9</td></tr>
+        <tr class="loss" style="color:var(--loss)"><td>Georgia</td><td>5</td><td>17</td><td>&minus;12</td></tr>
+        <tr style="color:var(--loss)"><td>Michigan</td><td>4</td><td>16</td><td>&minus;12</td></tr>
+        <tr style="color:var(--loss)"><td>Miami</td><td>6</td><td>10</td><td>&minus;4</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Georgia and Michigan both fall twelve spots &mdash; same size drop, completely different context. Michigan just played for the national title.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Right, and that's the lesson we keep relearning on this desk. On-field success and next-cycle recruiting rank are related, but they are not the same thing. Michigan lost in the Sugar Bowl to UNC and still fell out of the recruiting top 10 entirely. Meanwhile Alabama didn't sniff the CFP field and just signed the best class in the country.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">Top HS Recruits: Now A Top 10, Not A Top 5</h2></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Quick programming note before we get into the names &mdash; this board itself just changed shape.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">It did. Every cycle before this one, we only had visibility into the top five high school signees nationally. Starting this cycle, that board doubled to ten. More names to track, which is good news for anyone who likes finding the sleeper.</div></div>
+  <div class="onscreen">ON SCREEN: TOP 10 HS RECRUITS, 2028</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rk</th><th>Name</th><th>School</th><th>Pos</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Paul Britt</td><td>Notre Dame</td><td>ATH (SS)</td></tr>
+        <tr><td>2</td><td>Jaylen Jones</td><td>UCF</td><td>QB</td></tr>
+        <tr><td>3</td><td>Chris Irvin</td><td>Oregon</td><td>ATH (SS)</td></tr>
+        <tr><td>4</td><td>Jeff Smith</td><td>Boston College</td><td>OLB</td></tr>
+        <tr><td>5</td><td>JD Miller</td><td>Eastern Michigan</td><td>ATH (SS)</td></tr>
+        <tr><td>6</td><td>Jace Peach</td><td>Troy</td><td>OLB</td></tr>
+        <tr><td>7</td><td>Sheriden Ducking</td><td>UCLA</td><td>SS</td></tr>
+        <tr><td>8</td><td>Cameron Spears</td><td>Miami</td><td>MLB</td></tr>
+        <tr><td>9</td><td>Cole Price</td><td>Alabama</td><td>ATH (WR)</td></tr>
+        <tr><td>10</td><td>Ja'Von Nelson</td><td>Texas Tech</td><td>WR</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">JD Miller at No. 5, signing with Eastern Michigan &mdash; that stands out. That program was 1-and-11 this past season and its coach was on the hot-seat board we just covered.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">A genuinely blue-chip talent choosing one of the worst jobs in the sport. Either that staff sold him on a real vision, or that's a name we're going to be talking about transferring out within two years. Keep an eye on it.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Top 10 Transfers: A Southern Name On The National Board</h2></div>
+  <div class="onscreen">ON SCREEN: TOP 10 TRANSFERS, 2028</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rk</th><th>Name</th><th>Landing</th><th>From</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Parker Livingston</td><td>Texas A&amp;M</td><td>Texas</td></tr>
+        <tr><td>2</td><td>Malik Blocton</td><td>Auburn</td><td>Auburn</td></tr>
+        <tr><td>3</td><td>Mark Banks</td><td>Michigan</td><td>Michigan</td></tr>
+        <tr><td>4</td><td>Tavion Gadson</td><td>LSU</td><td>Notre Dame</td></tr>
+        <tr class="hl"><td>5</td><td>J'Vari Flowers</td><td>Southern</td><td>Georgia</td></tr>
+        <tr><td>6</td><td>Ak Dear</td><td>Ole Miss</td><td>Alabama</td></tr>
+        <tr><td>7</td><td>Nasir Johnson</td><td>Texas</td><td>Georgia</td></tr>
+        <tr><td>8</td><td>Juan Gaston</td><td>Tennessee</td><td>Tennessee</td></tr>
+        <tr><td>9</td><td>Xavier Lucas</td><td>Alabama</td><td>Florida St.</td></tr>
+        <tr><td>10</td><td>Sacovie White-Helton</td><td>LSU</td><td>Georgia</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Derek, look at name No. 5 on that board. Southern &mdash; a program that's never cracked a Top 25 class in three tracked cycles &mdash; just landed the No. 5 overall transfer in the entire country.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">And it's not a random portal grab either. J'Vari Flowers came out of high school in Florida as a recruit Southern actually pursued and lost, to Georgia. He's bounced through the portal a couple times since, and this cycle, he picked the program that wanted him first.</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">That's a genuinely rare outcome. Most of the recruiting misses we track on this desk stay misses forever. This is a program getting a second bite at a player it should've had from the start &mdash; and landing him as a better player than he was in high school.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">What To Watch</h2></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Closing thought, Renee. What are you tracking into next cycle?</div></div>
+  <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">Whether Alabama's jump is real or a one-cycle blip &mdash; a 22-spot swing is enormous, and we've seen plenty of one-year spikes fade the following cycle. And keep watching the transfer share at the very top of these boards. If nine of ten headliners are transfers again next cycle, that's not a trend anymore, that's just how rosters get built now.</div></div>
+  <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">And for our regulars &mdash; go watch what J'Vari Flowers does at Southern this year. That's the best redemption story on this entire board, local program or not.</div></div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">The National Desk &middot; The Recruiting Chronicle &middot; 2028 Cycle Sign-Off</p>
+    <p class="headline">Alabama's 22-spot jump to No. 1 is the biggest single-cycle recruiting swing this desk has tracked, and the transfer portal now owns nine of the ten best headliners in the country &mdash; including a name coming home to Southern.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">No. 1 Class</span><span class="v">Alabama, +22 Spots</span></div>
+      <div class="stat-chip"><span class="k">Biggest Faller</span><span class="v">Georgia &amp; Michigan, -12</span></div>
+      <div class="stat-chip"><span class="k">National Transfer No. 5</span><span class="v">J'Vari Flowers, Southern</span></div>
+      <div class="stat-chip"><span class="k">HS Board</span><span class="v">Expanded To Top 10</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

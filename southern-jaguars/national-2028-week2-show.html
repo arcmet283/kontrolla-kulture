@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kickoff Central: Week 2, 2028</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --red-500: #c9382f; --red-300: #ef8078;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(201,56,47,0.18), transparent 55%); }
+  .scorebug .kicker { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,56,47,0.45); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display:flex; gap:8px; align-items:baseline; }
+  .bug-chip .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--red-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--red-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; }
+
+  .desk-intro { display: flex; gap: 14px; align-items: center; margin: 28px 0 8px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; }
+  .desk-intro .who { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; }
+  .desk-intro .who.voss { color: var(--gold-500); } .desk-intro .who.cast { color: var(--red-500); }
+
+  .dlg { display: flex; gap: 14px; margin: 14px 0; }
+  .dlg .spk { flex: 0 0 118px; }
+  .dlg .spk .name { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13.5px; }
+  .dlg .spk .role { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-dim); }
+  .dlg .txt { font-family: Georgia,"Iowan Old Style",serif; font-size: 16px; line-height: 1.6; padding-left: 14px; border-left: 3px solid; max-width: 62ch; }
+  .dlg.voss .spk .name { color: var(--gold-500); } .dlg.voss .txt { border-color: var(--gold-500); }
+  .dlg.cast .spk .name { color: var(--red-500); } .dlg.cast .txt { border-color: var(--red-500); }
+
+  .onscreen { margin: 16px 0; padding: 10px 14px; background: rgba(232,178,58,0.06); border: 1px dashed var(--surface-line); border-radius: 6px; font-family: ui-monospace,Consolas,monospace; font-size: 11.5px; letter-spacing: 0.03em; color: var(--fg-dim); text-transform: uppercase; }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--red-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(201,56,47,0.07); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-new { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+  .pill-fall { background: rgba(201,56,47,0.16); color: var(--red-500); }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 55ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,56,47,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--red-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Kickoff Central &middot; National Desk &middot; Week 2, 2028</p>
+  <h1 class="display">The Preseason No. 1 Is 0&ndash;2, And Nobody Saw It Coming</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Notre Dame</span><span class="val">0-2, unranked</span></div>
+    <div class="bug-chip"><span class="label">New No. 1</span><span class="val">Ole Miss</span></div>
+    <div class="bug-chip"><span class="label">Undefeated</span><span class="val">Florida St. 2-0</span></div>
+    <div class="bug-chip"><span class="label">On Deck</span><span class="val">Week 2 slate</span></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="desk-intro">
+    <div><span class="who voss">Derek Voss</span><br><span style="font-size:11px; color:var(--fg-dim);">Play-by-Play</span></div>
+    <div style="opacity:0.4;">&middot;</div>
+    <div><span class="who cast">Renee Castellan</span><br><span style="font-size:11px; color:var(--fg-dim);">Analyst</span></div>
+  </div>
+
+  <div class="toc">
+    <h3>In This Broadcast</h3>
+    <ol>
+      <li>Cold Open: The Collapse</li>
+      <li>Notre Dame, Three Years In Context</li>
+      <li>The Full Week 0-1 Spotlight Slate</li>
+      <li>Current Top 25</li>
+      <li>Florida State's Quiet 2-0</li>
+      <li>Conference Streak Watch: Miami &amp; Texas Tech</li>
+      <li>Heisman Watch, Early</li>
+      <li>What We're Watching Next</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">Cold Open: The Collapse</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Renee, I've done a lot of these openings. I don't think I've ever opened one with a team that started the year ranked No. 1 in the country and is now sitting outside the Top 25 entirely, two weeks later.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">Notre Dame lost to Stanford in Week 0, then lost to Ohio in Week 1. Two losses, zero wins, and a preseason team rating that had them perfectly balanced &mdash; 89 offense, 89 defense, 89 overall. On paper this was the most complete team in the country. On the field, it's 0 and 2.</div></div>
+  <div class="onscreen">ON SCREEN: WEEK 0 — STANFORD DEF. #1 NOTRE DAME, 45-35 · WEEK 1 — OHIO DEF. #11 NOTRE DAME, 31-21</div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Role</div></div><div class="txt">And it's worth noting, they were still ranked 11th heading into that Ohio loss — the committee gave them the benefit of the doubt after one bad week. Didn't survive a second.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">Notre Dame, Three Years In Context</h2></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">This is what makes it stunning instead of just bad, Derek. We've tracked this program for three full seasons. 2025, national champion. 2026, CFP Round 2 exit — a step back, but still a playoff team. 2027, they made the semifinal round before losing. Three straight years of being in the championship conversation. This is the first time in that span they've missed the field before October even arrives.</div></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">So what actually broke? Was this predictable?</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">Not from the ratings — a team doesn't post an 89/89/89 profile by accident, that's real roster strength. This looks like it's about the schedule they walked into, not the roster itself. Losing to Stanford and Ohio isn't a talent gap story, not with ratings that high. It's two bad weeks from a team that had zero margin for error at the top of the poll. We flagged in the preseason show that Notre Dame's balanced profile made them dangerous but not obviously the best team in the country — Arizona State had the identical 80/80/80 balance a tier down. This is exactly the kind of poll-position fragility that comment was getting at.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">The Full Week 0-1 Spotlight Slate</h2></div>
+  <div class="matchup-card"><div class="conf-tag">Week 0</div><div class="teams">Stanford def. #1 Notre Dame</div><p>45-35. The result that started it all.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 0</div><div class="teams">Colorado def. #12 Nebraska</div><p>41-27.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 0</div><div class="teams">Michigan St. def. #11 Oregon</div><p>14-9, a defensive slugfest.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 0</div><div class="teams">USF def. #17 UCF</div><p>31-26, an in-state statement for the Bulls.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 1</div><div class="teams">#15 Auburn def. #6 Texas A&amp;M</div><p>33-27 in overtime — the week's marquee ranked-on-ranked result.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 1</div><div class="teams">Oklahoma St. def. #18 Oklahoma</div><p>45-28 — Bedlam swings unranked-over-ranked.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 1</div><div class="teams">Ohio def. #11 Notre Dame</div><p>31-21 — the second Notre Dame loss, and the one that dropped them from the poll entirely.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 1</div><div class="teams">Georgia def. #17 Georgia Tech</div><p>31-28 — Georgia opens with a rivalry win over a ranked in-state foe.</p></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Eight marquee games, seven of them decided by two scores or less, and five of them upsets. That's an unusually chaotic open to a season, even before you get to Notre Dame.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Current Top 25</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rank</th><th>Team</th><th>Record</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Ole Miss</td><td>1-0</td></tr>
+        <tr><td>2</td><td>Alabama</td><td>1-0</td></tr>
+        <tr><td>3</td><td>UNC</td><td>1-0</td></tr>
+        <tr><td>4</td><td>Michigan</td><td>1-0</td></tr>
+        <tr><td>5</td><td>Miami</td><td>1-0</td></tr>
+        <tr><td>6</td><td>Iowa State</td><td>1-0</td></tr>
+        <tr><td>7</td><td>Penn St.</td><td>1-0</td></tr>
+        <tr><td>8</td><td>LSU</td><td>1-0</td></tr>
+        <tr><td>9</td><td>Texas Tech</td><td>1-0</td></tr>
+        <tr><td>10</td><td>Ohio St.</td><td>1-0</td></tr>
+        <tr><td>11</td><td>Auburn</td><td>1-0</td></tr>
+        <tr class="hl"><td>12</td><td>Florida St.</td><td>2-0</td></tr>
+        <tr><td>13</td><td>Texas</td><td>1-0</td></tr>
+        <tr><td>14</td><td>Texas A&amp;M</td><td>0-1</td></tr>
+        <tr><td>15</td><td>USC</td><td>1-0</td></tr>
+        <tr><td>16</td><td>Tennessee</td><td>1-0</td></tr>
+        <tr><td>17</td><td>Nebraska</td><td>1-1</td></tr>
+        <tr><td>18</td><td>Arizona St.</td><td>1-0</td></tr>
+        <tr><td>19</td><td>Oregon</td><td>1-1</td></tr>
+        <tr><td>20</td><td>Wisconsin</td><td>0-0</td></tr>
+        <tr><td>21</td><td>UCLA</td><td>1-0</td></tr>
+        <tr><td>22</td><td>California</td><td>1-0</td></tr>
+        <tr><td>23</td><td>Georgia</td><td>1-0</td></tr>
+        <tr><td>24</td><td>Georgia Tech</td><td>0-1</td></tr>
+        <tr><td>25</td><td>Oklahoma St.</td><td>1-0</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt" style="margin-top:14px;">Ole Miss opens at No. 1, and that's not a total surprise — they were the reigning national champion entering this year, having won it all in that chaotic 2027 bracket over UNC. Now UNC sits right behind them at No. 3, the same two teams from last year's title game both starting strong again.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">Florida State's Quiet 2-0</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Florida State is the only 2-0 team we've got, and they're ranked 12th — lower than three separate 1-0 teams. Talk me through that.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">It just means the committee is weighing quality of win over quantity of wins this early, which is normal in a two-game sample. Worth watching whether they climb if that record holds — a perfect record with no signature win yet is a different profile than what Ole Miss or Alabama are building at 1-0.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">Conference Streak Watch: Miami &amp; Texas Tech</h2></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">This is the one I'm watching most closely all year. Miami and Texas Tech have each won their conference championship three straight years running, 2025 through 2027 — nobody else in the sport can say that. Both are 1-0 to open this season, both sitting comfortably inside the current Top 10. If either one wins their conference again, that's four straight, in a sport where we've watched multiple coaching staffs turn over entirely in that same window.</div></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">And Texas Tech's Joey McGuire has been building to this the whole time — title game runner-up in 2025, then the Big 12 championship and a Best Head Coach Award in 2026, then back to the conference final again in 2027. If he gets Texas Tech there a fourth time, that's as complete a résumé as anyone in the country is building right now.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">Heisman Watch, Early</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Pos</th><th>Team</th><th>Weeks Listed</th></tr></thead>
+      <tbody>
+        <tr><td>Stephon Benjamin</td><td>QB</td><td>Auburn</td><td>3</td></tr>
+        <tr><td>Jaray Rask</td><td>QB</td><td>Iowa St.</td><td>3</td></tr>
+        <tr><td>Kevin Washington</td><td>HB</td><td>Notre Dame</td><td>3</td></tr>
+        <tr><td>Thomas Teague</td><td>QB</td><td>LSU</td><td>2</td></tr>
+        <tr><td>Deshawn Bernard</td><td>WR</td><td>Iowa St.</td><td>1</td></tr>
+        <tr><td>Chris Johnson Jr.</td><td>HB</td><td>Florida St.</td><td>1</td></tr>
+        <tr><td>AK Dear</td><td>HB</td><td>Ole Miss</td><td>1</td></tr>
+        <tr><td>VJ Hensley</td><td>WR</td><td>Michigan</td><td>1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt" style="margin-top:14px;">Kevin Washington's still on that list for Notre Dame, three weeks running, despite the 0-2 start — that's a name to watch, because if Notre Dame doesn't turn it around, a Heisman campaign attached to a losing record doesn't survive long.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">And two new preseason-caliber names just showed up off big openers — Chris Johnson Jr. helping Florida State to 2-0, and AK Dear for the new No. 1 team in the country. Fresh blood, first week on the list for both.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">What We're Watching Next</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Can Notre Dame right the ship before this turns into a lost season, given how high that roster was rated in the preseason. Does Florida State's résumé catch up to their record. And does either Miami or Texas Tech keep pace on that four-peat.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">Two weeks in, and this might already be one of the most volatile seasons we've tracked. Buckle up.</div></div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Kickoff Central &middot; Week 2 National Desk &middot; Sign-Off</p>
+    <p class="headline">The preseason No. 1 is out of the poll entirely, Florida State is the only unbeaten team left, and two programs are quietly chasing a fourth straight conference crown.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">New No. 1</span><span class="v">Ole Miss</span></div>
+      <div class="stat-chip"><span class="k">Notre Dame</span><span class="v">0-2, Unranked</span></div>
+      <div class="stat-chip"><span class="k">Unbeaten</span><span class="v">Florida St. 2-0</span></div>
+      <div class="stat-chip"><span class="k">Streak Watch</span><span class="v">Miami &amp; Texas Tech, 3 Straight Titles</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

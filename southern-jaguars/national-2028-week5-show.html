@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kickoff Central: Week 5, 2028</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --red-500: #c9382f; --red-300: #ef8078;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--red-500); background-image: linear-gradient(120deg, rgba(201,56,47,0.18), transparent 55%); }
+  .scorebug .kicker { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--red-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,56,47,0.45); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display:flex; gap:8px; align-items:baseline; }
+  .bug-chip .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--red-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--red-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--red-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--red-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; }
+
+  .desk-intro { display: flex; gap: 14px; align-items: center; margin: 28px 0 8px; padding: 14px 18px; background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; }
+  .desk-intro .who { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; }
+  .desk-intro .who.voss { color: var(--gold-500); } .desk-intro .who.cast { color: var(--red-500); }
+
+  .dlg { display: flex; gap: 14px; margin: 14px 0; }
+  .dlg .spk { flex: 0 0 118px; }
+  .dlg .spk .name { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13.5px; }
+  .dlg .spk .role { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-dim); }
+  .dlg .txt { font-family: Georgia,"Iowan Old Style",serif; font-size: 16px; line-height: 1.6; padding-left: 14px; border-left: 3px solid; max-width: 62ch; }
+  .dlg.voss .spk .name { color: var(--gold-500); } .dlg.voss .txt { border-color: var(--gold-500); }
+  .dlg.cast .spk .name { color: var(--red-500); } .dlg.cast .txt { border-color: var(--red-500); }
+
+  .onscreen { margin: 16px 0; padding: 10px 14px; background: rgba(232,178,58,0.06); border: 1px dashed var(--surface-line); border-radius: 6px; font-family: ui-monospace,Consolas,monospace; font-size: 11.5px; letter-spacing: 0.03em; color: var(--fg-dim); text-transform: uppercase; }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--red-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(201,56,47,0.07); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--red-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--red-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--red-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 55ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(201,56,47,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--red-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Kickoff Central &middot; National Desk &middot; Week 5, 2028</p>
+  <h1 class="display">Notre Dame Falls To 0-3. Nobody's Safe.</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Notre Dame</span><span class="val">0-3, still unranked</span></div>
+    <div class="bug-chip"><span class="label">No. 1</span><span class="val">Ole Miss, 4-0</span></div>
+    <div class="bug-chip"><span class="label">Surprise Unbeaten</span><span class="val">SMU, 5-0</span></div>
+    <div class="bug-chip"><span class="label">Streak Broken</span><span class="val">Texas Tech's first loss</span></div>
+  </div>
+</header>
+
+<main>
+
+  <div class="desk-intro">
+    <div><span class="who voss">Derek Voss</span><br><span style="font-size:11px; color:var(--fg-dim);">Play-by-Play</span></div>
+    <div style="opacity:0.4;">&middot;</div>
+    <div><span class="who cast">Renee Castellan</span><br><span style="font-size:11px; color:var(--fg-dim);">Analyst</span></div>
+  </div>
+
+  <div class="toc">
+    <h3>In This Broadcast</h3>
+    <ol>
+      <li>Notre Dame: 0-3, And It's Getting Worse</li>
+      <li>The Blue-Blood Bloodbath</li>
+      <li>SMU's Surprise Unbeaten Run</li>
+      <li>Texas Tech's Streak, Broken</li>
+      <li>Current Top 25</li>
+      <li>Heisman Watch: A Crowded, Wide-Open Field</li>
+      <li>What We're Watching Next</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">Notre Dame: 0-3, And It's Getting Worse</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Renee, when we opened the season Notre Dame was the preseason No. 1, a perfectly balanced 89 on offense, 89 on defense. Three games later, they're 0-3. This week it was SMU, 38-31.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">Stanford in Week 0, Ohio in Week 1, now SMU in Week 2. Three losses to three very different kinds of opponents &mdash; that rules out a single bad matchup as the explanation. This is a program-wide problem, not a scheduling quirk.</div></div>
+  <div class="onscreen">ON SCREEN: WK0 — STANFORD DEF. #1 NOTRE DAME 45-35 · WK1 — OHIO DEF. #11 NOTRE DAME 31-21 · WK2 — SMU DEF. NOTRE DAME 38-31</div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">And here's the part that should really worry that fan base: Kevin Washington is still sitting on their Heisman Watchlist, three weeks running, on an 0-3 team. That tells you the roster still has individual talent. The results just aren't showing it.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The Blue-Blood Bloodbath</h2></div>
+  <p class="prose" style="font-family:Georgia,serif; padding:0 0 8px;">Notre Dame isn't the only traditional power in freefall. Alabama and Ohio State have both lost twice in the last two weeks alone.</p>
+  <div class="matchup-card"><div class="conf-tag">Week 2-3</div><div class="teams">Alabama: Back-To-Back Losses</div><p>Lost to No. 13 Texas 31-28 in Week 2, then to unranked Boise State 38-31 in Week 3. From a preseason contender to 2-2 and 17th in the country in the span of two weeks.</p></div>
+  <div class="matchup-card"><div class="conf-tag">Week 3-4</div><div class="teams">Ohio State: Back-To-Back Losses</div><p>Fell to No. 18 UCLA 35-21 in Week 3, then to unranked Washington 32-17 in Week 4. Now 1-2 and clinging to the back of the rankings at No. 23.</p></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">Notre Dame, Alabama, Ohio State &mdash; three of the sport's most decorated programs are a combined 4-8 right now. Whatever's driving the chaos this season, it isn't sparing anybody at the top.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">SMU's Surprise Unbeaten Run</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">While all that's happening at the top, SMU has quietly gone 5-0 &mdash; including that win over Notre Dame &mdash; and they're sitting at just No. 19.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">A 5-0 team ranked outside the top 15 is unusual, and it says the committee wants to see more before buying all the way in &mdash; fair, given the résumé is built on beating a struggling Notre Dame team rather than a murderer's row. But if they keep winning, that ranking has to catch up eventually.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Texas Tech's Streak, Broken</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">We flagged Texas Tech a few weeks back as one of two programs chasing a fourth straight conference title, Miami being the other. That got a lot more complicated this week.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">No. 14 Texas A&amp;M beat No. 8 Texas Tech 49-35 &mdash; Tech's first loss of the season, dropping them to 2-1 and down to 12th in the country. The four-peat bid isn't dead, a Week 3 non-conference-or-early loss doesn't eliminate a Big 12 run, but it's the first real crack in that streak we've tracked. Miami, meanwhile, is still unbeaten at 4-0 and holding at No. 3 &mdash; their path looks a lot cleaner right now.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">Current Top 25</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Rank</th><th>Team</th><th>Record</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Ole Miss</td><td>4-0</td></tr>
+        <tr><td>2</td><td>UNC</td><td>4-0</td></tr>
+        <tr><td>3</td><td>Miami</td><td>4-0</td></tr>
+        <tr><td>4</td><td>Iowa State</td><td>4-0</td></tr>
+        <tr><td>5</td><td>LSU</td><td>4-0</td></tr>
+        <tr><td>6</td><td>Penn St.</td><td>4-0</td></tr>
+        <tr><td>7</td><td>Texas A&amp;M</td><td>3-1</td></tr>
+        <tr><td>8</td><td>Michigan</td><td>3-1</td></tr>
+        <tr><td>9</td><td>Florida St.</td><td>4-0</td></tr>
+        <tr><td>10</td><td>Wisconsin</td><td>3-0</td></tr>
+        <tr><td>11</td><td>UCLA</td><td>4-0</td></tr>
+        <tr><td>12</td><td>Texas Tech</td><td>2-1</td></tr>
+        <tr><td>13</td><td>Georgia</td><td>4-0</td></tr>
+        <tr><td>14</td><td>Texas</td><td>3-1</td></tr>
+        <tr><td>15</td><td>Auburn</td><td>3-1</td></tr>
+        <tr><td>16</td><td>Tennessee</td><td>3-1</td></tr>
+        <tr><td>17</td><td>Alabama</td><td>2-2</td></tr>
+        <tr><td>18</td><td>Oregon</td><td>3-2</td></tr>
+        <tr><td>19</td><td>SMU</td><td>5-0</td></tr>
+        <tr><td>20</td><td>Nebraska</td><td>2-2</td></tr>
+        <tr><td>21</td><td>Arizona St.</td><td>2-1</td></tr>
+        <tr><td>22</td><td>Oklahoma St.</td><td>2-1</td></tr>
+        <tr><td>23</td><td>Ohio St.</td><td>1-2</td></tr>
+        <tr><td>24</td><td>Indiana</td><td>3-1</td></tr>
+        <tr><td>25</td><td>Houston</td><td>2-1</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px; font-family:Georgia,serif;">Eleven unbeaten teams remain in the Top 25 &mdash; Ole Miss, UNC, Miami, Iowa State, LSU, Penn State, Florida State, Wisconsin, UCLA, Georgia, and SMU. That's an unusually large unbeaten group this deep into the season, and it's a big part of why this year has felt so chaotic: normally by Week 5 the field has already started separating itself. Ole Miss, the reigning national champion, has held the No. 1 spot all season so far.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">Heisman Watch: A Crowded, Wide-Open Field</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Twelve names deep on the national Heisman Watchlist now, and it's almost entirely quarterbacks and running backs from the unbeaten or one-loss crowd &mdash; Stephon Benjamin at Auburn, Jaray Rask at Iowa State, AK Dear at Ole Miss, a pair from surprise-unbeaten SMU in Andre Taukolo and Derrick McFall.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">And worth flagging for anyone following along with the Southern Jaguars broadcast: their running back Jordan Molinich leads the entire NCAA in rushing yards right now, 685 through four games, and he's still not on this list. That's not a knock on this watchlist specifically &mdash; production from a rebuilding program outside the rankings just doesn't get the same early attention nationally. But if he keeps this pace, that's going to get harder to ignore.</div></div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">What We're Watching Next</h2></div>
+  <div class="dlg voss"><div class="spk"><div class="name">Voss</div><div class="role">Play-by-Play</div></div><div class="txt">Does Notre Dame find any answers before this turns into a lost season entirely. Does SMU's ranking catch up to their record. And does Texas Tech's four-peat bid survive its first real scare.</div></div>
+  <div class="dlg cast"><div class="spk"><div class="name">Castellan</div><div class="role">Analyst</div></div><div class="txt">Five weeks in, and we've already had more blue-blood chaos than most full seasons produce. Buckle up.</div></div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Kickoff Central &middot; Week 5 National Desk &middot; Sign-Off</p>
+    <p class="headline">Notre Dame falls to 0-3, Alabama and Ohio State are both reeling, and an unbeaten SMU team still can't crack the top 15.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">No. 1</span><span class="v">Ole Miss, 4-0</span></div>
+      <div class="stat-chip"><span class="k">Notre Dame</span><span class="v">0-3, Unranked</span></div>
+      <div class="stat-chip"><span class="k">Surprise Unbeaten</span><span class="v">SMU, No. 19</span></div>
+      <div class="stat-chip"><span class="k">Streak Watch</span><span class="v">Texas Tech's First Loss</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

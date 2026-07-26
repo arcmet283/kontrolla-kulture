@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: 2027 Season Recap</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  @font-face { font-family: "Narrow Broadcast"; src: local("Arial Narrow Bold"), local("Liberation Sans Narrow Bold"); font-weight: 700 900; }
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --blue-accent: #4f7cff; --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Narrow Broadcast", "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+  a { color: var(--blue-accent); }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--gold-500); background-image: linear-gradient(120deg, rgba(232,178,58,0.14), transparent 55%); }
+  .scorebug .kicker { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--gold-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,"SF Mono",Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 970px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--gold-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; letter-spacing: 0.01em; }
+
+  p { color: var(--fg-dim); max-width: 68ch; }
+  .prose { font-family: Georgia, "Iowan Old Style", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 65ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; } tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+
+  .matchup-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .matchup-card .conf-tag { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--gold-500); font-weight: 700; }
+  .matchup-card .teams { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 18px; margin: 4px 0 2px; }
+  .matchup-card p { margin: 6px 0 0; font-size: 14px; color: var(--fg); max-width: none; }
+  .matchup-card .result { font-weight: 700; } .matchup-card .win { color: var(--win); } .matchup-card .loss { color: var(--loss); }
+
+  .leader-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dashed var(--surface-line); gap: 12px; flex-wrap: wrap; }
+  .leader-row:last-child { border-bottom: none; }
+  .leader-row .cat { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gold-500); font-weight: 700; min-width: 150px; }
+  .leader-row .who { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; }
+  .leader-row .stat { font-variant-numeric: tabular-nums; font-weight: 700; margin-left: auto; }
+
+  .grade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 10px; }
+  .grade-card { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 6px; padding: 12px 14px; }
+  .grade-card .team { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 15px; display:flex; justify-content:space-between; align-items:center; gap:8px; }
+  .grade-card p { margin: 6px 0 0; font-size: 13px; color: var(--fg-dim); max-width: none; }
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+  .pill-up { background: rgba(56,201,143,0.15); color: var(--win); }
+  .pill-down { background: rgba(232,89,76,0.15); color: var(--loss); }
+  .pill-new { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--gold-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 970px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 50ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Narrow Broadcast","Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars &middot; 2027 Season Recap</p>
+  <h1 class="display">Six Wins, No Bowl, And A Roster About To Turn Over Completely</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">Final Record</span><span class="val">6&ndash;6 (4&ndash;5 AAC)</span></div>
+    <div class="bug-chip"><span class="label">Final Rank</span><span class="val">No. 67 (from No. 89)</span></div>
+    <div class="bug-chip"><span class="label">Bowl Bid</span><span class="val">None</span></div>
+    <div class="bug-chip"><span class="label">Departing</span><span class="val">21 Players</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Southern's 2027 season is over, and it ends on a strange note: bowl-eligible for the second straight year, and left home anyway. This is the full recap &mdash; the 1&ndash;4 start, the true freshman quarterback who rescued it, the final numbers, and the massive senior class walking out the door on the way into an offseason that's already producing the best recruiting news in program history.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Recap</h3>
+    <ol>
+      <li>The Full Season, Game By Game</li>
+      <li>The Two-Season Arc: 1&ndash;4 To 6&ndash;6</li>
+      <li>Final Stat Leaders</li>
+      <li>Molinich: The Heisman Snub, Part Two</li>
+      <li>All-Conference Honors</li>
+      <li>Team Stats: The Same Story, A Third Straight Year</li>
+      <li>No Bowl Bid: What Happened</li>
+      <li>The Exodus: Twenty-One Players Gone</li>
+      <li>The Takeaway</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Full Season, Game By Game</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Wk</th><th>Opponent</th><th>Result</th><th>Score</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>at Stanford</td><td class="win">Won</td><td>31-24</td></tr>
+        <tr><td>2</td><td>at North Texas</td><td class="loss">Lost</td><td>10-30</td></tr>
+        <tr><td>3</td><td>at #6 Texas Tech</td><td class="loss">Lost</td><td>27-57</td></tr>
+        <tr><td>4</td><td>vs Tulane</td><td class="loss">Lost</td><td>14-42</td></tr>
+        <tr><td>6</td><td>vs ECU</td><td class="loss">Lost</td><td>14-52</td></tr>
+        <tr class="hl"><td>7</td><td>vs Army</td><td class="win">Won</td><td>27-10</td></tr>
+        <tr><td>8</td><td>vs Tulsa</td><td class="loss">Lost</td><td>26-40</td></tr>
+        <tr><td>9</td><td>vs Tennessee St.</td><td class="win">Won</td><td>97-10</td></tr>
+        <tr><td>10</td><td>vs Temple</td><td class="win">Won</td><td>44-7</td></tr>
+        <tr><td>11</td><td>at UAB</td><td class="win">Won</td><td>31-29</td></tr>
+        <tr><td>12</td><td>at Memphis</td><td class="win">Won</td><td>45-38</td></tr>
+        <tr><td>13</td><td>at UTSA</td><td class="loss">Lost</td><td>27-30 (2OT)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Weeks 0, 5, 14, and 15 were byes. The Tennessee State blowout (97&ndash;10) stands as the largest margin of victory in this program's tracked history, and the UTSA double-overtime finish closed the book on a season that never found a stretch of true consistency &mdash; every three-game losing skid was followed by a multi-game winning streak, and vice versa.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 02</span><h2 class="display">The Two-Season Arc: 1&ndash;4 To 6&ndash;6</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Stretch</th><th>Record</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr><td>Weeks 1&ndash;6 (Wilson/Moody era)</td><td>1&ndash;4</td><td>Three quarterbacks, one signature road win at Stanford</td></tr>
+        <tr class="hl"><td>Weeks 7&ndash;13 (Foxworth era)</td><td>5&ndash;2</td><td>Losses only to Tulsa (at home) and UTSA (2OT, season finale)</td></tr>
+        <tr><td>Final</td><td>6&ndash;6 (4&ndash;5 AAC)</td><td>Ending rank No. 67, up 22 spots from the preseason No. 89</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">A true freshman took over a broken 1&ndash;4 team in Week 6 and went 5&ndash;2 the rest of the way. Whatever comes next for this program, the actual turnaround already happened, and it happened because of one position change.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 03</span><h2 class="display">Final Stat Leaders</h2></div>
+  <div class="leader-row"><span class="cat">Passing</span><span class="who">Joseph Foxworth</span><span class="stat">130-246, 2,067 yds, 21 TD, 10 INT</span></div>
+  <div class="leader-row"><span class="cat">Rushing</span><span class="who">Jordan Molinich</span><span class="stat">233 car, 1,669 yds, 11 TD</span></div>
+  <div class="leader-row"><span class="cat">Receiving</span><span class="who">Gavin Hoffman</span><span class="stat">42 rec, 1,050 yds, 10 TD</span></div>
+  <div class="leader-row"><span class="cat">Tackles</span><span class="who">Christian Thatcher</span><span class="stat">75 tkls</span></div>
+  <div class="leader-row"><span class="cat">Sacks</span><span class="who">Damien Rand</span><span class="stat">8 sks</span></div>
+  <div class="leader-row"><span class="cat">Interceptions</span><span class="who">Byron Allen</span><span class="stat">3 ints</span></div>
+  <p class="prose" style="margin-top:16px;">Molinich closes the regular season 1st in the NCAA in rushing yards for the second straight year of his career. Gavin Hoffman's 1,050 receiving yards is the best receiving season this program has produced across all three tracked years &mdash; from a player who arrived as a 2-star afterthought.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 04</span><h2 class="display">Molinich: The Heisman Snub, Part Two</h2></div>
+  <p class="prose">Molinich's Heisman Watchlist count froze at <strong>4 weeks</strong> and never moved again after an early-season checkpoint &mdash; even while he led the country in rushing from start to finish. He also didn't repeat as Doak Walker winner: that award went to Alabama's Richard Young, while Iowa State's Jaray Rask &mdash; the 5-star athlete-turned-quarterback who led the Cyclones to a Big 12 title and the CFP field &mdash; won the Heisman outright. Production without a signature national moment wasn't enough for Southern's best player two years running.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 05</span><h2 class="display">All-Conference Honors</h2></div>
+  <div class="grade-grid">
+    <div class="grade-card"><div class="team">Jordan Molinich <span class="pill pill-up">1st Team</span></div><p>HB &middot; national rushing leader</p></div>
+    <div class="grade-card"><div class="team">Gavin Hoffman <span class="pill pill-up">1st Team</span></div><p>WR &middot; 1,050 yards, 10 TD</p></div>
+    <div class="grade-card"><div class="team">Branson Moore <span class="pill pill-up">1st Team</span></div><p>K &middot; departing for the NFL</p></div>
+    <div class="grade-card"><div class="team">Matt Brown <span class="pill pill-new">2nd Team</span></div><p>WR</p></div>
+    <div class="grade-card"><div class="team">Christopher Shelton <span class="pill pill-new">2nd Team</span></div><p>CB</p></div>
+    <div class="grade-card"><div class="team">DJ Hill-Smith <span class="pill pill-new">2nd Team</span></div><p>FS &middot; departing for the NFL</p></div>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 06</span><h2 class="display">Team Stats: The Same Story, A Third Straight Year</h2></div>
+  <div class="leader-row"><span class="cat">Total Defense</span><span class="who">4,141 yds</span><span class="stat">9th nationally</span></div>
+  <div class="leader-row"><span class="cat">Pass Defense</span><span class="who">2,345 yds</span><span class="stat">1st nationally</span></div>
+  <div class="leader-row"><span class="cat">Run Defense</span><span class="who">1,796 yds</span><span class="stat">132nd nationally</span></div>
+  <div class="leader-row"><span class="cat">Total Offense</span><span class="who">4,807 yds</span><span class="stat">54th nationally</span></div>
+  <div class="leader-row"><span class="cat">Red Zone Offense</span><span class="who">86%</span><span class="stat">12th nationally</span></div>
+  <p class="prose" style="margin-top:16px;">Pass defense finishes ranked No. 1 nationally for the second time in three tracked seasons (1st, 2nd, 1st). Run defense finishes 132nd for the second year running. No transfer class, no coaching emphasis, and no amount of investment on that side of the ball has moved the run defense out of the bottom 10 even once across this program's entire tracked history.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 07</span><h2 class="display">No Bowl Bid: What Happened</h2></div>
+  <p class="prose">Southern finished 6&ndash;6, the same win total that earned a Gasparilla Bowl trip a year ago &mdash; and this year, no bowl at all. Every bowl slot nationally has been filled without Southern's name appearing once. The most likely explanation sitting in this program's own data: last year's trip came at 8&ndash;6 with a winning overall record on paper, while this year's 6&ndash;6 finish is exactly break-even, and with dozens of other 6-win-and-better teams nationally competing for a shrinking number of lower-tier bowl slots, break-even wasn't enough to make the cut this time.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 08</span><h2 class="display">The Exodus: Twenty-One Players Gone</h2></div>
+  <p class="prose">This is the largest single-offseason roster turnover this program has tracked &mdash; fifteen graduations, two NFL Draft departures, and four portal transfers out, against just two players (Carlos Allen, Joe Eisworth) who tested the portal and chose to stay.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Name</th><th>Pos.</th><th>Path</th></tr></thead>
+      <tbody>
+        <tr><td>Coby Buncom</td><td>FS</td><td>NFL Draft</td></tr>
+        <tr><td>DJ Hill-Smith</td><td>FS</td><td>NFL Draft</td></tr>
+        <tr><td>Byron Allen</td><td>SS</td><td>Graduated &middot; 1st Team All-Conf.</td></tr>
+        <tr><td>Javeon Fricks</td><td>TE</td><td>Graduated</td></tr>
+        <tr><td>Dominic Bowens</td><td>G</td><td>Graduated</td></tr>
+        <tr><td>Christian Martin</td><td>T</td><td>Graduated</td></tr>
+        <tr><td>Ronald Simmons</td><td>DT</td><td>Graduated</td></tr>
+        <tr><td>Houston Harris</td><td>CB</td><td>Graduated</td></tr>
+        <tr><td>Stacy Vaughn</td><td>WR</td><td>Graduated</td></tr>
+        <tr><td>+ 8 more</td><td>&mdash;</td><td>Graduated (Proctor, Hudson, Cochran, Campbell, Powell, White, Cephus, Dixon)</td></tr>
+        <tr><td>Torren Lockhart</td><td>MLB</td><td>Transferred to Arkansas St.</td></tr>
+        <tr><td>Ty Wilson</td><td>QB</td><td>Transferred to Kennesaw St.</td></tr>
+        <tr><td>Jason Phillips</td><td>SS</td><td>Transferred to Missouri St.</td></tr>
+        <tr><td>Matt Davis</td><td>RT</td><td>Transferred to New Mexico</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Ty Wilson's departure closes the book on the Week 1 hero of this exact season &mdash; the same quarterback who threw the game-winning touchdown at Stanford is now at Kennesaw State. Byron Allen and DJ Hill-Smith, this year's interception and NFL Draft, respectively, leave real production behind at the back of the secondary.</p>
+
+  <div class="bumper"><span class="seg-num">SEGMENT 09</span><h2 class="display">The Takeaway</h2></div>
+  <div class="prose">
+    <p>Three seasons in, the pattern keeps repeating with variations: a rough start salvaged by a midseason answer, a national rushing leader who can't crack the Heisman conversation, and a run defense that simply will not move. What's different this time is the scale of what's walking out the door &mdash; nineteen players, including two All-Conference starters and a full offensive line's worth of experience &mdash; right as the recruiting department is producing its best class in program history. The 2028 preview is where all of that gets weighed against each other.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars &middot; 2027 Season Recap &middot; Sign-Off</p>
+    <p class="headline">6-6, no bowl, and the biggest roster exodus this program has tracked &mdash; but Molinich is still the nation's best back, and Foxworth's 5-2 finish proved the offense has a real foundation.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">Final Record</span><span class="v">6-6, No Bowl</span></div>
+      <div class="stat-chip"><span class="k">Foxworth Era</span><span class="v">5-2</span></div>
+      <div class="stat-chip"><span class="k">Molinich</span><span class="v">1,669 Yds, 1st NCAA</span></div>
+      <div class="stat-chip"><span class="k">Departing</span><span class="v">21 Players</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>

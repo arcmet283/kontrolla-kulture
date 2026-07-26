@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Southern Jaguars: The Record Book</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+  :root {
+    --navy-950: #0a0e1c; --navy-900: #0e1530; --navy-800: #16204a; --navy-700: #1f2c63; --navy-600: #2c3c82;
+    --gold-500: #e8b23a; --gold-300: #f3d287; --gold-100: #fbeecb;
+    --win: #38c98f; --loss: #e8594c;
+    --ink: #eef1fb; --ink-dim: #aab4d6; --paper: #f3f1ea; --card: #101a38; --card-line: rgba(232,178,58,0.2);
+  }
+  :root[data-theme="light"] { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  :root[data-theme="dark"], :root:not([data-theme]) { --bg: var(--navy-950); --fg: var(--ink); --fg-dim: var(--ink-dim); --surface: var(--card); --surface-line: var(--card-line); --header-bg: var(--navy-950); --header-fg: var(--gold-100); }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) { --bg: var(--paper); --fg: #131c38; --fg-dim: #495178; --surface: #ffffff; --surface-line: #ddd6c4; --header-bg: var(--navy-950); --header-fg: var(--gold-100); } }
+
+  * { box-sizing: border-box; } html, body { margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--fg); font-family: -apple-system,"Segoe UI",system-ui,sans-serif; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+  .display { font-family: "Arial Narrow","Helvetica Neue Condensed",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; }
+
+  .scorebug { background: var(--header-bg); color: var(--header-fg); padding: 22px clamp(16px,4vw,48px) 20px; border-bottom: 3px solid var(--gold-500); background-image: linear-gradient(120deg, rgba(232,178,58,0.14), transparent 55%); }
+  .scorebug .kicker { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 0.18em; font-size: 12px; color: var(--gold-300); margin: 0 0 6px; }
+  .scorebug h1 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(26px,5vw,46px); line-height: 0.98; margin: 0 0 14px; text-wrap: balance; }
+  .bug-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .bug-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.4); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,Consolas,monospace; font-variant-numeric: tabular-nums; font-size: 13px; display: flex; gap: 8px; align-items: baseline; }
+  .bug-chip .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.08em; font-size: 11px; color: var(--gold-300); }
+  .bug-chip .val { font-weight: 700; color: #fff; }
+
+  main { max-width: 1000px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; }
+
+  .bumper { margin: 56px 0 22px; padding: 14px 18px; background: linear-gradient(90deg, var(--navy-800), var(--navy-700)); border-left: 5px solid var(--gold-500); color: #fff; }
+  :root[data-theme="light"] .bumper { color: var(--gold-300); }
+  .bumper .seg-num { font-family: ui-monospace,monospace; font-size: 11px; letter-spacing: 0.12em; color: var(--gold-300); display: block; margin-bottom: 2px; }
+  .bumper h2 { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(19px,3.2vw,27px); margin: 0; }
+
+  .prose { font-family: Georgia,"Iowan Old Style",serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
+  .prose p { max-width: 68ch; color: var(--fg); } .prose strong { color: var(--fg); }
+
+  .toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 20px; margin-top: 28px; }
+  .toc h3 { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--gold-500); margin: 0 0 10px; }
+  .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+  .toc li { break-inside: avoid; padding: 2px 0; } @media (max-width:560px){ .toc ol { columns: 1; } }
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 480px; }
+  th, td { padding: 9px 14px; text-align: left; border-bottom: 1px solid var(--surface-line); white-space: nowrap; }
+  th { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-size: 11.5px; color: var(--fg-dim); background: rgba(232,178,58,0.08); }
+  td { color: var(--fg); font-variant-numeric: tabular-nums; }
+  tr:last-child td { border-bottom: none; }
+  tr.hl td { background: rgba(232,178,58,0.12); font-weight: 700; }
+  tr.win td:nth-child(1) { color: var(--win); font-weight: 700; }
+  tr.loss td:nth-child(1) { color: var(--loss); font-weight: 700; }
+
+  .bar-row { display: grid; grid-template-columns: 70px 1fr 60px; align-items: center; gap: 10px; padding: 7px 0; font-size: 13px; }
+  .bar-row .yr { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; }
+  .bar-track { background: var(--surface-line); border-radius: 3px; height: 14px; overflow: hidden; }
+  .bar-fill { background: linear-gradient(90deg, var(--gold-500), var(--gold-300)); height: 100%; border-radius: 3px; }
+  .bar-val { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+
+  .stat-block { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px 18px; margin-bottom: 12px; }
+  .stat-block .cat { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.08em; color: var(--gold-500); font-weight: 700; }
+  .stat-block .rec { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 800; text-transform: uppercase; font-size: 17px; margin: 4px 0 2px; }
+  .stat-block p { margin: 6px 0 0; font-size: 13.5px; color: var(--fg-dim); max-width: none; }
+
+  .pill { display: inline-block; padding: 2px 9px; border-radius: 99px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; margin-left: 6px; }
+  .pill-gold { background: rgba(232,178,58,0.18); color: var(--gold-500); }
+
+  footer.signoff { margin-top: 64px; background: var(--navy-950); border-top: 3px solid var(--gold-500); color: var(--gold-100); padding: 32px clamp(16px,4vw,48px) 30px; }
+  footer.signoff .signoff-inner { max-width: 1000px; margin: 0 auto; }
+  footer.signoff .label { font-family: "Arial Narrow",Arial,sans-serif; text-transform: uppercase; letter-spacing: 0.18em; font-size: 11px; color: var(--gold-300); margin: 0 0 10px; }
+  footer.signoff .headline { font-family: "Arial Narrow",Arial,sans-serif; font-weight: 900; text-transform: uppercase; font-size: clamp(18px,3vw,24px); line-height: 1.3; margin: 0 0 16px; max-width: 55ch; }
+  footer.signoff .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+  footer.signoff .stat-chip { background: rgba(255,255,255,0.06); border: 1px solid rgba(232,178,58,0.35); border-radius: 3px; padding: 8px 14px; font-family: ui-monospace,monospace; font-variant-numeric: tabular-nums; font-size: 12.5px; display: flex; gap: 7px; align-items: baseline; }
+  footer.signoff .stat-chip .k { color: var(--gold-300); text-transform: uppercase; letter-spacing: 0.06em; font-size: 10.5px; font-family: "Arial Narrow",Arial,sans-serif; }
+  footer.signoff .stat-chip .v { color: #fff; font-weight: 700; }
+</style>
+
+<header class="scorebug">
+  <p class="kicker">Southern Jaguars &middot; All-Time Record Book &middot; Through Week 2, 2028</p>
+  <h1 class="display">Four Seasons, One Ledger</h1>
+  <div class="bug-row">
+    <div class="bug-chip"><span class="label">All-Time</span><span class="val">20-19</span></div>
+    <div class="bug-chip"><span class="label">Best Season</span><span class="val">2026, 8-6</span></div>
+    <div class="bug-chip"><span class="label">Biggest Win</span><span class="val">97-10 vs Tennessee St.</span></div>
+    <div class="bug-chip"><span class="label">Worst Loss</span><span class="val">6-59 vs Army</span></div>
+  </div>
+</header>
+
+<main>
+
+  <section class="prose" style="margin-top:36px;">
+    <p>Four seasons of data, one program's full paper trail. This is the complete Southern Jaguars record book &mdash; every season's ledger, every statistical leader since 2025, the biggest blowouts and the closest calls, and the honors board the program has built one All-Conference nod at a time. Everything here traces directly to the season sheets; no estimates, no rounding.</p>
+  </section>
+
+  <div class="toc">
+    <h3>In This Record Book</h3>
+    <ol>
+      <li>Season-by-Season Ledger</li>
+      <li>Program Trajectory</li>
+      <li>Career Passing Leaders</li>
+      <li>Career Rushing Leaders</li>
+      <li>Career Receiving Leaders</li>
+      <li>Single-Season Bests</li>
+      <li>Biggest Wins</li>
+      <li>Worst Losses</li>
+      <li>Closest Calls &amp; Overtime Games</li>
+      <li>The Trophy Case</li>
+      <li>Recruiting Class Climb</li>
+      <li>Still Waiting On</li>
+    </ol>
+  </div>
+
+  <div class="bumper"><span class="seg-num">SECTION 01</span><h2 class="display">Season-by-Season Ledger</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Year</th><th>Record</th><th>Conf.</th><th>Postseason</th><th>Begin Rank</th><th>End Rank</th><th>Recruit Rank</th></tr></thead>
+      <tbody>
+        <tr><td>2025</td><td>5-7</td><td>4-5</td><td>No bowl</td><td>136</td><td>84</td><td>59th</td></tr>
+        <tr class="hl"><td>2026</td><td>8-6</td><td>7-3</td><td>AAC title game, Gasparilla Bowl (both losses)</td><td>90</td><td>44</td><td>63rd</td></tr>
+        <tr><td>2027</td><td>6-6</td><td>4-5</td><td>No bowl</td><td>89</td><td>67</td><td>36th</td></tr>
+        <tr><td>2028</td><td>1-0 (in progress)</td><td>&mdash;</td><td>&mdash;</td><td>108</td><td>&mdash;</td><td>&mdash;</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">2026 is the high-water mark so far &mdash; the only winning season, the only conference title game appearance, and the best ending rank at 44th. It's also the only year Southern reached the postseason at all, and it lost both of those games.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 02</span><h2 class="display">Program Trajectory</h2></div>
+  <div class="stat-block">
+    <div class="cat">Team Rating By Year</div>
+    <div class="bar-row"><span class="yr">2025</span><div class="bar-track"><div class="bar-fill" style="width:60%;"></div></div><span class="bar-val">60</span></div>
+    <div class="bar-row"><span class="yr">2026</span><div class="bar-track"><div class="bar-fill" style="width:69%;"></div></div><span class="bar-val">69</span></div>
+    <div class="bar-row"><span class="yr">2027</span><div class="bar-track"><div class="bar-fill" style="width:67%;"></div></div><span class="bar-val">67</span></div>
+    <div class="bar-row"><span class="yr">2028</span><div class="bar-track"><div class="bar-fill" style="width:71%;"></div></div><span class="bar-val">71</span></div>
+  </div>
+  <p class="prose" style="margin-top:6px;">Not a clean climb &mdash; the rating dipped from 69 to 67 after the 6-6 2027 season, and even 2028's post-Week-1 rating of 71 is down from where the year opened (75), despite the best start in program history. Ratings here don't move in lockstep with the record.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 03</span><h2 class="display">Career Passing Leaders</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Player</th><th>Seasons</th><th>Comp-Att</th><th>Yards</th><th>TD</th><th>INT</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Joshua Clark</td><td>2025-2026</td><td>343-703</td><td>5,549</td><td>45</td><td>36</td></tr>
+        <tr><td>Joseph Foxworth</td><td>2027-2028*</td><td>151-279</td><td>2,327</td><td>25</td><td>10</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">*Foxworth's total includes only his 2027 season plus the 2028 Kentucky opener &mdash; still active and climbing. He's already outpacing Clark's interception rate by a wide margin: 1 pick per 27.9 attempts for Foxworth against 1 per 19.5 for Clark.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 04</span><h2 class="display">Career Rushing Leaders</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Player</th><th>Seasons</th><th>Carries</th><th>Yards</th><th>TD</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>Jordan Molinich</td><td>2026-2028*</td><td>542+</td><td>4,130</td><td>37+</td></tr>
+        <tr><td>Mark Fiaseu</td><td>2025</td><td>265</td><td>1,647</td><td>19 total TD</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Molinich passed Fiaseu's entire career rushing total (1,647 yards) before the midpoint of his own sophomore season. Two full 1,600+ yard rushing seasons (2,349 in 2026, 1,669 in 2027) plus a 112-yard Week 1 to open 2028 &mdash; and he's still active.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 05</span><h2 class="display">Career Receiving Leaders</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Player</th><th>Season</th><th>Rec</th><th>Yards</th><th>TD</th></tr></thead>
+      <tbody>
+        <tr><td>Jonathan Truss</td><td>2026</td><td>55</td><td>1,023</td><td>7</td></tr>
+        <tr class="hl"><td>Gavin Hoffman</td><td>2027</td><td>42</td><td>1,050</td><td>10</td></tr>
+        <tr><td>Jalen Dale</td><td>2025</td><td>54</td><td>995</td><td>5</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Three different receivers have led the team in three different seasons &mdash; no repeat leader yet. Hoffman's 2027 mark is the program's single-season receiving-yardage record, on the fewest catches of the three, the best yards-per-catch season by a wide margin (25.0 yd/rec).</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 06</span><h2 class="display">Single-Season Bests (By Category)</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Category</th><th>Record</th><th>Player, Year</th></tr></thead>
+      <tbody>
+        <tr><td>Passing Yards</td><td>3,660</td><td>Joshua Clark, 2026</td></tr>
+        <tr><td>Passing TDs</td><td>30</td><td>Joshua Clark, 2026</td></tr>
+        <tr><td>Rushing Yards</td><td>2,349</td><td>Jordan Molinich, 2026</td></tr>
+        <tr><td>Rushing TDs</td><td>24</td><td>Jordan Molinich, 2026</td></tr>
+        <tr><td>Receiving Yards</td><td>1,050</td><td>Gavin Hoffman, 2027</td></tr>
+        <tr><td>Receiving TDs</td><td>10</td><td>Gavin Hoffman, 2027</td></tr>
+        <tr><td>Tackles</td><td>75</td><td>Christian Thatcher, 2027</td></tr>
+        <tr><td>Sacks</td><td>12</td><td>Amir Tracy, 2025</td></tr>
+        <tr><td>Interceptions</td><td>5</td><td>Coby Buncom (2025) &amp; Devin Sanchez (2026)</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Five of these nine single-season records were set outright in 2026, plus a share of a sixth &mdash; the tied interceptions mark &mdash; the same season that produced the program's only winning record and its only conference title game trip.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 07</span><h2 class="display">Biggest Wins</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Margin</th><th>Result</th><th>Year</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>+87</td><td>Southern 97, Tennessee St. 10</td><td>2027</td></tr>
+        <tr><td>+56</td><td>Southern 66, Memphis 10</td><td>2025</td></tr>
+        <tr><td>+41</td><td>Southern 54, North Texas 13</td><td>2026</td></tr>
+        <tr><td>+37</td><td>Southern 44, Temple 7</td><td>2027</td></tr>
+        <tr><td>+35</td><td>Southern 42, UAB 7</td><td>2025</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">97 points is the single highest output in any tracked game &mdash; Molinich's signature performance, 218 yards and 6 touchdowns on just 7 carries.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 08</span><h2 class="display">Worst Losses</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Margin</th><th>Result</th><th>Year</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>-53</td><td>Army 59, Southern 6</td><td>2025</td></tr>
+        <tr><td>-52</td><td>No. 8 Ole Miss 52, Southern 0</td><td>2026</td></tr>
+        <tr><td>-38</td><td>ECU 52, Southern 14</td><td>2027</td></tr>
+        <tr><td>-35</td><td>South Carolina 49, Southern 14</td><td>2025</td></tr>
+        <tr><td>-35</td><td>Memphis 59, Southern 24</td><td>2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">Southern is 0-2 all-time against ranked opponents on this ledger &mdash; the Ole Miss shutout in 2026 and a 27-57 loss at then-No. 6 Texas Tech in 2027. Both are among the program's five worst losses.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 09</span><h2 class="display">Closest Calls &amp; Overtime Games</h2></div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Margin</th><th>Result</th><th>Year</th></tr></thead>
+      <tbody>
+        <tr class="hl"><td>+1</td><td>Southern 21, Temple 20</td><td>2026</td></tr>
+        <tr><td>-2 (3OT)</td><td>UTSA 55, Southern 53</td><td>2026</td></tr>
+        <tr><td>+2</td><td>Southern 31, UAB 29</td><td>2027</td></tr>
+        <tr><td>-3 (2OT)</td><td>UTSA 30, Southern 27</td><td>2027</td></tr>
+        <tr><td>-3</td><td>Louisiana Tech 31, Southern 28</td><td>2026</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="prose" style="margin-top:14px;">UTSA has been the program's white-whale rival in the clutch &mdash; both meetings decided in overtime, both Southern losses. No other opponent has forced two overtime games against this program.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 10</span><h2 class="display">The Trophy Case</h2></div>
+  <div class="stat-block"><div class="cat">2025</div><div class="rec">Mark Fiaseu <span class="pill pill-gold">2nd Team All-American</span></div><p>1st Team All-Conference; also 3 National Offensive Player of the Week awards (Weeks 5, 12, 13) and 1 Conference POTW &mdash; the program's first All-American recognition in this chronicle's record.</p></div>
+  <div class="stat-block"><div class="cat">2026 &middot; The Breakout</div><div class="rec">Jordan Molinich <span class="pill pill-gold">Doak Walker Award</span></div><p>The nation's best running back, as a true freshman &mdash; the program's first and only national award to date. Also 1st Team All-American, Freshman All-American, and 1st Team All-Conference the same season.</p></div>
+  <div class="stat-block"><div class="cat">2027 Preseason &amp; Season</div><div class="rec">Jordan Molinich <span class="pill pill-gold">Preseason All-American</span></div><p>1st Team All-Conference for the season &mdash; his third straight season carrying some form of All-American recognition.</p></div>
+  <div class="stat-block"><div class="cat">2028 Preseason</div><div class="rec">Jordan Molinich <span class="pill pill-gold">2nd Team All-American (Preseason)</span></div><p>Molinich has now been tabbed an All-American honoree in some form in every season he's played for this program &mdash; 2026, 2027, and entering 2028.</p></div>
+  <p class="prose" style="margin-top:6px;">The program has produced exactly one national award winner in this chronicle's record: Molinich's 2026 Doak Walker Award. No Southern player has been drafted after an All-American season yet &mdash; Brennon Fonua and Mark Fiaseu both went to the NFL Draft out of the 2025 class, before the program's rating ever cracked 65, and Molinich himself hasn't left college yet.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 11</span><h2 class="display">Recruiting Class Climb</h2></div>
+  <div class="stat-block">
+    <div class="cat">National Class Rank By Cycle</div>
+    <div class="bar-row"><span class="yr">2025</span><div class="bar-track"><div class="bar-fill" style="width:34%;"></div></div><span class="bar-val">59th</span></div>
+    <div class="bar-row"><span class="yr">2026</span><div class="bar-track"><div class="bar-fill" style="width:29%;"></div></div><span class="bar-val">63rd</span></div>
+    <div class="bar-row"><span class="yr">2027</span><div class="bar-track"><div class="bar-fill" style="width:64%;"></div></div><span class="bar-val">36th</span></div>
+  </div>
+  <p class="prose" style="margin-top:6px;">The 2027 cycle (signed for the 2028 roster) is the clear high point &mdash; a 27-spot jump from the previous class, built on two 5-star transfer additions (J'Vari Flowers, Ricardo Jones) and three 4-star high school signees. Bar length here is inverted-scaled for rank (shorter bar = worse rank); 2028's incoming cycle hasn't populated yet.</p>
+
+  <div class="bumper"><span class="seg-num">SECTION 12</span><h2 class="display">Still Waiting On</h2></div>
+  <div class="prose">
+    <p>Four seasons in, here's the list of program firsts still unclaimed: a winning conference-title-game or bowl-game result (0-2 in both so far), a win over a ranked opponent (0-2), a Heisman Trophy or Heisman finalist appearance, back-to-back winning seasons, and a repeat leader at any offensive skill position. Molinich's Doak Walker Award, his All-American recognition streak, and the 2027 recruiting jump are the clearest signs of a program on the rise &mdash; the win-loss record just hasn't caught all the way up yet.</p>
+  </div>
+
+</main>
+
+<footer class="signoff">
+  <div class="signoff-inner">
+    <p class="label">Southern Jaguars &middot; All-Time Record Book &middot; Sign-Off</p>
+    <p class="headline">20-19 across four seasons, one breakout All-American, and a program still chasing its first ranked win, first bowl win, and first national award.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><span class="k">All-Time</span><span class="v">20-19</span></div>
+      <div class="stat-chip"><span class="k">National Award</span><span class="v">Molinich, 2026 Doak Walker</span></div>
+      <div class="stat-chip"><span class="k">Rush Leader</span><span class="v">Molinich, 4,130 Yds</span></div>
+      <div class="stat-chip"><span class="k">Biggest Win</span><span class="v">97-10 vs Tennessee St.</span></div>
+    </div>
+  </div>
+</footer>
+
+</html>
