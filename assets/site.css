@@ -211,12 +211,19 @@ tbody tr:hover td { background: rgba(210,35,42,0.04); }
 .pill, [class^="pill-"], [class*=" pill-"] {
   display: inline-block; padding: 2px 9px; border-radius: 2px; font-size: 11px; font-weight: 800;
   text-transform: uppercase; letter-spacing: 0.04em; margin-left: 6px;
-  background: var(--espn-gray-100); color: var(--fg);
+  background: var(--espn-gray-100); color: var(--espn-black);
 }
-.pill-win, .pill-up, .pill-hit, .pill-in, .pill-hot { background: rgba(26,122,60,0.12); color: var(--win); }
-.pill-loss, .pill-down, .pill-bust, .pill-out, .pill-fired, .pill-fall { background: rgba(210,35,42,0.12); color: var(--espn-red); }
-.pill-gold, .pill-new, .pill-steal { background: rgba(184,134,11,0.15); color: var(--gold-500); }
-.pill-nfl, .pill-transfer, .pill-grad, .pill-dev { background: var(--espn-gray-200); color: var(--fg-dim); }
+:root:not([data-theme="light"]) .pill, :root:not([data-theme="light"]) [class^="pill-"], :root:not([data-theme="light"]) [class*=" pill-"] {
+  background: #333; color: #fff;
+}
+.pill-win, .pill-up, .pill-hit, .pill-in, .pill-hot { background: rgba(26,122,60,0.15); color: var(--win); }
+.pill-loss, .pill-down, .pill-bust, .pill-out, .pill-fired, .pill-fall { background: rgba(210,35,42,0.15); color: var(--espn-red); }
+.pill-gold, .pill-new, .pill-steal { background: rgba(184,134,11,0.18); color: var(--gold-500); }
+.pill-nfl, .pill-transfer, .pill-grad, .pill-dev { background: var(--espn-gray-200); color: var(--espn-gray-700); }
+:root:not([data-theme="light"]) .pill-nfl, :root:not([data-theme="light"]) .pill-transfer,
+:root:not([data-theme="light"]) .pill-grad, :root:not([data-theme="light"]) .pill-dev {
+  background: #333; color: #ccc;
+}
 
 /* ---- Poll lists (AP-poll style ranked team lists) ---- */
 .poll-list { border: 1px solid var(--surface-line); border-radius: 4px; background: var(--surface); overflow: hidden; }
@@ -258,9 +265,10 @@ tbody tr:hover td { background: rgba(210,35,42,0.04); }
 }
 .stat-card .num { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; font-size: 28px; color: var(--fg); line-height: 1; }
 .stat-card .lbl { font-size: 11.5px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 6px; }
-.stat-card .rk { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; background: var(--espn-gray-100); color: var(--fg-dim); }
-.stat-card .rk.elite { background: rgba(26,122,60,0.12); color: var(--win); }
-.stat-card .rk.poor { background: rgba(210,35,42,0.12); color: var(--espn-red); }
+.stat-card .rk { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; background: var(--espn-gray-100); color: var(--espn-black); }
+:root:not([data-theme="light"]) .stat-card .rk { background: #333; color: #ccc; }
+.stat-card .rk.elite { background: rgba(26,122,60,0.15); color: var(--win); }
+.stat-card .rk.poor { background: rgba(210,35,42,0.15); color: var(--espn-red); }
 
 /* ---- Playoff bracket ---- */
 .bracket { border: 1px solid var(--surface-line); border-radius: 4px; background: var(--surface); padding: 4px 0; }
