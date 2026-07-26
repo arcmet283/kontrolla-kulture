@@ -49,7 +49,7 @@ a { color: var(--espn-red); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .display, h1, .scorebug h1, .bumper h2, .card h3, .card-title,
-[class$="-card"] h3, [class$="-card"] .name, .name, .teams, .team {
+[class*="-card"] h3, [class*="-card"] .name, .name, .teams, .team {
   font-family: "Arial Narrow", "Helvetica Neue Condensed", Arial, sans-serif;
   font-weight: 800;
   text-transform: uppercase;
@@ -130,22 +130,22 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; 
 .prose strong { color: var(--fg); }
 
 /* ---- Cards: ESPN story-card treatment for ANY *-card class ---- */
-.card, [class$="-card"], .matchup-card, .player-card, .stat-block {
+.card, [class*="-card"], .matchup-card, .player-card, .stat-block {
   background: var(--surface); border: 1px solid var(--surface-line); border-radius: 4px;
   padding: 16px 18px; transition: box-shadow 0.15s ease, border-color 0.15s ease;
   display: block; border-top: 3px solid var(--surface-line);
 }
-a.card:hover, a[class$="-card"]:hover {
+a.card:hover, a[class*="-card"]:hover {
   box-shadow: 0 4px 14px rgba(0,0,0,0.12); border-top-color: var(--espn-red); text-decoration: none;
 }
-.card .tag, [class$="-card"] .tag, [class$="-card"] .cat, .conf-tag {
+.card .tag, [class*="-card"] .tag, [class*="-card"] .cat, .conf-tag {
   font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 10.5px;
   letter-spacing: 0.08em; color: var(--espn-red); font-weight: 800;
 }
-.card h3, [class$="-card"] .name, [class$="-card"] .teams {
+.card h3, [class*="-card"] .name, [class*="-card"] .teams {
   font-size: 17px; margin: 6px 0 8px; line-height: 1.15; color: var(--fg);
 }
-.card p, [class$="-card"] p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; max-width: none; }
+.card p, [class*="-card"] p { margin: 0; font-size: 13.5px; color: var(--fg-dim); line-height: 1.5; max-width: none; }
 .card.video, .card.has-video { border-top-color: var(--espn-red); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 14px; align-items: start; }
@@ -354,3 +354,67 @@ footer:not(.signoff) { text-align: center; color: #ccc; }
 .year-divider { display: flex; align-items: center; gap: 12px; margin: 36px 0 16px; }
 .year-divider .yr { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; font-size: 15px; color: var(--fg-dim); letter-spacing: 0.08em; white-space: nowrap; }
 .year-divider .line { height: 1px; background: var(--surface-line); flex: 1; }
+
+/* ---- Leader/coach cards (player and coach spotlight blocks) ---- */
+.leader-card .role, .coach-card .role { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--espn-red); font-weight: 700; }
+.leader-card .name, .coach-card h3 { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 17px; margin: 4px 0 2px; color: var(--fg); }
+.leader-card .pos { font-size: 12px; color: var(--fg-dim); text-transform: none; font-weight: 600; margin-left: 6px; }
+.leader-card .line { font-family: ui-monospace, Consolas, monospace; font-size: 14px; color: var(--fg); margin-top: 6px; font-variant-numeric: tabular-nums; }
+.leader-card .note { font-size: 13px; color: var(--fg-dim); margin-top: 8px; line-height: 1.5; }
+.leader-card.headline { border-top-width: 5px; background: linear-gradient(135deg, var(--surface) 0%, rgba(210,35,42,0.05) 100%); }
+.leader-card.headline .name { font-size: 22px; }
+.leader-card.watch { border-top-color: var(--gold-500); }
+.meta { font-size: 12px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
+
+/* ---- Leader rows (stat-leader lists, non-tabular) ---- */
+.leader-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 9px 0; border-bottom: 1px solid var(--surface-line); font-size: 14px; }
+.leader-row:last-child { border-bottom: none; }
+.leader-row .cat { flex-basis: 140px; font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.05em; color: var(--espn-red); font-weight: 700; }
+.leader-row .who { font-weight: 700; color: var(--fg); }
+.leader-row .team { font-size: 12.5px; color: var(--fg-dim); text-transform: none; font-weight: 600; margin-left: 4px; }
+.leader-row .stat { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 800; color: var(--fg); }
+
+/* ---- Predict cards (pick + confidence) ---- */
+.predict-card { text-align: center; }
+.predict-card .pick { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: 20px; color: var(--fg); margin: 4px 0 10px; }
+.conf { display: inline-block; padding: 4px 12px; border-radius: 2px; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.04em; }
+.conf-high { background: rgba(26,122,60,0.15); color: var(--win); }
+.conf-med { background: rgba(184,134,11,0.18); color: var(--gold-500); }
+.conf-low { background: rgba(210,35,42,0.15); color: var(--espn-red); }
+
+/* ---- Table of contents box ---- */
+.toc { background: var(--surface); border: 1px solid var(--surface-line); border-radius: 4px; padding: 18px 22px; margin: 24px 0; }
+.toc h3 { font-family: "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 13px; letter-spacing: 0.08em; color: var(--espn-red); margin: 0 0 10px; }
+.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 24px; font-size: 13.5px; color: var(--fg-dim); }
+.toc li { break-inside: avoid; padding: 2px 0; }
+@media (max-width: 560px) { .toc ol { columns: 1; } }
+
+/* ---- Schedule table tags ---- */
+.tag-bye { color: var(--fg-dim); font-style: italic; text-align: center; }
+.tag-marquee { color: var(--espn-red); font-weight: 800; }
+.tag-upcoming { color: var(--fg-dim); font-weight: 700; text-transform: uppercase; font-size: 12px; }
+
+/* ---- Prediction cell colors (bare .win/.loss/.toss on td) ---- */
+td.win { color: var(--win); font-weight: 800; }
+td.loss { color: var(--espn-red); font-weight: 800; }
+td.toss { color: var(--gold-500); font-weight: 800; }
+
+/* ---- Misc small elements ---- */
+.stars { color: var(--gold-500); letter-spacing: 1px; }
+.rank-move { color: var(--win); font-weight: 800; }
+.game.natchamp { background: rgba(210,35,42,0.08); border-left: 3px solid var(--espn-red); padding-left: 8px; font-weight: 800; }
+.poll-list .rec { margin-left: auto; font-variant-numeric: tabular-nums; font-weight: 700; color: var(--fg-dim); font-size: 13px; }
+header.hero .tags { margin-top: 12px; font-family: ui-monospace, Consolas, monospace; font-size: 12px; color: var(--espn-red); letter-spacing: 0.05em; }
+.desk-intro .n { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; }
+.desk-intro .r { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--fg-dim); }
+
+/* ---- Bold pick block (season preview call-out) ---- */
+.bold-pick { background: var(--surface); border: 1px solid var(--surface-line); border-top: 4px solid var(--espn-red); border-radius: 4px; padding: 16px 20px; margin: 16px 0; }
+.bold-pick .tag { display: block; margin-bottom: 6px; }
+.bold-pick .pick { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: 19px; color: var(--fg); margin-bottom: 8px; }
+
+/* ---- Boom/bust table row highlights ---- */
+tr.boom td { background: rgba(26,122,60,0.08); }
+tr.boom td:first-child { color: var(--win); font-weight: 800; }
+tr.bust td { background: rgba(210,35,42,0.08); }
+tr.bust td:first-child { color: var(--espn-red); font-weight: 800; }
