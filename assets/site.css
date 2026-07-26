@@ -200,6 +200,75 @@ tbody tr:hover td { background: rgba(210,35,42,0.04); }
 .pill-gold, .pill-new, .pill-steal { background: rgba(184,134,11,0.15); color: var(--gold-500); }
 .pill-nfl, .pill-transfer, .pill-grad, .pill-dev { background: var(--espn-gray-200); color: var(--fg-dim); }
 
+/* ---- Poll lists (AP-poll style ranked team lists) ---- */
+.poll-list { border: 1px solid var(--surface-line); border-radius: 4px; background: var(--surface); overflow: hidden; }
+.poll-list .row { display: flex; align-items: center; gap: 14px; padding: 8px 14px; border-bottom: 1px solid var(--surface-line); font-size: 14px; }
+.poll-list .row:last-child { border-bottom: none; }
+.poll-list .row:nth-child(odd) { background: var(--espn-gray-100); }
+:root:not([data-theme="light"]) .poll-list .row:nth-child(odd) { background: rgba(255,255,255,0.03); }
+.poll-list .rk {
+  font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; font-size: 13px;
+  background: var(--espn-black); color: #fff; min-width: 26px; height: 26px; border-radius: 2px;
+  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.poll-list .tm { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.01em; color: var(--fg); }
+
+/* ---- Accolade rows (who/what/when) ---- */
+.accolade { display: flex; flex-wrap: wrap; gap: 4px 14px; padding: 8px 4px; border-bottom: 1px dashed var(--surface-line); font-size: 13.5px; align-items: baseline; }
+.accolade:last-child { border-bottom: none; }
+.accolade .who { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; color: var(--fg); min-width: 190px; }
+.accolade .what { color: var(--espn-red); font-weight: 700; min-width: 200px; }
+.accolade .when { color: var(--fg-dim); font-size: 12.5px; }
+
+/* ---- Conference championship grid ---- */
+.champ-grid, .grade-grid, .stat-grid, .three-col, .two-col {
+  display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+}
+.two-col { grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }
+.three-col { grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); }
+.champ-item {
+  background: var(--surface); border: 1px solid var(--surface-line); border-top: 3px solid var(--espn-red);
+  border-radius: 4px; padding: 12px 14px;
+}
+.champ-item .conf { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 11px; letter-spacing: 0.06em; color: var(--espn-red); }
+.champ-item .res { font-size: 14px; color: var(--fg); margin-top: 4px; font-weight: 600; }
+
+/* ---- Stat card grid (big-number stat blocks) ---- */
+.stat-card {
+  background: var(--surface); border: 1px solid var(--surface-line); border-radius: 4px;
+  padding: 14px 16px; text-align: center;
+}
+.stat-card .num { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; font-size: 28px; color: var(--fg); line-height: 1; }
+.stat-card .lbl { font-size: 11.5px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 6px; }
+.stat-card .rk { display: inline-block; margin-top: 6px; font-size: 11px; font-weight: 800; text-transform: uppercase; padding: 2px 8px; border-radius: 2px; background: var(--espn-gray-100); color: var(--fg-dim); }
+.stat-card .rk.elite { background: rgba(26,122,60,0.12); color: var(--win); }
+.stat-card .rk.poor { background: rgba(210,35,42,0.12); color: var(--espn-red); }
+
+/* ---- Playoff bracket ---- */
+.bracket { border: 1px solid var(--surface-line); border-radius: 4px; background: var(--surface); padding: 4px 0; }
+.bracket .rnd-label {
+  font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase; font-size: 12px;
+  letter-spacing: 0.08em; color: #fff; background: var(--espn-black); padding: 6px 14px; margin-top: 4px;
+}
+.bracket .rnd-label:first-child { margin-top: 0; }
+.bracket .game { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 8px 14px; border-bottom: 1px solid var(--surface-line); font-size: 14px; }
+.bracket .win-team { font-weight: 800; color: var(--fg); }
+.bracket .score { font-variant-numeric: tabular-nums; color: var(--fg-dim); font-size: 13px; flex-shrink: 0; }
+
+/* ---- Pull quote ---- */
+.quote-block {
+  font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase;
+  font-size: clamp(18px,3vw,24px); line-height: 1.3; color: var(--fg); border-left: 4px solid var(--espn-red);
+  padding: 10px 18px; margin: 20px 0; background: var(--surface);
+}
+
+/* ---- Timeline (year-by-year lists) ---- */
+.timeline { border: 1px solid var(--surface-line); border-radius: 4px; background: var(--surface); }
+.timeline .yr { display: flex; gap: 14px; padding: 10px 14px; border-bottom: 1px solid var(--surface-line); align-items: baseline; }
+.timeline .yr:last-child { border-bottom: none; }
+.timeline .y { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; color: var(--espn-red); flex-shrink: 0; min-width: 44px; }
+.timeline .e { font-size: 14px; color: var(--fg); }
+
 /* ---- Bar charts (record book / trajectory visuals) ---- */
 .bar-row { display: grid; grid-template-columns: 70px 1fr 60px; align-items: center; gap: 10px; padding: 7px 0; font-size: 13px; }
 .bar-row .yr { font-family: "Arial Narrow", Arial, sans-serif; font-weight: 800; }
