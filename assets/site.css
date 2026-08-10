@@ -372,6 +372,14 @@ footer:not(.signoff) { text-align: center; color: #ccc; }
 .leader-card.watch { border-top-color: var(--gold-500); }
 .meta { font-size: 12px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 4px; }
 
+/* ---- Player photos ---- */
+.leader-card.with-photo { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+.leader-card.with-photo .player-photo { flex: 0 0 130px; width: 130px; height: auto; border-radius: 4px; border: 2px solid var(--surface-line); display: block; object-fit: cover; }
+.leader-card.with-photo .card-body { flex: 1; min-width: 200px; }
+@media (max-width: 480px) {
+  .leader-card.with-photo .player-photo { flex: 0 0 100px; width: 100px; }
+}
+
 /* ---- Leader rows (stat-leader lists, non-tabular) ---- */
 .leader-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 9px 0; border-bottom: 1px solid var(--surface-line); font-size: 14px; }
 .leader-row:last-child { border-bottom: none; }
