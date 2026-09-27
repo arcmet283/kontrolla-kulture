@@ -46,6 +46,12 @@ body {
   line-height: 1.5; -webkit-font-smoothing: antialiased;
 }
 a { color: var(--espn-red); text-decoration: none; }
+a:focus-visible, button:focus-visible, .card:focus-visible, .next-read:focus-visible {
+  outline: 2px solid var(--espn-red); outline-offset: 2px; border-radius: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}
 a:hover { text-decoration: underline; }
 
 .display, h1, .scorebug h1, .bumper h2, .card h3, .card-title,
