@@ -74,6 +74,8 @@ a:hover { text-decoration: underline; }
   font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
 }
 .kk-nav img { height: 28px; width: 28px; border-radius: 50%; }
+.kk-nav .kk-logo-link { display: flex; align-items: center; gap: 14px; text-decoration: none; transition: opacity 0.15s ease; }
+.kk-nav .kk-logo-link:hover { opacity: 0.8; text-decoration: none; }
 .kk-nav .kk-brand { font-weight: 900; text-transform: uppercase; font-size: 15px; letter-spacing: 0.03em; color: #fff; }
 .kk-nav .kk-links { display: flex; gap: 16px; margin-left: auto; font-size: 12.5px; text-transform: uppercase; font-weight: 700; letter-spacing: 0.04em; }
 .kk-nav .kk-links a { color: #ccc; }
