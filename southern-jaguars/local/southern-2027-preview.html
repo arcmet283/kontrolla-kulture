@@ -5,6 +5,14 @@
 <title>Southern Jaguars: 2027 Season Preview</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="../../assets/site.css?v=15">
+<style>
+  /* Long sentence-length cells in the schedule table; let them wrap
+     instead of forcing a horizontal scrollbar. */
+  table td, table th { white-space: normal; }
+  @media (min-width: 900px) {
+    main { max-width: 1300px; }
+  }
+</style>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "285a3efc9eb443ebb52d11559d04b7d2"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -63,7 +71,7 @@
   </div>
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Wk</th><th>Opponent</th><th>Notes</th></tr></thead>
+      <thead><tr><th style="width:8%">Wk</th><th style="width:22%">Opponent</th><th style="width:70%">Notes</th></tr></thead>
       <tbody>
         <tr><td>0</td><td class="tag-bye" colspan="2">Bye</td></tr>
         <tr><td>1</td><td>at Stanford</td><td>New opponent, a real non-conference name on the schedule &mdash; and a 2026 Music City Bowl participant, though they lost it to Ohio St.</td></tr>
