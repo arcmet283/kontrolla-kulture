@@ -311,31 +311,28 @@ tbody tr:hover td { background: rgba(210,35,42,0.04); }
 .cfp-bracket-head .cfp-bh-eyebrow { display: block; font-size: 11px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-500); }
 .cfp-bracket-head .cfp-bh-main { display: block; font-size: 22px; font-weight: 900; letter-spacing: 0.02em; text-transform: uppercase; font-style: italic; color: #fff; }
 .cfp-bracket-head .cfp-bh-field { font-family: "Arial Narrow", Arial, sans-serif; font-size: 12px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 5px 14px; white-space: nowrap; }
-.cfp-bracket-wrap { overflow-x: auto; padding: 18px 0 8px; border: 1px solid var(--surface-line); border-top: none; border-radius: 0 0 6px 6px; background: var(--bg); }
-.cfp-bracket { display: grid; grid-template-columns: 230px 24px 230px 24px 230px 24px 230px; grid-template-rows: 26px repeat(4, 92px 4px 92px 22px); column-gap: 0; min-width: 1060px; padding: 0 20px; }
+.cfp-bracket-wrap { overflow-x: auto; padding: 18px 0 8px; }
+.cfp-bracket { display: grid; grid-template-columns: 230px 24px 230px 24px 230px 24px 230px; grid-template-rows: 26px repeat(4, 90px 10px 90px 24px); column-gap: 0; min-width: 1060px; padding: 0 20px; }
 .cfp-bracket .rnd-head {
   grid-row: 1; align-self: end; margin-bottom: 8px; padding-bottom: 5px;
   border-bottom: 2px solid var(--espn-red);
   font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; font-style: italic; text-transform: uppercase;
   font-size: 13px; letter-spacing: 0.05em; color: var(--fg);
 }
-.cfp-slot { position: relative; display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--surface-line); border-radius: 6px; background: var(--surface); box-shadow: 0 2px 5px rgba(0,0,0,0.3); overflow: visible; }
-.cfp-slot.natchamp { border-color: var(--gold-500); border-width: 2px; box-shadow: 0 0 0 1px var(--gold-500), 0 4px 10px rgba(0,0,0,0.35); }
-.cfp-slot.bye { border-color: var(--gold-500); border-width: 2px; }
-.cfp-team { display: flex; align-items: center; gap: 8px; padding: 5px 10px 5px 26px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 14px; border-left: 4px solid transparent; }
-.cfp-team + .cfp-team { border-top: 1px solid var(--surface-line); }
+.cfp-slot { position: relative; display: flex; flex-direction: column; justify-content: center; }
+.cfp-team { position: relative; display: flex; align-items: center; gap: 6px; padding: 2px 10px 2px 20px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 14px; border-left: 3px solid transparent; }
 .cfp-team.win { font-weight: 800; color: var(--fg); border-left-color: var(--espn-red); }
 .cfp-team.loss { color: var(--fg-dim); font-weight: 500; }
 .cfp-team > span:not(.score) { flex: 1 1 auto; display: inline-flex; align-items: center; gap: 5px; }
-.cfp-team .seed { position: absolute; left: -10px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: var(--espn-black); border: 1px solid var(--surface-line); color: var(--fg-dim); font-size: 10.5px; font-weight: 800; }
-.cfp-team.win .seed { background: var(--espn-red); border-color: var(--espn-red); color: #fff; }
+.cfp-team .seed { position: absolute; left: -2px; top: 50%; transform: translateY(-50%); color: var(--fg-dim); font-size: 10.5px; font-weight: 800; }
+.cfp-team.win .seed { color: var(--espn-red); }
 .cfp-team .score { font-variant-numeric: tabular-nums; flex-shrink: 0; font-size: 13px; }
 .cfp-slot.natchamp .cfp-team.win { color: var(--gold-500); }
-.cfp-slot.natchamp .cfp-team.win .seed { background: var(--gold-500); border-color: var(--gold-500); color: var(--espn-black); }
-.cfp-slot.bye { color: var(--fg-dim); align-items: center; justify-content: center; font-size: 13px; gap: 6px; padding-left: 10px; }
-.cfp-slot.bye .seed { position: absolute; left: -10px; top: 50%; transform: translateY(-50%); display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 4px; background: var(--gold-500); border: 1px solid var(--gold-500); color: var(--espn-black); font-size: 10.5px; font-weight: 800; }
+.cfp-slot.natchamp .cfp-team.win .seed { color: var(--gold-500); }
+.cfp-slot.bye { color: var(--fg-dim); align-items: center; justify-content: center; font-size: 13px; gap: 6px; padding-left: 10px; border-left: 3px solid transparent; }
+.cfp-slot.bye .seed { position: absolute; left: -2px; top: 50%; transform: translateY(-50%); color: var(--gold-500); font-size: 10.5px; font-weight: 800; }
 .cfp-connector { border-top: 2px solid var(--surface-line); border-right: 2px solid var(--surface-line); border-bottom: 2px solid var(--surface-line); border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
-.cfp-bowl-tag { font-size: 10.5px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 10px 0 26px; }
+.cfp-bowl-tag { font-size: 10.5px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 10px 0 20px; }
 .cfp-legend { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; padding: 10px 20px 2px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.03em; text-transform: uppercase; color: var(--fg-dim); }
 .cfp-legend .sw { display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: 3px; margin-right: 6px; font-size: 9px; color: #fff; background: var(--espn-black); vertical-align: -3px; }
 .cfp-legend .sw.gold { background: var(--gold-500); color: var(--espn-black); }
