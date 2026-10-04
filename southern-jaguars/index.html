@@ -12,6 +12,13 @@
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="stylesheet" href="../assets/site.css?v=15">
+<style>
+  /* Force a clean 2x2 layout for the 4-card local preview grid above 640px;
+     below that, site.css's own mobile rule (.grid{grid-template-columns:1fr}) takes over untouched. */
+  @media (min-width: 641px) {
+    #sj-local-preview-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
 <!-- Cloudflare Web Analytics -->
 <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "285a3efc9eb443ebb52d11559d04b7d2"}'></script>
 <!-- End Cloudflare Web Analytics -->
@@ -67,7 +74,7 @@
       <p>Six wins, no bowl, and a roster about to turn over completely — the full close-out on a season that ends on a strange note.</p>
     </a>
   </div>
-  <div class="grid">
+  <div class="grid" id="sj-local-preview-grid">
     <a class="card compact" href="southern-2027-preview.html">
       <div class="tag">Season Preview</div>
       <h3>2027 Season Preview</h3>
