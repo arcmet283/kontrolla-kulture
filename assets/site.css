@@ -107,7 +107,7 @@ header.hero p { color: #ccc; max-width: 68ch; font-size: 14.5px; }
 }
 .bug-chip .val, .stat-chip .v { font-weight: 800; color: #fff; }
 
-.banner { width: 100%; aspect-ratio: 16 / 9; max-height: 620px; object-fit: cover; display: block; }
+.banner { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; }
 header.hero .logo { width: 88px; height: 88px; border-radius: 50%; display: block; margin-bottom: 16px; box-shadow: 0 0 0 3px var(--espn-red); }
 
 /* ---- Main content shell ---- */
@@ -193,7 +193,7 @@ header.hero { background-image: radial-gradient(ellipse 900px 520px at 8% -10%, 
 }
 .show-feature:hover { box-shadow: 0 10px 28px rgba(0,0,0,0.35); text-decoration: none; }
 .show-feature-media { width: 100%; height: 100%; min-height: 240px; object-fit: cover; display: block; }
-.show-feature-body { padding: 28px 30px; display: flex; flex-direction: column; }
+.show-feature-body { padding: 34px 38px; display: flex; flex-direction: column; }
 .show-feature-body .tag { margin-bottom: 10px; }
 .show-feature-body h3 { font-size: 27px; margin: 0 0 10px; }
 .show-feature-body p { font-size: 15px; color: var(--fg-dim); line-height: 1.55; max-width: 52ch; margin: 0 0 18px; }
@@ -205,7 +205,8 @@ header.hero { background-image: radial-gradient(ellipse 900px 520px at 8% -10%, 
 .show-feature .next-read { margin-top: auto; }
 
 /* ---- Home page: roadmap grid ---- */
-.roadmap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px,1fr)); gap: 14px; }
+.roadmap-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 18px; }
+.roadmap-grid .card { padding: 22px 24px; }
 
 /* ---- Home page: manifesto / editorial section ---- */
 .manifesto { max-width: 700px; }
