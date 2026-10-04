@@ -45,22 +45,82 @@
 
   <div class="bumper"><span class="seg-num">SEGMENT 01</span><h2 class="display">The Bracket That Broke The Model</h2></div>
   <div class="onscreen">ON SCREEN: FULL CFP BRACKET</div>
-  <div class="bracket">
-    <div class="rnd-label">Round 1</div>
-    <div class="game"><span class="win-team">#9 UNC def. #8 Nebraska</span><span class="score">38&ndash;32</span></div>
-    <div class="game"><span class="win-team">#7 Ole Miss def. #10 Auburn</span><span class="score">41&ndash;7</span></div>
-    <div class="game"><span class="win-team">#11 USC def. #6 Texas Tech</span><span class="score">40&ndash;32</span></div>
-    <div class="game"><span class="win-team">#5 Miami def. #12 USF</span><span class="score">37&ndash;27</span></div>
-    <div class="rnd-label">Round 2</div>
-    <div class="game"><span class="win-team">#4 Notre Dame def. #5 Miami (Orange Bowl)</span><span class="score">45&ndash;24</span></div>
-    <div class="game"><span class="win-team">#3 Texas A&amp;M def. #11 USC (Rose Bowl)</span><span class="score">52&ndash;3</span></div>
-    <div class="game"><span class="win-team">#7 Ole Miss def. #2 Iowa St. (Cotton Bowl)</span><span class="score">38&ndash;24</span></div>
-    <div class="game"><span class="win-team">#9 UNC def. #1 Michigan (Sugar Bowl)</span><span class="score">48&ndash;24</span></div>
-    <div class="rnd-label">Semifinals</div>
-    <div class="game"><span class="win-team">#7 Ole Miss def. #3 Texas A&amp;M (Peach Bowl)</span><span class="score">35&ndash;16</span></div>
-    <div class="game"><span class="win-team">#9 UNC def. #4 Notre Dame (Fiesta Bowl)</span><span class="score">31&ndash;21</span></div>
-    <div class="rnd-label">National Championship</div>
-    <div class="game natchamp"><span class="win-team">#7 Ole Miss def. #9 UNC</span><span class="score">21&ndash;17</span></div>
+  <div class="cfp-bracket-wrap">
+  <div class="cfp-bracket">
+    <div class="rnd-head" style="grid-column:1">Round 1</div>
+    <div class="rnd-head" style="grid-column:3">Quarterfinals</div>
+    <div class="rnd-head" style="grid-column:5">Semifinals</div>
+    <div class="rnd-head" style="grid-column:7">Championship</div>
+
+    <div class="cfp-slot bye" style="grid-column:1; grid-row:2/4;"><span class="seed">#2</span> Iowa St. (12&ndash;1)</div>
+    <div class="cfp-slot" style="grid-column:1; grid-row:4/6;">
+      <div class="cfp-team win"><span><span class="seed">#7</span> Ole Miss</span><span class="score">41</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#10</span> Auburn</span><span class="score">7</span></div>
+    </div>
+    <div class="cfp-slot bye" style="grid-column:1; grid-row:6/8;"><span class="seed">#3</span> Texas A&amp;M (11&ndash;2)</div>
+    <div class="cfp-slot" style="grid-column:1; grid-row:8/10;">
+      <div class="cfp-team win"><span><span class="seed">#11</span> USC</span><span class="score">40</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#6</span> Texas Tech</span><span class="score">32</span></div>
+    </div>
+    <div class="cfp-slot bye" style="grid-column:1; grid-row:10/12;"><span class="seed">#1</span> Michigan (12&ndash;1)</div>
+    <div class="cfp-slot" style="grid-column:1; grid-row:12/14;">
+      <div class="cfp-team win"><span><span class="seed">#9</span> UNC</span><span class="score">38</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#8</span> Nebraska</span><span class="score">32</span></div>
+    </div>
+    <div class="cfp-slot bye" style="grid-column:1; grid-row:14/16;"><span class="seed">#4</span> Notre Dame (11&ndash;1)</div>
+    <div class="cfp-slot" style="grid-column:1; grid-row:16/18;">
+      <div class="cfp-team win"><span><span class="seed">#5</span> Miami</span><span class="score">37</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#12</span> USF</span><span class="score">27</span></div>
+    </div>
+
+    <div class="cfp-connector" style="grid-column:2; grid-row:2/6;"></div>
+    <div class="cfp-connector" style="grid-column:2; grid-row:6/10;"></div>
+    <div class="cfp-connector" style="grid-column:2; grid-row:10/14;"></div>
+    <div class="cfp-connector" style="grid-column:2; grid-row:14/18;"></div>
+
+    <div class="cfp-slot" style="grid-column:3; grid-row:2/6;">
+      <p class="cfp-bowl-tag">Cotton Bowl</p>
+      <div class="cfp-team win"><span><span class="seed">#7</span> Ole Miss</span><span class="score">38</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#2</span> Iowa St.</span><span class="score">24</span></div>
+    </div>
+    <div class="cfp-slot" style="grid-column:3; grid-row:6/10;">
+      <p class="cfp-bowl-tag">Rose Bowl</p>
+      <div class="cfp-team win"><span><span class="seed">#3</span> Texas A&amp;M</span><span class="score">52</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#11</span> USC</span><span class="score">3</span></div>
+    </div>
+    <div class="cfp-slot" style="grid-column:3; grid-row:10/14;">
+      <p class="cfp-bowl-tag">Sugar Bowl</p>
+      <div class="cfp-team win"><span><span class="seed">#9</span> UNC</span><span class="score">48</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#1</span> Michigan</span><span class="score">24</span></div>
+    </div>
+    <div class="cfp-slot" style="grid-column:3; grid-row:14/18;">
+      <p class="cfp-bowl-tag">Orange Bowl</p>
+      <div class="cfp-team win"><span><span class="seed">#4</span> Notre Dame</span><span class="score">45</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#5</span> Miami</span><span class="score">24</span></div>
+    </div>
+
+    <div class="cfp-connector" style="grid-column:4; grid-row:2/10;"></div>
+    <div class="cfp-connector" style="grid-column:4; grid-row:10/18;"></div>
+
+    <div class="cfp-slot" style="grid-column:5; grid-row:2/10;">
+      <p class="cfp-bowl-tag">Peach Bowl</p>
+      <div class="cfp-team win"><span><span class="seed">#7</span> Ole Miss</span><span class="score">35</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#3</span> Texas A&amp;M</span><span class="score">16</span></div>
+    </div>
+    <div class="cfp-slot" style="grid-column:5; grid-row:10/18;">
+      <p class="cfp-bowl-tag">Fiesta Bowl</p>
+      <div class="cfp-team win"><span><span class="seed">#9</span> UNC</span><span class="score">31</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#4</span> Notre Dame</span><span class="score">21</span></div>
+    </div>
+
+    <div class="cfp-connector" style="grid-column:6; grid-row:2/18;"></div>
+
+    <div class="cfp-slot natchamp" style="grid-column:7; grid-row:2/18;">
+      <p class="cfp-bowl-tag">National Championship</p>
+      <div class="cfp-team win"><span><span class="seed">#7</span> Ole Miss</span><span class="score">21</span></div>
+      <div class="cfp-team loss"><span><span class="seed">#9</span> UNC</span><span class="score">17</span></div>
+    </div>
+  </div>
   </div>
   <div class="dlg voss"><div class="spk"><span class="name">Voss</span></div><div class="txt">Walk me through it. Iowa State goes into the Cotton Bowl 12-and-1, the No. 2 overall seed, and Ole Miss just &mdash; ends it. 38-24.</div></div>
   <div class="dlg cast"><div class="spk"><span class="name">Castellan</span></div><div class="txt">And it's not a fluke, Derek, that's the part people are going to miss. Ole Miss beat a 12-1 Iowa State team, then beat a 12-2 Texas A&amp;M team in the semifinal, then beat a UNC team that had just knocked off the No. 1 overall seed, Michigan, in the Sugar Bowl. That's three consecutive elite wins to close a season. You don't back into that as a 7-seed. You earn it.</div></div>
