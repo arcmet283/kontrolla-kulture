@@ -302,13 +302,13 @@ tbody tr:hover td { background: rgba(210,35,42,0.04); }
 
 /* ---- CFP bracket tree (true tournament-tree layout, byes included) ---- */
 .cfp-bracket-wrap { overflow-x: auto; padding-bottom: 8px; }
-.cfp-bracket { display: grid; grid-template-columns: 230px 24px 230px 24px 230px 24px 230px; grid-template-rows: 24px repeat(16, 46px); column-gap: 0; min-width: 1060px; }
+.cfp-bracket { display: grid; grid-template-columns: 230px 24px 230px 24px 230px 24px 230px; grid-template-rows: 24px repeat(8, 92px 10px); column-gap: 0; min-width: 1060px; }
 .cfp-bracket .rnd-head {
   grid-row: 1; align-self: end; padding-bottom: 6px;
   font-family: "Arial Narrow", Arial, sans-serif; font-weight: 900; text-transform: uppercase;
   font-size: 12px; letter-spacing: 0.08em; color: var(--fg-dim);
 }
-.cfp-slot { display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--surface-line); background: var(--surface); }
+.cfp-slot { display: flex; flex-direction: column; justify-content: center; border: 1px solid var(--surface-line); border-radius: 4px; background: var(--surface); box-shadow: 0 1px 3px rgba(0,0,0,0.25); }
 .cfp-slot.natchamp { border-color: var(--espn-red); border-width: 2px; }
 .cfp-team { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; padding: 5px 10px; font-family: "Arial Narrow", Arial, sans-serif; font-size: 14px; }
 .cfp-team + .cfp-team { border-top: 1px solid var(--surface-line); }
