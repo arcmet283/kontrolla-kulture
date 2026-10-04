@@ -20,6 +20,7 @@
   --win: #1a7a3c;
   --loss: var(--espn-red);
   --gold-500: #b8860b; /* used sparingly for legacy .pill-gold etc */
+  --preview-blue: #3b82c4; /* forward-looking content: previews, predictions, deep dives */
 }
 
 :root[data-theme="light"] {
@@ -186,6 +187,11 @@ a.card:hover, a[class*="-card"]:hover {
 .card.compact h3 { font-size: 14.5px; margin: 4px 0 5px; }
 .card.compact p { font-size: 12.5px; }
 
+/* Previews/predictions/deep-dives: cool blue identity, distinct from gold recap rows */
+.preview-grid .card { border-top-color: var(--preview-blue); background: linear-gradient(135deg, var(--surface) 0%, rgba(59,130,196,0.06) 100%); }
+.preview-grid .card:hover { border-top-color: var(--preview-blue); }
+.preview-grid .card .tag { color: var(--preview-blue); }
+
 /* ---- Home page: featured-show hero card ---- */
 header.hero { background-image: radial-gradient(ellipse 900px 520px at 8% -10%, rgba(210,35,42,0.18), transparent 65%); }
 .show-feature {
@@ -212,9 +218,34 @@ header.hero { background-image: radial-gradient(ellipse 900px 520px at 8% -10%, 
 .roadmap-grid .card { padding: 22px 24px; }
 
 /* ---- Home page: manifesto / editorial section ---- */
-.manifesto { max-width: 700px; }
-.manifesto h2 { font-size: 23px; margin: 0 0 16px; }
-.manifesto .prose p + p { margin-top: 15px; }
+/* ---- "Letter from the author" editorial section ---- */
+.letter { max-width: 620px; margin: 56px auto 40px; text-align: center; }
+.letter-rule { width: 56px; height: 2px; background: var(--gold-500); margin: 0 auto 22px; }
+.letter-rule-bottom { margin: 32px auto 0; }
+.letter-kicker {
+  font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold-500); margin: 0 0 10px;
+}
+.letter-title {
+  font-family: "Lora", Georgia, serif; font-style: italic; font-weight: 600;
+  text-transform: none; letter-spacing: 0; font-size: clamp(22px,3.2vw,30px);
+  color: var(--fg); margin: 0 0 6px; border: none; padding: 0;
+}
+.letter-mark {
+  display: block; font-family: "Lora", Georgia, serif; font-style: italic; font-size: 54px;
+  line-height: 1; color: var(--gold-500); opacity: 0.55; margin: 6px 0 -6px;
+}
+.letter-body { font-style: italic; text-align: center; font-size: 17px; line-height: 1.75; }
+.letter-body p { max-width: none; }
+.letter-body p + p { margin-top: 17px; }
+.letter-sign {
+  margin: 28px 0 0; font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-style: normal;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-dim);
+}
+@media (max-width: 640px) {
+  .letter { padding: 0 4px; }
+  .letter-body { font-size: 15.5px; }
+}
 
 @media (max-width: 640px) {
   .show-feature-body { padding: 20px; }
