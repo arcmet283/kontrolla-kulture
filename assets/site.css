@@ -498,6 +498,27 @@ footer:not(.signoff) { text-align: center; color: #ccc; }
 .start-here h2 { font-size: 24px; margin: 6px 0 10px; color: var(--fg); }
 .start-here p { color: var(--fg-dim); font-size: 14.5px; margin: 0 0 14px; max-width: 70ch; }
 .start-here .links { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ---- Season cover: magazine-cover art beside a section's intro text ---- */
+.season-cover {
+  display: grid; grid-template-columns: 220px 1fr; gap: 28px; align-items: start;
+  margin-bottom: 24px;
+}
+.season-cover img {
+  width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 6px;
+  border: 1px solid var(--surface-line); box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+.season-cover-body { padding-top: 4px; }
+.season-cover-body .kicker {
+  font-family: "Oswald", "Arial Narrow", Arial, sans-serif; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 0.1em; color: var(--gold-500); font-weight: 800;
+}
+.season-cover-body h2 { font-size: 26px; margin: 6px 0 10px; color: var(--fg); }
+.season-cover-body p { color: var(--fg-dim); font-size: 14.5px; line-height: 1.55; max-width: 60ch; margin: 0; }
+@media (max-width: 640px) {
+  .season-cover { grid-template-columns: 1fr; }
+  .season-cover img { max-width: 220px; margin: 0 auto; }
+}
 .start-here .links a { background: var(--espn-red); color: #fff; font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; padding: 10px 16px; border-radius: 2px; }
 .start-here .links a.alt { background: transparent; border: 1.5px solid var(--espn-red); color: var(--espn-red); }
 
