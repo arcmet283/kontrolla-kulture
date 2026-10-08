@@ -522,6 +522,15 @@ footer:not(.signoff) { text-align: center; color: #ccc; }
 .start-here .links a { background: var(--espn-red); color: #fff; font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; padding: 10px 16px; border-radius: 2px; }
 .start-here .links a.alt { background: transparent; border: 1.5px solid var(--espn-red); color: var(--espn-red); }
 
+/* ---- Archive: condensed intro + inline links for closed-out seasons ---- */
+.archive { border-left: 4px solid var(--gold-500); background: var(--surface); border-radius: 0 4px 4px 0; padding: 16px 22px; margin-bottom: 20px; }
+.archive .kicker { font-family: "Oswald", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--gold-500); font-weight: 800; }
+.archive p { color: var(--fg-dim); font-size: 14px; line-height: 1.55; margin: 6px 0 12px; max-width: 70ch; }
+.archive-links { display: flex; flex-wrap: wrap; gap: 6px 0; font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-size: 13.5px; font-weight: 700; }
+.archive-links a { color: var(--gold-500); text-decoration: none; }
+.archive-links a:hover { text-decoration: underline; }
+.archive-links .sep { color: var(--fg-dim); margin: 0 10px; font-weight: 400; }
+
 .year-divider { display: flex; align-items: center; gap: 12px; margin: 36px 0 16px; }
 .year-divider .yr { font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-weight: 900; font-size: 15px; color: var(--fg-dim); letter-spacing: 0.08em; white-space: nowrap; }
 .year-divider .line { height: 1px; background: var(--surface-line); flex: 1; }
