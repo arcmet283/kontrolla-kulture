@@ -487,6 +487,13 @@ footer:not(.signoff) { text-align: center; color: #ccc; }
 /* ---- Hub/index page cards ---- */
 .notice, .start-here { }
 .start-here { background: var(--surface); border: 2px solid var(--espn-red); border-radius: 4px; padding: 22px 24px; margin-bottom: 20px; }
+.start-here.has-media { padding: 0 0 22px; overflow: hidden; }
+.start-here-media { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+.start-here.has-media .kicker,
+.start-here.has-media h2,
+.start-here.has-media p,
+.start-here.has-media .links { padding-left: 24px; padding-right: 24px; }
+.start-here.has-media .kicker { margin-top: 18px; }
 .start-here .kicker { font-family: "Oswald", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 12px; letter-spacing: 0.1em; color: var(--espn-red); font-weight: 800; }
 .start-here h2 { font-size: 24px; margin: 6px 0 10px; color: var(--fg); }
 .start-here p { color: var(--fg-dim); font-size: 14.5px; margin: 0 0 14px; max-width: 70ch; }
