@@ -525,7 +525,7 @@ footer:not(.signoff) { text-align: center; color: #ccc; }
 
 /* ---- Archive: condensed intro + inline links for closed-out seasons ---- */
 .archive { border-left: 4px solid var(--gold-500); background: var(--surface); border-radius: 0 4px 4px 0; padding: 16px 22px; margin-bottom: 20px; display: flex; gap: 18px; align-items: flex-start; }
-.archive-badge { width: 64px; height: 64px; object-fit: contain; flex: 0 0 auto; margin-top: 2px; }
+.archive-badge { width: 108px; height: 108px; object-fit: contain; flex: 0 0 auto; margin-top: 2px; }
 .archive-body { flex: 1; min-width: 0; }
 .archive .kicker { font-family: "Oswald", "Arial Narrow", Arial, sans-serif; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; color: var(--gold-500); font-weight: 800; }
 .archive p { color: var(--fg-dim); font-size: 14px; line-height: 1.55; margin: 6px 0 12px; max-width: 70ch; }
