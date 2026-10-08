@@ -194,7 +194,10 @@ a.card:hover, a[class*="-card"]:hover {
 /* Previews/predictions/check-ins/deep-dives: cool blue identity, distinct from gold recaps */
 .card.preview-type { border-top-color: var(--preview-blue); background: linear-gradient(135deg, var(--surface) 0%, rgba(59,130,196,0.06) 100%); }
 .card.preview-type:hover { border-top-color: var(--preview-blue); }
-.card.preview-type .tag { color: var(--preview-blue); }
+.card.preview-type .tag {
+  display: inline-block; color: #fff; background: var(--preview-blue);
+  border-radius: 999px; padding: 3px 11px; margin-bottom: 2px;
+}
 
 /* ---- Home page: featured-show hero card ---- */
 header.hero { background-image: radial-gradient(ellipse 900px 520px at 8% -10%, rgba(210,35,42,0.18), transparent 65%); }
