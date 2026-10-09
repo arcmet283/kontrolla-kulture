@@ -280,8 +280,11 @@ tbody tr:hover td { background: rgba(210,35,42,0.04); }
   display: flex; gap: 14px; align-items: center; margin: 26px 0 8px; padding: 14px 18px;
   background: var(--surface); border: 1px solid var(--surface-line); border-left: 4px solid var(--espn-red);
 }
-.desk-intro .who { font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; }
+.desk-intro .who { display: flex; align-items: center; gap: 10px; font-family: "Oswald", "Arial Narrow", Arial, sans-serif; font-weight: 800; text-transform: uppercase; font-size: 13px; }
 .desk-intro .who.voss { color: var(--voss-color); } .desk-intro .who.cast { color: var(--cast-color); }
+.desk-intro .who img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; object-position: center 15%; flex: 0 0 auto; }
+.desk-intro .who.voss img { box-shadow: 0 0 0 2px var(--voss-color); }
+.desk-intro .who.cast img { box-shadow: 0 0 0 2px var(--cast-color); }
 
 .dlg { display: flex; gap: 14px; margin: 14px 0; }
 .dlg .spk { flex: 0 0 118px; }
