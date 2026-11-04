@@ -43,10 +43,19 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+html {
+  background: var(--bg);
+  /* Stop the rubber-band/overscroll bounce on mobile from exposing blank
+     space past the end of the page (seen on iOS/Android, not a real
+     document-height bug -- confirmed via CDP that scrollHeight exactly
+     matches the footer's bottom edge at every width). */
+  overscroll-behavior-y: none;
+}
 body {
   background: var(--bg); color: var(--fg);
   font-family: "Barlow", -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.5; -webkit-font-smoothing: antialiased;
+  overscroll-behavior-y: none;
 }
 a { color: var(--espn-red); text-decoration: none; }
 a:focus-visible, button:focus-visible, .card:focus-visible, .next-read:focus-visible {
