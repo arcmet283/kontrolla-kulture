@@ -138,6 +138,10 @@ main { max-width: 1100px; margin: 0 auto; padding: 0 clamp(16px,4vw,48px) 80px; 
 .section-title.national { border-bottom-color: var(--preview-blue); }
 .section-sub { font-size: 13px; color: var(--fg-dim); margin: 0 0 14px; }
 
+/* ---- Data context: a few lines of framing above a dense reference table ---- */
+.data-context { font-size: 14px; color: var(--fg-dim); line-height: 1.55; margin: 0 0 14px; max-width: 72ch; }
+.data-context strong { color: var(--fg); }
+
 /* ---- Prose (narrative text) ---- */
 .prose { font-family: "Lora", Georgia, "Times New Roman", serif; font-size: 16.5px; line-height: 1.65; color: var(--fg); }
 .prose p { max-width: 68ch; color: var(--fg); }
