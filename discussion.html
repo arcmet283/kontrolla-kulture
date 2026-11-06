@@ -30,32 +30,129 @@
 <header class="hero">
   <a class="back" href="index.html">&larr; Kontrolla Kulture</a>
   <h1 class="display">Discussion</h1>
-  <p>Predictions, recruiting boards, what you think happens next — one shared thread for the whole site. Sign in with GitHub to post.</p>
+  <p>Predictions, recruiting boards, what you think happens next — one shared thread for the whole site. No account needed, just a name.</p>
 </header>
 
 <main>
 
   <div class="notice">
-    <strong>One running thread.</strong> This isn't split up by show or season — drop in whatever you're thinking about, whichever project it's on.
+    <strong>One running thread.</strong> This isn't split up by show or season — drop in whatever you're thinking about, whichever project it's on. Comments are reviewed before they appear, so yours won't show up right away.
   </div>
 
-  <script src="https://giscus.app/client.js"
-          data-repo="arcmet283/kontrolla-kulture"
-          data-repo-id="R_kgDOTkLYrg"
-          data-category="General"
-          data-category-id="DIC_kwDOTkLYrs4DKewH"
-          data-mapping="pathname"
-          data-strict="0"
-          data-reactions-enabled="1"
-          data-emit-metadata="0"
-          data-input-position="top"
-          data-theme="dark"
-          data-lang="en"
-          crossorigin="anonymous"
-          async>
-  </script>
+  <section class="kk-discussion">
+    <div id="commentList" class="kk-comment-list" aria-live="polite">
+      <p class="kk-comment-loading">Loading comments&hellip;</p>
+    </div>
+
+    <form id="commentForm" class="kk-comment-form" novalidate>
+      <label for="commentName">Name</label>
+      <input type="text" id="commentName" name="name" maxlength="60" required>
+
+      <label for="commentBody">Comment</label>
+      <textarea id="commentBody" name="body" rows="4" maxlength="2000" required></textarea>
+
+      <input type="text" name="website" id="commentWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" class="kk-hp-field">
+
+      <button type="submit">Post Comment</button>
+      <p id="commentNote" class="kk-comment-note"></p>
+    </form>
+  </section>
 
 </main>
+
+<style>
+  .kk-discussion { max-width: 640px; margin: 0 auto; }
+  .kk-comment-list { margin-bottom: 28px; }
+  .kk-comment-loading, .kk-comment-empty { color: var(--fg-dim); font-size: 14px; }
+  .kk-comment {
+    background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px;
+    padding: 12px 14px; margin-bottom: 10px;
+  }
+  .kk-comment-meta { font-size: 12px; color: var(--fg-dim); margin-bottom: 6px; }
+  .kk-comment-meta strong { color: var(--fg); }
+  .kk-comment-body { margin: 0; white-space: pre-wrap; font-size: 14px; line-height: 1.5; }
+  .kk-comment-form {
+    display: flex; flex-direction: column; gap: 8px;
+    background: var(--surface); border: 1px solid var(--surface-line); border-radius: 8px; padding: 16px;
+  }
+  .kk-comment-form label { font-size: 12px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.06em; }
+  .kk-comment-form input[type="text"], .kk-comment-form textarea {
+    font: inherit; background: var(--bg); color: var(--fg); border: 1px solid var(--surface-line);
+    border-radius: 6px; padding: 8px 10px; resize: vertical;
+  }
+  .kk-comment-form button {
+    align-self: flex-start; margin-top: 4px; font: inherit; font-weight: 700; cursor: pointer;
+    background: var(--espn-red); color: #fff; border: none; border-radius: 6px; padding: 10px 18px;
+  }
+  .kk-comment-form button:hover { background: var(--espn-red-dark); }
+  .kk-comment-form button:disabled { opacity: 0.6; cursor: default; }
+  .kk-comment-note { font-size: 13px; color: var(--fg-dim); margin: 0; }
+  .kk-hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+</style>
+
+<script>
+(function () {
+  var API = 'https://kk-comments.thesolidcirclepod.workers.dev';
+  var listEl = document.getElementById('commentList');
+  var form = document.getElementById('commentForm');
+  var noteEl = document.getElementById('commentNote');
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  function fmtDate(s) {
+    try {
+      return new Date(s.replace(' ', 'T') + 'Z').toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+    } catch (e) { return s; }
+  }
+
+  function render(comments) {
+    if (!comments.length) {
+      listEl.innerHTML = '<p class="kk-comment-empty">No comments yet — be the first.</p>';
+      return;
+    }
+    var sorted = comments.slice().sort(function (a, b) { return new Date(b.created_at) - new Date(a.created_at); });
+    listEl.innerHTML = sorted.map(function (c) {
+      return '<div class="kk-comment"><div class="kk-comment-meta"><strong>' + escapeHtml(c.name) + '</strong> &middot; ' + fmtDate(c.created_at) + '</div><p class="kk-comment-body">' + escapeHtml(c.body) + '</p></div>';
+    }).join('');
+  }
+
+  fetch(API + '/api/comments')
+    .then(function (r) { return r.json(); })
+    .then(function (b) { render(b.comments || []); })
+    .catch(function () {
+      listEl.innerHTML = '<p class="kk-comment-empty">Comments couldn\'t load right now — try refreshing.</p>';
+    });
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var name = form.elements.name.value.trim();
+    var body = form.elements.body.value.trim();
+    if (!name) { noteEl.textContent = 'Please add your name.'; return; }
+    if (!body) { noteEl.textContent = 'Please write a comment.'; return; }
+
+    var btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    noteEl.textContent = 'Sending...';
+
+    fetch(API + '/api/comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, body: body, website: form.elements.website.value })
+    })
+      .then(function (r) { return r.json().then(function (b) { if (!r.ok) throw new Error(b.error || 'Something went wrong.'); return b; }); })
+      .then(function () {
+        form.reset();
+        noteEl.textContent = 'Thanks! Your comment will appear once it\'s been reviewed.';
+      })
+      .catch(function (err) { noteEl.textContent = err.message; })
+      .then(function () { btn.disabled = false; });
+  });
+})();
+</script>
 
 <footer>Kontrolla Kulture &middot; PS2 Sports Dynasties &amp; Franchises, No Commentary</footer>
 
