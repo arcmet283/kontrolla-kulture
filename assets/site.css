@@ -67,7 +67,7 @@ a:focus-visible, button:focus-visible, .card:focus-visible, .next-read:focus-vis
 a:hover { text-decoration: underline; }
 
 .display, h1, .scorebug h1, .bumper h2, .card h3, .card-title,
-[class*="-card"] h3, [class*="-card"] .name, .name, .teams, .team {
+[class*="-card"] h3, [class*="-card"] .name, .name, .teams, .team, .bowl-name, .bowl-teams {
   font-family: "Oswald", "Arial Narrow", Arial, sans-serif;
   font-weight: 800;
   text-transform: uppercase;
@@ -108,6 +108,7 @@ a:hover { text-decoration: underline; }
 header.hero p { color: #ccc; max-width: 68ch; font-size: 14.5px; }
 
 .bug-row, .stat-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.team-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px; }
 .bug-chip, .stat-chip {
   background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 2px;
   padding: 8px 14px; font-family: ui-monospace, Consolas, monospace; font-variant-numeric: tabular-nums;
@@ -353,7 +354,7 @@ tbody tr:hover td { background: rgba(210,35,42,0.04); }
 .accolade .when { color: var(--fg-dim); font-size: 12.5px; }
 
 /* ---- Conference championship grid ---- */
-.champ-grid, .grade-grid, .stat-grid, .three-col, .two-col {
+.champ-grid, .grade-grid, .stat-grid, .three-col, .two-col, .bowl-grid, .leader-grid {
   display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
 }
 .two-col { grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); }

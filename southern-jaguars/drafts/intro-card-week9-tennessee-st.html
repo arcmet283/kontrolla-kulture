@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Intro Card — Week 9 vs Tennessee St.</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  .card {
+    width: 1920px; height: 1080px;
+    background: radial-gradient(circle at 30% 20%, #12305c 0%, #060d1c 65%);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 60%, rgba(0,0,0,0.55) 100%);
+  }
+  .kicker {
+    font-size: 34px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #f3d287; margin-bottom: 26px; z-index: 1;
+  }
+  .matchup {
+    font-size: 96px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.01em;
+    line-height: 1.05; text-align: center; margin: 0 0 18px; z-index: 1;
+    text-shadow: 0 6px 30px rgba(0,0,0,0.5);
+  }
+  .matchup .vs { color: #f3d287; font-size: 56px; display: block; margin: 6px 0; }
+  .record {
+    font-size: 40px; font-weight: 700; letter-spacing: 0.05em; color: #cdd6f0;
+    border-top: 3px solid #f3d287; border-bottom: 3px solid #f3d287;
+    padding: 14px 46px; margin-top: 30px; z-index: 1;
+  }
+  .tag {
+    position: absolute; bottom: 60px; font-size: 28px; font-weight: 700; letter-spacing: 0.08em;
+    color: #b8c4e6; text-transform: uppercase; z-index: 1;
+  }
+  .tag .dot { color: #f3d287; margin: 0 14px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="kicker">Southern Jaguars Football</div>
+    <div class="matchup">Week 9<span class="vs">vs.</span>Tennessee State</div>
+    <div class="record">RECORD: 2&ndash;5</div>
+    <div class="tag">No Commentary <span class="dot">&middot;</span> Game Audio Only</div>
+  </div>
+</body>
+</html>
